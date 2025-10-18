@@ -71,7 +71,6 @@ class UserController extends Controller
 
         try {
             $users = UserResource::collection($query->paginate($perPage));
-            Log::info('Retrieved user list', ['count' => $users->count(), 'requested_by' => $request->user()->id]);
             return $users;
         } catch (\Exception $e) {
             Log::error('Failed to retrieve user list', ['error' => $e->getMessage(), 'requested_by' => $request->user()->id]);
@@ -85,7 +84,6 @@ class UserController extends Controller
     public function show(Request $request, User $user)
     {
         try {
-            Log::info('Retrieved user', ['user_id' => $user->id, 'requested_by' => $request->user()->id]);
             return new ApiResponse(
                 new UserResource($user),
                 'User retrieved successfully',
@@ -102,7 +100,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        Log::info('Creating user', ['requested_by' => $request->user()->id, 'input_data' => $request->input()->all()]);
         $validatedData = $request->validate($this->validationRules(null, true));
 
         try {
@@ -114,7 +111,6 @@ class UserController extends Controller
             ]);
 
             $user->syncRoles($validatedData['roles']);
-            Log::info('User created successfully', ['user_id' => $user->id, 'requested_by' => $request->user()->id]);
             return new ApiResponse($user, 'User created successfully', 201);
         } catch (\Exception $e) {
             Log::error('Failed to create user', ['error' => $e->getMessage(), 'requested_by' => $request->user()->id]);
@@ -127,7 +123,6 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        Log::info('Updating user', ['user_id' => $user->id, 'requested_by' => $request->user()->id, 'input_data' => $request->input()->all()]);
         $validatedData = $request->validate($this->validationRules($user->id, false));
 
         try {
@@ -140,7 +135,6 @@ class UserController extends Controller
 
             $user->save();
 
-            Log::info('User updated successfully', ['user_id' => $user->id, 'requested_by' => $request->user()->id]);
             return new ApiResponse($user, 'User updated successfully', 200);
         } catch (\Exception $e) {
             Log::error('Failed to update user', ['error' => $e->getMessage(), 'requested_by' => $request->user()->id]);
@@ -155,13 +149,13 @@ class UserController extends Controller
     {
         try {
             $user->delete();
-            Log::info('User deleted successfully', ['user_id' => $user->id, 'requested_by' => $request->user()->id]);
             return new ApiResponse(null, 'User deleted successfully', 200);
         } catch (\Exception $e) {
             Log::error('Failed to delete user', ['error' => $e->getMessage(), 'requested_by' => $request->user()->id]);
             return new ApiResponse(null, 'Failed to delete user: ' . $e->getMessage(), 500);
         }
     }
+
 
     /**
      * Restore the specified soft-deleted user.

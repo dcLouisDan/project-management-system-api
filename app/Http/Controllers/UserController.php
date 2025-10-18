@@ -7,6 +7,7 @@ use App\Http\Responses\ApiResponse;
 use App\Models\User;
 use Illuminate\Validation\Rule;
 use App\Enums\UserRoles;
+use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
@@ -42,8 +43,10 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        $query = User::query();
+
         try {
-            $users = User::all();
+            $users = UserResource::collection($query->paginate(10));
             Log::info('Retrieved user list', ['count' => $users->count(), 'requested_by' => $request->user()->id]);
             return new ApiResponse($users, 'User list retrieved successfully', 200);
         } catch (\Exception $e) {
@@ -59,8 +62,11 @@ class UserController extends Controller
     {
         try {
             Log::info('Retrieved user', ['user_id' => $user->id, 'requested_by' => $request->user()->id]);
-
-            return new ApiResponse($user, 'User retrieved successfully', 200);
+            return new ApiResponse(
+                new UserResource($user),
+                'User retrieved successfully',
+                200
+            );
         } catch (\Exception $e) {
             Log::error('Failed to retrieve user', ['error' => $e->getMessage(), 'requested_by' => $request->user()->id]);
             return new ApiResponse(null, 'Failed to retrieve user: ' . $e->getMessage(), 500);

@@ -38,17 +38,37 @@ class UserController extends Controller
         return $rules;
     }
 
+    private function buildFilteredUserQuery(Request $request)
+    {
+        $query = User::query();
+
+        // Apply filters based on request parameters
+        if ($request->has('name')) {
+            $query->where('name', 'like', '%' . $request->input('name') . '%');
+        }
+
+        if ($request->has('email')) {
+            $query->where('email', 'like', '%' . $request->input('email') . '%');
+        }
+
+        if ($request->has('role')) {
+            $role = $request->input('role');
+            $query->role($role);
+        }
+        return $query;
+    }
+
     /**
      * Display a listing of users.
      */
     public function index(Request $request)
     {
-        $query = User::query();
+        $query = $this->buildFilteredUserQuery($request);
 
         try {
             $users = UserResource::collection($query->paginate(10));
             Log::info('Retrieved user list', ['count' => $users->count(), 'requested_by' => $request->user()->id]);
-            return new ApiResponse($users, 'User list retrieved successfully', 200);
+            return $users;
         } catch (\Exception $e) {
             Log::error('Failed to retrieve user list', ['error' => $e->getMessage(), 'requested_by' => $request->user()->id]);
             return new ApiResponse(null, 'Failed to retrieve user list: ' . $e->getMessage(), 500);

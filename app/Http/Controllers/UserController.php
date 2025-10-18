@@ -38,6 +38,9 @@ class UserController extends Controller
         return $rules;
     }
 
+    /**
+     * Build a query for filtering users based on request parameters
+     */
     private function buildFilteredUserQuery(Request $request)
     {
         $query = User::query();
@@ -63,10 +66,11 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        $perPage = $request->input('per_page', 10);
         $query = $this->buildFilteredUserQuery($request);
 
         try {
-            $users = UserResource::collection($query->paginate(10));
+            $users = UserResource::collection($query->paginate($perPage));
             Log::info('Retrieved user list', ['count' => $users->count(), 'requested_by' => $request->user()->id]);
             return $users;
         } catch (\Exception $e) {

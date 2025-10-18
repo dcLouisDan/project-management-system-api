@@ -2,13 +2,20 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 
-Route::prefix('v1')->group(function () {
+Route::prefix('/v1')->group(function () {
     // Protected route example
     Route::get('/user', function (Request $request) {
         return $request->user();
-    })->middleware('auth:sanctum');
+    });
 
+    Route::middleware(['permission:list users'])->get('users', [UserController::class, 'index']);
+    Route::middleware(['permission:view user'])->get('users/{user}', [UserController::class, 'show']);
+    Route::middleware(['permission:create user'])->post('users', [UserController::class, 'store']);
+    Route::middleware(['permission:update user'])->put('users/{user}', [UserController::class, 'update']);
+    Route::middleware(['permission:delete user'])->delete('users/{user}', [UserController::class, 'destroy']);
+    Route::middleware(['permission:restore user'])->post('users/{user}/restore', [UserController::class, 'restore']);
     // Add your API routes here
-});
+})->middleware('auth:sanctum');

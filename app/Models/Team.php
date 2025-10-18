@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Enums\UserRoles;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Team extends Model
@@ -100,17 +100,22 @@ class Team extends Model
     /**
      * Set a user as the team lead
      * 
-     * @throws \LogicException
      * @throws \InvalidArgumentException
+     * @throws \LogicException
      */
     public function setLeader(User $user): void
     {
-        if ($this->hasLeader()) {
-            throw new \LogicException("Team already has a leader. Remove the current leader first.");
+        // Verify user has the team lead system role
+        if (!$user->isQualifiedAsTeamLead()) {
+            throw new \InvalidArgumentException(
+                "User must have the 'team lead' role before being assigned as team leader."
+            );
         }
 
-        if (!$user->getRoleNames()->contains(UserRoles::TEAM_LEAD->value)) {
-            throw new \InvalidArgumentException("User must have the 'team lead' role to be set as team leader.");
+        if ($this->hasLeader()) {
+            throw new \LogicException(
+                "Team already has a leader. Remove the current leader first or use promoteToLead()."
+            );
         }
 
         if (!$this->hasMember($user)) {
@@ -119,7 +124,6 @@ class Team extends Model
                 'role' => UserRoles::TEAM_LEAD->value
             ]);
         } else {
-            // Update existing member to lead
             $this->users()->updateExistingPivot($user->id, [
                 'role' => UserRoles::TEAM_LEAD->value
             ]);
@@ -133,12 +137,15 @@ class Team extends Model
      */
     public function promoteToLead(User $user): void
     {
-        if (!$this->hasMember($user)) {
-            throw new \InvalidArgumentException("User is not a member of this team.");
+        // Verify user has the team lead system role
+        if (!$user->isQualifiedAsTeamLead()) {
+            throw new \InvalidArgumentException(
+                "User must have the 'team lead' role before being promoted to team leader."
+            );
         }
 
-        if (!$user->getRoleNames()->contains(UserRoles::TEAM_LEAD->value)) {
-            throw new \InvalidArgumentException("User must have the 'team lead' role to be set as team leader.");
+        if (!$this->hasMember($user)) {
+            throw new \InvalidArgumentException("User is not a member of this team.");
         }
 
         // Demote current lead to member if exists

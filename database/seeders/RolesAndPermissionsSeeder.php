@@ -87,10 +87,10 @@ class RolesAndPermissionsSeeder extends Seeder
         $archiveClientPermission = Permission::firstOrCreate(['name' => 'archive client']);
 
         // Define Roles and assign permissions
-        $adminRole = Role::firstOrCreate(['name' => 'Admin']);
+        $adminRole = Role::firstOrCreate(['name' => 'admin']);
         $adminRole->givePermissionTo(Permission::all());
 
-        $projectManagerRole = Role::firstOrCreate(['name' => 'Project Manager']);
+        $projectManagerRole = Role::firstOrCreate(['name' => 'project manager']);
         $projectManagerRole->givePermissionTo([
             // Project management permissions
             $createProjectPermission,
@@ -121,7 +121,7 @@ class RolesAndPermissionsSeeder extends Seeder
             $reorderTaskPermission,
         ]);
 
-        $teamLeadRole = Role::firstOrCreate(['name' => 'Team Lead']);
+        $teamLeadRole = Role::firstOrCreate(['name' => 'team lead']);
         $teamLeadRole->givePermissionTo([
             // Task permissions
             $createTaskPermission,
@@ -135,7 +135,7 @@ class RolesAndPermissionsSeeder extends Seeder
             $reorderTaskPermission,
         ]);
 
-        $teamMemberRole = Role::firstOrCreate(['name' => 'Team Member']);
+        $teamMemberRole = Role::firstOrCreate(['name' => 'team member']);
         $teamMemberRole->givePermissionTo([
             // Task permissions
             $viewTaskPermission,

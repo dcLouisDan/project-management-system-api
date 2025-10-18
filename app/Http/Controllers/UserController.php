@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Validation\Rule;
 use App\Enums\UserRoles;
 use App\Http\Resources\UserResource;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
@@ -169,6 +170,52 @@ class UserController extends Controller
         } catch (\Exception $e) {
             Log::error('Failed to restore user', ['error' => $e->getMessage(), 'requested_by' => $request->user()->id]);
             return new ApiResponse(null, 'Failed to restore user: ' . $e->getMessage(), 500);
+        }
+    }
+
+    /**
+     * Assign roles to user
+     */
+    public function assignRoles(Request $request, User $user)
+    {
+        $validatedData = $request->validate([
+            'roles' => ['required', 'array', 'min:1', 'max:4'],
+            'roles.*' => ['required', Rule::in(UserRoles::allRoles())],
+        ]);
+
+        $currentRoles = $user->getRoleNames()->toArray();
+        $newRoles = $validatedData['roles'];
+
+        $removedRoles = array_diff($currentRoles, $newRoles);
+
+        if (in_array(UserRoles::TEAM_LEAD->value, $removedRoles) && !$user->canChangeFromTeamLeadRole()) {
+
+            Log::warning('Attempt to remove team lead role from user actively leading teams', ['user_id' => $user->id, 'requested_by' => $request->user()->id]);
+
+            return ApiResponse::error(
+                'Cannot remove team lead role: user is actively leading teams',
+                422,
+                [
+                    'roles' => [
+                        'User must be removed as team lead from all teams before removing this role.'
+                    ],
+                    'active teams' => $user->ledTeams()->pluck('name')->toArray()
+                ],
+
+            );
+        }
+
+
+        try {
+            DB::beginTransaction();
+            $user->syncRoles($validatedData['roles']);
+            DB::commit();
+            Log::info('Roles assigned to user successfully', ['user_id' => $user->id, 'roles' => $validatedData['roles'], 'requested_by' => $request->user()->id]);
+            return new ApiResponse($user, 'Roles assigned successfully', 200);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Failed to assign roles to user', ['error' => $e->getMessage(), 'requested_by' => $request->user()->id]);
+            return new ApiResponse(null, 'Failed to assign roles: ' . $e->getMessage(), 500);
         }
     }
 }

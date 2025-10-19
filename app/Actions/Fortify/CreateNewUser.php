@@ -3,6 +3,7 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -25,6 +26,12 @@ class CreateNewUser implements CreatesNewUsers
             abort(403, 'User registration is disabled. Please contact your administrator.');
         }
 
+        $adminRole = Role::where('name', 'admin')->first();
+
+        if (!$adminRole) {
+            abort(405, 'Admin role does not exist. Please create it first.');
+        }
+
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => [
@@ -37,20 +44,21 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
         ])->validate();
 
-        $user = User::create([
-            'name' => $input['name'],
-            'email' => $input['email'],
-            'password' => Hash::make($input['password']),
-        ]);
+        try {
+            DB::beginTransaction();
+            $user = User::create([
+                'name' => $input['name'],
+                'email' => $input['email'],
+                'password' => Hash::make($input['password']),
+            ]);
 
-        $adminRole = Role::where('name', 'admin')->first();
 
-        if (!$adminRole) {
-            abort(500, 'Admin role does not exist. Please contact support.');
+            $user->assignRole($adminRole);
+            DB::commit();
+            return $user;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            abort(500, 'Failed to create user: ' . $e->getMessage());
         }
-
-        $user->assignRole($adminRole);
-
-        return $user;
     }
 }

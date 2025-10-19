@@ -104,7 +104,7 @@ class UserController extends Controller
         $validatedData = $request->validate($this->validationRules(null, true));
 
         try {
-
+            DB::beginTransaction();
             $user = User::create([
                 'name' => $validatedData['name'],
                 'email' => $validatedData['email'],
@@ -112,8 +112,10 @@ class UserController extends Controller
             ]);
 
             $user->syncRoles($validatedData['roles']);
+            DB::commit();
             return new ApiResponse($user, 'User created successfully', 201);
         } catch (\Exception $e) {
+            DB::rollBack();
             Log::error('Failed to create user', ['error' => $e->getMessage(), 'requested_by' => $request->user()->id]);
             return new ApiResponse(null, 'Failed to create user: ' . $e->getMessage(), 500);
         }
@@ -204,7 +206,6 @@ class UserController extends Controller
 
             );
         }
-
 
         try {
             DB::beginTransaction();

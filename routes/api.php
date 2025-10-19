@@ -11,11 +11,12 @@ Route::prefix('/v1')->group(function () {
         return $request->user();
     });
 
+    // User Management Routes
     Route::middleware(['permission:list users'])->get('users', [UserController::class, 'index']);
     Route::middleware(['permission:view user'])->get('users/{user}', [UserController::class, 'show']);
     Route::middleware(['permission:create user'])->post('users', [UserController::class, 'store']);
     Route::middleware(['permission:update user'])->put('users/{user}', [UserController::class, 'update']);
     Route::middleware(['permission:delete user'])->delete('users/{user}', [UserController::class, 'destroy']);
     Route::middleware(['permission:restore user'])->post('users/{user}/restore', [UserController::class, 'restore']);
-    // Add your API routes here
+    Route::middleware(['permission:assign role user'])->post('users/{user}/roles', [UserController::class, 'assignRoles']);
 })->middleware('auth:sanctum');

@@ -18,7 +18,7 @@ trait HasActivityLogs
   /**
    * Log an activity for the model
    */
-  protected static function bootLogsActivity(): void
+  protected static function bootHasActivityLogs(): void
   {
     static::created(function ($model) {
       ActivityLog::logActivity(

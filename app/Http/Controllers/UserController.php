@@ -7,6 +7,7 @@ use App\Http\Responses\ApiResponse;
 use App\Models\User;
 use Illuminate\Validation\Rule;
 use App\Enums\UserRoles;
+use App\Events\UserRolesAssigned;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -210,6 +211,14 @@ class UserController extends Controller
         try {
             DB::beginTransaction();
             $user->syncRoles($validatedData['roles']);
+
+            UserRolesAssigned::dispatch(
+                $user,
+                $currentRoles,
+                $newRoles,
+                $request->user()
+            );
+
             DB::commit();
             Log::info('Roles assigned to user successfully', ['user_id' => $user->id, 'roles' => $validatedData['roles'], 'requested_by' => $request->user()->id]);
             return new ApiResponse($user, 'Roles assigned successfully', 200);

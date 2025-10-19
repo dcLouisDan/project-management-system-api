@@ -138,14 +138,26 @@
                                                                                 <li class="tocify-item level-2" data-unique="team-management-POSTapi-v1-teams">
                                 <a href="#team-management-POSTapi-v1-teams">Create team</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="team-management-GETapi-v1-teams--team_id-">
-                                <a href="#team-management-GETapi-v1-teams--team_id-">Get team</a>
+                                                                                <li class="tocify-item level-2" data-unique="team-management-GETapi-v1-teams--team-">
+                                <a href="#team-management-GETapi-v1-teams--team-">Get team</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="team-management-PUTapi-v1-teams--team_id-">
                                 <a href="#team-management-PUTapi-v1-teams--team_id-">Update team details</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="team-management-DELETEapi-v1-teams--team_id-">
                                 <a href="#team-management-DELETEapi-v1-teams--team_id-">Delete team</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="team-management-POSTapi-v1-teams--team_id--members">
+                                <a href="#team-management-POSTapi-v1-teams--team_id--members">Add member to team</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="team-management-POSTapi-v1-teams--team_id--members-bulk">
+                                <a href="#team-management-POSTapi-v1-teams--team_id--members-bulk">Add multiple members to team</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="team-management-DELETEapi-v1-teams--team_id--members--user-">
+                                <a href="#team-management-DELETEapi-v1-teams--team_id--members--user-">Remove member from team</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="team-management-DELETEapi-v1-teams--team_id--members">
+                                <a href="#team-management-DELETEapi-v1-teams--team_id--members">Remove multiple members from team</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -1079,7 +1091,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 access-control-allow-origin: *
-set-cookie: XSRF-TOKEN=eyJpdiI6ImpVWTRVVlRyUG9tbm9iOUd3QmY2a0E9PSIsInZhbHVlIjoiVnNFdW1SNHV5RUJHVlpOdFJ6aGFQUm9ldDJpd05VVHNyeUM4clN4TVcybnd5MFNFZUE1NTF4dmJMNitwTjR1ZkdZT2RMTXZ6MVhyVUthL1I1YTdXUUNhU1dkQ1JaTXBQcmtFZklJb2ovN1VFKzk4QytubSt5dkx6UVZ3aUxoZHciLCJtYWMiOiI2NjhlNDY2YzMwZjlmNTA3MThlOTIzZjYyYTVkYWViOGIzYjRlMjU5ZGRiMmRiYTQ3NWNmNTZjODQ5ZDk3OTMwIiwidGFnIjoiIn0%3D; expires=Sun, 19 Oct 2025 07:35:49 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6IjJVb0hrSUg5YkpWRDlvY3hDMkVya1E9PSIsInZhbHVlIjoia0VMWENNZ21OdmlLdm0wWS9Ea1BtUVVjVHJ5S2NhcXBLdmsrZGVNaXhCZ1lDSGZYcEJQQ0h5bkRlbEtZc1psamdnV0lvSkZIREczMTlQaFB6MXl1N3g3WlpSWEVXM0xrdm5LOUdWY3U2dy9yVEhtTXFGSFVkMyt4TTBuWlRXRHEiLCJtYWMiOiIxNjhlMzBkOGJjZDYwMjhkZGFiM2QzZmUyYmQ1M2IxODQzNjYzMjMwZDEwNWQyMGI4NmNjYzhjOThiYzAxMGQxIiwidGFnIjoiIn0%3D; expires=Sun, 19 Oct 2025 07:35:49 GMT; Max-Age=7200; path=/; httponly; samesite=lax
+set-cookie: XSRF-TOKEN=eyJpdiI6ImRlRjk0MVNRY09ZV0lhNy9vQzdGSGc9PSIsInZhbHVlIjoid3NTTkdseTFXNFQvUmJ4dkJRazVPUEQ0aUFVQ0hXQWZWa3BZVURrU0VpdXVsODNxSXBkZCtnQ3UrZ0l4TndHV2xsUGdBMjM0SE1UZ0dLN1dPQ1VEVHk2SXk2M3VSK1A5VkFmMEJ4dnF1QnozVit2QUdvaEcvazNGWlJiWHBwazUiLCJtYWMiOiJkMzE2Zjc4YjM2ODAzYjNiZWNiMzBkODVmOWJhMmMyM2JjMjNhODkyZGQ1MDQ3ZjBmODAxMTMzMmQxYzAzOWRhIiwidGFnIjoiIn0%3D; expires=Sun, 19 Oct 2025 09:16:22 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6IlhzdEh3cEVpMWI1V2pPb0s4Z0U1b3c9PSIsInZhbHVlIjoiNE1xTXovVFp0bTVacTRXbG94TGJTdStCOXhhaGQwMzFhWklHR1VNMFU5OHh6UFc1cStBUWdDS1ppQW45WE5uZTJQNlFLN1hUV1RFVEJtbVJqVWxLQ3B0d3BuMERFY1hiMjNjR1oyK1p3bHdFWEIvL2puQlhQSDBZVVdyVDN1ZTYiLCJtYWMiOiIwOTQ1ZTQ4OWY4YzZjMGI0YzBiNzAyMDUxZTA3Y2MxZjg2NTBmMDRhMzdhZDEwZGY2YmEyMjdkZDk5ZGNmOWY5IiwidGFnIjoiIn0%3D; expires=Sun, 19 Oct 2025 09:16:22 GMT; Max-Age=7200; path=/; httponly; samesite=lax
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -1778,7 +1790,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 access-control-allow-origin: *
-set-cookie: XSRF-TOKEN=eyJpdiI6InZubDlPWUpJN3YvVzU4WjJySm5rbmc9PSIsInZhbHVlIjoiL0J3N0ovMDhuaCtHOUNjZmZ0RzB6dndZRzlFbWRoZm0wOURoYnV1TVR0YWVFaS9FNFJ6VXcySUhHNkJxeUdaNDFkVUtZcUtEbmpPd21meG1mMGdNQVlLeSs3VDdPZ0xaRERVeGZQTis2dmhmYjB1ZnNlVTA2Y0dsZ2FQdVNwbnciLCJtYWMiOiJhNzZkYzg3NjJhMGNiM2JkYjQ3OTIzZmE0MWY2MjcwOTAyYmRiYmMyMDg0YjY0OTJjNTVmNmU1YjA2MjQzODFjIiwidGFnIjoiIn0%3D; expires=Sun, 19 Oct 2025 07:35:49 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6IkVFa0RKYmJSZTQwQitqMDA4dVJLSEE9PSIsInZhbHVlIjoiUVk2M2xBYzBwRmZuWnZqNHJCVEJwdnNmOUppTU9IcHdsMk5SMkJmSjlzM2FnVUFFMmVkUG9kZ0hmS1ZmSUFFQVlGaU0wOVc5RTRvZnJBVzdJYUtiUkZTM0l1SVVKWG5kUkQ1UHdLeFBOK0JFalFjQW5reUE1V05vSkhRekFsRy8iLCJtYWMiOiIzYjdmNmI3N2I0MDY3MjhmMzVkMThhN2YwMWUyZmE3MjE0M2FmMDJmZDBiZjhlNDhhMzRhZTFkOWU5OTYwOWM5IiwidGFnIjoiIn0%3D; expires=Sun, 19 Oct 2025 07:35:49 GMT; Max-Age=7200; path=/; httponly; samesite=lax
+set-cookie: XSRF-TOKEN=eyJpdiI6IjJSUnhDYVJJZEpsTUJmL2FMbUEwRVE9PSIsInZhbHVlIjoib0dUWjZFQ1RvQ2g4QURKL3F2MHJjNVh1WjJkRFYxRVk0bzZCYkh2Ym1MdG4yZDM3WllhOTE4M056b1lxT3B3TUlKZWpzeS9WN2ZQK25pQlRjTXVXVytHSVp0VWFRTzV1Mm9IUkpBY212RDAxcmhtenpCTC9ZSHA3aGE1UDFINDYiLCJtYWMiOiJhZDIyYThlNzA5MTNkZTA3ZjhmYWU1NDc2OGVhN2IxNmNkNTlmMTBlNjAyNDNkNjdkMDFlNGJjMzgzNDY4NDcyIiwidGFnIjoiIn0%3D; expires=Sun, 19 Oct 2025 09:16:22 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6IkNQZFlRME5ubXg5cFBla0xxOUd2TFE9PSIsInZhbHVlIjoiUmxHSXZHL0xpajFxNXp1NzNZMHd5ellabFloMTFUdHBGVDlXTXo2YlJQMWVEK01zWjlTUDcxYmtZaExTMU93WDQzaHovOW8rcy9Odm05VDlOYndzeWFmUHg4eHVLTUJHQ1V6Z2x3Z3VlY3lSZ3dDRDNlTFFzdjl0cktaNVVlTzYiLCJtYWMiOiJmNjMzNmM2NDcyY2UyY2ZhZThiOWFmZGFhNDU0MjJhMWExYjE3ZWUzYjJkZWY1M2MwZWQ5NmVjNjEyZDliZWNiIiwidGFnIjoiIn0%3D; expires=Sun, 19 Oct 2025 09:16:22 GMT; Max-Age=7200; path=/; httponly; samesite=lax
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -1903,7 +1915,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 access-control-allow-origin: *
-set-cookie: XSRF-TOKEN=eyJpdiI6IjllQWQ4NWVWUW9kRzNKN2d0UUpWVEE9PSIsInZhbHVlIjoiVm50SXJRM2V2N2hXNS9uY0xHNnhIcTBVNWVJdmNFVlpUbkJpR1dLNmNyZWcrRkwxaGMyd0Z4Y1JBemVJM2hXa0lubEl6Y2tZTURnaGl5ZGxtK1JmVUZsdDF6YUtVQTR3QlZHOXcreENTMkFPT2hnNWVoU0puUHh2cERwR29aRjMiLCJtYWMiOiJmYzhmYmI5ZTA4M2JlOWZjMjY5Y2Y5YWNkY2Y0ZjYyOTExN2FkMzg5MjEzNDY4MzU0Mzc2OGE1N2I4ZmQ0YzFkIiwidGFnIjoiIn0%3D; expires=Sun, 19 Oct 2025 07:35:49 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6IjlXSWpOdnp2Ly9KLzB4VCtURHBWTGc9PSIsInZhbHVlIjoibFRoanpvc08xLzZkU1hCR0NKaXV4OUJsNG01ZGtubHRDdmk2dXYwK21wWlBCZ1N2MnhxeUlDUTRFYitxMUt1V2xZZmxmVTZMRmFESGpzQzI5Q1crS3FKWVRyT1BmeGNHNEw0QmZIY2t6eS9GMUVDN1A5Z2JiVFNZYlZMMVh4TkYiLCJtYWMiOiI1MzRmOGYyZjUxYjUwNzg3ZWRmYThjMmExMmJmNDEyYzU5NzljZmM2Mzg4ZTc4ZGJmOGE1MDZmMzhjOTE0MzdjIiwidGFnIjoiIn0%3D; expires=Sun, 19 Oct 2025 07:35:49 GMT; Max-Age=7200; path=/; httponly; samesite=lax
+set-cookie: XSRF-TOKEN=eyJpdiI6IkxkOE5PZ1lkaG9UUkZpSEViaDRaNUE9PSIsInZhbHVlIjoiUWkwVy9aR3FSUURjZ3JoZGk3dnJkN25DU1JtVjJpNWlWZzAxUXkxMUJ6ODNYZk5XYjFKU2VrOGdOWjkvTUczN3VQM1dCck44cmJ2dUMrSzd3VnlnMVd2M3VHYUhBRk54WnQ1bUJFNUdnRnBISnNJQjZXSzVoUTJiNjl2SGRhM0IiLCJtYWMiOiIwMmMyMzc1MzUzOTQyMGE2ZGVjMWI1N2QwOGVmYjNjZDBlMzE3NGM1ODVjZjlkYzZmNzczODVjZDYzNGZlNmU0IiwidGFnIjoiIn0%3D; expires=Sun, 19 Oct 2025 09:16:22 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6InZTTEQ5WWtSaVRaOC9rVU40ZVlXWlE9PSIsInZhbHVlIjoidk83aGkyQTJsZk5NWUJGTzZ6OFEyWU83d3kzU0c3VzB1QkQ2NmFQblk4THp2SXZiMGFCbnJxbkRHYjBsRjIyMGdMOER0eXZZUTJGMmpKMWZwL2RqRUlhaDgvRVZLZGpGQkNObVE3dTZwK1FWTWVBZE9Ia0c3TEhmb3p2Ukc3cG4iLCJtYWMiOiI3MzM4MTM5N2NmYWFhM2Q0YWVkZTA5YmEzN2UzNGE2NWViODFiZWM5OGQzMWI4MTI3N2Q4MDM4ODViODM3ZDkyIiwidGFnIjoiIn0%3D; expires=Sun, 19 Oct 2025 09:16:22 GMT; Max-Age=7200; path=/; httponly; samesite=lax
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -2028,7 +2040,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 access-control-allow-origin: *
-set-cookie: XSRF-TOKEN=eyJpdiI6IlRJSW1oRUZJdVpNYlhWNTJlK1o2b0E9PSIsInZhbHVlIjoibkxTV05lem5TdFBKcmt4a0pEazRkUy9ieEh1Nm5tTzBRTFc1NFV4K0VXSWo1QmVZV0IwcE44aUlYajZwaXVlMTEzT3IxUmdmQzh6NHFyRXRFbjc3REhpeTgrRGloUzA3aFFiN3NHUDZYU1IyZ3FHVjd3S2FKV2ozZmV4Y1c0a2siLCJtYWMiOiI0NWZlN2ViNjBjNmY3OTI3MjgyMzc0MzhiMTY4NGMwYjdlNTQ3OTkxNGFmMjQ1ZWI1MWQ1OGI1YjFkZjgxMTdhIiwidGFnIjoiIn0%3D; expires=Sun, 19 Oct 2025 07:35:49 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6InYvQy9lUG45VnNmVnhrWVpHNzhtQ1E9PSIsInZhbHVlIjoiaFIvcjh1ZWZyRHhKb1lhcDVqSndQWXNFYmtkaXI0V09QVUNGTlVrQWhwRGsya1h4R2N2ZWUrcmUzcC9EMEJXS05JNzNuVVNycmJjTU1HOGtXLzhPVENFMzFrWGNQbFZnK1hUUm5Idk9hcGpKKzlBc0w4OWhpd0NqY0N3U3N1REwiLCJtYWMiOiI0ZmRlZWNkYjdkNjkzOTgwN2FmZDViYzk0ZDg3ODBlYjY5NDVhMTRiM2U2NzU5MGQzZDIwNTFlMWQ5MmU4YjQ2IiwidGFnIjoiIn0%3D; expires=Sun, 19 Oct 2025 07:35:49 GMT; Max-Age=7200; path=/; httponly; samesite=lax
+set-cookie: XSRF-TOKEN=eyJpdiI6IlVsVHZnbUJTS1VzcndET0ZiZ0trUEE9PSIsInZhbHVlIjoiWlZFYkZSUDZvL2szUFcrSzIxL3NXa2RrV3NGSWE3OG1EWEZ2NjhZTXdNVHpSVDNZTnkwSFd5ZnhRK2hLK1NHdWpzODVhWTFVbGRKZjVFSStVME43dk5qcGlVQytjdlVtamUyeTlkbFJhWloyRloxWi9vakFHUnM3VUdwczh5WEoiLCJtYWMiOiJmZDk0NzBlMjQ1OThkNTRmN2UxZDc5NzQzZDJiZDJhNzY2Mzc4NmZjMTFlYTk4Yzc4ZDdmZmQ4NDFlNDQ0OGQwIiwidGFnIjoiIn0%3D; expires=Sun, 19 Oct 2025 09:16:22 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6IjRqemhPaTZualQxOHNjWGo2bklVQVE9PSIsInZhbHVlIjoic2FYTUF0a1FIdGRrTEs0b1VadUZ0VEFseEZPdDhIaUFVaExUc25mR2hrakdoODQ3R3QwZGZlYUZZa2lrT0Q1ZlA1MjJ0MUhadnN3ZlhPOWJ3aVBmRGZ6T0ZIRHZYUzRJbmxtSEJvbTBVMnVyM0NhMEdOL3I3aTl2alNqUzBkNjAiLCJtYWMiOiJhNjk1NmExNzU3ZmQ2YmY1YTA0MzI4YWE5ZGE1MjFjYzcwOGRlY2VhYzliZGYzNWVhNzIzZWY2N2U0OTY0N2QxIiwidGFnIjoiIn0%3D; expires=Sun, 19 Oct 2025 09:16:22 GMT; Max-Age=7200; path=/; httponly; samesite=lax
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -2386,19 +2398,32 @@ fetch(url, {
 
 <span id="example-responses-GETapi-v1-teams">
             <blockquote>
-            <p>Example response (403):</p>
+            <p>Example response (200, success):</p>
         </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre></details>         <pre>
+                <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;User is not logged in.&quot;
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Development Team&quot;,
+            &quot;description&quot;: &quot;Handles all development tasks&quot;
+        }
+    ],
+    &quot;links&quot;: {},
+    &quot;meta&quot;: {}
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to retrieve teams: Database connection error&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
 }</code>
  </pre>
     </span>
@@ -2534,7 +2559,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"Development\",
+    \"name\": \"Development Team\",
     \"description\": \"Team responsible for product development\"
 }"
 </code></pre></div>
@@ -2551,7 +2576,7 @@ const headers = {
 };
 
 let body = {
-    "name": "Development",
+    "name": "Development Team",
     "description": "Team responsible for product development"
 };
 
@@ -2578,6 +2603,32 @@ fetch(url, {
         &quot;updated_at&quot;: &quot;2024-01-01T12:00:00Z&quot;
     },
     &quot;message&quot;: &quot;Team created successfully&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, validation error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The given data was invalid.&quot;,
+    &quot;errors&quot;: {
+        &quot;name&quot;: [
+            &quot;The name has already been taken.&quot;
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to create team: Internal server error&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
 }</code>
  </pre>
     </span>
@@ -2657,10 +2708,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTapi-v1-teams"
-               value="Development"
+               value="Development Team"
                data-component="body">
     <br>
-<p>Name of the Team. Must not be greater than 255 characters. Example: <code>Development</code></p>
+<p>Name of the Team. Must be unique. Example: <code>Development Team</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
@@ -2675,14 +2726,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="team-management-GETapi-v1-teams--team_id-">Get team</h2>
+                    <h2 id="team-management-GETapi-v1-teams--team-">Get team</h2>
 
 <p>
 </p>
 
+<p>Get details of a specific team by ID, including its members.</p>
 
-
-<span id="example-requests-GETapi-v1-teams--team_id-">
+<span id="example-requests-GETapi-v1-teams--team-">
 <blockquote>Example request:</blockquote>
 
 
@@ -2710,61 +2761,81 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-GETapi-v1-teams--team_id-">
+<span id="example-responses-GETapi-v1-teams--team-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (200, success):</p>
         </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre></details>         <pre>
+                <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Models\\Team] 16&quot;
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Development Team&quot;,
+        &quot;description&quot;: &quot;Handles all development tasks&quot;,
+        &quot;users&quot;: []
+    },
+    &quot;message&quot;: &quot;Team retrieved successfully&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Team not found&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to retrieve team&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
 }</code>
  </pre>
     </span>
-<span id="execution-results-GETapi-v1-teams--team_id-" hidden>
+<span id="execution-results-GETapi-v1-teams--team-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETapi-v1-teams--team_id-"></span>:
+                id="execution-response-status-GETapi-v1-teams--team-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-v1-teams--team_id-"
+    <pre class="json"><code id="execution-response-content-GETapi-v1-teams--team-"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-GETapi-v1-teams--team_id-" hidden>
+<span id="execution-error-GETapi-v1-teams--team-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-v1-teams--team_id-">
+    <pre><code id="execution-error-message-GETapi-v1-teams--team-">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-GETapi-v1-teams--team_id-" data-method="GET"
-      data-path="api/v1/teams/{team_id}"
+<form id="form-GETapi-v1-teams--team-" data-method="GET"
+      data-path="api/v1/teams/{team}"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-teams--team_id-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-teams--team-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-v1-teams--team_id-"
-                    onclick="tryItOut('GETapi-v1-teams--team_id-');">Try it out ⚡
+                    id="btn-tryout-GETapi-v1-teams--team-"
+                    onclick="tryItOut('GETapi-v1-teams--team-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-v1-teams--team_id-"
-                    onclick="cancelTryOut('GETapi-v1-teams--team_id-');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-v1-teams--team-"
+                    onclick="cancelTryOut('GETapi-v1-teams--team-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-v1-teams--team_id-"
+                    id="btn-executetryout-GETapi-v1-teams--team-"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -2772,7 +2843,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>api/v1/teams/{team_id}</code></b>
+            <b><code>api/v1/teams/{team}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -2780,7 +2851,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-v1-teams--team_id-"
+                              name="Content-Type"                data-endpoint="GETapi-v1-teams--team-"
                value="application/json"
                data-component="header">
     <br>
@@ -2791,7 +2862,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-v1-teams--team_id-"
+                              name="Accept"                data-endpoint="GETapi-v1-teams--team-"
                value="application/json"
                data-component="header">
     <br>
@@ -2799,15 +2870,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>team_id</code></b>&nbsp;&nbsp;
+                <b style="line-height: 2;"><code>team</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="team_id"                data-endpoint="GETapi-v1-teams--team_id-"
+               step="any"               name="team"                data-endpoint="GETapi-v1-teams--team-"
                value="16"
                data-component="url">
     <br>
-<p>The ID of the team. Example: <code>16</code></p>
+<p>The team. Example: <code>16</code></p>
             </div>
                     </form>
 
@@ -2828,7 +2899,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"description\": \"Eius et animi quos velit et.\"
+    \"name\": \"Updated Development Team\",
+    \"description\": \"Updated team description\"
 }"
 </code></pre></div>
 
@@ -2844,7 +2916,8 @@ const headers = {
 };
 
 let body = {
-    "description": "Eius et animi quos velit et."
+    "name": "Updated Development Team",
+    "description": "Updated team description"
 };
 
 fetch(url, {
@@ -2856,7 +2929,58 @@ fetch(url, {
 </span>
 
 <span id="example-responses-PUTapi-v1-teams--team_id-">
-</span>
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Updated Development Team&quot;,
+        &quot;description&quot;: &quot;Updated description&quot;,
+        &quot;created_at&quot;: &quot;2024-01-01T12:00:00Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-01-02T12:00:00Z&quot;
+    },
+    &quot;message&quot;: &quot;Team updated successfully&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Team not found&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, validation error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The given data was invalid.&quot;,
+    &quot;errors&quot;: {
+        &quot;name&quot;: [
+            &quot;The name has already been taken.&quot;
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to update team: Internal server error&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-PUTapi-v1-teams--team_id-" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-PUTapi-v1-teams--team_id-"></span>:
@@ -2945,10 +3069,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="PUTapi-v1-teams--team_id-"
-               value=""
+               value="Updated Development Team"
                data-component="body">
     <br>
-
+<p>Name of the Team. Must be unique. Example: <code>Updated Development Team</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
@@ -2956,10 +3080,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="description"                data-endpoint="PUTapi-v1-teams--team_id-"
-               value="Eius et animi quos velit et."
+               value="Updated team description"
                data-component="body">
     <br>
-<p>Example: <code>Eius et animi quos velit et.</code></p>
+<p>Description of the Team. Example: <code>Updated team description</code></p>
         </div>
         </form>
 
@@ -2999,7 +3123,38 @@ fetch(url, {
 </span>
 
 <span id="example-responses-DELETEapi-v1-teams--team_id-">
-</span>
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Team deleted successfully&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Team not found&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to delete team: Internal server error&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-DELETEapi-v1-teams--team_id-" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-DELETEapi-v1-teams--team_id-"></span>:
@@ -3083,6 +3238,869 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
+                    <h2 id="team-management-POSTapi-v1-teams--team_id--members">Add member to team</h2>
+
+<p>
+</p>
+
+<p>Add a single user to a team with a specified role.</p>
+
+<span id="example-requests-POSTapi-v1-teams--team_id--members">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/v1/teams/16/members" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"user_id\": 5,
+    \"role\": \"team member\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/teams/16/members"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "user_id": 5,
+    "role": "team member"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-teams--team_id--members">
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;User added to team successfully&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, invalid argument):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to add user to team: Invalid user or role&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Team not found&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, validation error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The given data was invalid.&quot;,
+    &quot;errors&quot;: {
+        &quot;user_id&quot;: [
+            &quot;The selected user id is invalid.&quot;
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to add user to team: Internal server error&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-v1-teams--team_id--members" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-teams--team_id--members"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-teams--team_id--members"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-teams--team_id--members" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-teams--team_id--members">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-v1-teams--team_id--members" data-method="POST"
+      data-path="api/v1/teams/{team_id}/members"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-teams--team_id--members', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-teams--team_id--members"
+                    onclick="tryItOut('POSTapi-v1-teams--team_id--members');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-teams--team_id--members"
+                    onclick="cancelTryOut('POSTapi-v1-teams--team_id--members');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-teams--team_id--members"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/teams/{team_id}/members</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-teams--team_id--members"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-v1-teams--team_id--members"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>team_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="team_id"                data-endpoint="POSTapi-v1-teams--team_id--members"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the team. Example: <code>16</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="user_id"                data-endpoint="POSTapi-v1-teams--team_id--members"
+               value="5"
+               data-component="body">
+    <br>
+<p>The ID of the user to add. Example: <code>5</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>role</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="role"                data-endpoint="POSTapi-v1-teams--team_id--members"
+               value="team member"
+               data-component="body">
+    <br>
+<p>The role to assign. Allowed values: team lead, team member. Example: <code>team member</code></p>
+        </div>
+        </form>
+
+                    <h2 id="team-management-POSTapi-v1-teams--team_id--members-bulk">Add multiple members to team</h2>
+
+<p>
+</p>
+
+<p>Add multiple users to a team with their specified roles in a single request.</p>
+
+<span id="example-requests-POSTapi-v1-teams--team_id--members-bulk">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/v1/teams/16/members/bulk" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"members\": [
+        {
+            \"user_id\": 5,
+            \"role\": \"team member\"
+        }
+    ]
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/teams/16/members/bulk"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "members": [
+        {
+            "user_id": 5,
+            "role": "team member"
+        }
+    ]
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-teams--team_id--members-bulk">
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;invalid_users&quot;: []
+    },
+    &quot;message&quot;: &quot;Users added to team successfully&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, success with invalid users):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;invalid_users&quot;: [
+            3,
+            7
+        ]
+    },
+    &quot;message&quot;: &quot;Users added to team successfully&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Team not found&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, validation error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The given data was invalid.&quot;,
+    &quot;errors&quot;: {
+        &quot;members.0.user_id&quot;: [
+            &quot;The selected members.0.user_id is invalid.&quot;
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to add users to team: Internal server error&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-v1-teams--team_id--members-bulk" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-teams--team_id--members-bulk"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-teams--team_id--members-bulk"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-teams--team_id--members-bulk" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-teams--team_id--members-bulk">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-v1-teams--team_id--members-bulk" data-method="POST"
+      data-path="api/v1/teams/{team_id}/members/bulk"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-teams--team_id--members-bulk', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-teams--team_id--members-bulk"
+                    onclick="tryItOut('POSTapi-v1-teams--team_id--members-bulk');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-teams--team_id--members-bulk"
+                    onclick="cancelTryOut('POSTapi-v1-teams--team_id--members-bulk');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-teams--team_id--members-bulk"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/teams/{team_id}/members/bulk</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-teams--team_id--members-bulk"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-v1-teams--team_id--members-bulk"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>team_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="team_id"                data-endpoint="POSTapi-v1-teams--team_id--members-bulk"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the team. Example: <code>16</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>members</code></b>&nbsp;&nbsp;
+<small>object[]</small>&nbsp;
+ &nbsp;
+<br>
+<p>Array of members to add.</p>
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="members.0.user_id"                data-endpoint="POSTapi-v1-teams--team_id--members-bulk"
+               value="5"
+               data-component="body">
+    <br>
+<p>The ID of the user to add. Example: <code>5</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>role</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="members.0.role"                data-endpoint="POSTapi-v1-teams--team_id--members-bulk"
+               value="team member"
+               data-component="body">
+    <br>
+<p>The role to assign. Allowed values: team lead, team member. Example: <code>team member</code></p>
+                    </div>
+                                    </details>
+        </div>
+        </form>
+
+                    <h2 id="team-management-DELETEapi-v1-teams--team_id--members--user-">Remove member from team</h2>
+
+<p>
+</p>
+
+<p>Remove a single user from a team.</p>
+
+<span id="example-requests-DELETEapi-v1-teams--team_id--members--user-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/v1/teams/16/members/architecto" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"user_id\": 5
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/teams/16/members/architecto"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "user_id": 5
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-v1-teams--team_id--members--user-">
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;User removed from team successfully&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, invalid argument):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to remove user from team: User not in team&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Team not found&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, validation error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The given data was invalid.&quot;,
+    &quot;errors&quot;: {
+        &quot;user_id&quot;: [
+            &quot;The selected user id is invalid.&quot;
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to remove user from team: Internal server error&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEapi-v1-teams--team_id--members--user-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-v1-teams--team_id--members--user-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-v1-teams--team_id--members--user-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-v1-teams--team_id--members--user-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-v1-teams--team_id--members--user-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-v1-teams--team_id--members--user-" data-method="DELETE"
+      data-path="api/v1/teams/{team_id}/members/{user}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-v1-teams--team_id--members--user-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-v1-teams--team_id--members--user-"
+                    onclick="tryItOut('DELETEapi-v1-teams--team_id--members--user-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-v1-teams--team_id--members--user-"
+                    onclick="cancelTryOut('DELETEapi-v1-teams--team_id--members--user-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-v1-teams--team_id--members--user-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/v1/teams/{team_id}/members/{user}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-v1-teams--team_id--members--user-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-v1-teams--team_id--members--user-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>team_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="team_id"                data-endpoint="DELETEapi-v1-teams--team_id--members--user-"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the team. Example: <code>16</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>user</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="user"                data-endpoint="DELETEapi-v1-teams--team_id--members--user-"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>Example: <code>architecto</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="user_id"                data-endpoint="DELETEapi-v1-teams--team_id--members--user-"
+               value="5"
+               data-component="body">
+    <br>
+<p>The ID of the user to remove. Example: <code>5</code></p>
+        </div>
+        </form>
+
+                    <h2 id="team-management-DELETEapi-v1-teams--team_id--members">Remove multiple members from team</h2>
+
+<p>
+</p>
+
+<p>Remove multiple users from a team in a single request.</p>
+
+<span id="example-requests-DELETEapi-v1-teams--team_id--members">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/v1/teams/16/members" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"user_ids\": [
+        5,
+        8,
+        12
+    ]
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/teams/16/members"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "user_ids": [
+        5,
+        8,
+        12
+    ]
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-v1-teams--team_id--members">
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Users removed from team successfully&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, invalid argument):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to remove users from team: Invalid user IDs&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Team not found&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, validation error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The given data was invalid.&quot;,
+    &quot;errors&quot;: {
+        &quot;user_ids.0&quot;: [
+            &quot;The selected user_ids.0 is invalid.&quot;
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to remove users from team: Internal server error&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEapi-v1-teams--team_id--members" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-v1-teams--team_id--members"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-v1-teams--team_id--members"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-v1-teams--team_id--members" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-v1-teams--team_id--members">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-v1-teams--team_id--members" data-method="DELETE"
+      data-path="api/v1/teams/{team_id}/members"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-v1-teams--team_id--members', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-v1-teams--team_id--members"
+                    onclick="tryItOut('DELETEapi-v1-teams--team_id--members');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-v1-teams--team_id--members"
+                    onclick="cancelTryOut('DELETEapi-v1-teams--team_id--members');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-v1-teams--team_id--members"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/v1/teams/{team_id}/members</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-v1-teams--team_id--members"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-v1-teams--team_id--members"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>team_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="team_id"                data-endpoint="DELETEapi-v1-teams--team_id--members"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the team. Example: <code>16</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>user_ids</code></b>&nbsp;&nbsp;
+<small>integer[]</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="user_ids[0]"                data-endpoint="DELETEapi-v1-teams--team_id--members"
+               data-component="body">
+        <input type="number" style="display: none"
+               name="user_ids[1]"                data-endpoint="DELETEapi-v1-teams--team_id--members"
+               data-component="body">
+    <br>
+<p>Array of user IDs to remove from the team.</p>
+        </div>
+        </form>
+
                 <h1 id="user-management">User Management</h1>
 
     <p>APIs for managing users</p>
@@ -3140,15 +4158,15 @@ fetch(url, {
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 28,
-            &quot;name&quot;: &quot;Fermin Stamm&quot;,
-            &quot;email&quot;: &quot;tmurphy@example.net&quot;,
+            &quot;id&quot;: 34,
+            &quot;name&quot;: &quot;Bria Crist&quot;,
+            &quot;email&quot;: &quot;brain06@example.net&quot;,
             &quot;roles&quot;: []
         },
         {
-            &quot;id&quot;: 29,
-            &quot;name&quot;: &quot;Nyasia Torp&quot;,
-            &quot;email&quot;: &quot;kristian86@example.org&quot;,
+            &quot;id&quot;: 35,
+            &quot;name&quot;: &quot;Karianne Ankunding&quot;,
+            &quot;email&quot;: &quot;wyundt@example.org&quot;,
             &quot;roles&quot;: []
         }
     ],
@@ -3378,7 +4396,7 @@ fetch(url, {
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 30,
+        &quot;id&quot;: 36,
         &quot;name&quot;: &quot;Ms. Elisabeth Okuneva&quot;,
         &quot;email&quot;: &quot;gulgowski.asia@example.com&quot;,
         &quot;roles&quot;: []

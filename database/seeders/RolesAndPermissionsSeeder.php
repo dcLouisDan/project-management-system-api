@@ -32,6 +32,7 @@ class RolesAndPermissionsSeeder extends Seeder
         $addMemberTeamPermission = Permission::firstOrCreate(['name' => 'add member team']);
         $removeMemberTeamPermission = Permission::firstOrCreate(['name' => 'remove member team']);
         $assignProjectTeamPermission = Permission::firstOrCreate(['name' => 'assign project team']);
+        $assignRolesTeamPermission = Permission::firstOrCreate(['name' => 'assign roles team']);
 
         // Project management permissions
         $createProjectPermission = Permission::firstOrCreate(['name' => 'create project']);

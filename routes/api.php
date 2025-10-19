@@ -28,4 +28,8 @@ Route::prefix('/v1')->group(function () {
     Route::middleware(['permission:view team'])->get('teams/{team}', [TeamController::class, 'show']);
     Route::middleware(['permission:update team'])->put('teams/{team}', [TeamController::class, 'update']);
     Route::middleware(['permission:delete team'])->delete('teams/{team}', [TeamController::class, 'destroy']);
+    Route::middleware(['permission:add member team'])->post('teams/{team}/members', [TeamController::class, 'addMember']);
+    Route::middleware(['permission:add member team'])->post('teams/{team}/members/bulk', [TeamController::class, 'addMembers']);
+    Route::middleware(['permission:remove member team'])->delete('teams/{team}/members/{user}', [TeamController::class, 'removeMember']);
+    Route::middleware(['permission:remove member team'])->delete('teams/{team}/members', [TeamController::class, 'removeMembers']);
 })->middleware('auth:sanctum');

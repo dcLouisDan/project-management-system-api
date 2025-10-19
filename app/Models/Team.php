@@ -56,9 +56,10 @@ class Team extends Model
     /**
      * Check if user is a member of the team (any role)
      */
-    public function hasMember(User $user): bool
+    public function hasMember(int|User $user): bool
     {
-        return $this->users()->where('user_id', $user->id)->exists();
+        $id = $user instanceof User ? $user->id : $user;
+        return $this->users()->where('user_id', $id)->exists();
     }
 
     /**
@@ -98,6 +99,43 @@ class Team extends Model
         $this->users()->attach($user->id, [
             'role' => UserRoles::TEAM_MEMBER->value
         ]);
+    }
+
+    /**
+     * Add users to the team as members
+     * 
+     * @param array $usersWithRoles Array with user ids as key and roles as value [1 => 'team_member', 2 => 'team_lead']
+     */
+    public function addMembers(array $usersWithRoles): array
+    {
+        $invalidUsers = [];
+        $validUsers = [];
+        $hasTeamLead = $this->hasLeader();
+        foreach ($usersWithRoles as $userId => $role) {
+            if ($this->hasMember($userId)) {
+                $invalidUsers[$userId] = [
+                    'role' => $role,
+                    'reason' => 'already a member'
+                ];
+                continue;
+            }
+
+            if ($hasTeamLead && $role === UserRoles::TEAM_LEAD->value) {
+                $invalidUsers[$userId] = [
+                    'role' => $role,
+                    'reason' => 'team already has a lead'
+                ];
+                continue;
+            }
+
+            $validUsers[$userId] = ['role' => $role];
+        }
+
+        if (!empty($validUsers)) {
+            $this->users()->attach($validUsers);
+        }
+
+        return $invalidUsers;
     }
 
     /**
@@ -194,6 +232,18 @@ class Team extends Model
         }
 
         $this->users()->detach($user->id);
+    }
+
+    /**
+     * Remove members in bulk
+     */
+    public function removeMembers(array $users): void
+    {
+        $userIds = array_map(function ($user) {
+            return $user instanceof User ? $user->id : $user;
+        }, $users);
+
+        $this->users()->detach($userIds);
     }
 
     /**

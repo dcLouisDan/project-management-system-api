@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\UserRoles;
 use App\Http\Responses\ApiResponse;
 use App\Models\Team;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\Rule;
 
 /**
  * @group Team Management
@@ -49,6 +53,9 @@ class TeamController extends Controller
      * @queryParam per_page integer Number of results per page. Default is 15. Example: 10
      * 
      * @apiResourceModel App\Models\Team paginate=15
+     * 
+     * @response status=200 scenario="success" {"data": [{"id": 1, "name": "Development Team", "description": "Handles all development tasks"}], "links": {}, "meta": {}}
+     * @response status=500 scenario="error" {"data": null, "message": "Failed to retrieve teams: Database connection error", "errors": [], "meta": []}
      */
     public function index(Request $request)
     {
@@ -75,7 +82,12 @@ class TeamController extends Controller
      * 
      * Create a new team with the provided details.
      * 
+     * @bodyParam name string required Name of the Team. Must be unique. Example: Development Team
+     * @bodyParam description string Description of the Team. Example: Team responsible for product development
+     * 
      * @response status=201 scenario="success" {"data": {"id": 1, "name": "Development Team", "description": "Handles all development tasks", "created_at": "2024-01-01T12:00:00Z", "updated_at": "2024-01-01T12:00:00Z"}, "message": "Team created successfully"}
+     * @response status=422 scenario="validation error" {"message": "The given data was invalid.", "errors": {"name": ["The name has already been taken."]}}
+     * @response status=500 scenario="error" {"data": null, "message": "Failed to create team: Internal server error", "errors": [], "meta": []}
      */
     public function store(Request $request)
     {
@@ -108,6 +120,15 @@ class TeamController extends Controller
 
     /**
      * Get team
+     * 
+     * Get details of a specific team by ID, including its members.
+     * 
+     * 
+     * @apiResourceModel App\Models\Team
+     * 
+     * @response status=200 scenario="success" {"data": {"id": 1, "name": "Development Team", "description": "Handles all development tasks", "users": []}, "message": "Team retrieved successfully"}
+     * @response status=404 scenario="not found" {"message": "Team not found"}
+     * @response status=500 scenario="error" {"data": null, "message": "Failed to retrieve team", "errors": [], "meta": []}
      */
     public function show(Team $team)
     {
@@ -122,6 +143,15 @@ class TeamController extends Controller
      * Update team details
      * 
      * Update the details of an existing team.
+     * 
+     * 
+     * @bodyParam name string Name of the Team. Must be unique. Example: Updated Development Team
+     * @bodyParam description string Description of the Team. Example: Updated team description
+     * 
+     * @response status=200 scenario="success" {"data": {"id": 1, "name": "Updated Development Team", "description": "Updated description", "created_at": "2024-01-01T12:00:00Z", "updated_at": "2024-01-02T12:00:00Z"}, "message": "Team updated successfully"}
+     * @response status=422 scenario="validation error" {"message": "The given data was invalid.", "errors": {"name": ["The name has already been taken."]}}
+     * @response status=404 scenario="not found" {"message": "Team not found"}
+     * @response status=500 scenario="error" {"data": null, "message": "Failed to update team: Internal server error", "errors": [], "meta": []}
      */
     public function update(Request $request, Team $team)
     {
@@ -153,6 +183,11 @@ class TeamController extends Controller
      * Delete team
      * 
      * Permanently delete a team from the system.
+     * 
+     * 
+     * @response status=200 scenario="success" {"data": null, "message": "Team deleted successfully"}
+     * @response status=404 scenario="not found" {"message": "Team not found"}
+     * @response status=500 scenario="error" {"data": null, "message": "Failed to delete team: Internal server error", "errors": [], "meta": []}
      */
     public function destroy(Team $team)
     {
@@ -169,6 +204,272 @@ class TeamController extends Controller
             ]);
             return ApiResponse::error(
                 message: 'Failed to delete team: ' . $e->getMessage(),
+                statusCode: 500
+            );
+        }
+    }
+
+    /**
+     * Add member to team
+     * 
+     * Add a single user to a team with a specified role.
+     * 
+     * 
+     * @bodyParam user_id integer required The ID of the user to add. Example: 5
+     * @bodyParam role string required The role to assign. Allowed values: team lead, team member. Example: team member
+     * 
+     * @response status=200 scenario="success" {"data": null, "message": "User added to team successfully"}
+     * @response status=400 scenario="invalid argument" {"data": null, "message": "Failed to add user to team: Invalid user or role", "errors": [], "meta": []}
+     * @response status=422 scenario="validation error" {"message": "The given data was invalid.", "errors": {"user_id": ["The selected user id is invalid."]}}
+     * @response status=404 scenario="not found" {"message": "Team not found"}
+     * @response status=500 scenario="error" {"data": null, "message": "Failed to add user to team: Internal server error", "errors": [], "meta": []}
+     */
+    public function addMember(Request $request, Team $team)
+    {
+        $teamRoles = [UserRoles::TEAM_LEAD->value, UserRoles::TEAM_MEMBER->value];
+        $validatedData = $request->validate([
+            'user_id' => ['required', 'exists:users,id'],
+            'role' => ['required', Rule::in($teamRoles)],
+        ]);
+
+        try {
+            $team->users()->attach($validatedData['user_id'], ['role' => $validatedData['role']]);
+
+            return ApiResponse::success(
+                message: 'User added to team successfully'
+            );
+        } catch (\InvalidArgumentException $e) {
+            Log::error('Invalid argument.', [
+                'error' => $e->getMessage(),
+                'requested_by' => $request->user()?->id,
+            ]);
+            return ApiResponse::error(
+                message: 'Failed to add user to team: ' . $e->getMessage(),
+                statusCode: 400
+            );
+        } catch (\Exception $e) {
+            Log::error('Error adding user to team.', [
+                'error' => $e->getMessage(),
+                'requested_by' => $request->user()?->id,
+            ]);
+            return ApiResponse::error(
+                message: 'Failed to add user to team: ' . $e->getMessage(),
+                statusCode: 500
+            );
+        }
+    }
+
+    /**
+     * Add multiple members to team
+     * 
+     * Add multiple users to a team with their specified roles in a single request.
+     * 
+     * 
+     * @bodyParam members object[] required Array of members to add.
+     * @bodyParam members[].user_id integer required The ID of the user to add. Example: 5
+     * @bodyParam members[].role string required The role to assign. Allowed values: team lead, team member. Example: team member
+     * 
+     * @response status=200 scenario="success" {"data": {"invalid_users": []}, "message": "Users added to team successfully"}
+     * @response status=200 scenario="success with invalid users" {"data": {"invalid_users": [3, 7]}, "message": "Users added to team successfully"}
+     * @response status=422 scenario="validation error" {"message": "The given data was invalid.", "errors": {"members.0.user_id": ["The selected members.0.user_id is invalid."]}}
+     * @response status=404 scenario="not found" {"message": "Team not found"}
+     * @response status=500 scenario="error" {"data": null, "message": "Failed to add users to team: Internal server error", "errors": [], "meta": []}
+     */
+    public function addMembers(Request $request, Team $team)
+    {
+        $teamRoles = [UserRoles::TEAM_LEAD->value, UserRoles::TEAM_MEMBER->value];
+        $validatedData = $request->validate([
+            'members' => ['required', 'array'],
+            'members.*.user_id' => ['required', 'exists:users,id'],
+            'members.*.role' => ['required', Rule::in($teamRoles)],
+        ]);
+
+        $usersWithRoles = [];
+        foreach ($validatedData['members'] as $member) {
+            $usersWithRoles[$member['user_id']] = $member['role'];
+        }
+
+        try {
+            $invalidUsers = $team->addMembers($usersWithRoles);
+
+            return ApiResponse::success(
+                message: 'Users added to team successfully',
+                data: ['invalid_users' => $invalidUsers]
+            );
+        } catch (\Exception $e) {
+            Log::error('Error adding users to team.', [
+                'error' => $e->getMessage(),
+                'requested_by' => $request->user()?->id,
+            ]);
+            return ApiResponse::error(
+                message: 'Failed to add users to team: ' . $e->getMessage(),
+                statusCode: 500
+            );
+        }
+    }
+
+    /**
+     * Set team leader
+     * 
+     * Set a user as the team leader. If there's an existing leader, they will be demoted to team member.
+     * 
+     * 
+     * @bodyParam user_id integer required The ID of the user to set as leader. Example: 5
+     * 
+     * @response status=200 scenario="success" {"data": {"demoted_lead": {"id": 3, "name": "Previous Leader"}}, "message": "Team leader set successfully"}
+     * @response status=200 scenario="success - no previous leader" {"data": {"demoted_lead": null}, "message": "Team leader set successfully"}
+     * @response status=200 scenario="user already leader" {"data": null, "message": "User is already the team lead"}
+     * @response status=400 scenario="invalid argument" {"data": null, "message": "Failed to set team leader: User does not have the team lead role", "errors": [], "meta": []}
+     * @response status=422 scenario="validation error" {"message": "The given data was invalid.", "errors": {"user_id": ["The selected user id is invalid."]}}
+     * @response status=404 scenario="not found" {"message": "Team not found"}
+     * @response status=500 scenario="error" {"data": null, "message": "Failed to set team leader: Internal server error", "errors": [], "meta": []}
+     */
+    public function setLeader(Request $request, Team $team)
+    {
+        $validatedData = $request->validate([
+            'user_id' => ['required', 'exists:users,id'],
+        ]);
+
+        $currentLead = $team->lead();
+        $demotedLead = null;
+        if ($currentLead && $currentLead->id == $validatedData['user_id']) {
+            return ApiResponse::success(
+                message: 'User is already the team lead'
+            );
+        }
+
+
+        try {
+            DB::beginTransaction();
+
+            if ($currentLead !== null) {
+                // Demote current lead to member
+                $team->demoteLeader();
+                $demotedLead = $currentLead;
+            }
+
+            $user = User::findOrFail($validatedData['user_id']);
+            $team->setLeader($user);
+
+            DB::commit();
+
+            return ApiResponse::success(
+                data: ['demoted_lead' => $demotedLead],
+                message: 'Team leader set successfully'
+            );
+        } catch (\InvalidArgumentException $e) {
+            DB::rollBack();
+            Log::error('Invalid argument.', [
+                'error' => 'User does not have the team lead role.',
+                'requested_by' => $request->user()?->id,
+            ]);
+            return ApiResponse::error(
+                message: 'Failed to set team leader: ' . $e->getMessage(),
+                statusCode: 400
+            );
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Error setting team leader.', [
+                'error' => $e->getMessage(),
+                'requested_by' => $request->user()?->id,
+            ]);
+            return ApiResponse::error(
+                message: 'Failed to set team leader: ' . $e->getMessage(),
+                statusCode: 500
+            );
+        }
+    }
+
+    /**
+     * Remove member from team
+     * 
+     * Remove a single user from a team.
+     * 
+     * 
+     * @bodyParam user_id integer required The ID of the user to remove. Example: 5
+     * 
+     * @response status=200 scenario="success" {"data": null, "message": "User removed from team successfully"}
+     * @response status=400 scenario="invalid argument" {"data": null, "message": "Failed to remove user from team: User not in team", "errors": [], "meta": []}
+     * @response status=422 scenario="validation error" {"message": "The given data was invalid.", "errors": {"user_id": ["The selected user id is invalid."]}}
+     * @response status=404 scenario="not found" {"message": "Team not found"}
+     * @response status=500 scenario="error" {"data": null, "message": "Failed to remove user from team: Internal server error", "errors": [], "meta": []}
+     */
+    public function removeMember(Request $request, Team $team)
+    {
+        $validatedData = $request->validate([
+            'user_id' => ['required', 'exists:users,id'],
+        ]);
+
+        try {
+            $team->users()->detach($validatedData['user_id']);
+
+            return ApiResponse::success(
+                message: 'User removed from team successfully'
+            );
+        } catch (\InvalidArgumentException $e) {
+            Log::error('Invalid argument.', [
+                'error' => $e->getMessage(),
+                'requested_by' => $request->user()?->id,
+            ]);
+            return ApiResponse::error(
+                message: 'Failed to remove user from team: ' . $e->getMessage(),
+                statusCode: 400
+            );
+        } catch (\Exception $e) {
+            Log::error('Error removing user from team.', [
+                'error' => $e->getMessage(),
+                'requested_by' => $request->user()?->id,
+            ]);
+            return ApiResponse::error(
+                message: 'Failed to remove user from team: ' . $e->getMessage(),
+                statusCode: 500
+            );
+        }
+    }
+
+    /**
+     * Remove multiple members from team
+     * 
+     * Remove multiple users from a team in a single request.
+     * 
+     * 
+     * @bodyParam user_ids integer[] required Array of user IDs to remove from the team. Example: [5, 8, 12]
+     * 
+     * @response status=200 scenario="success" {"data": null, "message": "Users removed from team successfully"}
+     * @response status=400 scenario="invalid argument" {"data": null, "message": "Failed to remove users from team: Invalid user IDs", "errors": [], "meta": []}
+     * @response status=422 scenario="validation error" {"message": "The given data was invalid.", "errors": {"user_ids.0": ["The selected user_ids.0 is invalid."]}}
+     * @response status=404 scenario="not found" {"message": "Team not found"}
+     * @response status=500 scenario="error" {"data": null, "message": "Failed to remove users from team: Internal server error", "errors": [], "meta": []}
+     */
+    public function removeMembers(Request $request, Team $team)
+    {
+        $validatedData = $request->validate([
+            'user_ids' => ['required', 'array'],
+            'user_ids.*' => ['exists:users,id'],
+        ]);
+
+        try {
+            $team->removeMembers($validatedData['user_ids']);
+
+            return ApiResponse::success(
+                message: 'Users removed from team successfully'
+            );
+        } catch (\InvalidArgumentException $e) {
+            Log::error('Invalid argument.', [
+                'error' => $e->getMessage(),
+                'requested_by' => $request->user()?->id,
+            ]);
+            return ApiResponse::error(
+                message: 'Failed to remove users from team: ' . $e->getMessage(),
+                statusCode: 400
+            );
+        } catch (\Exception $e) {
+            Log::error('Error removing users from team.', [
+                'error' => $e->getMessage(),
+                'requested_by' => $request->user()?->id,
+            ]);
+            return ApiResponse::error(
+                message: 'Failed to remove users from team: ' . $e->getMessage(),
                 statusCode: 500
             );
         }

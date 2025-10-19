@@ -66,16 +66,16 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 403
-        content: |-
-          {
-              "message": "User is not logged in."
-          }
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
+        status: 200
+        content: '{"data": [{"id": 1, "name": "Development Team", "description": "Handles all development tasks"}], "links": {}, "meta": {}}'
+        headers: []
+        description: success
+        custom: []
+      -
+        status: 500
+        content: '{"data": null, "message": "Failed to retrieve teams: Database connection error", "errors": [], "meta": []}'
+        headers: []
+        description: error
         custom: []
     responseFields: []
     auth: []
@@ -109,12 +109,12 @@ endpoints:
     bodyParameters:
       name:
         name: name
-        description: 'Name of the Team. Must not be greater than 255 characters.'
+        description: 'Name of the Team. Must be unique.'
         required: true
-        example: Development
+        example: 'Development Team'
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
       description:
@@ -124,11 +124,11 @@ endpoints:
         example: 'Team responsible for product development'
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: true
         custom: []
     cleanBodyParameters:
-      name: Development
+      name: 'Development Team'
       description: 'Team responsible for product development'
     fileParameters: []
     responses:
@@ -137,6 +137,18 @@ endpoints:
         content: '{"data": {"id": 1, "name": "Development Team", "description": "Handles all development tasks", "created_at": "2024-01-01T12:00:00Z", "updated_at": "2024-01-01T12:00:00Z"}, "message": "Team created successfully"}'
         headers: []
         description: success
+        custom: []
+      -
+        status: 422
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name has already been taken."]}}'
+        headers: []
+        description: 'validation error'
+        custom: []
+      -
+        status: 500
+        content: '{"data": null, "message": "Failed to create team: Internal server error", "errors": [], "meta": []}'
+        headers: []
+        description: error
         custom: []
     responseFields: []
     auth: []
@@ -147,7 +159,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/v1/teams/{team_id}'
+    uri: 'api/v1/teams/{team}'
     metadata:
       groupName: 'Team Management'
       groupDescription: |-
@@ -156,7 +168,7 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: 'Get team'
-      description: ''
+      description: 'Get details of a specific team by ID, including its members.'
       authenticated: false
       deprecated: false
       custom: []
@@ -164,9 +176,9 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      team_id:
-        name: team_id
-        description: 'The ID of the team.'
+      team:
+        name: team
+        description: 'The team.'
         required: true
         example: 16
         type: integer
@@ -175,7 +187,7 @@ endpoints:
         nullable: false
         custom: []
     cleanUrlParameters:
-      team_id: 16
+      team: 16
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -183,16 +195,22 @@ endpoints:
     fileParameters: []
     responses:
       -
+        status: 200
+        content: '{"data": {"id": 1, "name": "Development Team", "description": "Handles all development tasks", "users": []}, "message": "Team retrieved successfully"}'
+        headers: []
+        description: success
+        custom: []
+      -
         status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Models\\Team] 16"
-          }
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
+        content: '{"message": "Team not found"}'
+        headers: []
+        description: 'not found'
+        custom: []
+      -
+        status: 500
+        content: '{"data": null, "message": "Failed to retrieve team", "errors": [], "meta": []}'
+        headers: []
+        description: error
         custom: []
     responseFields: []
     auth: []
@@ -237,28 +255,53 @@ endpoints:
     bodyParameters:
       name:
         name: name
-        description: ''
+        description: 'Name of the Team. Must be unique.'
         required: false
-        example: null
+        example: 'Updated Development Team'
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
       description:
         name: description
-        description: ''
+        description: 'Description of the Team.'
         required: false
-        example: 'Eius et animi quos velit et.'
+        example: 'Updated team description'
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: true
         custom: []
     cleanBodyParameters:
-      description: 'Eius et animi quos velit et.'
+      name: 'Updated Development Team'
+      description: 'Updated team description'
     fileParameters: []
-    responses: []
+    responses:
+      -
+        status: 200
+        content: '{"data": {"id": 1, "name": "Updated Development Team", "description": "Updated description", "created_at": "2024-01-01T12:00:00Z", "updated_at": "2024-01-02T12:00:00Z"}, "message": "Team updated successfully"}'
+        headers: []
+        description: success
+        custom: []
+      -
+        status: 404
+        content: '{"message": "Team not found"}'
+        headers: []
+        description: 'not found'
+        custom: []
+      -
+        status: 422
+        content: '{"message": "The given data was invalid.", "errors": {"name": ["The name has already been taken."]}}'
+        headers: []
+        description: 'validation error'
+        custom: []
+      -
+        status: 500
+        content: '{"data": null, "message": "Failed to update team: Internal server error", "errors": [], "meta": []}'
+        headers: []
+        description: error
+        custom: []
     responseFields: []
     auth: []
     controller: null
@@ -302,7 +345,417 @@ endpoints:
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
-    responses: []
+    responses:
+      -
+        status: 200
+        content: '{"data": null, "message": "Team deleted successfully"}'
+        headers: []
+        description: success
+        custom: []
+      -
+        status: 404
+        content: '{"message": "Team not found"}'
+        headers: []
+        description: 'not found'
+        custom: []
+      -
+        status: 500
+        content: '{"data": null, "message": "Failed to delete team: Internal server error", "errors": [], "meta": []}'
+        headers: []
+        description: error
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/v1/teams/{team_id}/members'
+    metadata:
+      groupName: 'Team Management'
+      groupDescription: |-
+
+        APIs for managing teams
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Add member to team'
+      description: 'Add a single user to a team with a specified role.'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      team_id:
+        name: team_id
+        description: 'The ID of the team.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      team_id: 16
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      user_id:
+        name: user_id
+        description: 'The ID of the user to add.'
+        required: true
+        example: 5
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      role:
+        name: role
+        description: 'The role to assign. Allowed values: team lead, team member.'
+        required: true
+        example: 'team member'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      user_id: 5
+      role: 'team member'
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data": null, "message": "User added to team successfully"}'
+        headers: []
+        description: success
+        custom: []
+      -
+        status: 400
+        content: '{"data": null, "message": "Failed to add user to team: Invalid user or role", "errors": [], "meta": []}'
+        headers: []
+        description: 'invalid argument'
+        custom: []
+      -
+        status: 404
+        content: '{"message": "Team not found"}'
+        headers: []
+        description: 'not found'
+        custom: []
+      -
+        status: 422
+        content: '{"message": "The given data was invalid.", "errors": {"user_id": ["The selected user id is invalid."]}}'
+        headers: []
+        description: 'validation error'
+        custom: []
+      -
+        status: 500
+        content: '{"data": null, "message": "Failed to add user to team: Internal server error", "errors": [], "meta": []}'
+        headers: []
+        description: error
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/v1/teams/{team_id}/members/bulk'
+    metadata:
+      groupName: 'Team Management'
+      groupDescription: |-
+
+        APIs for managing teams
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Add multiple members to team'
+      description: 'Add multiple users to a team with their specified roles in a single request.'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      team_id:
+        name: team_id
+        description: 'The ID of the team.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      team_id: 16
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      members:
+        name: members
+        description: 'Array of members to add.'
+        required: true
+        example:
+          - []
+        type: 'object[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      'members[].user_id':
+        name: 'members[].user_id'
+        description: 'The ID of the user to add.'
+        required: true
+        example: 5
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      'members[].role':
+        name: 'members[].role'
+        description: 'The role to assign. Allowed values: team lead, team member.'
+        required: true
+        example: 'team member'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      members:
+        -
+          user_id: 5
+          role: 'team member'
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data": {"invalid_users": []}, "message": "Users added to team successfully"}'
+        headers: []
+        description: success
+        custom: []
+      -
+        status: 200
+        content: '{"data": {"invalid_users": [3, 7]}, "message": "Users added to team successfully"}'
+        headers: []
+        description: 'success with invalid users'
+        custom: []
+      -
+        status: 404
+        content: '{"message": "Team not found"}'
+        headers: []
+        description: 'not found'
+        custom: []
+      -
+        status: 422
+        content: '{"message": "The given data was invalid.", "errors": {"members.0.user_id": ["The selected members.0.user_id is invalid."]}}'
+        headers: []
+        description: 'validation error'
+        custom: []
+      -
+        status: 500
+        content: '{"data": null, "message": "Failed to add users to team: Internal server error", "errors": [], "meta": []}'
+        headers: []
+        description: error
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/v1/teams/{team_id}/members/{user}'
+    metadata:
+      groupName: 'Team Management'
+      groupDescription: |-
+
+        APIs for managing teams
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Remove member from team'
+      description: 'Remove a single user from a team.'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      team_id:
+        name: team_id
+        description: 'The ID of the team.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      user:
+        name: user
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      team_id: 16
+      user: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      user_id:
+        name: user_id
+        description: 'The ID of the user to remove.'
+        required: true
+        example: 5
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      user_id: 5
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data": null, "message": "User removed from team successfully"}'
+        headers: []
+        description: success
+        custom: []
+      -
+        status: 400
+        content: '{"data": null, "message": "Failed to remove user from team: User not in team", "errors": [], "meta": []}'
+        headers: []
+        description: 'invalid argument'
+        custom: []
+      -
+        status: 404
+        content: '{"message": "Team not found"}'
+        headers: []
+        description: 'not found'
+        custom: []
+      -
+        status: 422
+        content: '{"message": "The given data was invalid.", "errors": {"user_id": ["The selected user id is invalid."]}}'
+        headers: []
+        description: 'validation error'
+        custom: []
+      -
+        status: 500
+        content: '{"data": null, "message": "Failed to remove user from team: Internal server error", "errors": [], "meta": []}'
+        headers: []
+        description: error
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/v1/teams/{team_id}/members'
+    metadata:
+      groupName: 'Team Management'
+      groupDescription: |-
+
+        APIs for managing teams
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Remove multiple members from team'
+      description: 'Remove multiple users from a team in a single request.'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      team_id:
+        name: team_id
+        description: 'The ID of the team.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      team_id: 16
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      user_ids:
+        name: user_ids
+        description: 'Array of user IDs to remove from the team.'
+        required: true
+        example:
+          - 5
+          - 8
+          - 12
+        type: 'integer[]'
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      user_ids:
+        - 5
+        - 8
+        - 12
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data": null, "message": "Users removed from team successfully"}'
+        headers: []
+        description: success
+        custom: []
+      -
+        status: 400
+        content: '{"data": null, "message": "Failed to remove users from team: Invalid user IDs", "errors": [], "meta": []}'
+        headers: []
+        description: 'invalid argument'
+        custom: []
+      -
+        status: 404
+        content: '{"message": "Team not found"}'
+        headers: []
+        description: 'not found'
+        custom: []
+      -
+        status: 422
+        content: '{"message": "The given data was invalid.", "errors": {"user_ids.0": ["The selected user_ids.0 is invalid."]}}'
+        headers: []
+        description: 'validation error'
+        custom: []
+      -
+        status: 500
+        content: '{"data": null, "message": "Failed to remove users from team: Internal server error", "errors": [], "meta": []}'
+        headers: []
+        description: error
+        custom: []
     responseFields: []
     auth: []
     controller: null

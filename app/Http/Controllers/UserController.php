@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
-
     private function validationRules(?int $id = null, bool $isCreating = false): array
     {
         $rules = [
@@ -40,14 +39,10 @@ class UserController extends Controller
         return $rules;
     }
 
-    /**
-     * Build a query for filtering users based on request parameters
-     */
     private function buildFilteredUserQuery(Request $request)
     {
         $query = User::query();
 
-        // Apply filters based on request parameters
         if ($request->has('name')) {
             $query->where('name', 'like', '%' . $request->input('name') . '%');
         }
@@ -57,14 +52,27 @@ class UserController extends Controller
         }
 
         if ($request->has('role')) {
-            $role = $request->input('role');
-            $query->role($role);
+            $query->role($request->input('role'));
         }
+
         return $query;
     }
 
     /**
      * Display a listing of users.
+     * 
+     * Get a paginated list of all users with optional filtering.
+     * 
+     * @queryParam per_page integer Number of users per page. Defaults to 10. Example: 15
+     * @queryParam name string Filter users by name (partial match). Example: John
+     * @queryParam email string Filter users by email (partial match). Example: john@example.com
+     * @queryParam role string Filter users by role. Example: admin
+     * 
+     * @apiResourceCollection App\Http\Resources\UserResource
+     * @apiResourceModel App\Models\User paginate=10
+     * 
+     * @response status=200 scenario="success" {"data": [{"id": 1, "name": "John Doe", "email": "john@example.com"}], "links": {}, "meta": {}}
+     * @response status=500 scenario="error" {"data": null, "message": "Failed to retrieve user list", "errors": [], "meta": []}
      */
     public function index(Request $request)
     {
@@ -75,63 +83,119 @@ class UserController extends Controller
             $users = UserResource::collection($query->paginate($perPage));
             return $users;
         } catch (\Exception $e) {
-            Log::error('Failed to retrieve user list', ['error' => $e->getMessage(), 'requested_by' => $request->user()->id]);
-            return new ApiResponse(null, 'Failed to retrieve user list: ' . $e->getMessage(), 500);
+            Log::error('Failed to retrieve user list', [
+                'error' => $e->getMessage(),
+                'requested_by' => $request->user()->id
+            ]);
+            return ApiResponse::error('Failed to retrieve user list', 500);
         }
     }
 
     /**
      * Display the specified user.
+     * 
+     * Get details of a specific user by ID.
+     * 
+     * @urlParam id integer required The ID of the user. Example: 1
+     * 
+     * @apiResource App\Http\Resources\UserResource
+     * @apiResourceModel App\Models\User
+     * 
+     * @response status=200 scenario="success" {"data": {"id": 1, "name": "John Doe", "email": "john@example.com", "roles": ["admin"]}, "message": "User retrieved successfully"}
+     * @response status=404 scenario="not found" {"message": "User not found"}
+     * @response status=500 scenario="error" {"data": null, "message": "Failed to retrieve user", "errors": [], "meta": []}
      */
     public function show(Request $request, User $user)
     {
         try {
-            return new ApiResponse(
+            return ApiResponse::success(
                 new UserResource($user),
-                'User retrieved successfully',
-                200
+                'User retrieved successfully'
             );
         } catch (\Exception $e) {
-            Log::error('Failed to retrieve user', ['error' => $e->getMessage(), 'requested_by' => $request->user()->id]);
-            return new ApiResponse(null, 'Failed to retrieve user: ' . $e->getMessage(), 500);
+            Log::error('Failed to retrieve user', [
+                'error' => $e->getMessage(),
+                'requested_by' => $request->user()->id
+            ]);
+            return ApiResponse::error('Failed to retrieve user', 500);
         }
     }
 
     /**
-     * Store a newly created user in storage.
+     * Store a newly created user.
+     * 
+     * Create a new user with assigned roles.
+     * 
+     * @bodyParam name string required The name of the user. Example: John Doe
+     * @bodyParam email string required The email address of the user. Must be unique. Example: john.doe@example.com
+     * @bodyParam password string required The password for the user account. Must be at least 8 characters. Example: SecurePass123!
+     * @bodyParam password_confirmation string required Password confirmation. Must match password field. Example: SecurePass123!
+     * @bodyParam roles string[] required Array of roles to assign to the user. Allowed values: admin, project manager, team lead, team member. Example: ["admin", "project manager"]
+     *
+     * @response status=201 scenario="success" {"data": {"id": 1, "name": "John Doe", "email": "john.doe@example.com", "roles": ["admin"]}, "message": "User created successfully"}
+     * @response status=422 scenario="validation error" {"message": "The given data was invalid.", "errors": {"email": ["The email has already been taken."]}}
+     * @response status=500 scenario="error" {"data": null, "message": "Failed to create user", "errors": [], "meta": []}
      */
     public function store(Request $request)
     {
+        // Scribe will automatically extract parameters from this validation
         $validatedData = $request->validate($this->validationRules(null, true));
 
         try {
             DB::beginTransaction();
+
             $user = User::create([
                 'name' => $validatedData['name'],
                 'email' => $validatedData['email'],
-                'password' => bcrypt($validatedData['password']),
+                'password' => Hash::make($validatedData['password']),
             ]);
 
             $user->syncRoles($validatedData['roles']);
+
             DB::commit();
-            return new ApiResponse($user, 'User created successfully', 201);
+
+            return ApiResponse::success(
+                new UserResource($user->fresh()->load('roles')),
+                'User created successfully',
+                201
+            );
         } catch (\Exception $e) {
             DB::rollBack();
-            Log::error('Failed to create user', ['error' => $e->getMessage(), 'requested_by' => $request->user()->id]);
-            return new ApiResponse(null, 'Failed to create user: ' . $e->getMessage(), 500);
+
+            Log::error('Failed to create user', [
+                'error' => $e->getMessage(),
+                'requested_by' => $request->user()->id
+            ]);
+
+            return ApiResponse::error('Failed to create user', 500);
         }
     }
 
     /**
-     * Update the specified user in storage.
+     * Update the specified user.
+     * 
+     * Update an existing user's information.
+     * 
+     * 
+     * @bodyParam name string required The name of the user. Example: John Doe Updated
+     * @bodyParam email string required The email address of the user. Example: john.updated@example.com
+     * @bodyParam password string The new password (optional). Must be at least 8 characters if provided. Example: NewSecurePass123!
+     * @bodyParam password_confirmation string Password confirmation (required if password is provided). Example: NewSecurePass123!
+     *
+     * @response status=200 scenario="success" {"data": {"id": 1, "name": "John Doe Updated", "email": "john.updated@example.com", "roles": ["admin"]}, "message": "User updated successfully"}
+     * @response status=422 scenario="validation error" {"message": "The given data was invalid.", "errors": {"email": ["The email has already been taken."]}}
+     * @response status=404 scenario="not found" {"message": "User not found"}
+     * @response status=500 scenario="error" {"data": null, "message": "Failed to update user", "errors": [], "meta": []}
      */
     public function update(Request $request, User $user)
     {
         $validatedData = $request->validate($this->validationRules($user->id, false));
 
         try {
-            $user->name = $validatedData['name'];
-            $user->email = $validatedData['email'];
+            $user->fill([
+                'name' => $validatedData['name'],
+                'email' => $validatedData['email'],
+            ]);
 
             if (!empty($validatedData['password'])) {
                 $user->password = Hash::make($validatedData['password']);
@@ -139,45 +203,84 @@ class UserController extends Controller
 
             $user->save();
 
-            return new ApiResponse($user, 'User updated successfully', 200);
+            return ApiResponse::success(
+                new UserResource($user),
+                'User updated successfully'
+            );
         } catch (\Exception $e) {
-            Log::error('Failed to update user', ['error' => $e->getMessage(), 'requested_by' => $request->user()->id]);
-            return new ApiResponse(null, 'Failed to update user: ' . $e->getMessage(), 500);
+            Log::error('Failed to update user', [
+                'error' => $e->getMessage(),
+                'requested_by' => $request->user()->id
+            ]);
+
+            return ApiResponse::error('Failed to update user', 500);
         }
     }
 
     /**
-     * Remove the specified user from storage.
+     * Mark the specified user as deleted.
+     * 
+     * Soft delete a user from the system.
+     * 
+     * 
+     * @response status=200 scenario="success" {"data": null, "message": "User deleted successfully"}
+     * @response status=404 scenario="not found" {"message": "User not found"}
+     * @response status=500 scenario="error" {"data": null, "message": "Failed to delete user", "errors": [], "meta": []}
      */
     public function destroy(Request $request, User $user)
     {
         try {
             $user->delete();
-            return new ApiResponse(null, 'User deleted successfully', 200);
+            return ApiResponse::success(null, 'User deleted successfully');
         } catch (\Exception $e) {
-            Log::error('Failed to delete user', ['error' => $e->getMessage(), 'requested_by' => $request->user()->id]);
-            return new ApiResponse(null, 'Failed to delete user: ' . $e->getMessage(), 500);
+            Log::error('Failed to delete user', [
+                'error' => $e->getMessage(),
+                'requested_by' => $request->user()->id
+            ]);
+            return ApiResponse::error('Failed to delete user', 500);
         }
     }
 
-
     /**
      * Restore the specified soft-deleted user.
+     * 
+     * Restore a previously deleted user.
+     * 
+     *
+     * @response status=200 scenario="success" {"data": {"id": 1, "name": "John Doe", "email": "john@example.com", "roles": ["admin"]}, "message": "User restored successfully"}
+     * @response status=404 scenario="not found" {"message": "User not found"}
+     * @response status=500 scenario="error" {"data": null, "message": "Failed to restore user", "errors": [], "meta": []}
      */
     public function restore(Request $request, User $user)
     {
         try {
             $user->restore();
-            Log::info('User restored successfully', ['user_id' => $user->id, 'requested_by' => $request->user()->id]);
-            return new ApiResponse($user, 'User restored successfully', 200);
+            return ApiResponse::success(
+                new UserResource($user),
+                'User restored successfully'
+            );
         } catch (\Exception $e) {
-            Log::error('Failed to restore user', ['error' => $e->getMessage(), 'requested_by' => $request->user()->id]);
-            return new ApiResponse(null, 'Failed to restore user: ' . $e->getMessage(), 500);
+            Log::error('Failed to restore user', [
+                'error' => $e->getMessage(),
+                'requested_by' => $request->user()->id
+            ]);
+            return ApiResponse::error('Failed to restore user', 500);
         }
     }
 
     /**
-     * Assign roles to user
+     * Assign roles to user.
+     * 
+     * Update the roles assigned to a specific user. Note: Cannot remove 'team lead' role if user is actively leading teams.
+     * 
+     * 
+     * @bodyParam roles string[] required Array of roles to assign to the user. Allowed values: admin, project manager, team lead, team member. Example: ["team lead", "project manager"]
+     *
+     * @response status=200 scenario="success" {"data": {"id": 1, "name": "John Doe", "email": "john@example.com", "roles": ["team lead", "project manager"]}, "message": "Roles assigned successfully"}
+     * @response status=422 scenario="validation error - active team lead" {"success": false, "message": "Cannot remove team lead role: user is actively leading teams", "errors": {"roles": ["User must be removed as team lead from all teams before removing this role."], "active_teams": ["Backend Team", "DevOps Team"]}}
+     * @response status=422 scenario="validation error - invalid roles" {"message": "The given data was invalid.", "errors": {"roles.0": ["The selected roles.0 is invalid."]}}
+     * @response status=404 scenario="not found" {"message": "User not found"}
+     * @response status=500 scenario="error" {"data": null, "message": "Failed to assign roles", "errors": [], "meta": []}
      */
     public function assignRoles(Request $request, User $user)
     {
@@ -188,12 +291,18 @@ class UserController extends Controller
 
         $currentRoles = $user->getRoleNames()->toArray();
         $newRoles = $validatedData['roles'];
-
         $removedRoles = array_diff($currentRoles, $newRoles);
 
-        if (in_array(UserRoles::TEAM_LEAD->value, $removedRoles) && !$user->canChangeFromTeamLeadRole()) {
+        // Check if trying to remove team lead role while actively leading
+        if (
+            in_array(UserRoles::TEAM_LEAD->value, $removedRoles)
+            && !$user->canChangeFromTeamLeadRole()
+        ) {
 
-            Log::warning('Attempt to remove team lead role from user actively leading teams', ['user_id' => $user->id, 'requested_by' => $request->user()->id]);
+            Log::warning('Attempt to remove team lead role from user actively leading teams', [
+                'user_id' => $user->id,
+                'requested_by' => $request->user()->id
+            ]);
 
             return ApiResponse::error(
                 'Cannot remove team lead role: user is actively leading teams',
@@ -202,15 +311,15 @@ class UserController extends Controller
                     'roles' => [
                         'User must be removed as team lead from all teams before removing this role.'
                     ],
-                    'active teams' => $user->ledTeams()->pluck('name')->toArray()
-                ],
-
+                    'active_teams' => $user->ledTeams()->pluck('name')->toArray()
+                ]
             );
         }
 
         try {
             DB::beginTransaction();
-            $user->syncRoles($validatedData['roles']);
+
+            $user->syncRoles($newRoles);
 
             UserRolesAssigned::dispatch(
                 $user,
@@ -220,12 +329,20 @@ class UserController extends Controller
             );
 
             DB::commit();
-            Log::info('Roles assigned to user successfully', ['user_id' => $user->id, 'roles' => $validatedData['roles'], 'requested_by' => $request->user()->id]);
-            return new ApiResponse($user, 'Roles assigned successfully', 200);
+
+            return ApiResponse::success(
+                new UserResource($user->fresh()->load('roles')),
+                'Roles assigned successfully'
+            );
         } catch (\Exception $e) {
             DB::rollBack();
-            Log::error('Failed to assign roles to user', ['error' => $e->getMessage(), 'requested_by' => $request->user()->id]);
-            return new ApiResponse(null, 'Failed to assign roles: ' . $e->getMessage(), 500);
+
+            Log::error('Failed to assign roles to user', [
+                'error' => $e->getMessage(),
+                'requested_by' => $request->user()->id
+            ]);
+
+            return ApiResponse::error('Failed to assign roles', 500);
         }
     }
 }

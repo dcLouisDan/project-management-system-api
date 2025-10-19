@@ -135,7 +135,7 @@ class Team extends Model
             $this->users()->attach($validUsers);
         }
 
-        return $invalidUsers;
+        return ['valid_users' => $validUsers, 'invalid_users' => $invalidUsers];
     }
 
     /**

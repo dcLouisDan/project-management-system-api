@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Enums\UserRoles;
+use App\Events\TeamLeaderAssigned;
+use App\Events\TeamLeaderDemoted;
+use App\Events\TeamMemberAdded;
+use App\Events\TeamMemberRemoved;
+use App\Events\TeamMembersBulkAdded;
+use App\Events\TeamMembersBulkRemoved;
 use App\Http\Responses\ApiResponse;
 use App\Models\Team;
 use App\Models\User;
@@ -235,6 +241,13 @@ class TeamController extends Controller
         try {
             $team->users()->attach($validatedData['user_id'], ['role' => $validatedData['role']]);
 
+            TeamMemberAdded::dispatch(
+                $team,
+                User::find($validatedData['user_id']),
+                $validatedData['role'],
+                $request->user()
+            );
+
             return ApiResponse::success(
                 message: 'User added to team successfully'
             );
@@ -290,7 +303,13 @@ class TeamController extends Controller
         }
 
         try {
-            $invalidUsers = $team->addMembers($usersWithRoles);
+            ['valid_users' => $validUsers, 'invalid_users' => $invalidUsers] = $team->addMembers($usersWithRoles);
+
+            TeamMembersBulkAdded::dispatch(
+                $team,
+                $validUsers,
+                $request->user()
+            );
 
             return ApiResponse::success(
                 message: 'Users added to team successfully',
@@ -346,10 +365,23 @@ class TeamController extends Controller
                 // Demote current lead to member
                 $team->demoteLeader();
                 $demotedLead = $currentLead;
+
+                TeamLeaderDemoted::dispatch(
+                    $team,
+                    $demotedLead,
+                    $request->user()
+                );
             }
 
             $user = User::findOrFail($validatedData['user_id']);
             $team->setLeader($user);
+
+            TeamLeaderAssigned::dispatch(
+                $team,
+                $demotedLead,
+                $user,
+                $request->user()
+            );
 
             DB::commit();
 
@@ -403,6 +435,12 @@ class TeamController extends Controller
         try {
             $team->users()->detach($validatedData['user_id']);
 
+            TeamMemberRemoved::dispatch(
+                $team,
+                User::find($validatedData['user_id']),
+                $request->user()
+            );
+
             return ApiResponse::success(
                 message: 'User removed from team successfully'
             );
@@ -450,6 +488,12 @@ class TeamController extends Controller
 
         try {
             $team->removeMembers($validatedData['user_ids']);
+
+            TeamMembersBulkRemoved::dispatch(
+                $team,
+                $validatedData['user_ids'],
+                $request->user()
+            );
 
             return ApiResponse::success(
                 message: 'Users removed from team successfully'

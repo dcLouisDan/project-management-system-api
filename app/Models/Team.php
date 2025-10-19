@@ -3,11 +3,14 @@
 namespace App\Models;
 
 use App\Enums\UserRoles;
+use App\Traits\HasActivityLogs;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Team extends Model
 {
+    use HasActivityLogs;
+
     protected $fillable = [
         'name',
         'description',

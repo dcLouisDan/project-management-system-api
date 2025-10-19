@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
+
+/**
+ * @group User Management
+ *
+ * APIs for managing users
+ */
 class UserController extends Controller
 {
     private function validationRules(?int $id = null, bool $isCreating = false): array
@@ -59,7 +65,7 @@ class UserController extends Controller
     }
 
     /**
-     * Display a listing of users.
+     * List Users
      * 
      * Get a paginated list of all users with optional filtering.
      * 
@@ -92,7 +98,7 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified user.
+     * Get user
      * 
      * Get details of a specific user by ID.
      * 
@@ -122,7 +128,7 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created user.
+     * Create user
      * 
      * Create a new user with assigned roles.
      * 
@@ -172,7 +178,7 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified user.
+     * Update user
      * 
      * Update an existing user's information.
      * 
@@ -218,10 +224,9 @@ class UserController extends Controller
     }
 
     /**
-     * Mark the specified user as deleted.
+     * Soft delete user
      * 
      * Soft delete a user from the system.
-     * 
      * 
      * @response status=200 scenario="success" {"data": null, "message": "User deleted successfully"}
      * @response status=404 scenario="not found" {"message": "User not found"}
@@ -242,7 +247,7 @@ class UserController extends Controller
     }
 
     /**
-     * Restore the specified soft-deleted user.
+     * Restore soft-deleted user
      * 
      * Restore a previously deleted user.
      * 
@@ -269,10 +274,9 @@ class UserController extends Controller
     }
 
     /**
-     * Assign roles to user.
+     * Assign user role
      * 
      * Update the roles assigned to a specific user. Note: Cannot remove 'team lead' role if user is actively leading teams.
-     * 
      * 
      * @bodyParam roles string[] required Array of roles to assign to the user. Allowed values: admin, project manager, team lead, team member. Example: ["team lead", "project manager"]
      *

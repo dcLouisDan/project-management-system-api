@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ProgressStatus;
 use App\Enums\UserRoles;
 use App\Traits\HasActivityLogs;
 use Illuminate\Database\Eloquent\Model;
@@ -43,6 +44,11 @@ class Team extends Model
     {
         return $this->users()
             ->wherePivot('role', UserRoles::TEAM_MEMBER->value);
+    }
+
+    public function projects(): BelongsToMany
+    {
+        return $this->belongsToMany(Project::class);
     }
 
     /**
@@ -260,5 +266,42 @@ class Team extends Model
     public function totalUserCount(): int
     {
         return $this->users()->count();
+    }
+
+    public function isActive(): bool
+    {
+        return $this->projects()->exists();
+    }
+
+    public function worksOnProject(int|Project $project): bool
+    {
+        $id = $project instanceof Project ? $project->id : $project;
+        return $this->projects()->where('project_id', $id)->exists();
+    }
+
+    public function getOngoingProjectsCount(): int
+    {
+        return $this->projects()
+            ->whereIn('status', [
+                ProgressStatus::NOT_STARTED->value,
+                ProgressStatus::IN_PROGRESS->value,
+                ProgressStatus::ON_HOLD->value
+            ])
+            ->count();
+    }
+
+    public function getCompletedProjectsCount(): int
+    {
+        return $this->projects()
+            ->where('status', ProgressStatus::COMPLETED->value)
+            ->count();
+    }
+
+    public function assignProject(int|Project $project): void
+    {
+        $id = $project instanceof Project ? $project->id : $project;
+        if (!$this->worksOnProject($id)) {
+            $this->projects()->attach($id);
+        }
     }
 }

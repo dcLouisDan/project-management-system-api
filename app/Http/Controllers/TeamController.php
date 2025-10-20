@@ -518,4 +518,54 @@ class TeamController extends Controller
             );
         }
     }
+
+    /**
+     * Assign project to team
+     * 
+     * Assign a project to the team to work on.
+     * 
+     * @bodyParam project_id integer required The ID of the project to assign. Example: 3
+     * 
+     * @response status=200 scenario="success" {"data": null, "message": "Project assigned to team successfully"}
+     * @response status=400 scenario="invalid argument" {"data": null, "message": "Failed to assign project to team: Project already assigned to team", "errors": [], "meta": []}
+     * @response status=422 scenario="validation error" {"message": "The given data was invalid.", "errors": {"project_id": ["The selected project id is invalid."]}}
+     * @response status=404 scenario="not found" {"message": "Team not found"}
+     * @response status=500 scenario="error" {"data": null, "message": "Failed to assign project to team: Internal server error", "errors": [], "meta": []}
+     */
+    public function assignProject(Request $request, Team $team)
+    {
+        $validatedData = $request->validate([
+            'project_id' => ['required', 'exists:projects,id'],
+        ]);
+
+        try {
+            if ($team->worksOnProject($validatedData['project_id'])) {
+                throw new \InvalidArgumentException("Project already assigned to team.");
+            }
+
+            $team->projects()->attach($validatedData['project_id']);
+
+            return ApiResponse::success(
+                message: 'Project assigned to team successfully'
+            );
+        } catch (\InvalidArgumentException $e) {
+            Log::error('Invalid argument.', [
+                'error' => $e->getMessage(),
+                'requested_by' => $request->user()?->id,
+            ]);
+            return ApiResponse::error(
+                message: 'Failed to assign project to team: ' . $e->getMessage(),
+                statusCode: 400
+            );
+        } catch (\Exception $e) {
+            Log::error('Error assigning project to team.', [
+                'error' => $e->getMessage(),
+                'requested_by' => $request->user()?->id,
+            ]);
+            return ApiResponse::error(
+                message: 'Failed to assign project to team: ' . $e->getMessage(),
+                statusCode: 500
+            );
+        }
+    }
 }

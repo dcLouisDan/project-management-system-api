@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->text('description')->nullable();
             $table->foreignId('manager_id')->nullable()->constrained('users')->nullOnDelete();
-            $table->string('status')->default('not_started'); // e.g., not_started, in_progress, completed
+            $table->string('status')->default('not_started'); // e.g., not_started, in_progress, completed, on_hold
             $table->date('start_date');
             $table->date('due_date')->nullable();
             $table->timestamps();

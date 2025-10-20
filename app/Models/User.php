@@ -126,4 +126,27 @@ class User extends Authenticatable
     {
         return $this->hasMany(ActivityLog::class);
     }
+
+    /**
+     * Get all projects managed by the user.
+     */
+    public function managedProjects()
+    {
+        return $this->hasMany(Project::class, 'manager_id');
+    }
+
+    public function isQualifiedAsProjectManager(): bool
+    {
+        return $this->hasRole(UserRoles::PROJECT_MANAGER->value);
+    }
+
+    public function isActivelyManagingProjects(): bool
+    {
+        return $this->managedProjects()->exists();
+    }
+
+    public function canChangeFromProjectManagerRole(): bool
+    {
+        return $this->isQualifiedAsProjectManager() && !$this->isActivelyManagingProjects();
+    }
 }

@@ -3,10 +3,13 @@
 namespace App\Models;
 
 use App\Enums\ProgressStatus;
+use App\Traits\HasActivityLogs;
 use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
+    use HasActivityLogs;
+
     protected $fillable = [
         'name',
         'description',

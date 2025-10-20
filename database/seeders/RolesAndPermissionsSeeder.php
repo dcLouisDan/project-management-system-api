@@ -40,7 +40,7 @@ class RolesAndPermissionsSeeder extends Seeder
         $updateProjectPermission = Permission::firstOrCreate(['name' => 'update project']);
         $deleteProjectPermission = Permission::firstOrCreate(['name' => 'delete project']);
         $listProjectsPermission = Permission::firstOrCreate(['name' => 'list projects']);
-        $archiveProjectPermission = Permission::firstOrCreate(['name' => 'archive project']);
+        $restoreProjectPermission = Permission::firstOrCreate(['name' => 'restore project']);
         $assignTeamProjectPermission = Permission::firstOrCreate(['name' => 'assign team project']);
         $markProjectCompletePermission = Permission::firstOrCreate(['name' => 'mark project complete']);
         $viewProjectReportPermission = Permission::firstOrCreate(['name' => 'view project report']);
@@ -85,21 +85,21 @@ class RolesAndPermissionsSeeder extends Seeder
         $updateClientPermission = Permission::firstOrCreate(['name' => 'update client']);
         $deleteClientPermission = Permission::firstOrCreate(['name' => 'delete client']);
         $listClientsPermission = Permission::firstOrCreate(['name' => 'list clients']);
-        $archiveClientPermission = Permission::firstOrCreate(['name' => 'archive client']);
+        $restoreClientPermission = Permission::firstOrCreate(['name' => 'restore client']);
 
         // Define Roles and assign permissions
         $adminRole = Role::firstOrCreate(['name' => 'admin']);
-        $adminRole->givePermissionTo(Permission::all());
+        $adminRole->syncPermissions(Permission::all());
 
         $projectManagerRole = Role::firstOrCreate(['name' => 'project manager']);
-        $projectManagerRole->givePermissionTo([
+        $projectManagerRole->syncPermissions([
             // Project management permissions
             $createProjectPermission,
             $viewProjectPermission,
             $updateProjectPermission,
             $deleteProjectPermission,
             $listProjectsPermission,
-            $archiveProjectPermission,
+            $restoreProjectPermission,
             $assignTeamProjectPermission,
             $markProjectCompletePermission,
             $viewProjectReportPermission,
@@ -123,7 +123,7 @@ class RolesAndPermissionsSeeder extends Seeder
         ]);
 
         $teamLeadRole = Role::firstOrCreate(['name' => 'team lead']);
-        $teamLeadRole->givePermissionTo([
+        $teamLeadRole->syncPermissions([
             // Task permissions
             $createTaskPermission,
             $viewTaskPermission,
@@ -137,7 +137,7 @@ class RolesAndPermissionsSeeder extends Seeder
         ]);
 
         $teamMemberRole = Role::firstOrCreate(['name' => 'team member']);
-        $teamMemberRole->givePermissionTo([
+        $teamMemberRole->syncPermissions([
             // Task permissions
             $viewTaskPermission,
             $listTasksPermission,

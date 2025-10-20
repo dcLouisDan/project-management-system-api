@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TeamController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -34,4 +35,14 @@ Route::prefix('/v1')->group(function () {
     Route::middleware(['permission:remove member team'])->delete('teams/{team}/members', [TeamController::class, 'removeMembers']);
     Route::middleware(['permission:assign roles team'])->post('teams/{team}/lead', [TeamController::class, 'setLeader']);
     Route::middleware(['permission:assign project team'])->post('teams/{team}/projects', [TeamController::class, 'assignProject']);
+
+    // Project Management Routes
+    Route::middleware(['permission:list projects'])->get('projects', [ProjectController::class, 'index']);
+    Route::middleware(['permission:view project'])->get('projects/{project}', [ProjectController::class, 'show']);
+    Route::middleware(['permission:create project'])->post('projects', [ProjectController::class, 'store']);
+    Route::middleware(['permission:update project'])->put('projects/{project}', [ProjectController::class, 'update']);
+    Route::middleware(['permission:delete project'])->delete('projects/{project}', [ProjectController::class, 'destroy']);
+    Route::middleware(['permission:restore project'])->post('projects/{project}/restore', [ProjectController::class, 'restore']);
+    Route::middleware(['permission:update project'])->post('projects/{project}/manager', [ProjectController::class, 'setManager']);
+    Route::middleware(['permission:assign team project'])->post('projects/{project}/teams', [ProjectController::class, 'assignTeams']);
 })->middleware('auth:sanctum');

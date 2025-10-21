@@ -276,8 +276,13 @@ class UserController extends Controller
      * @response status=404 scenario="not found" {"message": "User not found"}
      * @response status=500 scenario="error" {"data": null, "message": "Failed to restore user", "errors": [], "meta": []}
      */
-    public function restore(Request $request, User $user)
+    public function restore(Request $request, int $userId)
     {
+        $user = User::withTrashed()->find($userId);
+        if (!$user) {
+            return ApiResponse::error('User not found', 404);
+        }
+
         if ($request->user()->cannot('restore', $user)) {
             return ApiResponse::error('This action is unauthorized.', 403);
         }

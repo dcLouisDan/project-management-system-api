@@ -19,7 +19,7 @@ Route::prefix('/v1')->group(function () {
     Route::middleware(['permission:create user'])->post('users', [UserController::class, 'store']);
     Route::middleware(['permission:update user'])->put('users/{user}', [UserController::class, 'update']);
     Route::middleware(['permission:delete user'])->delete('users/{user}', [UserController::class, 'destroy']);
-    Route::middleware(['permission:restore user'])->post('users/{user}/restore', [UserController::class, 'restore']);
+    Route::middleware(['permission:restore user'])->post('users/{userId}/restore', [UserController::class, 'restore']);
     Route::middleware(['permission:assign role user'])->post('users/{user}/roles', [UserController::class, 'assignRoles']);
 
 
@@ -42,7 +42,7 @@ Route::prefix('/v1')->group(function () {
     Route::middleware(['permission:create project'])->post('projects', [ProjectController::class, 'store']);
     Route::middleware(['permission:update project'])->put('projects/{project}', [ProjectController::class, 'update']);
     Route::middleware(['permission:delete project'])->delete('projects/{project}', [ProjectController::class, 'destroy']);
-    Route::middleware(['permission:restore project'])->post('projects/{project}/restore', [ProjectController::class, 'restore']);
+    Route::middleware(['permission:restore project'])->post('projects/{projectId}/restore', [ProjectController::class, 'restore']);
     Route::middleware(['permission:update project'])->post('projects/{project}/manager', [ProjectController::class, 'setManager']);
     Route::middleware(['permission:assign team project'])->post('projects/{project}/teams', [ProjectController::class, 'assignTeams']);
 })->middleware('auth:sanctum');

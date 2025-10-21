@@ -5,12 +5,14 @@ namespace App\Models;
 use App\Enums\ProgressStatus;
 use App\Enums\UserRoles;
 use App\Traits\HasActivityLogs;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Team extends Model
 {
-    use HasActivityLogs;
+    use HasFactory, HasActivityLogs, SoftDeletes;
 
     protected $fillable = [
         'name',

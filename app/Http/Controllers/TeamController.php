@@ -233,7 +233,7 @@ class TeamController extends Controller
         }
 
         try {
-            $team->delete();
+            $team->forceDelete();
 
             return ApiResponse::success(
                 message: 'Team deleted successfully'

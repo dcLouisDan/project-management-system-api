@@ -9,7 +9,10 @@ use App\Events\TeamMemberAdded;
 use App\Events\TeamMemberRemoved;
 use App\Events\TeamMembersBulkAdded;
 use App\Events\TeamMembersBulkRemoved;
+use App\Events\TeamProjectAssigned;
+use App\Events\TeamProjectRemoved;
 use App\Http\Responses\ApiResponse;
+use App\Models\Project;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -617,8 +620,10 @@ class TeamController extends Controller
             if ($team->worksOnProject($validatedData['project_id'])) {
                 throw new \InvalidArgumentException("Project already assigned to team.");
             }
+            $project = Project::findOrFail($validatedData['project_id']);
+            $team->assignProject($project);
 
-            $team->projects()->attach($validatedData['project_id']);
+            TeamProjectAssigned::dispatch($team, $project, $request->user());
 
             return ApiResponse::success(
                 message: 'Project assigned to team successfully'
@@ -639,6 +644,61 @@ class TeamController extends Controller
             ]);
             return ApiResponse::error(
                 message: 'Failed to assign project to team: ' . $e->getMessage(),
+                statusCode: 500
+            );
+        }
+    }
+
+    /**
+     * Remove Project from team
+     * 
+     * Remove a project assignment from the team.
+     * 
+     * @bodyParam project_id integer required The ID of the project to remove. Example: 3
+     * 
+     * @response status=200 scenario="success" {"data": null, "message": "Project removed from team successfully"}
+     * @response status=400 scenario="invalid argument" {"data": null, "message": "Failed to remove project from team: Project not found", "errors": [], "meta": []}
+     * @response status=404 scenario="not found" {"message": "Team not found"}
+     * @response status=500 scenario="error" {"data": null, "message": "Failed to remove project from team: Internal server error", "errors": [], "meta": []}
+     */
+    public function removeProject(Request $request, Team $team)
+    {
+        if ($request->user()->cannot('removeProject', $team)) {
+            return ApiResponse::error(
+                message: 'Unauthorized to remove project from team',
+                statusCode: 403
+            );
+        }
+
+        $validatedData = $request->validate([
+            'project_id' => ['required', 'exists:projects,id'],
+        ]);
+
+        try {
+            $project = Project::findOrFail($validatedData['project_id']);
+            $team->removeProject($project);
+
+            TeamProjectRemoved::dispatch($team, $project, $request->user());
+
+            return ApiResponse::success(
+                message: 'Project removed from team successfully'
+            );
+        } catch (\InvalidArgumentException $e) {
+            Log::error('Invalid argument.', [
+                'error' => $e->getMessage(),
+                'requested_by' => $request->user()?->id,
+            ]);
+            return ApiResponse::error(
+                message: 'Failed to remove project from team: ' . $e->getMessage(),
+                statusCode: 400
+            );
+        } catch (\Exception $e) {
+            Log::error('Error removing project from team.', [
+                'error' => $e->getMessage(),
+                'requested_by' => $request->user()?->id,
+            ]);
+            return ApiResponse::error(
+                message: 'Failed to remove project from team: ' . $e->getMessage(),
                 statusCode: 500
             );
         }

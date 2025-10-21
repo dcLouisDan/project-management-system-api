@@ -119,6 +119,14 @@ class TeamPolicy
         return false;
     }
 
+    public function removeProject(User $user, Team $team): bool
+    {
+        if ($user->hasRole(UserRoles::ADMIN->value) || $user->can('remove project team')) {
+            return true;
+        }
+        return false;
+    }
+
     public function assignRoles(User $user, Team $team): bool
     {
         if ($user->hasRole(UserRoles::ADMIN->value) || $user->can('assign roles team')) {

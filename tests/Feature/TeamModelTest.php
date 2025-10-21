@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Enums\UserRoles;
+use App\Models\Project;
 use App\Models\Team;
 use App\Models\User;
 use Database\Seeders\RolesAndPermissionsSeeder;
@@ -209,5 +210,39 @@ class TeamModelTest extends TestCase
         $team->removeMember($member);
 
         $this->assertFalse($team->hasMember($member));
+    }
+
+    public function test_removing_non_member_throws_exception(): void
+    {
+        $this->seed(RolesAndPermissionsSeeder::class);
+        $team = Team::factory()->create();
+
+        $member = User::factory()->create();
+        $member->assignRole(UserRoles::TEAM_MEMBER->value);
+
+        $this->expectException(\InvalidArgumentException::class);
+        $team->removeMember($member);
+    }
+
+    public function test_project_can_be_assigned_to_team(): void
+    {
+        $team = Team::factory()->create();
+        $project = Project::factory()->create();
+
+        $team->assignProject($project);
+
+        $this->assertTrue($team->worksOnProject($project));
+    }
+
+    public function test_project_can_be_removed_from_team(): void
+    {
+        $team = Team::factory()->create();
+        $project = Project::factory()->create();
+
+        $team->assignProject($project);
+        $this->assertTrue($team->worksOnProject($project));
+
+        $team->removeProject($project);
+        $this->assertFalse($team->worksOnProject($project));
     }
 }

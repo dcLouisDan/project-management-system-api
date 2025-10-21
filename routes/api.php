@@ -31,10 +31,11 @@ Route::prefix('/v1')->group(function () {
     Route::middleware(['permission:delete team'])->delete('teams/{team}', [TeamController::class, 'destroy']);
     Route::middleware(['permission:add member team'])->post('teams/{team}/members', [TeamController::class, 'addMember']);
     Route::middleware(['permission:add member team'])->post('teams/{team}/members/bulk', [TeamController::class, 'addMembers']);
-    Route::middleware(['permission:remove member team'])->delete('teams/{team}/members/{user}', [TeamController::class, 'removeMember']);
-    Route::middleware(['permission:remove member team'])->delete('teams/{team}/members', [TeamController::class, 'removeMembers']);
+    Route::middleware(['permission:remove member team'])->delete('teams/{team}/members', [TeamController::class, 'removeMember']);
+    Route::middleware(['permission:remove member team'])->delete('teams/{team}/members/bulk', [TeamController::class, 'removeMembers']);
     Route::middleware(['permission:assign roles team'])->post('teams/{team}/lead', [TeamController::class, 'setLeader']);
     Route::middleware(['permission:assign project team'])->post('teams/{team}/projects', [TeamController::class, 'assignProject']);
+    Route::middleware(['permission:remove project team'])->delete('teams/{team}/projects', [TeamController::class, 'removeProject']);
 
     // Project Management Routes
     Route::middleware(['permission:list projects'])->get('projects', [ProjectController::class, 'index']);

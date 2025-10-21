@@ -21,6 +21,47 @@ class UserControllerTest extends TestCase
         $response->assertStatus(403); // Unauthorized
     }
 
+    public function test_user_index_route_returns_paginated_users(): void
+    {
+        $this->seed(RolesAndPermissionsSeeder::class);
+        $user = User::factory()->create();
+        $user->givePermissionTo('list users');
+        $this->actingAs($user, 'web');
+
+        // Create some users
+        User::factory()->count(15)->create();
+
+        $response = $this->getJson($this->apiPrefix);
+
+        $response->assertStatus(200);
+    }
+
+    public function test_user_view_route_requires_user_permission(): void
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user, 'web');
+
+        $otherUser = User::factory()->create();
+
+        $response = $this->getJson("{$this->apiPrefix}/{$otherUser->id}");
+
+        $response->assertStatus(403); // Forbidden
+    }
+
+    public function test_user_with_permission_can_view_user(): void
+    {
+        $this->seed(RolesAndPermissionsSeeder::class);
+        $user = User::factory()->create();
+        $user->givePermissionTo('view user');
+        $this->actingAs($user, 'web');
+
+        $otherUser = User::factory()->create();
+
+        $response = $this->getJson("{$this->apiPrefix}/{$otherUser->id}");
+
+        $response->assertStatus(200);
+    }
+
     public function test_user_create_route_requires_create_user_permission(): void
     {
         $user = User::factory()->create();

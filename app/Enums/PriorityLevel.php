@@ -31,4 +31,10 @@ enum PriorityLevel: string
       self::URGENT => 'Urgent',
     };
   }
+
+  public function getRandom(): PriorityLevel
+  {
+    $levels = self::cases();
+    return $levels[array_rand($levels)];
+  }
 }

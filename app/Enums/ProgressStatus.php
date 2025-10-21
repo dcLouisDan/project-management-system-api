@@ -31,4 +31,10 @@ enum ProgressStatus: string
       self::ON_HOLD => 'On Hold',
     };
   }
+
+  public function getRandom(): ProgressStatus
+  {
+    $statuses = self::cases();
+    return $statuses[array_rand($statuses)];
+  }
 }

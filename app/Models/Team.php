@@ -306,4 +306,12 @@ class Team extends Model
             $this->projects()->attach($id);
         }
     }
+
+    public function removeProject(int|Project $project): void
+    {
+        $id = $project instanceof Project ? $project->id : $project;
+        if ($this->worksOnProject($id)) {
+            $this->projects()->detach($id);
+        }
+    }
 }

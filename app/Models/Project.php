@@ -4,11 +4,13 @@ namespace App\Models;
 
 use App\Enums\ProgressStatus;
 use App\Traits\HasActivityLogs;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Project extends Model
 {
-    use HasActivityLogs;
+    use HasActivityLogs, SoftDeletes, HasFactory;
 
     protected $fillable = [
         'name',

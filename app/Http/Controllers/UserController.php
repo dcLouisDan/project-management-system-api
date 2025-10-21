@@ -78,10 +78,16 @@ class UserController extends Controller
      * @apiResourceModel App\Models\User paginate=10
      * 
      * @response status=200 scenario="success" {"data": [{"id": 1, "name": "John Doe", "email": "john@example.com"}], "links": {}, "meta": {}}
+     * @response status=403 scenario="forbidden" {"message": "This action is unauthorized."}
+     * @response status=422 scenario="validation error" {"message": "The given data was invalid.", "errors": {"per_page": ["The per page must be an integer."]}}
      * @response status=500 scenario="error" {"data": null, "message": "Failed to retrieve user list", "errors": [], "meta": []}
      */
     public function index(Request $request)
     {
+        if ($request->user()->cannot('viewAny', User::class)) {
+            return ApiResponse::error('This action is unauthorized.', 403);
+        }
+
         $perPage = $request->input('per_page', 10);
         $query = $this->buildFilteredUserQuery($request);
 
@@ -113,6 +119,9 @@ class UserController extends Controller
      */
     public function show(Request $request, User $user)
     {
+        if ($request->user()->cannot('view', $user)) {
+            return ApiResponse::error('This action is unauthorized.', 403);
+        }
         try {
             return ApiResponse::success(
                 new UserResource($user),
@@ -144,6 +153,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->user()->cannot('create', User::class)) {
+            return ApiResponse::error('This action is unauthorized.', 403);
+        }
         // Scribe will automatically extract parameters from this validation
         $validatedData = $request->validate($this->validationRules(null, true));
 
@@ -195,6 +207,10 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        if ($request->user()->cannot('update', $user)) {
+            return ApiResponse::error('This action is unauthorized.', 403);
+        }
+
         $validatedData = $request->validate($this->validationRules($user->id, false));
 
         try {
@@ -234,6 +250,10 @@ class UserController extends Controller
      */
     public function destroy(Request $request, User $user)
     {
+        if ($request->user()->cannot('delete', $user)) {
+            return ApiResponse::error('This action is unauthorized.', 403);
+        }
+
         try {
             $user->delete();
             return ApiResponse::success(null, 'User deleted successfully');
@@ -258,6 +278,10 @@ class UserController extends Controller
      */
     public function restore(Request $request, User $user)
     {
+        if ($request->user()->cannot('restore', $user)) {
+            return ApiResponse::error('This action is unauthorized.', 403);
+        }
+
         try {
             $user->restore();
             return ApiResponse::success(
@@ -288,6 +312,9 @@ class UserController extends Controller
      */
     public function assignRoles(Request $request, User $user)
     {
+        if ($request->user()->cannot('assignRole', $user)) {
+            return ApiResponse::error('This action is unauthorized.', 403);
+        }
         $validatedData = $request->validate([
             'roles' => ['required', 'array', 'min:1', 'max:4'],
             'roles.*' => ['required', Rule::in(UserRoles::allRoles())],

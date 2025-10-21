@@ -14,6 +14,9 @@ class RolesAndPermissionsSeeder extends Seeder
      */
     public function run(): void
     {
+        // Reset cached roles and permissions
+        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
+
         // User management permissions
         $createUserPermission = Permission::firstOrCreate(['name' => 'create user']);
         $viewUserPermission = Permission::firstOrCreate(['name' => 'view user']);
@@ -86,6 +89,9 @@ class RolesAndPermissionsSeeder extends Seeder
         $deleteClientPermission = Permission::firstOrCreate(['name' => 'delete client']);
         $listClientsPermission = Permission::firstOrCreate(['name' => 'list clients']);
         $restoreClientPermission = Permission::firstOrCreate(['name' => 'restore client']);
+
+        // update cache to know about the newly created permissions (required if using WithoutModelEvents in seeders)
+        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
         // Define Roles and assign permissions
         $adminRole = Role::firstOrCreate(['name' => 'admin']);

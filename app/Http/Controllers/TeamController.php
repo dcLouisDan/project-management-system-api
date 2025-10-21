@@ -65,6 +65,13 @@ class TeamController extends Controller
      */
     public function index(Request $request)
     {
+        if ($request->user()->cannot('viewAny', Team::class)) {
+            return ApiResponse::error(
+                message: 'Unauthorized to list teams',
+                statusCode: 403
+            );
+        }
+
         $perPage = $request->input('per_page', 15);
         $query = $this->buildFilteredQuery($request);
         try {
@@ -97,6 +104,13 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->user()->cannot('create', Team::class)) {
+            return ApiResponse::error(
+                message: 'Unauthorized to create team',
+                statusCode: 403
+            );
+        }
+
         $validatedData = $request->validate([
             // Name of the Team. Example: Development
             'name' => 'required|string|max:255|unique:teams,name',
@@ -138,6 +152,13 @@ class TeamController extends Controller
      */
     public function show(Team $team)
     {
+        if (request()->user()->cannot('view', $team)) {
+            return ApiResponse::error(
+                message: 'Unauthorized to view team',
+                statusCode: 403
+            );
+        }
+
         return ApiResponse::success(
             data: $team->load('users'),
             message: 'Team retrieved successfully'
@@ -161,6 +182,13 @@ class TeamController extends Controller
      */
     public function update(Request $request, Team $team)
     {
+        if ($request->user()->cannot('update', $team)) {
+            return ApiResponse::error(
+                message: 'Unauthorized to update team',
+                statusCode: 403
+            );
+        }
+
         $validatedData = $request->validate([
             'name' => 'sometimes|required|string|max:255|unique:teams,name,' . $team->id,
             'description' => 'nullable|string',
@@ -197,6 +225,13 @@ class TeamController extends Controller
      */
     public function destroy(Team $team)
     {
+        if (request()->user()->cannot('delete', $team)) {
+            return ApiResponse::error(
+                message: 'Unauthorized to delete team',
+                statusCode: 403
+            );
+        }
+
         try {
             $team->delete();
 
@@ -232,6 +267,12 @@ class TeamController extends Controller
      */
     public function addMember(Request $request, Team $team)
     {
+        if ($request->user()->cannot('addMember', $team)) {
+            return ApiResponse::error(
+                message: 'Unauthorized to add members to team',
+                statusCode: 403
+            );
+        }
         $teamRoles = [UserRoles::TEAM_LEAD->value, UserRoles::TEAM_MEMBER->value];
         $validatedData = $request->validate([
             'user_id' => ['required', 'exists:users,id'],
@@ -290,6 +331,13 @@ class TeamController extends Controller
      */
     public function addMembers(Request $request, Team $team)
     {
+        if ($request->user()->cannot('addMember', $team)) {
+            return ApiResponse::error(
+                message: 'Unauthorized to add members to team',
+                statusCode: 403
+            );
+        }
+
         $teamRoles = [UserRoles::TEAM_LEAD->value, UserRoles::TEAM_MEMBER->value];
         $validatedData = $request->validate([
             'members' => ['required', 'array'],
@@ -345,6 +393,12 @@ class TeamController extends Controller
      */
     public function setLeader(Request $request, Team $team)
     {
+        if ($request->user()->cannot('assignRoles', $team)) {
+            return ApiResponse::error(
+                message: 'Unauthorized to set team leader',
+                statusCode: 403
+            );
+        }
         $validatedData = $request->validate([
             'user_id' => ['required', 'exists:users,id'],
         ]);
@@ -428,6 +482,13 @@ class TeamController extends Controller
      */
     public function removeMember(Request $request, Team $team)
     {
+        if ($request->user()->cannot('removeMember', $team)) {
+            return ApiResponse::error(
+                message: 'Unauthorized to remove members from team',
+                statusCode: 403
+            );
+        }
+
         $validatedData = $request->validate([
             'user_id' => ['required', 'exists:users,id'],
         ]);
@@ -481,6 +542,13 @@ class TeamController extends Controller
      */
     public function removeMembers(Request $request, Team $team)
     {
+        if ($request->user()->cannot('removeMember', $team)) {
+            return ApiResponse::error(
+                message: 'Unauthorized to remove members from team',
+                statusCode: 403
+            );
+        }
+
         $validatedData = $request->validate([
             'user_ids' => ['required', 'array'],
             'user_ids.*' => ['exists:users,id'],
@@ -534,6 +602,13 @@ class TeamController extends Controller
      */
     public function assignProject(Request $request, Team $team)
     {
+        if ($request->user()->cannot('assignProject', $team)) {
+            return ApiResponse::error(
+                message: 'Unauthorized to assign project to team',
+                statusCode: 403
+            );
+        }
+
         $validatedData = $request->validate([
             'project_id' => ['required', 'exists:projects,id'],
         ]);

@@ -9,7 +9,7 @@ enum ProjectRelationTypes: string
   case BLOCKS = 'blocks';
   case REQUIRES = 'requires';
   case FOLLOWS = 'follows';
-  case RELATED_TO = 'related_to';
+  case RELATES_TO = 'relates_to';
   case DUPLICATE_OF = 'duplicate_of';
   case PARENT_OF = 'parent_of';
 
@@ -27,15 +27,18 @@ enum ProjectRelationTypes: string
       'blocks' => self::BLOCKS,
       'requires' => self::REQUIRES,
       'follows' => self::FOLLOWS,
-      'related_to' => self::RELATED_TO,
+      'relates_to' => self::RELATES_TO,
       'duplicate_of' => self::DUPLICATE_OF,
       'parent_of' => self::PARENT_OF,
       default => null,
     };
   }
 
-  public static function isValidType(string $type): bool
+  public static function isValidType(string|self $type): bool
   {
+    if ($type instanceof self) {
+      $type = $type->value;
+    }
     return in_array($type, self::allTypes());
   }
 
@@ -45,7 +48,7 @@ enum ProjectRelationTypes: string
       self::BLOCKS => 'Blocks',
       self::REQUIRES => 'Requires',
       self::FOLLOWS => 'Follows',
-      self::RELATED_TO => 'Related To',
+      self::RELATES_TO => 'Relates To',
       self::DUPLICATE_OF => 'Duplicate Of',
       self::PARENT_OF => 'Parent Of',
     };
@@ -57,7 +60,7 @@ enum ProjectRelationTypes: string
       self::BLOCKS => self::REQUIRES,
       self::REQUIRES => self::BLOCKS,
       self::FOLLOWS => self::FOLLOWS,
-      self::RELATED_TO => self::RELATED_TO,
+      self::RELATES_TO => self::RELATES_TO,
       self::DUPLICATE_OF => self::DUPLICATE_OF,
       self::PARENT_OF => self::PARENT_OF,
     };
@@ -72,7 +75,7 @@ enum ProjectRelationTypes: string
       self::REQUIRES,
       self::FOLLOWS => RelationDirection::DEPENDENCY_REVERSE,
 
-      self::RELATED_TO,
+      self::RELATES_TO,
       self::DUPLICATE_OF => RelationDirection::ASSOCIATIVE,
     };
   }

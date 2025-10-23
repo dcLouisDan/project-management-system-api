@@ -92,7 +92,7 @@ class ProjectGraphCache
     Cache::put($key, self::build($projectId));
   }
 
-  public static function clear(int $projectId): void
+  public static function invalidate(int $projectId): void
   {
     $key = self::key($projectId);
     Cache::forget($key);

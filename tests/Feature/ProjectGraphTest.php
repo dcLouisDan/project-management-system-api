@@ -59,9 +59,8 @@ class ProjectGraphTest extends TestCase
         $this->createBasicRequiresRelation($project->id, $milestone1, $task1, $user->id);
         $this->createBasicRequiresRelation($project->id, $task1, $task2, $user->id);
 
-        $graph = ProjectGraphCache::build($project->id);
 
-        return [$graph, $project, $user, $milestone1, $task1, $task2];
+        return [$project, $user, $milestone1, $task1, $task2];
     }
 
     public function test_can_create_project_relation(): void
@@ -87,16 +86,55 @@ class ProjectGraphTest extends TestCase
 
     public function test_circular_dependency_detection(): void
     {
-        [$graph, $project, $user, $milestone1, $task1, $task2] = $this->buildBasicRequiresGraph();
+        [$project, $user, $milestone1, $task1, $task2] = $this->buildBasicRequiresGraph();
 
         $task3 = Task::factory()->create(['project_id' => $project->id, 'assigned_by_id' => $user->id]);
 
         // Check for circular dependency
-        $hasCircularDependency = DependencyValidator::hasCircularDependency($graph, $task2, $task2);
-
-        $hasNoCircularDependency = DependencyValidator::hasCircularDependency($graph, $milestone1, $task3);
+        $hasCircularDependency = $task2->hasCircularDependency(ProjectRelationTypes::BLOCKS->value, $milestone1);
+        $hasNoCircularDependency = $milestone1->hasCircularDependency(ProjectRelationTypes::REQUIRES->value, $task3);
         $this->assertFalse($hasNoCircularDependency, 'False positive for circular dependency detected.');
 
         $this->assertTrue($hasCircularDependency, 'Circular dependency was not detected as expected.');
+    }
+
+    public function test_inverse_relation_detection(): void
+    {
+        [$project, $user, $milestone1, $task1, $task2] = $this->buildBasicRequiresGraph();
+
+        // Check for inverse relation
+        $inverseExists = $task1->inverseRelationExists(ProjectRelationTypes::BLOCKS->value, $milestone1);
+        $inverseNotExists = $task2->inverseRelationExists(ProjectRelationTypes::BLOCKS->value, $milestone1);
+
+        $this->assertTrue($inverseExists, 'Inverse relation was not detected as expected.');
+        $this->assertFalse($inverseNotExists, 'False positive for inverse relation detected.');
+    }
+
+    public function test_remove_relation(): void
+    {
+        [$project, $user, $milestone1, $task1, $task2] = $this->buildBasicRequiresGraph();
+
+        // Remove the relation between milestone1 and task1
+        $milestone1->removeRelation(ProjectRelationTypes::REQUIRES->value, $task1);
+
+        // Assert the relation is removed
+        $this->assertDatabaseMissing('project_relations', [
+            'project_id' => $project->id,
+            'source_type' => Milestone::class,
+            'source_id' => $milestone1->id,
+            'target_type' => Task::class,
+            'target_id' => $task1->id,
+            'relation_type' => ProjectRelationTypes::REQUIRES->value,
+        ]);
+
+        // Assert the other relation still exists
+        $this->assertDatabaseHas('project_relations', [
+            'project_id' => $project->id,
+            'source_type' => Task::class,
+            'source_id' => $task1->id,
+            'target_type' => Task::class,
+            'target_id' => $task2->id,
+            'relation_type' => ProjectRelationTypes::REQUIRES->value,
+        ]);
     }
 }

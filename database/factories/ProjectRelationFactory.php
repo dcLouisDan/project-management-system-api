@@ -23,7 +23,7 @@ class ProjectRelationFactory extends Factory
             'source_id' => null, // To be set after creation
             'target_type' => $this->faker->randomElement(['App\Models\Task', 'App\Models\Milestone']),
             'target_id' => null, // To be set after creation
-            'relation_type' => $this->faker->randomElement(['depends_on', 'related_to']),
+            'relation_type' => $this->faker->randomElement(\App\Enums\ProjectRelationTypes::allTypes()),
         ];
     }
 }

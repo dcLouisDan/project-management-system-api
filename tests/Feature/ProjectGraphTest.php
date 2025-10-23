@@ -57,7 +57,7 @@ class ProjectGraphTest extends TestCase
         $task2 = Task::factory()->create(['project_id' => $project->id, 'assigned_by_id' => $user->id]);
 
         $this->createBasicRequiresRelation($project->id, $milestone1, $task1, $user->id);
-        $this->createBasicRequiresRelation($project->id, $milestone1, $task2, $user->id);
+        $this->createBasicRequiresRelation($project->id, $task1, $task2, $user->id);
 
         $graph = ProjectGraphCache::build($project->id);
 
@@ -89,8 +89,13 @@ class ProjectGraphTest extends TestCase
     {
         [$graph, $project, $user, $milestone1, $task1, $task2] = $this->buildBasicRequiresGraph();
 
+        $task3 = Task::factory()->create(['project_id' => $project->id, 'assigned_by_id' => $user->id]);
+
         // Check for circular dependency
-        $hasCircularDependency = DependencyValidator::hasCircularDependency($graph, $task1, $milestone1);
+        $hasCircularDependency = DependencyValidator::hasCircularDependency($graph, $task2, $task2);
+
+        $hasNoCircularDependency = DependencyValidator::hasCircularDependency($graph, $milestone1, $task3);
+        $this->assertFalse($hasNoCircularDependency, 'False positive for circular dependency detected.');
 
         $this->assertTrue($hasCircularDependency, 'Circular dependency was not detected as expected.');
     }

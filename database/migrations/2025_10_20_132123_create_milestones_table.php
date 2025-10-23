@@ -19,6 +19,12 @@ return new class extends Migration
             $table->date('due_date')->nullable();
             $table->string('status')->default('not_started');
             $table->timestamps();
+
+            $table->softDeletes();
+            $table->index('project_id');
+            $table->index('status');
+            $table->index('due_date');
+            $table->unique(['project_id', 'name']);
         });
     }
 

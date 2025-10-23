@@ -13,6 +13,7 @@ enum ProgressStatus: string
   case REJECTED = 'rejected';
   case COMPLETED = 'completed';
   case ON_HOLD = 'on_hold';
+  case CANCELLED = 'cancelled';
 
   /**
    * Get all status values as an array
@@ -29,6 +30,16 @@ enum ProgressStatus: string
       self::UNDER_REVIEW->value,
       self::APPROVED->value,
       self::REJECTED->value,
+    ];
+  }
+
+  public static function milestoneStatuses(): array
+  {
+    return [
+      self::NOT_STARTED->value,
+      self::IN_PROGRESS->value,
+      self::COMPLETED->value,
+      self::ON_HOLD->value,
     ];
   }
 

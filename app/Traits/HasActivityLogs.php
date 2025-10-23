@@ -64,5 +64,15 @@ trait HasActivityLogs
         []
       );
     });
+
+    static::forceDeleted(function ($model) {
+      ActivityLog::logActivity(
+        Auth::id() ?? null,
+        'force_deleted',
+        $model,
+        'permanently deleted ' . class_basename($model),
+        []
+      );
+    });
   }
 }

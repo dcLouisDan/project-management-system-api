@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class ProjectRelation extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'project_id',
         'created_by_id',

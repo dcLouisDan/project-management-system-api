@@ -20,8 +20,7 @@ return new class extends Migration
             $table->timestamp('reviewed_at')->nullable();
             $table->timestamps();
 
-            $table->index('task_id');
-            $table->index('reviewed_by_id');
+
             $table->index('status');
         });
     }

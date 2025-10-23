@@ -24,10 +24,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->softDeletes();
-            $table->index('project_id');
-            $table->index('assigned_to_id');
-            $table->index('status');
-            $table->index('due_date');
+
             $table->unique(['project_id', 'title']);
         });
     }

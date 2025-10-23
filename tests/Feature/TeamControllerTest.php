@@ -291,13 +291,11 @@ class TeamControllerTest extends TestCase
 
         $this->actingAs($user, 'web');
 
-        $response = $this->deleteJson("{$this->apiPrefix}/{$team->id}/members/", [
-            'user_id' => $member->id,
-        ]);
+        $response = $this->deleteJson("{$this->apiPrefix}/{$team->id}/members/{$member->id}");
 
         $response->assertStatus(403); // Forbidden
 
-        $response = $this->deleteJson("{$this->apiPrefix}/{$team->id}/members/bulk", [
+        $response = $this->deleteJson("{$this->apiPrefix}/{$team->id}/members", [
             'user_ids' => [$member->id],
         ]);
         $response->assertStatus(403); // Forbidden
@@ -313,9 +311,7 @@ class TeamControllerTest extends TestCase
 
         $this->actingAs($user, 'web');
 
-        $response = $this->deleteJson("{$this->apiPrefix}/{$team->id}/members/", [
-            'user_id' => $member->id,
-        ]);
+        $response = $this->deleteJson("{$this->apiPrefix}/{$team->id}/members/{$member->id}");
 
         $response->assertStatus(200);
         $this->assertDatabaseMissing('team_user', [
@@ -339,7 +335,7 @@ class TeamControllerTest extends TestCase
 
         $this->actingAs($user, 'web');
 
-        $response = $this->deleteJson("{$this->apiPrefix}/{$team->id}/members/bulk", [
+        $response = $this->deleteJson("{$this->apiPrefix}/{$team->id}/members", [
             'user_ids' => [$member1->id, $member2->id],
         ]);
 
@@ -397,7 +393,7 @@ class TeamControllerTest extends TestCase
         $project = \App\Models\Project::factory()->create();
         $team->assignProject($project);
 
-        $response = $this->deleteJson("{$this->apiPrefix}/{$team->id}/projects");
+        $response = $this->deleteJson("{$this->apiPrefix}/{$team->id}/projects/{$project->id}");
 
         $response->assertStatus(403); // Forbidden
     }
@@ -411,10 +407,7 @@ class TeamControllerTest extends TestCase
 
         $this->actingAs($user, 'web');
 
-        $response = $this->deleteJson("{$this->apiPrefix}/{$team->id}/projects", [
-            'project_id' => $project->id,
-        ]);
-
+        $response = $this->deleteJson("{$this->apiPrefix}/{$team->id}/projects/{$project->id}");
         $response->assertStatus(200);
         $this->assertDatabaseMissing('project_team', [
             'project_id' => $project->id,

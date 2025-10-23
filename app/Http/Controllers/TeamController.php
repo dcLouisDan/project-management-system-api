@@ -483,7 +483,7 @@ class TeamController extends Controller
      * @response status=404 scenario="not found" {"message": "Team not found"}
      * @response status=500 scenario="error" {"data": null, "message": "Failed to remove user from team: Internal server error", "errors": [], "meta": []}
      */
-    public function removeMember(Request $request, Team $team)
+    public function removeMember(Request $request, Team $team, User $user)
     {
         if ($request->user()->cannot('removeMember', $team)) {
             return ApiResponse::error(
@@ -492,16 +492,12 @@ class TeamController extends Controller
             );
         }
 
-        $validatedData = $request->validate([
-            'user_id' => ['required', 'exists:users,id'],
-        ]);
-
         try {
-            $team->users()->detach($validatedData['user_id']);
+            $team->users()->detach($user->id);
 
             TeamMemberRemoved::dispatch(
                 $team,
-                User::find($validatedData['user_id']),
+                $user,
                 $request->user()
             );
 
@@ -661,7 +657,7 @@ class TeamController extends Controller
      * @response status=404 scenario="not found" {"message": "Team not found"}
      * @response status=500 scenario="error" {"data": null, "message": "Failed to remove project from team: Internal server error", "errors": [], "meta": []}
      */
-    public function removeProject(Request $request, Team $team)
+    public function removeProject(Request $request, Team $team, Project $project)
     {
         if ($request->user()->cannot('removeProject', $team)) {
             return ApiResponse::error(
@@ -669,13 +665,7 @@ class TeamController extends Controller
                 statusCode: 403
             );
         }
-
-        $validatedData = $request->validate([
-            'project_id' => ['required', 'exists:projects,id'],
-        ]);
-
         try {
-            $project = Project::findOrFail($validatedData['project_id']);
             $team->removeProject($project);
 
             TeamProjectRemoved::dispatch($team, $project, $request->user());

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('project_id')->constrained()->onDelete('cascade');
             $table->foreignId('assigned_to_id')->constrained('users')->onDelete('set null')->nullable();
+            $table->foreignId('assigned_by_id')->constrained('users')->onDelete('set null')->nullable();
             $table->string('title');
             $table->text('description')->nullable();
             $table->string('status')->default('not_started');

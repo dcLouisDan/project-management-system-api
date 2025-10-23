@@ -61,6 +61,26 @@ class User extends Authenticatable
             ->withTimestamps();
     }
 
+    public function isAdmin(): bool
+    {
+        return $this->hasRole(UserRoles::ADMIN->value);
+    }
+
+    public function assignedTasks()
+    {
+        return $this->hasMany(Task::class, 'assigned_to_id');
+    }
+
+    public function createdTasks()
+    {
+        return $this->hasMany(Task::class, 'assigned_by_id');
+    }
+
+    public function taskReviews()
+    {
+        return $this->hasMany(TaskReview::class, 'reviewed_by_id');
+    }
+
     /**
      * Check if the user is actively leading any team.
      * 

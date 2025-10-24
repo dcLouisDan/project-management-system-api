@@ -46,6 +46,7 @@ class RolesAndPermissionsSeeder extends Seeder
         $listProjectsPermission = Permission::firstOrCreate(['name' => 'list projects']);
         $restoreProjectPermission = Permission::firstOrCreate(['name' => 'restore project']);
         $assignTeamProjectPermission = Permission::firstOrCreate(['name' => 'assign team project']);
+        $removeTeamProjectPermission = Permission::firstOrCreate(['name' => 'remove team project']);
         $markProjectCompletePermission = Permission::firstOrCreate(['name' => 'mark project complete']);
         $viewProjectReportPermission = Permission::firstOrCreate(['name' => 'view project report']);
 
@@ -111,6 +112,7 @@ class RolesAndPermissionsSeeder extends Seeder
             $listProjectsPermission,
             $restoreProjectPermission,
             $assignTeamProjectPermission,
+            $removeTeamProjectPermission,
             $markProjectCompletePermission,
             $viewProjectReportPermission,
             // Milestone management permissions

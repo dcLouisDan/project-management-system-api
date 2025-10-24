@@ -157,7 +157,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/v1/teams/{team}'
+    uri: 'api/v1/teams/{team_id}'
     metadata:
       groupName: 'Team Management'
       groupDescription: |-
@@ -174,9 +174,9 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      team:
-        name: team
-        description: 'The team.'
+      team_id:
+        name: team_id
+        description: 'The ID of the team.'
         required: true
         example: 16
         type: integer
@@ -185,7 +185,7 @@ endpoints:
         nullable: false
         custom: []
     cleanUrlParameters:
-      team: 16
+      team_id: 16
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -576,7 +576,7 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'api/v1/teams/{team_id}/members/{user}'
+    uri: 'api/v1/teams/{team_id}/members/{user_id}'
     metadata:
       groupName: 'Team Management'
       groupDescription: |-
@@ -603,19 +603,19 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         custom: []
-      user:
-        name: user
-        description: ''
+      user_id:
+        name: user_id
+        description: 'The ID of the user.'
         required: true
-        example: architecto
-        type: string
+        example: 16
+        type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
       team_id: 16
-      user: architecto
+      user_id: 16
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -751,6 +751,289 @@ endpoints:
       -
         status: 500
         content: '{"data": null, "message": "Failed to remove users from team: Internal server error", "errors": [], "meta": []}'
+        headers: []
+        description: error
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/v1/teams/{team_id}/lead'
+    metadata:
+      groupName: 'Team Management'
+      groupDescription: |-
+
+        APIs for managing teams
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Set team leader'
+      description: "Set a user as the team leader. If there's an existing leader, they will be demoted to team member."
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      team_id:
+        name: team_id
+        description: 'The ID of the team.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      team_id: 16
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      user_id:
+        name: user_id
+        description: 'The ID of the user to set as leader.'
+        required: true
+        example: 5
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      user_id: 5
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data": {"demoted_lead": {"id": 3, "name": "Previous Leader"}}, "message": "Team leader set successfully"}'
+        headers: []
+        description: success
+        custom: []
+      -
+        status: 200
+        content: '{"data": {"demoted_lead": null}, "message": "Team leader set successfully"}'
+        headers: []
+        description: 'success - no previous leader'
+        custom: []
+      -
+        status: 200
+        content: '{"data": null, "message": "User is already the team lead"}'
+        headers: []
+        description: 'user already leader'
+        custom: []
+      -
+        status: 400
+        content: '{"data": null, "message": "Failed to set team leader: User does not have the team lead role", "errors": [], "meta": []}'
+        headers: []
+        description: 'invalid argument'
+        custom: []
+      -
+        status: 404
+        content: '{"message": "Team not found"}'
+        headers: []
+        description: 'not found'
+        custom: []
+      -
+        status: 422
+        content: '{"message": "The given data was invalid.", "errors": {"user_id": ["The selected user id is invalid."]}}'
+        headers: []
+        description: 'validation error'
+        custom: []
+      -
+        status: 500
+        content: '{"data": null, "message": "Failed to set team leader: Internal server error", "errors": [], "meta": []}'
+        headers: []
+        description: error
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/v1/teams/{team_id}/projects'
+    metadata:
+      groupName: 'Team Management'
+      groupDescription: |-
+
+        APIs for managing teams
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Assign project to team'
+      description: 'Assign a project to the team to work on.'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      team_id:
+        name: team_id
+        description: 'The ID of the team.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      team_id: 16
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      project_id:
+        name: project_id
+        description: 'The ID of the project to assign.'
+        required: true
+        example: 3
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      notes:
+        name: notes
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: 'n'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      project_id: 3
+      notes: 'n'
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data": null, "message": "Project assigned to team successfully"}'
+        headers: []
+        description: success
+        custom: []
+      -
+        status: 400
+        content: '{"data": null, "message": "Failed to assign project to team: Project already assigned to team", "errors": [], "meta": []}'
+        headers: []
+        description: 'invalid argument'
+        custom: []
+      -
+        status: 404
+        content: '{"message": "Team not found"}'
+        headers: []
+        description: 'not found'
+        custom: []
+      -
+        status: 422
+        content: '{"message": "The given data was invalid.", "errors": {"project_id": ["The selected project id is invalid."]}}'
+        headers: []
+        description: 'validation error'
+        custom: []
+      -
+        status: 500
+        content: '{"data": null, "message": "Failed to assign project to team: Internal server error", "errors": [], "meta": []}'
+        headers: []
+        description: error
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/v1/teams/{team_id}/projects/{project_id}'
+    metadata:
+      groupName: 'Team Management'
+      groupDescription: |-
+
+        APIs for managing teams
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Remove Project from team'
+      description: 'Remove a project assignment from the team.'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      team_id:
+        name: team_id
+        description: 'The ID of the team.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      project_id:
+        name: project_id
+        description: 'The ID of the project.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      team_id: 16
+      project_id: 16
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      project_id:
+        name: project_id
+        description: 'The ID of the project to remove.'
+        required: true
+        example: 3
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      project_id: 3
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data": null, "message": "Project removed from team successfully"}'
+        headers: []
+        description: success
+        custom: []
+      -
+        status: 400
+        content: '{"data": null, "message": "Failed to remove project from team: Project not found", "errors": [], "meta": []}'
+        headers: []
+        description: 'invalid argument'
+        custom: []
+      -
+        status: 404
+        content: '{"message": "Team not found"}'
+        headers: []
+        description: 'not found'
+        custom: []
+      -
+        status: 500
+        content: '{"data": null, "message": "Failed to remove project from team: Internal server error", "errors": [], "meta": []}'
         headers: []
         description: error
         custom: []

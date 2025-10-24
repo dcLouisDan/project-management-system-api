@@ -55,6 +55,10 @@ class ProjectController extends Controller
      */
     public function index(Request $request)
     {
+        if ($request->user()->cannot('viewAny', Project::class)) {
+            return ApiResponse::error('Unauthorized to list projects.', 403);
+        }
+
         $perPage = $request->input('per_page', 15);
         $query = $this->buildFilteredQuery($request);
 
@@ -80,6 +84,10 @@ class ProjectController extends Controller
      */
     public function show(Request $request, Project $project)
     {
+        if ($request->user()->cannot('view', $project)) {
+            return ApiResponse::error('Unauthorized to view project.', 403);
+        }
+
         try {
             return ApiResponse::success($project->load(['manager', 'teams']), 'Project details retrieved successfully.', 200);
         } catch (\Exception $e) {
@@ -107,6 +115,10 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->user()->cannot('create', Project::class)) {
+            return ApiResponse::error('Unauthorized to create project.', 403);
+        }
+
         $validatedData = $request->validate([
             'name' => 'required|string|unique:projects,name',
             'description' => 'nullable|string',
@@ -150,6 +162,10 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
+        if ($request->user()->cannot('update', $project)) {
+            return ApiResponse::error('Unauthorized to update project.', 403);
+        }
+
         $validatedData = $request->validate([
             'name' => 'sometimes|required|string|unique:projects,name,' . $project->id,
             'description' => 'nullable|string',
@@ -186,6 +202,10 @@ class ProjectController extends Controller
      */
     public function destroy(Request $request, Project $project)
     {
+        if ($request->user()->cannot('delete', $project)) {
+            return ApiResponse::error('Unauthorized to delete project.', 403);
+        }
+
         try {
             $project->delete();
             return ApiResponse::success(null, 'Project deleted successfully.', 200);
@@ -206,6 +226,10 @@ class ProjectController extends Controller
      */
     public function restore(Request $request, Project $project)
     {
+        if ($request->user()->cannot('restore', $project)) {
+            return ApiResponse::error('Unauthorized to restore project.', 403);
+        }
+
         try {
             $project->restore();
             return ApiResponse::success($project, 'Project restored successfully.', 200);
@@ -230,6 +254,10 @@ class ProjectController extends Controller
      */
     public function setManager(Request $request, Project $project)
     {
+        if ($request->user()->cannot('update', $project)) {
+            return ApiResponse::error('Unauthorized to assign project manager.', 403);
+        }
+
         $validatedData = $request->validate([
             'manager_id' => 'required|exists:users,id',
         ]);
@@ -265,6 +293,10 @@ class ProjectController extends Controller
      */
     public function assignTeams(Request $request, Project $project)
     {
+        if ($request->user()->cannot('assignTeam', $project)) {
+            return ApiResponse::error('Unauthorized to assign teams to project.', 403);
+        }
+
         $validatedData = $request->validate([
             'team_ids' => 'required|array',
             'team_ids.*' => 'integer|exists:teams,id',
@@ -283,6 +315,44 @@ class ProjectController extends Controller
         } catch (\Exception $e) {
             Log::error('Error assigning teams to project', ['error' => $e->getMessage(), 'project_id' => $project->id, 'requested_by' => $request->user()->id]);
             return ApiResponse::error('Failed to assign teams to project: ' . $e->getMessage(), 500);
+        }
+    }
+
+    /**
+     * Remove teams from project
+     * 
+     * Remove multiple teams from a project in a single request.
+     * 
+     *@response status=200 scenario="success" {"data": {"project": {"id": 1, "name": "New Website", "teams": []}, "invalid_team_ids": []}, "message": "Teams removed from project successfully."}
+     * @response status=200 scenario="success with invalid teams" {"data": {"project": {"id": 1, "name": "New Website", "teams": [{"id": 2, "name": "Design Team"}]}, "invalid_team_ids": [99]}, "message": "Teams removed from project successfully."}
+     * @response status=422 scenario="validation error" {"message": "The given data was invalid.", "errors": {"team_ids.0": ["The selected team_ids.0 is invalid."]}}
+     * @response status=404 scenario="not found" {"message": "Project not found"}
+     * @response status=500 scenario="error" {"data": null, "message": "Failed to remove teams from project: Internal server error", "errors": [], "meta": []} 
+     */
+    public function removeTeams(Request $request, Project $project)
+    {
+        if ($request->user()->cannot('removeTeam', $project)) {
+            return ApiResponse::error('Unauthorized to remove teams from project.', 403);
+        }
+
+        $validatedData = $request->validate([
+            'team_ids' => 'required|array',
+            'team_ids.*' => 'integer|exists:teams,id',
+        ]);
+
+        try {
+            $invalidTeamIds = $project->removeTeams($validatedData['team_ids']);
+            return ApiResponse::success(
+                [
+                    'project' => $project->load('teams'),
+                    'invalid_team_ids' => $invalidTeamIds
+                ],
+                'Teams removed from project successfully.',
+                200
+            );
+        } catch (\Exception $e) {
+            Log::error('Error removing teams from project', ['error' => $e->getMessage(), 'project_id' => $project->id, 'requested_by' => $request->user()->id]);
+            return ApiResponse::error('Failed to remove teams from project: ' . $e->getMessage(), 500);
         }
     }
 }

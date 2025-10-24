@@ -127,6 +127,37 @@
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-project-management" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="project-management">
+                    <a href="#project-management">Project Management</a>
+                </li>
+                                    <ul id="tocify-subheader-project-management" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="project-management-GETapi-v1-projects">
+                                <a href="#project-management-GETapi-v1-projects">List projects</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="project-management-GETapi-v1-projects--project_id-">
+                                <a href="#project-management-GETapi-v1-projects--project_id-">Get project</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="project-management-POSTapi-v1-projects">
+                                <a href="#project-management-POSTapi-v1-projects">Create project</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="project-management-PUTapi-v1-projects--project_id-">
+                                <a href="#project-management-PUTapi-v1-projects--project_id-">Update project</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="project-management-DELETEapi-v1-projects--project_id-">
+                                <a href="#project-management-DELETEapi-v1-projects--project_id-">Soft delete project</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="project-management-POSTapi-v1-projects--projectId--restore">
+                                <a href="#project-management-POSTapi-v1-projects--projectId--restore">Restore soft-deleted project</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="project-management-POSTapi-v1-projects--project_id--manager">
+                                <a href="#project-management-POSTapi-v1-projects--project_id--manager">Set project manager</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="project-management-POSTapi-v1-projects--project_id--teams">
+                                <a href="#project-management-POSTapi-v1-projects--project_id--teams">Assign teams to project</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-team-management" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="team-management">
                     <a href="#team-management">Team Management</a>
@@ -138,8 +169,8 @@
                                                                                 <li class="tocify-item level-2" data-unique="team-management-POSTapi-v1-teams">
                                 <a href="#team-management-POSTapi-v1-teams">Create team</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="team-management-GETapi-v1-teams--team-">
-                                <a href="#team-management-GETapi-v1-teams--team-">Get team</a>
+                                                                                <li class="tocify-item level-2" data-unique="team-management-GETapi-v1-teams--team_id-">
+                                <a href="#team-management-GETapi-v1-teams--team_id-">Get team</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="team-management-PUTapi-v1-teams--team_id-">
                                 <a href="#team-management-PUTapi-v1-teams--team_id-">Update team details</a>
@@ -153,11 +184,20 @@
                                                                                 <li class="tocify-item level-2" data-unique="team-management-POSTapi-v1-teams--team_id--members-bulk">
                                 <a href="#team-management-POSTapi-v1-teams--team_id--members-bulk">Add multiple members to team</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="team-management-DELETEapi-v1-teams--team_id--members--user-">
-                                <a href="#team-management-DELETEapi-v1-teams--team_id--members--user-">Remove member from team</a>
+                                                                                <li class="tocify-item level-2" data-unique="team-management-DELETEapi-v1-teams--team_id--members--user_id-">
+                                <a href="#team-management-DELETEapi-v1-teams--team_id--members--user_id-">Remove member from team</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="team-management-DELETEapi-v1-teams--team_id--members">
                                 <a href="#team-management-DELETEapi-v1-teams--team_id--members">Remove multiple members from team</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="team-management-POSTapi-v1-teams--team_id--lead">
+                                <a href="#team-management-POSTapi-v1-teams--team_id--lead">Set team leader</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="team-management-POSTapi-v1-teams--team_id--projects">
+                                <a href="#team-management-POSTapi-v1-teams--team_id--projects">Assign project to team</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="team-management-DELETEapi-v1-teams--team_id--projects--project_id-">
+                                <a href="#team-management-DELETEapi-v1-teams--team_id--projects--project_id-">Remove Project from team</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -181,8 +221,8 @@
                                                                                 <li class="tocify-item level-2" data-unique="user-management-DELETEapi-v1-users--user_id-">
                                 <a href="#user-management-DELETEapi-v1-users--user_id-">Soft delete user</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="user-management-POSTapi-v1-users--user_id--restore">
-                                <a href="#user-management-POSTapi-v1-users--user_id--restore">Restore soft-deleted user</a>
+                                                                                <li class="tocify-item level-2" data-unique="user-management-POSTapi-v1-users--userId--restore">
+                                <a href="#user-management-POSTapi-v1-users--userId--restore">Restore soft-deleted user</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="user-management-POSTapi-v1-users--user_id--roles">
                                 <a href="#user-management-POSTapi-v1-users--user_id--roles">Assign user role</a>
@@ -198,7 +238,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: October 19, 2025</li>
+        <li>Last updated: October 24, 2025</li>
     </ul>
 </div>
 
@@ -1091,7 +1131,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 access-control-allow-origin: *
-set-cookie: XSRF-TOKEN=eyJpdiI6ImRlRjk0MVNRY09ZV0lhNy9vQzdGSGc9PSIsInZhbHVlIjoid3NTTkdseTFXNFQvUmJ4dkJRazVPUEQ0aUFVQ0hXQWZWa3BZVURrU0VpdXVsODNxSXBkZCtnQ3UrZ0l4TndHV2xsUGdBMjM0SE1UZ0dLN1dPQ1VEVHk2SXk2M3VSK1A5VkFmMEJ4dnF1QnozVit2QUdvaEcvazNGWlJiWHBwazUiLCJtYWMiOiJkMzE2Zjc4YjM2ODAzYjNiZWNiMzBkODVmOWJhMmMyM2JjMjNhODkyZGQ1MDQ3ZjBmODAxMTMzMmQxYzAzOWRhIiwidGFnIjoiIn0%3D; expires=Sun, 19 Oct 2025 09:16:22 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6IlhzdEh3cEVpMWI1V2pPb0s4Z0U1b3c9PSIsInZhbHVlIjoiNE1xTXovVFp0bTVacTRXbG94TGJTdStCOXhhaGQwMzFhWklHR1VNMFU5OHh6UFc1cStBUWdDS1ppQW45WE5uZTJQNlFLN1hUV1RFVEJtbVJqVWxLQ3B0d3BuMERFY1hiMjNjR1oyK1p3bHdFWEIvL2puQlhQSDBZVVdyVDN1ZTYiLCJtYWMiOiIwOTQ1ZTQ4OWY4YzZjMGI0YzBiNzAyMDUxZTA3Y2MxZjg2NTBmMDRhMzdhZDEwZGY2YmEyMjdkZDk5ZGNmOWY5IiwidGFnIjoiIn0%3D; expires=Sun, 19 Oct 2025 09:16:22 GMT; Max-Age=7200; path=/; httponly; samesite=lax
+set-cookie: XSRF-TOKEN=eyJpdiI6IklKbTZNU0lXdHFhcFhhOUl6WDkwQnc9PSIsInZhbHVlIjoiT3Vvb1RPMzNibWE3bkRCR09yZ1BxS2tVQWwrTFhURkF2NWJjcHJ4dUoxZmJIeHAzcVJJQ2hoWjFYWEVPTTVuS0QxNzRBcytZTWUyV1U1MW13dis0TE5DU0pCczcvbVhEcVFWQWEvZmhhRnhFU2Z3anNOLzlVWlZvbVdTT2ZuekIiLCJtYWMiOiI2MmM0NWU0M2M1NmNhMjVlMTQ0N2NhM2FlOWE2NjNkOGIyN2U3YzEwMTQ5OGFkODI5ZTllNzcxNjYyNmQ4YzE4IiwidGFnIjoiIn0%3D; expires=Fri, 24 Oct 2025 09:20:16 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6InlSd2V4UDZoQjgzdFZaRjdLZVo0clE9PSIsInZhbHVlIjoiVE5HRWNHT2VpaWRjanFnTEpmOSs4ODZzRy9reHJaci85bTRSZGFha1VrYk15RkNnN2lwS0FERmp4YWozS3d6OHJHRHg2REord096L3psZnFYTkpQb3crbXl2QlJtcTJ6M0l6aCsrQmxkdVRVNHNJY1ZWVnJOVVJVU1Y3T1JXTmciLCJtYWMiOiI3MDZiY2E2N2U4NTJhZjg5YTAzYzcxNjRlZTQ5M2EwM2VhMjliNmRlZDBjZmQ5OTE0NWUyYzNkOGJjMmExOGVmIiwidGFnIjoiIn0%3D; expires=Fri, 24 Oct 2025 09:20:16 GMT; Max-Age=7200; path=/; httponly; samesite=lax
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -1790,7 +1830,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 access-control-allow-origin: *
-set-cookie: XSRF-TOKEN=eyJpdiI6IjJSUnhDYVJJZEpsTUJmL2FMbUEwRVE9PSIsInZhbHVlIjoib0dUWjZFQ1RvQ2g4QURKL3F2MHJjNVh1WjJkRFYxRVk0bzZCYkh2Ym1MdG4yZDM3WllhOTE4M056b1lxT3B3TUlKZWpzeS9WN2ZQK25pQlRjTXVXVytHSVp0VWFRTzV1Mm9IUkpBY212RDAxcmhtenpCTC9ZSHA3aGE1UDFINDYiLCJtYWMiOiJhZDIyYThlNzA5MTNkZTA3ZjhmYWU1NDc2OGVhN2IxNmNkNTlmMTBlNjAyNDNkNjdkMDFlNGJjMzgzNDY4NDcyIiwidGFnIjoiIn0%3D; expires=Sun, 19 Oct 2025 09:16:22 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6IkNQZFlRME5ubXg5cFBla0xxOUd2TFE9PSIsInZhbHVlIjoiUmxHSXZHL0xpajFxNXp1NzNZMHd5ellabFloMTFUdHBGVDlXTXo2YlJQMWVEK01zWjlTUDcxYmtZaExTMU93WDQzaHovOW8rcy9Odm05VDlOYndzeWFmUHg4eHVLTUJHQ1V6Z2x3Z3VlY3lSZ3dDRDNlTFFzdjl0cktaNVVlTzYiLCJtYWMiOiJmNjMzNmM2NDcyY2UyY2ZhZThiOWFmZGFhNDU0MjJhMWExYjE3ZWUzYjJkZWY1M2MwZWQ5NmVjNjEyZDliZWNiIiwidGFnIjoiIn0%3D; expires=Sun, 19 Oct 2025 09:16:22 GMT; Max-Age=7200; path=/; httponly; samesite=lax
+set-cookie: XSRF-TOKEN=eyJpdiI6ImRFOFFrbnRISjJUczVSWG5HOHpCeHc9PSIsInZhbHVlIjoiTG9kUlhrNEJzc2lmcDVZbFVDUmROVmFwZjFMeEZzWHNzUFRtT21IMkZEczZKQ3lWdEV5ZW5pc3RqTURNNE1sNzZqSERZSms5WlJ1NlkxMW1WZ25uZkpYQ00vai9nTWQrZlQyNkJCUG1JVTQxc0xrMGpxK3BucVFoWmpiVDhkRkciLCJtYWMiOiI2ODQ4MDgyNDI2ODUxODAxZDFjM2MyMzY4OThjMTkyNGRiNjc0ZWI3NjdiOGI0MWMxZDkzNTRkNjI2ZmJhZmEyIiwidGFnIjoiIn0%3D; expires=Fri, 24 Oct 2025 09:20:16 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6InloMkVZZlpPTzNEdmZMVGwwODYwaXc9PSIsInZhbHVlIjoic2c2QjA4RHQwSm5MeldUalhjVWdXUmRZai9rNnBycm9OVzJtT3BhcmdaK1ZGNkhUdDZ6bjdpZzlYdUc0NHVwVnFhWlB3VmRNTWpWdVQzblZFOTV1UVhCbUE5cURCYllTcmx6R1ZsdVJObEh5R1VjenVlekRiSmR4bVZWZlZFU1MiLCJtYWMiOiIzY2Q0MTdkNDY3MzU1YTRiYzdmMDQ0MzRiZjExNzUzMjU0ODZhNWMwMDNiYzMxYzM5ODUzYzVlYmNhMjM4M2NjIiwidGFnIjoiIn0%3D; expires=Fri, 24 Oct 2025 09:20:16 GMT; Max-Age=7200; path=/; httponly; samesite=lax
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -1915,7 +1955,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 access-control-allow-origin: *
-set-cookie: XSRF-TOKEN=eyJpdiI6IkxkOE5PZ1lkaG9UUkZpSEViaDRaNUE9PSIsInZhbHVlIjoiUWkwVy9aR3FSUURjZ3JoZGk3dnJkN25DU1JtVjJpNWlWZzAxUXkxMUJ6ODNYZk5XYjFKU2VrOGdOWjkvTUczN3VQM1dCck44cmJ2dUMrSzd3VnlnMVd2M3VHYUhBRk54WnQ1bUJFNUdnRnBISnNJQjZXSzVoUTJiNjl2SGRhM0IiLCJtYWMiOiIwMmMyMzc1MzUzOTQyMGE2ZGVjMWI1N2QwOGVmYjNjZDBlMzE3NGM1ODVjZjlkYzZmNzczODVjZDYzNGZlNmU0IiwidGFnIjoiIn0%3D; expires=Sun, 19 Oct 2025 09:16:22 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6InZTTEQ5WWtSaVRaOC9rVU40ZVlXWlE9PSIsInZhbHVlIjoidk83aGkyQTJsZk5NWUJGTzZ6OFEyWU83d3kzU0c3VzB1QkQ2NmFQblk4THp2SXZiMGFCbnJxbkRHYjBsRjIyMGdMOER0eXZZUTJGMmpKMWZwL2RqRUlhaDgvRVZLZGpGQkNObVE3dTZwK1FWTWVBZE9Ia0c3TEhmb3p2Ukc3cG4iLCJtYWMiOiI3MzM4MTM5N2NmYWFhM2Q0YWVkZTA5YmEzN2UzNGE2NWViODFiZWM5OGQzMWI4MTI3N2Q4MDM4ODViODM3ZDkyIiwidGFnIjoiIn0%3D; expires=Sun, 19 Oct 2025 09:16:22 GMT; Max-Age=7200; path=/; httponly; samesite=lax
+set-cookie: XSRF-TOKEN=eyJpdiI6Ijh3RlU3bXpLd05Db1poOEVKRjZtdXc9PSIsInZhbHVlIjoiOFp0QzBRcWFTOXZQMVYyQmU2Nk9KUVM1MG9MZ2daRVFHK2RhSURBK1VWWXJMdVRERk0yUVZyaFF1M0xOZG05U2p6TVRJekdRUVlVZGlTOEJNcXd1V21BdFRkMFBvcVp3QmV3SVRYZXBGTHpRQzRqVlZ4RnpkbE9YOTZCUWJIajAiLCJtYWMiOiJiN2JjMDQ4NTVjZmM1Yzk0YmY0MzU1ZGNjMzhlNTQxYzMwZDBkZDBiMjJkMGQ1NmYwODJkZDg1YzUyNzMwY2M3IiwidGFnIjoiIn0%3D; expires=Fri, 24 Oct 2025 09:20:16 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6ImdwVnNZcWpxeWt5aWxFdEh2QjRWQlE9PSIsInZhbHVlIjoiRFVVdTI4RUkza255WkEyeUsvK3U2SGdhNmhUbitFcnhkYkhsOFAvVXgrTW54SGNRQ1Nka2VZaFhoQ0Vub1Qrb210U1VYYXY1UzZ6RC9BWTBvNS9FRG9DY21OUzhyS3c2YUxQNmhod1YrK3ZtZ2lxNVkzRVdmUkp2QXpxOVJYNVciLCJtYWMiOiI2ODc0NzhiMGMwOTMyZTMyMTA5NThlZGYyMGNmZGY1M2QyYjg3NjllOGM5NGIyOTg1ZTk0Zjc5YTU2YzViYzYwIiwidGFnIjoiIn0%3D; expires=Fri, 24 Oct 2025 09:20:16 GMT; Max-Age=7200; path=/; httponly; samesite=lax
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -2040,7 +2080,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 access-control-allow-origin: *
-set-cookie: XSRF-TOKEN=eyJpdiI6IlVsVHZnbUJTS1VzcndET0ZiZ0trUEE9PSIsInZhbHVlIjoiWlZFYkZSUDZvL2szUFcrSzIxL3NXa2RrV3NGSWE3OG1EWEZ2NjhZTXdNVHpSVDNZTnkwSFd5ZnhRK2hLK1NHdWpzODVhWTFVbGRKZjVFSStVME43dk5qcGlVQytjdlVtamUyeTlkbFJhWloyRloxWi9vakFHUnM3VUdwczh5WEoiLCJtYWMiOiJmZDk0NzBlMjQ1OThkNTRmN2UxZDc5NzQzZDJiZDJhNzY2Mzc4NmZjMTFlYTk4Yzc4ZDdmZmQ4NDFlNDQ0OGQwIiwidGFnIjoiIn0%3D; expires=Sun, 19 Oct 2025 09:16:22 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6IjRqemhPaTZualQxOHNjWGo2bklVQVE9PSIsInZhbHVlIjoic2FYTUF0a1FIdGRrTEs0b1VadUZ0VEFseEZPdDhIaUFVaExUc25mR2hrakdoODQ3R3QwZGZlYUZZa2lrT0Q1ZlA1MjJ0MUhadnN3ZlhPOWJ3aVBmRGZ6T0ZIRHZYUzRJbmxtSEJvbTBVMnVyM0NhMEdOL3I3aTl2alNqUzBkNjAiLCJtYWMiOiJhNjk1NmExNzU3ZmQ2YmY1YTA0MzI4YWE5ZGE1MjFjYzcwOGRlY2VhYzliZGYzNWVhNzIzZWY2N2U0OTY0N2QxIiwidGFnIjoiIn0%3D; expires=Sun, 19 Oct 2025 09:16:22 GMT; Max-Age=7200; path=/; httponly; samesite=lax
+set-cookie: XSRF-TOKEN=eyJpdiI6Ik0wZXlsWW9TUlpMUU5ObUFjV3FsalE9PSIsInZhbHVlIjoiMFhUL1ZrY1ZiZjFzbmVBWm4zWlQvNFBBU3lvdnZoak02aTlVSE1TMGs0UDlNakhUbmxyUDVpd2l2eVQzTThNSDEwcXpQWmxRaFM1ZStZaU1kWWZ1cDdKSzlldzM2MzA1ZmVoZURreVFMMHdTNGY4MmpJS2lxWmw5REpwMEdVV2UiLCJtYWMiOiI2NzJkN2IxNTZiMmMxOWYxZDEyOGVhYTYxMjllNGJjNWE5YWE4ZmNjYjQ5MDY2MGU5Zjk5MTVlZWZmMTZkNWU4IiwidGFnIjoiIn0%3D; expires=Fri, 24 Oct 2025 09:20:16 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6IjRZVFRqNDkzM2hOYjE1b2N3T2psMGc9PSIsInZhbHVlIjoiZVdoYjZySXZyQ29aaGNueE54QkhPcVBxZzcyZkxydjJLeVR5WHdzWVZBbXNxQTdTSU1ITkxGTk0yWGJFbDdLVTVpdjZMZHpmWlFGWStIVzhzMHhHVWt3eDRJU1BnRjNxemhxWTgyejEwWDFJZlRpbWZEUjUzbWhoWUxIRWlwaEsiLCJtYWMiOiJkMWY0NjE0YmM3NDEyZTU1YWIwMDFiZjdmY2I2NGU5NTlhOGUwNTJkYWFhNDhmYzM1ZmZlODQxOTA5MDYyZjhlIiwidGFnIjoiIn0%3D; expires=Fri, 24 Oct 2025 09:20:16 GMT; Max-Age=7200; path=/; httponly; samesite=lax
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -2348,6 +2388,1649 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>application/json</code></p>
             </div>
                         </form>
+
+                <h1 id="project-management">Project Management</h1>
+
+    <p>APIs for managing projects</p>
+
+                                <h2 id="project-management-GETapi-v1-projects">List projects</h2>
+
+<p>
+</p>
+
+<p>Get a paginated list of all projects with optional filtering.</p>
+
+<span id="example-requests-GETapi-v1-projects">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/v1/projects?status=in_progress&amp;manager_id=3&amp;start_date_from=2024-01-01&amp;start_date_to=2024-12-31&amp;per_page=10" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/projects"
+);
+
+const params = {
+    "status": "in_progress",
+    "manager_id": "3",
+    "start_date_from": "2024-01-01",
+    "start_date_to": "2024-12-31",
+    "per_page": "10",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-projects">
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;New Website&quot;,
+            &quot;description&quot;: &quot;Build company website&quot;,
+            &quot;status&quot;: &quot;in_progress&quot;,
+            &quot;start_date&quot;: &quot;2024-01-01&quot;,
+            &quot;due_date&quot;: &quot;2024-06-30&quot;
+        }
+    ],
+    &quot;links&quot;: {},
+    &quot;meta&quot;: {}
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to retrieve projects: Database connection error&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-projects" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-projects"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-projects"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-projects" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-projects">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-projects" data-method="GET"
+      data-path="api/v1/projects"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-projects', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-projects"
+                    onclick="tryItOut('GETapi-v1-projects');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-projects"
+                    onclick="cancelTryOut('GETapi-v1-projects');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-projects"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/projects</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-projects"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-projects"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="GETapi-v1-projects"
+               value="in_progress"
+               data-component="query">
+    <br>
+<p>Filter by project status. Example: <code>in_progress</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>manager_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="manager_id"                data-endpoint="GETapi-v1-projects"
+               value="3"
+               data-component="query">
+    <br>
+<p>Filter by manager ID. Example: <code>3</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>start_date_from</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="start_date_from"                data-endpoint="GETapi-v1-projects"
+               value="2024-01-01"
+               data-component="query">
+    <br>
+<p>date Filter by start date (from). Example: <code>2024-01-01</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>start_date_to</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="start_date_to"                data-endpoint="GETapi-v1-projects"
+               value="2024-12-31"
+               data-component="query">
+    <br>
+<p>date Filter by start date (to). Example: <code>2024-12-31</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-v1-projects"
+               value="10"
+               data-component="query">
+    <br>
+<p>Number of items per page. Default is 15. Example: <code>10</code></p>
+            </div>
+                </form>
+
+                    <h2 id="project-management-GETapi-v1-projects--project_id-">Get project</h2>
+
+<p>
+</p>
+
+<p>Get details of a specific project by ID, including its manager and assigned teams.</p>
+
+<span id="example-requests-GETapi-v1-projects--project_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/v1/projects/16" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/projects/16"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-projects--project_id-">
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;New Website&quot;,
+        &quot;description&quot;: &quot;Build company website&quot;,
+        &quot;status&quot;: &quot;in_progress&quot;,
+        &quot;manager&quot;: {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;Jane Manager&quot;
+        },
+        &quot;teams&quot;: []
+    },
+    &quot;message&quot;: &quot;Project details retrieved successfully.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Project not found&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to retrieve project details: Internal server error&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-projects--project_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-projects--project_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-projects--project_id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-projects--project_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-projects--project_id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-projects--project_id-" data-method="GET"
+      data-path="api/v1/projects/{project_id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-projects--project_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-projects--project_id-"
+                    onclick="tryItOut('GETapi-v1-projects--project_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-projects--project_id-"
+                    onclick="cancelTryOut('GETapi-v1-projects--project_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-projects--project_id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/projects/{project_id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-projects--project_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-projects--project_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>project_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="project_id"                data-endpoint="GETapi-v1-projects--project_id-"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the project. Example: <code>16</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="project-management-POSTapi-v1-projects">Create project</h2>
+
+<p>
+</p>
+
+<p>Create a new project with the provided details.</p>
+
+<span id="example-requests-POSTapi-v1-projects">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/v1/projects" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"New Website\",
+    \"description\": \"Build a responsive company website\",
+    \"manager_id\": 3,
+    \"status\": \"in_progress\",
+    \"start_date\": \"2024-01-01\",
+    \"due_date\": \"2024-06-30\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/projects"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "New Website",
+    "description": "Build a responsive company website",
+    "manager_id": 3,
+    "status": "in_progress",
+    "start_date": "2024-01-01",
+    "due_date": "2024-06-30"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-projects">
+            <blockquote>
+            <p>Example response (201, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;New Website&quot;,
+        &quot;description&quot;: &quot;Build a responsive company website&quot;,
+        &quot;manager_id&quot;: 3,
+        &quot;status&quot;: &quot;in_progress&quot;,
+        &quot;start_date&quot;: &quot;2024-01-01&quot;,
+        &quot;due_date&quot;: &quot;2024-06-30&quot;,
+        &quot;created_at&quot;: &quot;2024-01-01T12:00:00Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-01-01T12:00:00Z&quot;
+    },
+    &quot;message&quot;: &quot;Project created successfully.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, unqualified manager):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;The specified manager is not qualified to manage projects.&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, validation error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The given data was invalid.&quot;,
+    &quot;errors&quot;: {
+        &quot;name&quot;: [
+            &quot;The name has already been taken.&quot;
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to create project: Internal server error&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-v1-projects" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-projects"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-projects"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-projects" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-projects">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-v1-projects" data-method="POST"
+      data-path="api/v1/projects"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-projects', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-projects"
+                    onclick="tryItOut('POSTapi-v1-projects');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-projects"
+                    onclick="cancelTryOut('POSTapi-v1-projects');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-projects"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/projects</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-projects"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-v1-projects"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="POSTapi-v1-projects"
+               value="New Website"
+               data-component="body">
+    <br>
+<p>Name of the project. Must be unique. Example: <code>New Website</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="description"                data-endpoint="POSTapi-v1-projects"
+               value="Build a responsive company website"
+               data-component="body">
+    <br>
+<p>Description of the project. Example: <code>Build a responsive company website</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>manager_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="manager_id"                data-endpoint="POSTapi-v1-projects"
+               value="3"
+               data-component="body">
+    <br>
+<p>The ID of the project manager. Must be a user with admin or project manager role. Example: <code>3</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="POSTapi-v1-projects"
+               value="in_progress"
+               data-component="body">
+    <br>
+<p>Current status of the project. Allowed values: not started, in progress, completed, on hold. Example: <code>in_progress</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>start_date</code></b>&nbsp;&nbsp;
+<small>date</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="start_date"                data-endpoint="POSTapi-v1-projects"
+               value="2024-01-01"
+               data-component="body">
+    <br>
+<p>Project start date. Example: <code>2024-01-01</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>due_date</code></b>&nbsp;&nbsp;
+<small>date</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="due_date"                data-endpoint="POSTapi-v1-projects"
+               value="2024-06-30"
+               data-component="body">
+    <br>
+<p>Project due date. Must be on or after start_date. Example: <code>2024-06-30</code></p>
+        </div>
+        </form>
+
+                    <h2 id="project-management-PUTapi-v1-projects--project_id-">Update project</h2>
+
+<p>
+</p>
+
+<p>Update an existing project's details.</p>
+
+<span id="example-requests-PUTapi-v1-projects--project_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost/api/v1/projects/16" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"Updated Website Project\",
+    \"description\": \"Updated project description\",
+    \"manager_id\": 4,
+    \"status\": \"completed\",
+    \"start_date\": \"2024-01-15\",
+    \"due_date\": \"2024-07-31\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/projects/16"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "Updated Website Project",
+    "description": "Updated project description",
+    "manager_id": 4,
+    "status": "completed",
+    "start_date": "2024-01-15",
+    "due_date": "2024-07-31"
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-v1-projects--project_id-">
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Updated Website Project&quot;,
+        &quot;description&quot;: &quot;Updated project description&quot;,
+        &quot;manager_id&quot;: 4,
+        &quot;status&quot;: &quot;completed&quot;,
+        &quot;start_date&quot;: &quot;2024-01-15&quot;,
+        &quot;due_date&quot;: &quot;2024-07-31&quot;,
+        &quot;created_at&quot;: &quot;2024-01-01T12:00:00Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-02-01T12:00:00Z&quot;
+    },
+    &quot;message&quot;: &quot;Project updated successfully.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, unqualified manager):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;The specified manager is not qualified to manage projects.&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Project not found&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, validation error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The given data was invalid.&quot;,
+    &quot;errors&quot;: {
+        &quot;name&quot;: [
+            &quot;The name has already been taken.&quot;
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to update project: Internal server error&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PUTapi-v1-projects--project_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-v1-projects--project_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-v1-projects--project_id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-v1-projects--project_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-v1-projects--project_id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-v1-projects--project_id-" data-method="PUT"
+      data-path="api/v1/projects/{project_id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-v1-projects--project_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-v1-projects--project_id-"
+                    onclick="tryItOut('PUTapi-v1-projects--project_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-v1-projects--project_id-"
+                    onclick="cancelTryOut('PUTapi-v1-projects--project_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-v1-projects--project_id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/v1/projects/{project_id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-v1-projects--project_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-v1-projects--project_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>project_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="project_id"                data-endpoint="PUTapi-v1-projects--project_id-"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the project. Example: <code>16</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="PUTapi-v1-projects--project_id-"
+               value="Updated Website Project"
+               data-component="body">
+    <br>
+<p>Name of the project. Must be unique. Example: <code>Updated Website Project</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="description"                data-endpoint="PUTapi-v1-projects--project_id-"
+               value="Updated project description"
+               data-component="body">
+    <br>
+<p>Description of the project. Example: <code>Updated project description</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>manager_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="manager_id"                data-endpoint="PUTapi-v1-projects--project_id-"
+               value="4"
+               data-component="body">
+    <br>
+<p>The ID of the project manager. Must be a user with admin or project manager role. Example: <code>4</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="PUTapi-v1-projects--project_id-"
+               value="completed"
+               data-component="body">
+    <br>
+<p>Current status of the project. Allowed values: not started, in progress, completed, on hold. Example: <code>completed</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>start_date</code></b>&nbsp;&nbsp;
+<small>date</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="start_date"                data-endpoint="PUTapi-v1-projects--project_id-"
+               value="2024-01-15"
+               data-component="body">
+    <br>
+<p>Project start date. Example: <code>2024-01-15</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>due_date</code></b>&nbsp;&nbsp;
+<small>date</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="due_date"                data-endpoint="PUTapi-v1-projects--project_id-"
+               value="2024-07-31"
+               data-component="body">
+    <br>
+<p>Project due date. Must be on or after start_date. Example: <code>2024-07-31</code></p>
+        </div>
+        </form>
+
+                    <h2 id="project-management-DELETEapi-v1-projects--project_id-">Soft delete project</h2>
+
+<p>
+</p>
+
+<p>Soft delete a project from the system.</p>
+
+<span id="example-requests-DELETEapi-v1-projects--project_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/v1/projects/16" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/projects/16"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-v1-projects--project_id-">
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Project deleted successfully.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Project not found&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to delete project: Internal server error&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEapi-v1-projects--project_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-v1-projects--project_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-v1-projects--project_id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-v1-projects--project_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-v1-projects--project_id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-v1-projects--project_id-" data-method="DELETE"
+      data-path="api/v1/projects/{project_id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-v1-projects--project_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-v1-projects--project_id-"
+                    onclick="tryItOut('DELETEapi-v1-projects--project_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-v1-projects--project_id-"
+                    onclick="cancelTryOut('DELETEapi-v1-projects--project_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-v1-projects--project_id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/v1/projects/{project_id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-v1-projects--project_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-v1-projects--project_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>project_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="project_id"                data-endpoint="DELETEapi-v1-projects--project_id-"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the project. Example: <code>16</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="project-management-POSTapi-v1-projects--projectId--restore">Restore soft-deleted project</h2>
+
+<p>
+</p>
+
+<p>Restore a previously deleted project.</p>
+
+<span id="example-requests-POSTapi-v1-projects--projectId--restore">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/v1/projects/16/restore" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/projects/16/restore"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-projects--projectId--restore">
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;New Website&quot;,
+        &quot;description&quot;: &quot;Build company website&quot;,
+        &quot;status&quot;: &quot;in_progress&quot;
+    },
+    &quot;message&quot;: &quot;Project restored successfully.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Project not found&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to restore project: Internal server error&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-v1-projects--projectId--restore" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-projects--projectId--restore"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-projects--projectId--restore"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-projects--projectId--restore" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-projects--projectId--restore">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-v1-projects--projectId--restore" data-method="POST"
+      data-path="api/v1/projects/{projectId}/restore"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-projects--projectId--restore', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-projects--projectId--restore"
+                    onclick="tryItOut('POSTapi-v1-projects--projectId--restore');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-projects--projectId--restore"
+                    onclick="cancelTryOut('POSTapi-v1-projects--projectId--restore');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-projects--projectId--restore"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/projects/{projectId}/restore</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-projects--projectId--restore"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-v1-projects--projectId--restore"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>projectId</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="projectId"                data-endpoint="POSTapi-v1-projects--projectId--restore"
+               value="16"
+               data-component="url">
+    <br>
+<p>Example: <code>16</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="project-management-POSTapi-v1-projects--project_id--manager">Set project manager</h2>
+
+<p>
+</p>
+
+<p>Assign or change the project manager for a specific project.</p>
+
+<span id="example-requests-POSTapi-v1-projects--project_id--manager">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/v1/projects/16/manager" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"manager_id\": 5
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/projects/16/manager"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "manager_id": 5
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-projects--project_id--manager">
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;New Website&quot;,
+        &quot;description&quot;: &quot;Build company website&quot;,
+        &quot;manager_id&quot;: 5,
+        &quot;status&quot;: &quot;in_progress&quot;
+    },
+    &quot;message&quot;: &quot;Project manager assigned successfully.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, unqualified manager):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;The specified manager is not qualified to manage projects.&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Project not found&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, validation error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The given data was invalid.&quot;,
+    &quot;errors&quot;: {
+        &quot;manager_id&quot;: [
+            &quot;The selected manager id is invalid.&quot;
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to assign project manager: Internal server error&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-v1-projects--project_id--manager" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-projects--project_id--manager"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-projects--project_id--manager"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-projects--project_id--manager" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-projects--project_id--manager">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-v1-projects--project_id--manager" data-method="POST"
+      data-path="api/v1/projects/{project_id}/manager"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-projects--project_id--manager', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-projects--project_id--manager"
+                    onclick="tryItOut('POSTapi-v1-projects--project_id--manager');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-projects--project_id--manager"
+                    onclick="cancelTryOut('POSTapi-v1-projects--project_id--manager');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-projects--project_id--manager"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/projects/{project_id}/manager</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-projects--project_id--manager"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-v1-projects--project_id--manager"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>project_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="project_id"                data-endpoint="POSTapi-v1-projects--project_id--manager"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the project. Example: <code>16</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>manager_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="manager_id"                data-endpoint="POSTapi-v1-projects--project_id--manager"
+               value="5"
+               data-component="body">
+    <br>
+<p>The ID of the user to assign as project manager. Must be a user with admin or project manager role. Example: <code>5</code></p>
+        </div>
+        </form>
+
+                    <h2 id="project-management-POSTapi-v1-projects--project_id--teams">Assign teams to project</h2>
+
+<p>
+</p>
+
+<p>Assign multiple teams to a project in a single request.</p>
+
+<span id="example-requests-POSTapi-v1-projects--project_id--teams">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/v1/projects/16/teams" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"team_ids\": [
+        1,
+        3,
+        5
+    ]
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/projects/16/teams"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "team_ids": [
+        1,
+        3,
+        5
+    ]
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-projects--project_id--teams">
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;project&quot;: {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;New Website&quot;,
+            &quot;teams&quot;: [
+                {
+                    &quot;id&quot;: 1,
+                    &quot;name&quot;: &quot;Development Team&quot;
+                },
+                {
+                    &quot;id&quot;: 3,
+                    &quot;name&quot;: &quot;QA Team&quot;
+                }
+            ]
+        },
+        &quot;invalid_team_ids&quot;: []
+    },
+    &quot;message&quot;: &quot;Teams assigned to project successfully.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, success with invalid teams):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;project&quot;: {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;New Website&quot;,
+            &quot;teams&quot;: [
+                {
+                    &quot;id&quot;: 1,
+                    &quot;name&quot;: &quot;Development Team&quot;
+                }
+            ]
+        },
+        &quot;invalid_team_ids&quot;: [
+            99
+        ]
+    },
+    &quot;message&quot;: &quot;Teams assigned to project successfully.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Project not found&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, validation error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The given data was invalid.&quot;,
+    &quot;errors&quot;: {
+        &quot;team_ids.0&quot;: [
+            &quot;The selected team_ids.0 is invalid.&quot;
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to assign teams to project: Internal server error&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-v1-projects--project_id--teams" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-projects--project_id--teams"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-projects--project_id--teams"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-projects--project_id--teams" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-projects--project_id--teams">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-v1-projects--project_id--teams" data-method="POST"
+      data-path="api/v1/projects/{project_id}/teams"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-projects--project_id--teams', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-projects--project_id--teams"
+                    onclick="tryItOut('POSTapi-v1-projects--project_id--teams');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-projects--project_id--teams"
+                    onclick="cancelTryOut('POSTapi-v1-projects--project_id--teams');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-projects--project_id--teams"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/projects/{project_id}/teams</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-projects--project_id--teams"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-v1-projects--project_id--teams"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>project_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="project_id"                data-endpoint="POSTapi-v1-projects--project_id--teams"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the project. Example: <code>16</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>team_ids</code></b>&nbsp;&nbsp;
+<small>integer[]</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="team_ids[0]"                data-endpoint="POSTapi-v1-projects--project_id--teams"
+               data-component="body">
+        <input type="number" style="display: none"
+               name="team_ids[1]"                data-endpoint="POSTapi-v1-projects--project_id--teams"
+               data-component="body">
+    <br>
+<p>Array of team IDs to assign to the project.</p>
+        </div>
+        </form>
 
                 <h1 id="team-management">Team Management</h1>
 
@@ -2726,14 +4409,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="team-management-GETapi-v1-teams--team-">Get team</h2>
+                    <h2 id="team-management-GETapi-v1-teams--team_id-">Get team</h2>
 
 <p>
 </p>
 
 <p>Get details of a specific team by ID, including its members.</p>
 
-<span id="example-requests-GETapi-v1-teams--team-">
+<span id="example-requests-GETapi-v1-teams--team_id-">
 <blockquote>Example request:</blockquote>
 
 
@@ -2761,7 +4444,7 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-GETapi-v1-teams--team-">
+<span id="example-responses-GETapi-v1-teams--team_id-">
             <blockquote>
             <p>Example response (200, success):</p>
         </blockquote>
@@ -2799,43 +4482,43 @@ fetch(url, {
 }</code>
  </pre>
     </span>
-<span id="execution-results-GETapi-v1-teams--team-" hidden>
+<span id="execution-results-GETapi-v1-teams--team_id-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETapi-v1-teams--team-"></span>:
+                id="execution-response-status-GETapi-v1-teams--team_id-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-v1-teams--team-"
+    <pre class="json"><code id="execution-response-content-GETapi-v1-teams--team_id-"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-GETapi-v1-teams--team-" hidden>
+<span id="execution-error-GETapi-v1-teams--team_id-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-v1-teams--team-">
+    <pre><code id="execution-error-message-GETapi-v1-teams--team_id-">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-GETapi-v1-teams--team-" data-method="GET"
-      data-path="api/v1/teams/{team}"
+<form id="form-GETapi-v1-teams--team_id-" data-method="GET"
+      data-path="api/v1/teams/{team_id}"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-teams--team-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-teams--team_id-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-v1-teams--team-"
-                    onclick="tryItOut('GETapi-v1-teams--team-');">Try it out ⚡
+                    id="btn-tryout-GETapi-v1-teams--team_id-"
+                    onclick="tryItOut('GETapi-v1-teams--team_id-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-v1-teams--team-"
-                    onclick="cancelTryOut('GETapi-v1-teams--team-');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-v1-teams--team_id-"
+                    onclick="cancelTryOut('GETapi-v1-teams--team_id-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-v1-teams--team-"
+                    id="btn-executetryout-GETapi-v1-teams--team_id-"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -2843,7 +4526,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>api/v1/teams/{team}</code></b>
+            <b><code>api/v1/teams/{team_id}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -2851,7 +4534,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-v1-teams--team-"
+                              name="Content-Type"                data-endpoint="GETapi-v1-teams--team_id-"
                value="application/json"
                data-component="header">
     <br>
@@ -2862,7 +4545,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-v1-teams--team-"
+                              name="Accept"                data-endpoint="GETapi-v1-teams--team_id-"
                value="application/json"
                data-component="header">
     <br>
@@ -2870,15 +4553,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>team</code></b>&nbsp;&nbsp;
+                <b style="line-height: 2;"><code>team_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="team"                data-endpoint="GETapi-v1-teams--team-"
+               step="any"               name="team_id"                data-endpoint="GETapi-v1-teams--team_id-"
                value="16"
                data-component="url">
     <br>
-<p>The team. Example: <code>16</code></p>
+<p>The ID of the team. Example: <code>16</code></p>
             </div>
                     </form>
 
@@ -3684,20 +5367,20 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="team-management-DELETEapi-v1-teams--team_id--members--user-">Remove member from team</h2>
+                    <h2 id="team-management-DELETEapi-v1-teams--team_id--members--user_id-">Remove member from team</h2>
 
 <p>
 </p>
 
 <p>Remove a single user from a team.</p>
 
-<span id="example-requests-DELETEapi-v1-teams--team_id--members--user-">
+<span id="example-requests-DELETEapi-v1-teams--team_id--members--user_id-">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/v1/teams/16/members/architecto" \
+    "http://localhost/api/v1/teams/16/members/16" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -3708,7 +5391,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/teams/16/members/architecto"
+    "http://localhost/api/v1/teams/16/members/16"
 );
 
 const headers = {
@@ -3728,7 +5411,7 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-DELETEapi-v1-teams--team_id--members--user-">
+<span id="example-responses-DELETEapi-v1-teams--team_id--members--user_id-">
             <blockquote>
             <p>Example response (200, success):</p>
         </blockquote>
@@ -3787,43 +5470,43 @@ fetch(url, {
 }</code>
  </pre>
     </span>
-<span id="execution-results-DELETEapi-v1-teams--team_id--members--user-" hidden>
+<span id="execution-results-DELETEapi-v1-teams--team_id--members--user_id-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-DELETEapi-v1-teams--team_id--members--user-"></span>:
+                id="execution-response-status-DELETEapi-v1-teams--team_id--members--user_id-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-DELETEapi-v1-teams--team_id--members--user-"
+    <pre class="json"><code id="execution-response-content-DELETEapi-v1-teams--team_id--members--user_id-"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-DELETEapi-v1-teams--team_id--members--user-" hidden>
+<span id="execution-error-DELETEapi-v1-teams--team_id--members--user_id-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-DELETEapi-v1-teams--team_id--members--user-">
+    <pre><code id="execution-error-message-DELETEapi-v1-teams--team_id--members--user_id-">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-DELETEapi-v1-teams--team_id--members--user-" data-method="DELETE"
-      data-path="api/v1/teams/{team_id}/members/{user}"
+<form id="form-DELETEapi-v1-teams--team_id--members--user_id-" data-method="DELETE"
+      data-path="api/v1/teams/{team_id}/members/{user_id}"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-v1-teams--team_id--members--user-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-v1-teams--team_id--members--user_id-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-DELETEapi-v1-teams--team_id--members--user-"
-                    onclick="tryItOut('DELETEapi-v1-teams--team_id--members--user-');">Try it out ⚡
+                    id="btn-tryout-DELETEapi-v1-teams--team_id--members--user_id-"
+                    onclick="tryItOut('DELETEapi-v1-teams--team_id--members--user_id-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-DELETEapi-v1-teams--team_id--members--user-"
-                    onclick="cancelTryOut('DELETEapi-v1-teams--team_id--members--user-');" hidden>Cancel 🛑
+                    id="btn-canceltryout-DELETEapi-v1-teams--team_id--members--user_id-"
+                    onclick="cancelTryOut('DELETEapi-v1-teams--team_id--members--user_id-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-DELETEapi-v1-teams--team_id--members--user-"
+                    id="btn-executetryout-DELETEapi-v1-teams--team_id--members--user_id-"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -3831,7 +5514,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-red">DELETE</small>
-            <b><code>api/v1/teams/{team_id}/members/{user}</code></b>
+            <b><code>api/v1/teams/{team_id}/members/{user_id}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -3839,7 +5522,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="DELETEapi-v1-teams--team_id--members--user-"
+                              name="Content-Type"                data-endpoint="DELETEapi-v1-teams--team_id--members--user_id-"
                value="application/json"
                data-component="header">
     <br>
@@ -3850,7 +5533,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="DELETEapi-v1-teams--team_id--members--user-"
+                              name="Accept"                data-endpoint="DELETEapi-v1-teams--team_id--members--user_id-"
                value="application/json"
                data-component="header">
     <br>
@@ -3862,22 +5545,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="team_id"                data-endpoint="DELETEapi-v1-teams--team_id--members--user-"
+               step="any"               name="team_id"                data-endpoint="DELETEapi-v1-teams--team_id--members--user_id-"
                value="16"
                data-component="url">
     <br>
 <p>The ID of the team. Example: <code>16</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>user</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
+                <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
  &nbsp;
-                <input type="text" style="display: none"
-                              name="user"                data-endpoint="DELETEapi-v1-teams--team_id--members--user-"
-               value="architecto"
+                <input type="number" style="display: none"
+               step="any"               name="user_id"                data-endpoint="DELETEapi-v1-teams--team_id--members--user_id-"
+               value="16"
                data-component="url">
     <br>
-<p>Example: <code>architecto</code></p>
+<p>The ID of the user. Example: <code>16</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -3885,7 +5568,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="user_id"                data-endpoint="DELETEapi-v1-teams--team_id--members--user-"
+               step="any"               name="user_id"                data-endpoint="DELETEapi-v1-teams--team_id--members--user_id-"
                value="5"
                data-component="body">
     <br>
@@ -4101,6 +5784,637 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
+                    <h2 id="team-management-POSTapi-v1-teams--team_id--lead">Set team leader</h2>
+
+<p>
+</p>
+
+<p>Set a user as the team leader. If there's an existing leader, they will be demoted to team member.</p>
+
+<span id="example-requests-POSTapi-v1-teams--team_id--lead">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/v1/teams/16/lead" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"user_id\": 5
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/teams/16/lead"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "user_id": 5
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-teams--team_id--lead">
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;demoted_lead&quot;: {
+            &quot;id&quot;: 3,
+            &quot;name&quot;: &quot;Previous Leader&quot;
+        }
+    },
+    &quot;message&quot;: &quot;Team leader set successfully&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, success - no previous leader):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;demoted_lead&quot;: null
+    },
+    &quot;message&quot;: &quot;Team leader set successfully&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, user already leader):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;User is already the team lead&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, invalid argument):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to set team leader: User does not have the team lead role&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Team not found&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, validation error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The given data was invalid.&quot;,
+    &quot;errors&quot;: {
+        &quot;user_id&quot;: [
+            &quot;The selected user id is invalid.&quot;
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to set team leader: Internal server error&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-v1-teams--team_id--lead" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-teams--team_id--lead"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-teams--team_id--lead"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-teams--team_id--lead" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-teams--team_id--lead">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-v1-teams--team_id--lead" data-method="POST"
+      data-path="api/v1/teams/{team_id}/lead"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-teams--team_id--lead', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-teams--team_id--lead"
+                    onclick="tryItOut('POSTapi-v1-teams--team_id--lead');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-teams--team_id--lead"
+                    onclick="cancelTryOut('POSTapi-v1-teams--team_id--lead');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-teams--team_id--lead"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/teams/{team_id}/lead</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-teams--team_id--lead"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-v1-teams--team_id--lead"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>team_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="team_id"                data-endpoint="POSTapi-v1-teams--team_id--lead"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the team. Example: <code>16</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="user_id"                data-endpoint="POSTapi-v1-teams--team_id--lead"
+               value="5"
+               data-component="body">
+    <br>
+<p>The ID of the user to set as leader. Example: <code>5</code></p>
+        </div>
+        </form>
+
+                    <h2 id="team-management-POSTapi-v1-teams--team_id--projects">Assign project to team</h2>
+
+<p>
+</p>
+
+<p>Assign a project to the team to work on.</p>
+
+<span id="example-requests-POSTapi-v1-teams--team_id--projects">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/v1/teams/16/projects" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"project_id\": 3,
+    \"notes\": \"n\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/teams/16/projects"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "project_id": 3,
+    "notes": "n"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-teams--team_id--projects">
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Project assigned to team successfully&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, invalid argument):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to assign project to team: Project already assigned to team&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Team not found&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, validation error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The given data was invalid.&quot;,
+    &quot;errors&quot;: {
+        &quot;project_id&quot;: [
+            &quot;The selected project id is invalid.&quot;
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to assign project to team: Internal server error&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-v1-teams--team_id--projects" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-teams--team_id--projects"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-teams--team_id--projects"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-teams--team_id--projects" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-teams--team_id--projects">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-v1-teams--team_id--projects" data-method="POST"
+      data-path="api/v1/teams/{team_id}/projects"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-teams--team_id--projects', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-teams--team_id--projects"
+                    onclick="tryItOut('POSTapi-v1-teams--team_id--projects');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-teams--team_id--projects"
+                    onclick="cancelTryOut('POSTapi-v1-teams--team_id--projects');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-teams--team_id--projects"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/teams/{team_id}/projects</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-teams--team_id--projects"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-v1-teams--team_id--projects"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>team_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="team_id"                data-endpoint="POSTapi-v1-teams--team_id--projects"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the team. Example: <code>16</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>project_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="project_id"                data-endpoint="POSTapi-v1-teams--team_id--projects"
+               value="3"
+               data-component="body">
+    <br>
+<p>The ID of the project to assign. Example: <code>3</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>notes</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="notes"                data-endpoint="POSTapi-v1-teams--team_id--projects"
+               value="n"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>n</code></p>
+        </div>
+        </form>
+
+                    <h2 id="team-management-DELETEapi-v1-teams--team_id--projects--project_id-">Remove Project from team</h2>
+
+<p>
+</p>
+
+<p>Remove a project assignment from the team.</p>
+
+<span id="example-requests-DELETEapi-v1-teams--team_id--projects--project_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/v1/teams/16/projects/16" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"project_id\": 3
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/teams/16/projects/16"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "project_id": 3
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-v1-teams--team_id--projects--project_id-">
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Project removed from team successfully&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, invalid argument):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to remove project from team: Project not found&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Team not found&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to remove project from team: Internal server error&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEapi-v1-teams--team_id--projects--project_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-v1-teams--team_id--projects--project_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-v1-teams--team_id--projects--project_id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-v1-teams--team_id--projects--project_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-v1-teams--team_id--projects--project_id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-v1-teams--team_id--projects--project_id-" data-method="DELETE"
+      data-path="api/v1/teams/{team_id}/projects/{project_id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-v1-teams--team_id--projects--project_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-v1-teams--team_id--projects--project_id-"
+                    onclick="tryItOut('DELETEapi-v1-teams--team_id--projects--project_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-v1-teams--team_id--projects--project_id-"
+                    onclick="cancelTryOut('DELETEapi-v1-teams--team_id--projects--project_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-v1-teams--team_id--projects--project_id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/v1/teams/{team_id}/projects/{project_id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-v1-teams--team_id--projects--project_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-v1-teams--team_id--projects--project_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>team_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="team_id"                data-endpoint="DELETEapi-v1-teams--team_id--projects--project_id-"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the team. Example: <code>16</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>project_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="project_id"                data-endpoint="DELETEapi-v1-teams--team_id--projects--project_id-"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the project. Example: <code>16</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>project_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="project_id"                data-endpoint="DELETEapi-v1-teams--team_id--projects--project_id-"
+               value="3"
+               data-component="body">
+    <br>
+<p>The ID of the project to remove. Example: <code>3</code></p>
+        </div>
+        </form>
+
                 <h1 id="user-management">User Management</h1>
 
     <p>APIs for managing users</p>
@@ -4158,15 +6472,15 @@ fetch(url, {
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 34,
-            &quot;name&quot;: &quot;Bria Crist&quot;,
-            &quot;email&quot;: &quot;brain06@example.net&quot;,
+            &quot;id&quot;: 37,
+            &quot;name&quot;: &quot;Aubrey Lehner&quot;,
+            &quot;email&quot;: &quot;osinski.madyson@example.org&quot;,
             &quot;roles&quot;: []
         },
         {
-            &quot;id&quot;: 35,
-            &quot;name&quot;: &quot;Karianne Ankunding&quot;,
-            &quot;email&quot;: &quot;wyundt@example.org&quot;,
+            &quot;id&quot;: 38,
+            &quot;name&quot;: &quot;Lourdes Purdy&quot;,
+            &quot;email&quot;: &quot;brook22@example.org&quot;,
             &quot;roles&quot;: []
         }
     ],
@@ -4222,6 +6536,29 @@ fetch(url, {
     ],
     &quot;links&quot;: {},
     &quot;meta&quot;: {}
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403, forbidden):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This action is unauthorized.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, validation error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The given data was invalid.&quot;,
+    &quot;errors&quot;: {
+        &quot;per_page&quot;: [
+            &quot;The per page must be an integer.&quot;
+        ]
+    }
 }</code>
  </pre>
             <blockquote>
@@ -4396,7 +6733,7 @@ fetch(url, {
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 36,
+        &quot;id&quot;: 39,
         &quot;name&quot;: &quot;Ms. Elisabeth Okuneva&quot;,
         &quot;email&quot;: &quot;gulgowski.asia@example.com&quot;,
         &quot;roles&quot;: []
@@ -5151,14 +7488,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
-                    <h2 id="user-management-POSTapi-v1-users--user_id--restore">Restore soft-deleted user</h2>
+                    <h2 id="user-management-POSTapi-v1-users--userId--restore">Restore soft-deleted user</h2>
 
 <p>
 </p>
 
 <p>Restore a previously deleted user.</p>
 
-<span id="example-requests-POSTapi-v1-users--user_id--restore">
+<span id="example-requests-POSTapi-v1-users--userId--restore">
 <blockquote>Example request:</blockquote>
 
 
@@ -5186,7 +7523,7 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-POSTapi-v1-users--user_id--restore">
+<span id="example-responses-POSTapi-v1-users--userId--restore">
             <blockquote>
             <p>Example response (200, success):</p>
         </blockquote>
@@ -5226,43 +7563,43 @@ fetch(url, {
 }</code>
  </pre>
     </span>
-<span id="execution-results-POSTapi-v1-users--user_id--restore" hidden>
+<span id="execution-results-POSTapi-v1-users--userId--restore" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-POSTapi-v1-users--user_id--restore"></span>:
+                id="execution-response-status-POSTapi-v1-users--userId--restore"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-v1-users--user_id--restore"
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-users--userId--restore"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-POSTapi-v1-users--user_id--restore" hidden>
+<span id="execution-error-POSTapi-v1-users--userId--restore" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-v1-users--user_id--restore">
+    <pre><code id="execution-error-message-POSTapi-v1-users--userId--restore">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-POSTapi-v1-users--user_id--restore" data-method="POST"
-      data-path="api/v1/users/{user_id}/restore"
+<form id="form-POSTapi-v1-users--userId--restore" data-method="POST"
+      data-path="api/v1/users/{userId}/restore"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-users--user_id--restore', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-users--userId--restore', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-v1-users--user_id--restore"
-                    onclick="tryItOut('POSTapi-v1-users--user_id--restore');">Try it out ⚡
+                    id="btn-tryout-POSTapi-v1-users--userId--restore"
+                    onclick="tryItOut('POSTapi-v1-users--userId--restore');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-v1-users--user_id--restore"
-                    onclick="cancelTryOut('POSTapi-v1-users--user_id--restore');" hidden>Cancel 🛑
+                    id="btn-canceltryout-POSTapi-v1-users--userId--restore"
+                    onclick="cancelTryOut('POSTapi-v1-users--userId--restore');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-v1-users--user_id--restore"
+                    id="btn-executetryout-POSTapi-v1-users--userId--restore"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -5270,7 +7607,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
-            <b><code>api/v1/users/{user_id}/restore</code></b>
+            <b><code>api/v1/users/{userId}/restore</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -5278,7 +7615,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-v1-users--user_id--restore"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-users--userId--restore"
                value="application/json"
                data-component="header">
     <br>
@@ -5289,7 +7626,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-v1-users--user_id--restore"
+                              name="Accept"                data-endpoint="POSTapi-v1-users--userId--restore"
                value="application/json"
                data-component="header">
     <br>
@@ -5297,15 +7634,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+                <b style="line-height: 2;"><code>userId</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="user_id"                data-endpoint="POSTapi-v1-users--user_id--restore"
+               step="any"               name="userId"                data-endpoint="POSTapi-v1-users--userId--restore"
                value="16"
                data-component="url">
     <br>
-<p>The ID of the user. Example: <code>16</code></p>
+<p>Example: <code>16</code></p>
             </div>
                     </form>
 

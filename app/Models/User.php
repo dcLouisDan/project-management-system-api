@@ -169,4 +169,28 @@ class User extends Authenticatable
     {
         return $this->isQualifiedAsProjectManager() && !$this->isActivelyManagingProjects();
     }
+
+    public function reviewsWritten()
+    {
+        return $this->hasMany(TaskReview::class, 'reviewed_by_id');
+    }
+
+    public function activities()
+    {
+        return $this->hasMany(ActivityLog::class);
+    }
+
+    public function isInProjectTeams(int|Project $project): bool
+    {
+        $projectId = $project instanceof Project ? $project->id : $project;
+
+        // Check if user is part of any teams associated with the project
+        $isInProjectTeams = $this->teams()
+            ->whereHas('projects', function ($query) use ($projectId) {
+                $query->where('projects.id', $projectId);
+            })
+            ->exists();
+
+        return $isInProjectTeams;
+    }
 }

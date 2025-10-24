@@ -50,7 +50,7 @@ class Team extends Model
 
     public function projects(): BelongsToMany
     {
-        return $this->belongsToMany(Project::class);
+        return $this->belongsToMany(Project::class)->withPivot('notes')->withTimestamps();
     }
 
     /**
@@ -299,11 +299,11 @@ class Team extends Model
             ->count();
     }
 
-    public function assignProject(int|Project $project): void
+    public function assignProject(int|Project $project, ?string $notes = null): void
     {
         $id = $project instanceof Project ? $project->id : $project;
         if (!$this->worksOnProject($id)) {
-            $this->projects()->attach($id);
+            $this->projects()->attach($id, ['notes' => $notes]);
         }
     }
 

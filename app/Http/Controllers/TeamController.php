@@ -610,6 +610,7 @@ class TeamController extends Controller
 
         $validatedData = $request->validate([
             'project_id' => ['required', 'exists:projects,id'],
+            'notes' => ['nullable', 'string', 'max:255'],
         ]);
 
         try {
@@ -617,7 +618,7 @@ class TeamController extends Controller
                 throw new \InvalidArgumentException("Project already assigned to team.");
             }
             $project = Project::findOrFail($validatedData['project_id']);
-            $team->assignProject($project);
+            $team->assignProject($project, $validatedData['notes']);
 
             TeamProjectAssigned::dispatch($team, $project, $request->user());
 

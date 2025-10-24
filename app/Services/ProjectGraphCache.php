@@ -57,6 +57,7 @@ class ProjectGraphCache
         case RelationDirection::DEPENDENCY_FORWARD:
           $graph[$sourceKey][] = [
             'target' => $targetKey,
+            'target_status' => $relation->target->status ?? null,
             'type' => $typeString,
           ];
           break;
@@ -64,6 +65,7 @@ class ProjectGraphCache
         case RelationDirection::DEPENDENCY_REVERSE:
           $graph[$targetKey][] = [
             'target' => $sourceKey,
+            'target_status' => $relation->source->status ?? null,
             'type' => $typeString,
           ];
           break;

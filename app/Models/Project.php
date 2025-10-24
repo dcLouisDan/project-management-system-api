@@ -6,6 +6,7 @@ use App\Enums\ProgressStatus;
 use App\Traits\HasActivityLogs;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Project extends Model
@@ -37,9 +38,19 @@ class Project extends Model
         return $this->belongsTo(User::class, 'manager_id');
     }
 
-    public function teams()
+    public function teams(): BelongsToMany
     {
-        return $this->belongsToMany(Team::class);
+        return $this->belongsToMany(Team::class)->withPivot('notes')->withTimestamps();
+    }
+
+    public function setManager(User $user)
+    {
+        if (!$user->isQualifiedAsProjectManager()) {
+            throw new \InvalidArgumentException("User must have the Project Manager role or Admin role to be assigned as manager.");
+        }
+
+        $this->manager_id = $user->id;
+        $this->save();
     }
 
     public function setStatus($status)
@@ -62,12 +73,17 @@ class Project extends Model
     {
         $invalidTeams = [];
         $validTeams = [];
-        foreach ($teamIds as $teamId) {
-            if (!$this->hasTeam($teamId)) {
-                $invalidTeams[] = $teamId;
+        foreach ($teamIds as $teamId => $data) {
+            if ($this->hasTeam($teamId)) {
+                $invalidTeams[$teamId] = [
+                    'notes' => $data['notes'] ?? null,
+                    'reason' => 'team already associated with project'
+                ];
                 continue;
             }
-            $validTeams[] = $teamId;
+            $validTeams[$teamId] = [
+                'notes' => $data['notes'] ?? null
+            ];
         }
         $this->teams()->attach($validTeams);
         return $invalidTeams;

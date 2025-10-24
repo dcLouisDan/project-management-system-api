@@ -74,7 +74,7 @@ class Task extends Model
         $this->save();
     }
 
-    public function updateStatus(string $newStatus, bool $overrideCompleted = false)
+    public function setStatus(string $newStatus, bool $overrideCompleted = false)
     {
         if (!ProgressStatus::isValidStatus($newStatus)) {
             throw new \InvalidArgumentException("Invalid status: $newStatus");
@@ -85,6 +85,14 @@ class Task extends Model
         }
 
         $this->status = $newStatus;
+        $this->save();
+    }
+
+    public function assignToUser(User $user, User $assignedBy)
+    {
+        $this->assigned_to_id = $user->id;
+        $this->assigned_by_id = $assignedBy->id;
+        $this->status = ProgressStatus::ASSIGNED->value;
         $this->save();
     }
 }

@@ -141,4 +141,9 @@ trait HasProjectRelations
   {
     return $this->outgoingRelations()->where('relation_type', ProjectRelationTypes::RELATES_TO->value)->with('target');
   }
+
+  public function children()
+  {
+    return $this->outgoingRelations()->where('relation_type', ProjectRelationTypes::PARENT_OF->value)->with('target');
+  }
 }

@@ -108,7 +108,7 @@ class User extends Authenticatable
      */
     public function isQualifiedAsTeamLead(): bool
     {
-        return $this->hasRole(UserRoles::TEAM_LEAD->value);
+        return $this->hasRole(UserRoles::TEAM_LEAD->value) || $this->hasRole(UserRoles::ADMIN->value);
     }
 
     /**
@@ -157,7 +157,7 @@ class User extends Authenticatable
 
     public function isQualifiedAsProjectManager(): bool
     {
-        return $this->hasRole(UserRoles::PROJECT_MANAGER->value);
+        return $this->hasRole(UserRoles::PROJECT_MANAGER->value) || $this->hasRole(UserRoles::ADMIN->value);
     }
 
     public function isActivelyManagingProjects(): bool

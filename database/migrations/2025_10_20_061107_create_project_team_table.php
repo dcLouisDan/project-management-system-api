@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('project_id')->constrained()->onDelete('cascade');
             $table->foreignId('team_id')->constrained()->onDelete('cascade');
+            $table->text('notes')->nullable();
+            $table->unique(['project_id', 'team_id']);
             $table->timestamps();
         });
     }

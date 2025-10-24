@@ -375,6 +375,7 @@ class TeamControllerTest extends TestCase
 
         $response = $this->postJson("{$this->apiPrefix}/{$team->id}/projects", [
             'project_id' => $project->id,
+            'notes' => 'Project assigned to team for collaboration',
         ]);
 
         $response->assertStatus(200);

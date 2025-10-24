@@ -137,4 +137,16 @@ class ProjectGraphTest extends TestCase
             'relation_type' => ProjectRelationTypes::REQUIRES->value,
         ]);
     }
+
+    public function test_incomplete_dependency_detection(): void
+    {
+        [$project, $user, $milestone1, $task1, $task2] = $this->buildBasicRequiresGraph();
+        $graph = ProjectGraphCache::get($project->id);
+        // Mark task2 as in_progress
+        $task2->setStatus('in_progress');
+
+        $hasIncompleteDependencies = DependencyValidator::hasIncompleteDependencies($graph, $task1, 'completed');
+
+        $this->assertTrue($hasIncompleteDependencies, 'Task1 should have incomplete dependencies.');
+    }
 }

@@ -1,0 +1,156 @@
+<?php
+
+namespace App\Policies;
+
+use App\Models\Task;
+use App\Models\User;
+use Illuminate\Auth\Access\Response;
+use App\Enums\UserRoles;
+
+class TaskPolicy
+{
+    /**
+     * Determine whether the user can view any models.
+     */
+    public function viewAny(User $user): bool
+    {
+        if ($user->hasRole(UserRoles::ADMIN->value))
+            return true;
+
+        return false;
+    }
+
+    public function viewAnyInProject(User $user, int $projectId): bool
+    {
+        if ($user->hasRole(UserRoles::ADMIN->value))
+            return true;
+
+        if ($user->isInProjectTeams($projectId))
+            return true;
+
+        if ($user->isManagerOfProject($projectId))
+            return true;
+
+        return false;
+    }
+
+    /**
+     * Determine whether the user can view the model.
+     */
+    public function view(User $user, Task $task): bool
+    {
+        if ($user->hasRole(UserRoles::ADMIN->value))
+            return true;
+
+        if ($user->id === $task->assigned_to_id)
+            return true;
+
+        if ($user->isInProjectTeams($task->project) && $user->can('view task'))
+            return true;
+
+        if ($user->isManagerOfProject($task->project) && $user->can('view task'))
+            return true;
+
+        return false;
+    }
+
+    /**
+     * Determine whether the user can create models.
+     */
+    public function create(User $user): bool
+    {
+        if ($user->hasRole(UserRoles::ADMIN->value))
+            return true;
+        return false;
+    }
+
+    public function createInProject(User $user, int $projectId): bool
+    {
+        if ($user->hasRole(UserRoles::ADMIN->value))
+            return true;
+
+        if ($user->isInProjectTeams($projectId) && $user->can('create task'))
+            return true;
+
+        if ($user->isManagerOfProject($projectId))
+            return true;
+
+        return false;
+    }
+
+    /**
+     * Determine whether the user can update the model.
+     */
+    public function update(User $user, Task $task): bool
+    {
+        if ($user->hasRole(UserRoles::ADMIN->value))
+            return true;
+
+        if ($user->id === $task->assigned_to_id)
+            return true;
+
+        if ($user->isInProjectTeams($task->project) && $user->can('update task'))
+            return true;
+
+        if ($user->isManagerOfProject($task->project) && $user->can('update task'))
+            return true;
+
+        return false;
+    }
+
+    /**
+     * Determine whether the user can delete the model.
+     */
+    public function delete(User $user, Task $task): bool
+    {
+        if ($user->hasRole(UserRoles::ADMIN->value))
+            return true;
+
+        if ($user->isManagerOfProject($task->project) && $user->can('delete task'))
+            return true;
+
+        return false;
+    }
+
+    /**
+     * Determine whether the user can restore the model.
+     */
+    public function restore(User $user, Task $task): bool
+    {
+        if ($user->hasRole(UserRoles::ADMIN->value))
+            return true;
+
+        if ($user->isManagerOfProject($task->project) && $user->can('restore task'))
+            return true;
+
+        return false;
+    }
+
+    /**
+     * Determine whether the user can permanently delete the model.
+     */
+    public function forceDelete(User $user, Task $task): bool
+    {
+        if ($user->hasRole(UserRoles::ADMIN->value))
+            return true;
+
+        if ($user->isManagerOfProject($task->project) && $user->can('delete task'))
+            return true;
+
+        return false;
+    }
+
+    public function assignToUser(User $user, Task $task): bool
+    {
+        if ($user->hasRole(UserRoles::ADMIN->value))
+            return true;
+
+        if ($user->isManagerOfProject($task->project) && $user->can('assign task'))
+            return true;
+
+        if ($user->isInProjectTeamLeads($task->project) && $user->can('assign task'))
+            return true;
+
+        return false;
+    }
+}

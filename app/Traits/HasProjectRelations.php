@@ -12,6 +12,17 @@ use Illuminate\Support\Facades\Auth;
 
 trait HasProjectRelations
 {
+  protected static function bootHasProjectRelations()
+  {
+    static::created(function ($model) {
+      ProjectGraphCache::invalidate($model->project_id);
+    });
+
+    static::deleted(function ($model) {
+      ProjectGraphCache::invalidate($model->project_id);
+    });
+  }
+
   public function parentExists(): bool
   {
     return ProjectRelation::where([

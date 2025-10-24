@@ -155,6 +155,12 @@ class User extends Authenticatable
         return $this->hasMany(Project::class, 'manager_id');
     }
 
+    public function isManagerOfProject(int|Project $project): bool
+    {
+        $projectId = $project instanceof Project ? $project->id : $project;
+        return $this->managedProjects()->where('id', $projectId)->exists();
+    }
+
     public function isQualifiedAsProjectManager(): bool
     {
         return $this->hasRole(UserRoles::PROJECT_MANAGER->value) || $this->hasRole(UserRoles::ADMIN->value);
@@ -192,5 +198,20 @@ class User extends Authenticatable
             ->exists();
 
         return $isInProjectTeams;
+    }
+
+    public function isInProjectTeamLeads(int|Project $project): bool
+    {
+        $projectId = $project instanceof Project ? $project->id : $project;
+
+        // Check if user is a team lead in any teams associated with the project
+        $isInProjectTeamLeads = $this->teams()
+            ->wherePivot('role', UserRoles::TEAM_LEAD->value)
+            ->whereHas('projects', function ($query) use ($projectId) {
+                $query->where('projects.id', $projectId);
+            })
+            ->exists();
+
+        return $isInProjectTeamLeads;
     }
 }

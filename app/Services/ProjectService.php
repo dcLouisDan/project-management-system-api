@@ -78,7 +78,7 @@ class ProjectService
         return $invalidTeams;
     }
 
-    public function assignManager(Project $project, int $userId): Project
+    public function assignManager(Project $project, int $userId, User $assignedBy): Project
     {
         $manager = User::find($userId);
         if (! $manager->isQualifiedAsProjectManager()) {

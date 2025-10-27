@@ -250,7 +250,7 @@ class ProjectController extends Controller
         ]);
 
         try {
-            $this->projectService->assignManager($project, $validatedData['manager_id']);
+            $this->projectService->assignManager($project, $validatedData['manager_id'], $request->user());
 
             return ApiResponse::success($project, 'Project manager assigned successfully.', 200);
         } catch (\InvalidArgumentException $e) {

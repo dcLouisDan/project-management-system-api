@@ -9,6 +9,7 @@ use Illuminate\Validation\Rule;
 use App\Enums\UserRoles;
 use App\Events\UserRolesAssigned;
 use App\Http\Resources\UserResource;
+use App\Services\UserService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
@@ -21,48 +22,9 @@ use Illuminate\Support\Facades\Log;
  */
 class UserController extends Controller
 {
-    private function validationRules(?int $id = null, bool $isCreating = false): array
-    {
-        $rules = [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255'],
-        ];
-
-        if ($id) {
-            $rules['email'][] = 'unique:users,email,' . $id;
-        } else {
-            $rules['email'][] = 'unique:users';
-        }
-
-        if ($isCreating) {
-            $rules['password'] = ['required', 'string', 'min:8', 'confirmed'];
-            $rules['roles'] = ['required', 'array', 'min:1', 'max:4'];
-            $rules['roles.*'] = ['required', Rule::in(UserRoles::allRoles())];
-        } else {
-            $rules['password'] = ['nullable', 'string', 'min:8', 'confirmed'];
-        }
-
-        return $rules;
-    }
-
-    private function buildFilteredUserQuery(Request $request)
-    {
-        $query = User::query();
-
-        if ($request->has('name')) {
-            $query->where('name', 'like', '%' . $request->input('name') . '%');
-        }
-
-        if ($request->has('email')) {
-            $query->where('email', 'like', '%' . $request->input('email') . '%');
-        }
-
-        if ($request->has('role')) {
-            $query->role($request->input('role'));
-        }
-
-        return $query;
-    }
+    public function __construct(
+        protected UserService $userService
+    ){}
 
     /**
      * List Users
@@ -89,7 +51,11 @@ class UserController extends Controller
         }
 
         $perPage = $request->input('per_page', 10);
-        $query = $this->buildFilteredUserQuery($request);
+        $query = $this->userService->buildFilteredUserQuery($request->only([
+            'name',
+            'email',
+            'role',
+        ]));
 
         try {
             $users = UserResource::collection($query->paginate($perPage));
@@ -157,20 +123,21 @@ class UserController extends Controller
             return ApiResponse::error('This action is unauthorized.', 403);
         }
         // Scribe will automatically extract parameters from this validation
-        $validatedData = $request->validate($this->validationRules(null, true));
+        $validatedData = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique(User::class)],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'roles' => ['required', 'array', 'min:1', 'max:4'],
+            'roles.*' => ['required', Rule::in(UserRoles::allRoles())],
+        ]);
 
         try {
-            DB::beginTransaction();
-
-            $user = User::create([
+            $user = $this->userService->createUser([
                 'name' => $validatedData['name'],
                 'email' => $validatedData['email'],
-                'password' => Hash::make($validatedData['password']),
+                'password' => $validatedData['password'],
+                'roles' => $validatedData['roles'],
             ]);
-
-            $user->syncRoles($validatedData['roles']);
-
-            DB::commit();
 
             return ApiResponse::success(
                 new UserResource($user->fresh()->load('roles')),
@@ -178,7 +145,6 @@ class UserController extends Controller
                 201
             );
         } catch (\Exception $e) {
-            DB::rollBack();
 
             Log::error('Failed to create user', [
                 'error' => $e->getMessage(),
@@ -211,19 +177,20 @@ class UserController extends Controller
             return ApiResponse::error('This action is unauthorized.', 403);
         }
 
-        $validatedData = $request->validate($this->validationRules($user->id, false));
+        $validatedData = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                Rule::unique(User::class)->ignore($user->id),
+            ],
+            'password' => ['nullable', 'string', 'min:8', 'confirmed'],
+        ]);
 
         try {
-            $user->fill([
-                'name' => $validatedData['name'],
-                'email' => $validatedData['email'],
-            ]);
-
-            if (!empty($validatedData['password'])) {
-                $user->password = Hash::make($validatedData['password']);
-            }
-
-            $user->save();
+            $user = $this->userService->updateUser($user, $validatedData);
 
             return ApiResponse::success(
                 new UserResource($user),
@@ -255,7 +222,7 @@ class UserController extends Controller
         }
 
         try {
-            $user->delete();
+            $this->userService->deleteUser($user);
             return ApiResponse::success(null, 'User deleted successfully');
         } catch (\Exception $e) {
             Log::error('Failed to delete user', [
@@ -288,7 +255,7 @@ class UserController extends Controller
         }
 
         try {
-            $user->restore();
+            $user = $this->userService->restoreUser($user);
             return ApiResponse::success(
                 new UserResource($user),
                 'User restored successfully'
@@ -325,46 +292,10 @@ class UserController extends Controller
             'roles.*' => ['required', Rule::in(UserRoles::allRoles())],
         ]);
 
-        $currentRoles = $user->getRoleNames()->toArray();
-        $newRoles = $validatedData['roles'];
-        $removedRoles = array_diff($currentRoles, $newRoles);
-
-        // Check if trying to remove team lead role while actively leading
-        if (
-            in_array(UserRoles::TEAM_LEAD->value, $removedRoles)
-            && !$user->canChangeFromTeamLeadRole()
-        ) {
-
-            Log::warning('Attempt to remove team lead role from user actively leading teams', [
-                'user_id' => $user->id,
-                'requested_by' => $request->user()->id
-            ]);
-
-            return ApiResponse::error(
-                'Cannot remove team lead role: user is actively leading teams',
-                422,
-                [
-                    'roles' => [
-                        'User must be removed as team lead from all teams before removing this role.'
-                    ],
-                    'active_teams' => $user->ledTeams()->pluck('name')->toArray()
-                ]
-            );
-        }
+        
 
         try {
-            DB::beginTransaction();
-
-            $user->syncRoles($newRoles);
-
-            UserRolesAssigned::dispatch(
-                $user,
-                $currentRoles,
-                $newRoles,
-                $request->user()
-            );
-
-            DB::commit();
+            $this->userService->assignRoles($user, $validatedData['roles'], $request->user());
 
             return ApiResponse::success(
                 new UserResource($user->fresh()->load('roles')),

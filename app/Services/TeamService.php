@@ -279,11 +279,8 @@ class TeamService
 
     public function assignProject(Team $team, int|Project $project, ?string $notes, User $assignedBy): Team
     {
-        $id = $project instanceof Project ? $project->id : $project;
-
-        if (! Project::where('id', $id)->exists()) {
-            throw new \InvalidArgumentException('Project does not exist.');
-        }
+        $project = $project instanceof Project ? $project : Project::findOrFail($project);
+        $id = $project->id;
 
         if ($team->worksOnProject($id)) {
             throw new \InvalidArgumentException('Project already assigned to team.');
@@ -300,7 +297,8 @@ class TeamService
 
     public function removeProject(Team $team, int|Project $project, User $removedBy): Team
     {
-        $id = $project instanceof Project ? $project->id : $project;
+        $project = $project instanceof Project ? $project : Project::findOrFail($project);
+        $id = $project->id;
         if ($team->worksOnProject($id)) {
             $team->projects()->detach($id);
         } else {

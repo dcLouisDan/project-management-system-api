@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Enums\UserRoles;
 use App\Models\Team;
 use App\Models\User;
+use App\Services\TeamService;
 use Database\Seeders\RolesAndPermissionsSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -14,14 +15,23 @@ class TeamControllerTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
+    protected TeamService $teamService;
+
     private string $apiPrefix = '/api/v1/teams';
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->teamService = new TeamService;
+    }
 
     protected function createAndAuthenticateUser(): \App\Models\User
     {
         $this->seed(RolesAndPermissionsSeeder::class);
-        $user = \App\Models\User::factory()->create();
+        $user = User::factory()->create();
         $user->assignRole(UserRoles::ADMIN->value);
         $this->actingAs($user, 'web');
+
         return $user;
     }
 
@@ -44,7 +54,6 @@ class TeamControllerTest extends TestCase
 
         $response->assertStatus(200);
     }
-
 
     public function test_team_view_route_requires_user_permission(): void
     {
@@ -251,7 +260,6 @@ class TeamControllerTest extends TestCase
 
         $team = Team::factory()->create();
         $member = User::factory()->create();
-        $team->addMember($member);
 
         $response = $this->postJson("{$this->apiPrefix}/{$team->id}/lead", [
             'user_id' => $member->id,
@@ -266,7 +274,6 @@ class TeamControllerTest extends TestCase
         $team = Team::factory()->create();
         $member = User::factory()->create();
         $member->assignRole(UserRoles::TEAM_LEAD->value);
-        $team->addMember($member);
 
         $this->actingAs($user, 'web');
 
@@ -287,7 +294,6 @@ class TeamControllerTest extends TestCase
         $user = User::factory()->create();
         $team = Team::factory()->create();
         $member = User::factory()->create();
-        $team->addMember($member);
 
         $this->actingAs($user, 'web');
 
@@ -307,7 +313,7 @@ class TeamControllerTest extends TestCase
         $team = Team::factory()->create();
         $member = User::factory()->create();
         $member->assignRole(UserRoles::TEAM_MEMBER->value);
-        $team->addMember($member);
+        $this->teamService->addMember($team, $member, UserRoles::TEAM_MEMBER->value, $user);
 
         $this->actingAs($user, 'web');
 
@@ -327,12 +333,14 @@ class TeamControllerTest extends TestCase
 
         $member1 = User::factory()->create();
         $member1->assignRole(UserRoles::TEAM_MEMBER->value);
-        $team->addMember($member1);
 
         $member2 = User::factory()->create();
         $member2->assignRole(UserRoles::TEAM_MEMBER->value);
-        $team->addMember($member2);
 
+        $this->teamService->addMembers($team, [
+            $member1->id => UserRoles::TEAM_MEMBER->value,
+            $member2->id => UserRoles::TEAM_MEMBER->value,
+        ], $user);
         $this->actingAs($user, 'web');
 
         $response = $this->deleteJson("{$this->apiPrefix}/{$team->id}/members", [
@@ -392,7 +400,7 @@ class TeamControllerTest extends TestCase
 
         $team = Team::factory()->create();
         $project = \App\Models\Project::factory()->create();
-        $team->assignProject($project);
+        $this->teamService->assignProject($team, $project, null, $user);
 
         $response = $this->deleteJson("{$this->apiPrefix}/{$team->id}/projects/{$project->id}");
 
@@ -404,7 +412,7 @@ class TeamControllerTest extends TestCase
         $user = $this->createAndAuthenticateUser();
         $team = Team::factory()->create();
         $project = \App\Models\Project::factory()->create();
-        $team->assignProject($project);
+        $this->teamService->assignProject($team, $project, null, $user);
 
         $this->actingAs($user, 'web');
 

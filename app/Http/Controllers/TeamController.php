@@ -572,6 +572,7 @@ class TeamController extends Controller
      * Remove a project assignment from the team.
      *
      * @bodyParam project_id integer required The ID of the project to remove. Example: 3
+     *'
      *
      * @response status=200 scenario="success" {"data": null, "message": "Project removed from team successfully"}
      * @response status=400 scenario="invalid argument" {"data": null, "message": "Failed to remove project from team: Project not found", "errors": [], "meta": []}

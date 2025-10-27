@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Enums\ProgressStatus;
-use App\Services\ProjectGraphCache;
 use App\Traits\HasActivityLogs;
 use App\Traits\HasProjectRelations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,7 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Task extends Model
 {
-    use HasProjectRelations, SoftDeletes, HasFactory, HasActivityLogs;
+    use HasActivityLogs, HasFactory, HasProjectRelations, SoftDeletes;
 
     protected $fillable = [
         'project_id',
@@ -66,44 +65,12 @@ class Task extends Model
 
     public function isOverdue(): bool
     {
-        return $this->due_date && $this->due_date->isPast() && !$this->isCompleted();
+        return $this->due_date && $this->due_date->isPast() && ! $this->isCompleted();
     }
 
     public function markAsCompleted()
     {
         $this->status = ProgressStatus::COMPLETED;
-        $this->save();
-    }
-
-    public function setStatus(string $newStatus, bool $overrideCompleted = false)
-    {
-        if (!ProgressStatus::isValidStatus($newStatus)) {
-            throw new \InvalidArgumentException("Invalid status: $newStatus");
-        }
-
-        if ($this->isCompleted() && !$overrideCompleted) {
-            throw new \LogicException("Cannot change status of a completed task without override.");
-        }
-
-        $this->status = $newStatus;
-        $this->save();
-
-        ProjectGraphCache::invalidate($this->project_id);
-    }
-
-    public function assignToUser(User $user, User $assignedBy)
-    {
-        if (!$user->isInProjectTeams($this->project)) {
-            throw new \InvalidArgumentException("User must be part of a team associated with the project to be assigned this task.");
-        }
-
-        if (!$assignedBy->isInProjectTeams($this->project)) {
-            throw new \InvalidArgumentException("Assigning user must be part of a team associated with the project.");
-        }
-
-        $this->assigned_to_id = $user->id;
-        $this->assigned_by_id = $assignedBy->id;
-        $this->status = ProgressStatus::ASSIGNED->value;
         $this->save();
     }
 }

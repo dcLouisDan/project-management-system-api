@@ -6,6 +6,7 @@ use App\Enums\UserRoles;
 use App\Models\Project;
 use App\Models\Team;
 use App\Models\User;
+use App\Services\TeamService;
 use Database\Seeders\RolesAndPermissionsSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -14,6 +15,14 @@ use Tests\TestCase;
 class TeamModelTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
+
+    protected TeamService $teamService;
+
+    public function __construct(string $name)
+    {
+        parent::__construct($name);
+        $this->teamService = new TeamService;
+    }
 
     public function test_team_can_be_created(): void
     {
@@ -33,12 +42,13 @@ class TeamModelTest extends TestCase
     public function test_team_lead_can_be_leader(): void
     {
         $this->seed(RolesAndPermissionsSeeder::class);
+
         $team = Team::factory()->create();
         $this->assertFalse($team->hasLeader());
 
         $lead = User::factory()->create();
         $lead->assignRole(UserRoles::TEAM_LEAD->value);
-        $team->setLeader($lead);
+        $this->teamService->setLeader($team, $lead->id, $lead);
 
         $this->assertTrue($team->hasLeader());
         $this->assertEquals($lead->id, $team->lead()->id);
@@ -52,7 +62,7 @@ class TeamModelTest extends TestCase
         $member = User::factory()->create();
         $member->assignRole(UserRoles::TEAM_MEMBER->value);
         $this->expectException(\InvalidArgumentException::class);
-        $team->setLeader($member);
+        $this->teamService->setLeader($team, $member->id, $member);
     }
 
     public function test_team_members_can_be_added(): void
@@ -62,11 +72,11 @@ class TeamModelTest extends TestCase
 
         $member1 = User::factory()->create();
         $member1->assignRole(UserRoles::TEAM_MEMBER->value);
-        $team->addMember($member1);
+        $this->teamService->addMember($team, $member1, UserRoles::TEAM_MEMBER->value, $member1);
 
         $member2 = User::factory()->create();
         $member2->assignRole(UserRoles::TEAM_MEMBER->value);
-        $team->addMember($member2);
+        $this->teamService->addMember($team, $member2, UserRoles::TEAM_MEMBER->value, $member2);
 
         $members = $team->members()->get();
         $this->assertCount(2, $members);
@@ -85,7 +95,7 @@ class TeamModelTest extends TestCase
         $member2 = User::factory()->create();
         $member2->assignRole(UserRoles::TEAM_MEMBER->value);
 
-        $team->addMembers([$member1->id => UserRoles::TEAM_MEMBER->value, $member2->id => UserRoles::TEAM_MEMBER->value]);
+        $this->teamService->addMembers($team, [$member1->id => UserRoles::TEAM_MEMBER->value, $member2->id => UserRoles::TEAM_MEMBER->value], $member1);
 
         $members = $team->members()->get();
         $this->assertCount(2, $members);
@@ -100,12 +110,12 @@ class TeamModelTest extends TestCase
 
         $member1 = User::factory()->create();
         $member1->assignRole(UserRoles::TEAM_MEMBER->value);
-        $team->addMember($member1);
+        $this->teamService->addMember($team, $member1, UserRoles::TEAM_MEMBER->value, $member1);
 
         $member2 = User::factory()->create();
         $member2->assignRole(UserRoles::TEAM_MEMBER->value);
 
-        ['valid_users' => $validMembers, 'invalid_users' => $invalidMembers] = $team->addMembers([$member1->id => UserRoles::TEAM_MEMBER->value, $member2->id => UserRoles::TEAM_MEMBER->value]);
+        ['valid_users' => $validMembers, 'invalid_users' => $invalidMembers] = $this->teamService->addMembers($team, [$member1->id => UserRoles::TEAM_MEMBER->value, $member2->id => UserRoles::TEAM_MEMBER->value], $member1);
 
         $this->assertEquals(2, $team->memberCount());
         $this->assertCount(1, $validMembers);
@@ -119,10 +129,10 @@ class TeamModelTest extends TestCase
 
         $member = User::factory()->create();
         $member->assignRole(UserRoles::TEAM_MEMBER->value);
-        $team->addMember($member);
+        $this->teamService->addMember($team, $member, UserRoles::TEAM_MEMBER->value, $member);
 
         $this->expectException(\InvalidArgumentException::class);
-        $team->addMember($member);
+        $this->teamService->addMember($team, $member, UserRoles::TEAM_MEMBER->value, $member);
     }
 
     public function test_is_member_and_is_lead_checks(): void
@@ -132,11 +142,11 @@ class TeamModelTest extends TestCase
 
         $lead = User::factory()->create();
         $lead->assignRole(UserRoles::TEAM_LEAD->value);
-        $team->setLeader($lead);
+        $this->teamService->setLeader($team, $lead->id, $lead);
 
         $member = User::factory()->create();
         $member->assignRole(UserRoles::TEAM_MEMBER->value);
-        $team->addMember($member);
+        $this->teamService->addMember($team, $member, UserRoles::TEAM_MEMBER->value, $member);
 
         $this->assertTrue($team->isLead($lead));
         $this->assertFalse($team->isLead($member));
@@ -152,12 +162,11 @@ class TeamModelTest extends TestCase
 
         $firstLead = User::factory()->create();
         $firstLead->assignRole(UserRoles::TEAM_LEAD->value);
-        $team->setLeader($firstLead);
+        $this->teamService->setLeader($team, $firstLead->id, $firstLead);
 
         $secondLead = User::factory()->create();
         $secondLead->assignRole(UserRoles::TEAM_LEAD->value);
-        $team->demoteLeader();
-        $team->setLeader($secondLead);
+        $this->teamService->setLeader($team, $secondLead->id, $secondLead);
 
         $this->assertTrue($team->isLead($secondLead));
         $this->assertFalse($team->isLead($firstLead));
@@ -203,11 +212,11 @@ class TeamModelTest extends TestCase
 
         $member = User::factory()->create();
         $member->assignRole(UserRoles::TEAM_MEMBER->value);
-        $team->addMember($member);
+        $this->teamService->addMember($team, $member, UserRoles::TEAM_MEMBER->value, $member);
 
         $this->assertTrue($team->hasMember($member));
 
-        $team->removeMember($member);
+        $this->teamService->removeMember($team, $member, $member);
 
         $this->assertFalse($team->hasMember($member));
     }
@@ -221,15 +230,16 @@ class TeamModelTest extends TestCase
         $member->assignRole(UserRoles::TEAM_MEMBER->value);
 
         $this->expectException(\InvalidArgumentException::class);
-        $team->removeMember($member);
+        $this->teamService->removeMember($team, $member, $member);
     }
 
     public function test_project_can_be_assigned_to_team(): void
     {
         $team = Team::factory()->create();
         $project = Project::factory()->create();
+        $user = User::factory()->create();
 
-        $team->assignProject($project);
+        $this->teamService->assignProject($team, $project, null, $user);
 
         $this->assertTrue($team->worksOnProject($project));
     }
@@ -238,11 +248,12 @@ class TeamModelTest extends TestCase
     {
         $team = Team::factory()->create();
         $project = Project::factory()->create();
+        $user = User::factory()->create();
 
-        $team->assignProject($project);
+        $this->teamService->assignProject($team, $project, null, $user);
         $this->assertTrue($team->worksOnProject($project));
 
-        $team->removeProject($project);
+        $this->teamService->removeProject($team, $project, $user);
         $this->assertFalse($team->worksOnProject($project));
     }
 }

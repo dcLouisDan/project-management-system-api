@@ -250,15 +250,13 @@ class ProjectController extends Controller
         ]);
 
         try {
-            $manager = User::find($validatedData['manager_id']);
-            if (! $manager->isQualifiedAsProjectManager()) {
-                return ApiResponse::error('The specified manager is not qualified to manage projects.', 400);
-            }
-
-            $project->manager_id = $validatedData['manager_id'];
-            $project->save();
+            $this->projectService->assignManager($project, $validatedData['manager_id']);
 
             return ApiResponse::success($project, 'Project manager assigned successfully.', 200);
+        } catch (\InvalidArgumentException $e) {
+            Log::warning('Invalid argument when assigning project manager', ['error' => $e->getMessage(), 'project_id' => $project->id, 'requested_by' => $request->user()->id]);
+
+            return ApiResponse::error('Error assigning project manager', 400, ['error' => $e->getMessage()]);
         } catch (\Exception $e) {
             Log::error('Error assigning project manager', ['error' => $e->getMessage(), 'project_id' => $project->id, 'requested_by' => $request->user()->id]);
 
@@ -291,7 +289,7 @@ class ProjectController extends Controller
         ]);
 
         try {
-            $invalidTeamIds = $project->assignTeams($validatedData['team_ids']);
+            $invalidTeamIds = $this->projectService->assignTeams($project, $validatedData['team_ids'], $request->user());
 
             return ApiResponse::success(
                 [
@@ -301,6 +299,10 @@ class ProjectController extends Controller
                 'Teams assigned to project successfully.',
                 200
             );
+        } catch (\InvalidArgumentException $e) {
+            Log::warning('Invalid argument while assigning teams to project', ['error' => $e->getMessage(), 'project_id' => $project->id, 'requested_by' => $request->user()->id]);
+
+            return ApiResponse::error('Failed to assign teams to project: '.$e->getMessage(), 422);
         } catch (\Exception $e) {
             Log::error('Error assigning teams to project', ['error' => $e->getMessage(), 'project_id' => $project->id, 'requested_by' => $request->user()->id]);
 
@@ -331,7 +333,7 @@ class ProjectController extends Controller
         ]);
 
         try {
-            $invalidTeamIds = $project->removeTeams($validatedData['team_ids']);
+            $invalidTeamIds = $this->projectService->removeTeams($project, $validatedData['team_ids'], $request->user());
 
             return ApiResponse::success(
                 [
@@ -341,6 +343,11 @@ class ProjectController extends Controller
                 'Teams removed from project successfully.',
                 200
             );
+        } catch (\InvalidArgumentException $e) {
+            Log::warning('Invalid argument while removing teams from project', ['error' => $e->getMessage(), 'project_id' => $project->id, 'requested_by' => $request->user()->id]);
+
+            return ApiResponse::error('Failed to remove teams from project: '.$e->getMessage(), 422);
+
         } catch (\Exception $e) {
             Log::error('Error removing teams from project', ['error' => $e->getMessage(), 'project_id' => $project->id, 'requested_by' => $request->user()->id]);
 

@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Project extends Model
 {
-    use HasActivityLogs, SoftDeletes, HasFactory;
+    use HasActivityLogs, HasFactory, SoftDeletes;
 
     protected $fillable = [
         'name',
@@ -45,8 +45,8 @@ class Project extends Model
 
     public function setManager(User $user)
     {
-        if (!$user->isQualifiedAsProjectManager()) {
-            throw new \InvalidArgumentException("User must have the Project Manager role or Admin role to be assigned as manager.");
+        if (! $user->isQualifiedAsProjectManager()) {
+            throw new \InvalidArgumentException('User must have the Project Manager role or Admin role to be assigned as manager.');
         }
 
         $this->manager_id = $user->id;
@@ -55,7 +55,7 @@ class Project extends Model
 
     public function setStatus($status)
     {
-        if (!ProgressStatus::isValidStatus($status)) {
+        if (! ProgressStatus::isValidStatus($status)) {
             throw new \InvalidArgumentException("Invalid status: $status");
         }
 
@@ -66,42 +66,8 @@ class Project extends Model
     public function hasTeam(int|Team $team): bool
     {
         $teamId = $team instanceof Team ? $team->id : $team;
+
         return $this->teams()->where('teams.id', $teamId)->exists();
-    }
-
-    public function assignTeams(array $teamIds)
-    {
-        $invalidTeams = [];
-        $validTeams = [];
-        foreach ($teamIds as $teamId => $data) {
-            if ($this->hasTeam($teamId)) {
-                $invalidTeams[$teamId] = [
-                    'notes' => $data['notes'] ?? null,
-                    'reason' => 'team already associated with project'
-                ];
-                continue;
-            }
-            $validTeams[$teamId] = [
-                'notes' => $data['notes'] ?? null
-            ];
-        }
-        $this->teams()->attach($validTeams);
-        return $invalidTeams;
-    }
-
-    public function removeTeams(array $teamIds)
-    {
-        $invalidTeams = [];
-        $validTeams = [];
-        foreach ($teamIds as $teamId) {
-            if (!$this->hasTeam($teamId)) {
-                $invalidTeams[] = $teamId;
-                continue;
-            }
-            $validTeams[] = $teamId;
-        }
-        $this->teams()->detach($validTeams);
-        return $invalidTeams;
     }
 
     public function milestones()

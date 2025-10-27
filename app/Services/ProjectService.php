@@ -38,4 +38,56 @@ class ProjectService
 
         return Project::create($data);
     }
+
+    public function assignTeams(Project $project, array $teamIds, User $assignedBy)
+    {
+        $invalidTeams = [];
+        $validTeams = [];
+        foreach ($teamIds as $teamId => $data) {
+            if ($project->hasTeam($teamId)) {
+                $invalidTeams[$teamId] = [
+                    'notes' => $data['notes'] ?? null,
+                    'reason' => 'team already associated with project',
+                ];
+
+                continue;
+            }
+            $validTeams[$teamId] = [
+                'notes' => $data['notes'] ?? null,
+            ];
+        }
+        $project->teams()->attach($validTeams);
+
+        return $invalidTeams;
+    }
+
+    public function removeTeams(Project $project, array $teamIds, User $removedBy)
+    {
+        $invalidTeams = [];
+        $validTeams = [];
+        foreach ($teamIds as $teamId) {
+            if (! $project->hasTeam($teamId)) {
+                $invalidTeams[] = $teamId;
+
+                continue;
+            }
+            $validTeams[] = $teamId;
+        }
+        $project->teams()->detach($validTeams);
+
+        return $invalidTeams;
+    }
+
+    public function assignManager(Project $project, int $userId): Project
+    {
+        $manager = User::find($userId);
+        if (! $manager->isQualifiedAsProjectManager()) {
+            throw new \InvalidArgumentException('User must have the Project Manager role or Admin role to be assigned as manager.');
+        }
+
+        $project->manager_id = $manager->id;
+        $project->save();
+
+        return $project;
+    }
 }

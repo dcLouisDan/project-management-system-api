@@ -32,11 +32,10 @@ class Team extends Model
     /**
      * Get the team lead
      */
-    public function lead(): ?User
+    public function lead(): BelongsToMany
     {
         return $this->users()
-            ->wherePivot('role', UserRoles::TEAM_LEAD->value)
-            ->first();
+            ->wherePivot('role', UserRoles::TEAM_LEAD->value);
     }
 
     /**

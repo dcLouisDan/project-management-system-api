@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\UserRoles;
+use App\Http\Resources\TeamResource;
 use App\Http\Responses\ApiResponse;
 use App\Models\Project;
 use App\Models\Team;
@@ -31,6 +32,8 @@ class TeamController extends Controller
      * @queryParam has_leader boolean Filter teams by whether they have a leader assigned. Example: true
      * @queryParam per_page integer Number of results per page. Default is 15. Example: 10
      *
+     * @apiResource App\Http\Resources\TeamResource paginate=15
+     *
      * @apiResourceModel App\Models\Team paginate=15
      *
      * @response status=200 scenario="success" {"data": [{"id": 1, "name": "Development Team", "description": "Handles all development tasks"}], "links": {}, "meta": {}}
@@ -48,7 +51,7 @@ class TeamController extends Controller
         $perPage = $request->input('per_page', 15);
         $query = $this->teamService->buildFilteredQuery($request->only(['name', 'has_leader']));
         try {
-            $teams = $query->paginate($perPage);
+            $teams = $query->paginate($perPage)->toResourceCollection();
 
             return $teams;
         } catch (\Exception $e) {
@@ -118,6 +121,7 @@ class TeamController extends Controller
      *
      * Get details of a specific team by ID, including its members.
      *
+     * @apiResource App\Http\Resources\TeamResource
      *
      * @apiResourceModel App\Models\Team
      *
@@ -134,10 +138,7 @@ class TeamController extends Controller
             );
         }
 
-        return ApiResponse::success(
-            data: $team->load('users'),
-            message: 'Team retrieved successfully'
-        );
+        return new TeamResource($team->load(['lead', 'members', 'projects']));
     }
 
     /**

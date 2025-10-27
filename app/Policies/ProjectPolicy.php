@@ -25,10 +25,10 @@ class ProjectPolicy
      */
     public function view(User $user, Project $project): bool
     {
-        if ($user->hasRole(UserRoles::ADMIN->value) || $user->can('view project')) {
+        if ($user->hasRole(UserRoles::ADMIN->value)) {
             return true;
         }
-        if ($user->isInProjectTeams($project)) {
+        if ($user->isInProjectTeams($project) || $user->can('view project')) {
             return true;
         }
         return false;

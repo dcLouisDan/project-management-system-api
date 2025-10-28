@@ -95,6 +95,80 @@ class TaskService
         ProjectGraphCache::invalidate($task->project_id);
     }
 
+    public function startTask(Task $task, User $startedBy)
+    {
+        $this->updateTaskStatus($task, ProgressStatus::IN_PROGRESS->value, $startedBy);
+
+        return $task;
+    }
+
+    public function submitTaskForReview(Task $task, User $submittedBy)
+    {
+        return DB::transaction(function () use ($task, $submittedBy) {
+            $reviewInProgressStatuses = [ProgressStatus::AWAITING_REVIEW->value, ProgressStatus::UNDER_REVIEW->value];
+
+            // Check if there's an existing review in progress
+            $lastReview = $task->reviews()->whereIn('status', $reviewInProgressStatuses)->first();
+
+            if ($lastReview) {
+                throw new \LogicException('A review is already in progress for this task.');
+            }
+
+            $this->updateTaskStatus($task, ProgressStatus::AWAITING_REVIEW->value, $submittedBy);
+
+            $task->reviews()->create([
+                'reviewed_by_id' => $task->assigned_by_id,
+                'status' => ProgressStatus::AWAITING_REVIEW->value,
+            ]);
+
+            return $task;
+        });
+
+    }
+
+    public function startReview(Task $task, int $reviewId, User $reviewer)
+    {
+        return DB::transaction(function () use ($task, $reviewId, $reviewer) {
+            $this->updateTaskStatus($task, ProgressStatus::UNDER_REVIEW->value, $reviewer);
+
+            $task->reviews()->findOrFail($reviewId)->update([
+                'status' => ProgressStatus::UNDER_REVIEW->value,
+            ]);
+
+            return $task;
+        });
+    }
+
+    public function submitReview(Task $task, int $reviewId, string $feedback, string $status, User $reviewer)
+    {
+        if (! in_array($status, [ProgressStatus::APPROVED->value, ProgressStatus::REJECTED->value])) {
+            throw new \InvalidArgumentException("Invalid review status: $status");
+        }
+
+        $taskReview = $task->reviews()->findOrFail($reviewId);
+
+        if ($taskReview->status !== $task->status) {
+            throw new \LogicException('The task review status does not match the current task status.');
+        }
+
+        $finishedProgressStatuses = [ProgressStatus::APPROVED->value, ProgressStatus::REJECTED->value];
+        if (! in_array($status, $finishedProgressStatuses)) {
+            throw new \InvalidArgumentException("Review status must be either 'approved' or 'rejected'.");
+        }
+
+        return DB::transaction(function () use ($task, $taskReview, $feedback, $status, $reviewer) {
+            $this->updateTaskStatus($task, $status === ProgressStatus::APPROVED->value ? ProgressStatus::COMPLETED->value : ProgressStatus::IN_PROGRESS->value, $reviewer);
+
+            $taskReview->update([
+                'feedback' => $feedback,
+                'status' => $status,
+                'reviewed_at' => now(),
+            ]);
+
+            return $task;
+        });
+    }
+
     public function buildQuery(array $filters)
     {
         $query = Task::query();

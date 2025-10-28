@@ -8,153 +8,161 @@ use App\Models\ProjectRelation;
 use App\Services\DependencyValidator;
 use App\Services\ProjectGraphCache;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
 
 trait HasProjectRelations
 {
-  protected static function bootHasProjectRelations()
-  {
-    static::created(function ($model) {
-      ProjectGraphCache::invalidate($model->project_id);
-    });
+    protected static function bootHasProjectRelations()
+    {
+        static::created(function ($model) {
+            ProjectGraphCache::invalidate($model->project_id);
+        });
 
-    static::deleted(function ($model) {
-      ProjectGraphCache::invalidate($model->project_id);
-    });
-  }
+        static::updated(function ($model) {
+            ProjectGraphCache::invalidate($model->project_id);
+        });
 
-  public function parentExists(): bool
-  {
-    return ProjectRelation::where([
-      'target_type' => self::class,
-      'target_id' => $this->id,
-      'relation_type' => ProjectRelationTypes::PARENT_OF->value,
-    ])->exists();
-  }
+        static::deleting(function ($model) {
+            $model->outgoingRelations()->delete();
+            $model->incomingRelations()->delete();
+        });
 
-  public function inverseRelationExists(string $relationType, Model $target): bool
-  {
-    $inverseType = ProjectRelationTypes::fromString($relationType)?->inverse()->value;
-    if (!$inverseType) {
-      return false;
+        static::deleted(function ($model) {
+            ProjectGraphCache::invalidate($model->project_id);
+        });
     }
 
-    return ProjectRelation::where([
-      'source_type' => get_class($target),
-      'source_id' => $target->id,
-      'target_type' => self::class,
-      'target_id' => $this->id,
-      'relation_type' => $inverseType,
-    ])->exists();
-  }
-
-  public function hasCircularDependency(string $relationType, Model $target): bool
-  {
-    $graph = ProjectGraphCache::get($this->project_id);
-
-    $direction = ProjectRelationTypes::fromString($relationType)->direction();
-
-    if ($direction === RelationDirection::ASSOCIATIVE) {
-      return false;
+    public function parentExists(): bool
+    {
+        return ProjectRelation::where([
+            'target_type' => self::class,
+            'target_id' => $this->id,
+            'relation_type' => ProjectRelationTypes::PARENT_OF->value,
+        ])->exists();
     }
 
-    if ($direction === RelationDirection::DEPENDENCY_FORWARD) {
-      return DependencyValidator::hasCircularDependency($graph, $this, $target);
+    public function inverseRelationExists(string $relationType, Model $target): bool
+    {
+        $inverseType = ProjectRelationTypes::fromString($relationType)?->inverse()->value;
+        if (! $inverseType) {
+            return false;
+        }
+
+        return ProjectRelation::where([
+            'source_type' => get_class($target),
+            'source_id' => $target->id,
+            'target_type' => self::class,
+            'target_id' => $this->id,
+            'relation_type' => $inverseType,
+        ])->exists();
     }
 
-    return DependencyValidator::hasCircularDependency($graph, $target, $this);
-  }
+    public function hasCircularDependency(string $relationType, Model $target): bool
+    {
+        $graph = ProjectGraphCache::get($this->project_id);
 
-  public function addRelation(string $relationType, Model $target, ?int $createdById = null)
-  {
-    // Validate the relation type
-    if (!ProjectRelationTypes::isValidType($relationType)) {
-      throw new \InvalidArgumentException("Invalid relation type: $relationType");
+        $direction = ProjectRelationTypes::fromString($relationType)->direction();
+
+        if ($direction === RelationDirection::ASSOCIATIVE) {
+            return false;
+        }
+
+        if ($direction === RelationDirection::DEPENDENCY_FORWARD) {
+            return DependencyValidator::hasCircularDependency($graph, $this, $target);
+        }
+
+        return DependencyValidator::hasCircularDependency($graph, $target, $this);
     }
 
-    if ($this->project_id !== $target->project_id) {
-      throw new \InvalidArgumentException("Cannot create relation between items from different projects.");
+    public function addRelation(string $relationType, Model $target, ?int $createdById = null)
+    {
+        // Validate the relation type
+        if (! ProjectRelationTypes::isValidType($relationType)) {
+            throw new \InvalidArgumentException("Invalid relation type: $relationType");
+        }
+
+        if ($this->project_id !== $target->project_id) {
+            throw new \InvalidArgumentException('Cannot create relation between items from different projects.');
+        }
+
+        if ($this->inverseRelationExists($relationType, $target)) {
+            throw new \InvalidArgumentException('Inverse relation already exists.');
+        }
+
+        if ($this->hasCircularDependency($relationType, $target)) {
+            throw new \InvalidArgumentException('Adding this relation would create a circular dependency.');
+        }
+
+        if ($relationType === ProjectRelationTypes::PARENT_OF->value && $target->parentExists()) {
+            throw new \InvalidArgumentException('The target item already has a parent.');
+        }
+
+        ProjectRelation::create([
+            'project_id' => $this->project_id,
+            'created_by_id' => $createdById,
+            'source_type' => self::class,
+            'source_id' => $this->id,
+            'target_type' => get_class($target),
+            'target_id' => $target->id,
+            'relation_type' => $relationType,
+        ]);
+
+        ProjectGraphCache::invalidate($this->project_id);
+
+        return $this;
     }
 
-    if ($this->inverseRelationExists($relationType, $target)) {
-      throw new \InvalidArgumentException("Inverse relation already exists.");
+    public function removeRelation(string $relationType, Model $target)
+    {
+        ProjectRelation::where([
+            'source_type' => self::class,
+            'source_id' => $this->id,
+            'target_type' => get_class($target),
+            'target_id' => $target->id,
+            'relation_type' => $relationType,
+        ])->delete();
+
+        ProjectGraphCache::invalidate($this->project_id);
+
+        return $this;
     }
 
-    if ($this->hasCircularDependency($relationType, $target)) {
-      throw new \InvalidArgumentException("Adding this relation would create a circular dependency.");
+    public function outgoingRelations()
+    {
+        return $this->morphMany(ProjectRelation::class, 'source');
     }
 
-    if ($relationType === ProjectRelationTypes::PARENT_OF->value && $target->parentExists()) {
-      throw new \InvalidArgumentException("The target item already has a parent.");
+    public function incomingRelations()
+    {
+        return $this->morphMany(ProjectRelation::class, 'target');
     }
 
-    ProjectRelation::create([
-      'project_id' => $this->project_id,
-      'created_by_id' => $createdById,
-      'source_type' => self::class,
-      'source_id' => $this->id,
-      'target_type' => get_class($target),
-      'target_id' => $target->id,
-      'relation_type' => $relationType,
-    ]);
+    public function blocks()
+    {
+        return $this->outgoingRelations()->where('relation_type', ProjectRelationTypes::BLOCKS->value)->with('target');
+    }
 
-    ProjectGraphCache::invalidate($this->project_id);
+    public function blockedBy()
+    {
+        return $this->incomingRelations()->where('relation_type', ProjectRelationTypes::BLOCKS->value)->with('source');
+    }
 
-    return $this;
-  }
+    public function requires()
+    {
+        return $this->outgoingRelations()->where('relation_type', ProjectRelationTypes::REQUIRES->value)->with('target');
+    }
 
-  public function removeRelation(string $relationType, Model $target)
-  {
-    ProjectRelation::where([
-      'source_type' => self::class,
-      'source_id' => $this->id,
-      'target_type' => get_class($target),
-      'target_id' => $target->id,
-      'relation_type' => $relationType,
-    ])->delete();
+    public function requiredBy()
+    {
+        return $this->incomingRelations()->where('relation_type', ProjectRelationTypes::REQUIRES->value)->with('source');
+    }
 
-    ProjectGraphCache::invalidate($this->project_id);
+    public function relatesTo()
+    {
+        return $this->outgoingRelations()->where('relation_type', ProjectRelationTypes::RELATES_TO->value)->with('target');
+    }
 
-    return $this;
-  }
-
-  public function outgoingRelations()
-  {
-    return $this->morphMany(ProjectRelation::class, 'source');
-  }
-
-  public function incomingRelations()
-  {
-    return $this->morphMany(ProjectRelation::class, 'target');
-  }
-
-  public function blocks()
-  {
-    return $this->outgoingRelations()->where('relation_type', ProjectRelationTypes::BLOCKS->value)->with('target');
-  }
-
-  public function blockedBy()
-  {
-    return $this->incomingRelations()->where('relation_type', ProjectRelationTypes::BLOCKS->value)->with('source');
-  }
-
-  public function requires()
-  {
-    return $this->outgoingRelations()->where('relation_type', ProjectRelationTypes::REQUIRES->value)->with('target');
-  }
-
-  public function requiredBy()
-  {
-    return $this->incomingRelations()->where('relation_type', ProjectRelationTypes::REQUIRES->value)->with('source');
-  }
-
-  public function relatesTo()
-  {
-    return $this->outgoingRelations()->where('relation_type', ProjectRelationTypes::RELATES_TO->value)->with('target');
-  }
-
-  public function children()
-  {
-    return $this->outgoingRelations()->where('relation_type', ProjectRelationTypes::PARENT_OF->value)->with('target');
-  }
+    public function children()
+    {
+        return $this->outgoingRelations()->where('relation_type', ProjectRelationTypes::PARENT_OF->value)->with('target');
+    }
 }

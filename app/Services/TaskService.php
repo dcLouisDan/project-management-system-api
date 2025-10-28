@@ -35,19 +35,31 @@ class TaskService
         });
     }
 
-    public function updateTask(Task $task, array $data, User $updatedBy)
+    public function updateTask(Task $task, array $data)
     {
-        // Logic to update a task
+        $task->fill([
+            'title' => $data['title'] ?? $task->title,
+            'description' => $data['description'] ?? $task->description,
+            'priority' => $data['priority'] ?? $task->priority,
+            'due_date' => $data['due_date'] ?? $task->due_date,
+        ]);
+        $task->save();
+
+        return $task;
     }
 
-    public function deleteTask(Task $task, User $deletedBy)
+    public function deleteTask(Task $task, bool $force = false)
     {
-        // Logic to delete a task
+        if ($force) {
+            return $task->forceDelete();
+        }
+
+        return $task->delete();
     }
 
-    public function restoreTask(Task $task, User $restoredBy)
+    public function restoreTask(Task $task)
     {
-        // Logic to restore a deleted task
+        return $task->restore();
     }
 
     public function assignTask(Task $task, User $assignee, User $assignedBy)
@@ -80,7 +92,7 @@ class TaskService
         ProjectGraphCache::invalidate($task->project_id);
     }
 
-    public function buildQuery(array $filters, User $user)
+    public function buildQuery(array $filters)
     {
         $query = Task::query();
 

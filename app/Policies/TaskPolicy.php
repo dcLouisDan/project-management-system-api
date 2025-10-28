@@ -2,10 +2,9 @@
 
 namespace App\Policies;
 
+use App\Enums\UserRoles;
 use App\Models\Task;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
-use App\Enums\UserRoles;
 
 class TaskPolicy
 {
@@ -14,22 +13,39 @@ class TaskPolicy
      */
     public function viewAny(User $user): bool
     {
-        if ($user->hasRole(UserRoles::ADMIN->value))
+        if ($user->hasRole(UserRoles::ADMIN->value)) {
             return true;
+        }
+
+        return false;
+    }
+
+    public function viewAnyByUser(User $user, int $userId): bool
+    {
+        if ($user->hasRole(UserRoles::ADMIN->value)) {
+            return true;
+        }
+
+        if ($user->id === $userId) {
+            return true;
+        }
 
         return false;
     }
 
     public function viewAnyInProject(User $user, int $projectId): bool
     {
-        if ($user->hasRole(UserRoles::ADMIN->value))
+        if ($user->hasRole(UserRoles::ADMIN->value)) {
             return true;
+        }
 
-        if ($user->isInProjectTeams($projectId))
+        if ($user->isInProjectTeams($projectId)) {
             return true;
+        }
 
-        if ($user->isManagerOfProject($projectId))
+        if ($user->isManagerOfProject($projectId)) {
             return true;
+        }
 
         return false;
     }
@@ -39,17 +55,21 @@ class TaskPolicy
      */
     public function view(User $user, Task $task): bool
     {
-        if ($user->hasRole(UserRoles::ADMIN->value))
+        if ($user->hasRole(UserRoles::ADMIN->value)) {
             return true;
+        }
 
-        if ($user->id === $task->assigned_to_id)
+        if ($user->id === $task->assigned_to_id) {
             return true;
+        }
 
-        if ($user->isInProjectTeams($task->project) && $user->can('view task'))
+        if ($user->isInProjectTeams($task->project) && $user->can('view task')) {
             return true;
+        }
 
-        if ($user->isManagerOfProject($task->project) && $user->can('view task'))
+        if ($user->isManagerOfProject($task->project) && $user->can('view task')) {
             return true;
+        }
 
         return false;
     }
@@ -59,21 +79,26 @@ class TaskPolicy
      */
     public function create(User $user): bool
     {
-        if ($user->hasRole(UserRoles::ADMIN->value))
+        if ($user->hasRole(UserRoles::ADMIN->value)) {
             return true;
+        }
+
         return false;
     }
 
     public function createInProject(User $user, int $projectId): bool
     {
-        if ($user->hasRole(UserRoles::ADMIN->value))
+        if ($user->hasRole(UserRoles::ADMIN->value)) {
             return true;
+        }
 
-        if ($user->isInProjectTeams($projectId) && $user->can('create task'))
+        if ($user->isInProjectTeams($projectId) && $user->can('create task')) {
             return true;
+        }
 
-        if ($user->isManagerOfProject($projectId))
+        if ($user->isManagerOfProject($projectId)) {
             return true;
+        }
 
         return false;
     }
@@ -83,17 +108,21 @@ class TaskPolicy
      */
     public function update(User $user, Task $task): bool
     {
-        if ($user->hasRole(UserRoles::ADMIN->value))
+        if ($user->hasRole(UserRoles::ADMIN->value)) {
             return true;
+        }
 
-        if ($user->id === $task->assigned_to_id)
+        if ($user->id === $task->assigned_to_id) {
             return true;
+        }
 
-        if ($user->isInProjectTeams($task->project) && $user->can('update task'))
+        if ($user->isInProjectTeams($task->project) && $user->can('update task')) {
             return true;
+        }
 
-        if ($user->isManagerOfProject($task->project) && $user->can('update task'))
+        if ($user->isManagerOfProject($task->project) && $user->can('update task')) {
             return true;
+        }
 
         return false;
     }
@@ -103,11 +132,13 @@ class TaskPolicy
      */
     public function delete(User $user, Task $task): bool
     {
-        if ($user->hasRole(UserRoles::ADMIN->value))
+        if ($user->hasRole(UserRoles::ADMIN->value)) {
             return true;
+        }
 
-        if ($user->isManagerOfProject($task->project) && $user->can('delete task'))
+        if ($user->isManagerOfProject($task->project) && $user->can('delete task')) {
             return true;
+        }
 
         return false;
     }
@@ -117,11 +148,13 @@ class TaskPolicy
      */
     public function restore(User $user, Task $task): bool
     {
-        if ($user->hasRole(UserRoles::ADMIN->value))
+        if ($user->hasRole(UserRoles::ADMIN->value)) {
             return true;
+        }
 
-        if ($user->isManagerOfProject($task->project) && $user->can('restore task'))
+        if ($user->isManagerOfProject($task->project) && $user->can('restore task')) {
             return true;
+        }
 
         return false;
     }
@@ -131,25 +164,30 @@ class TaskPolicy
      */
     public function forceDelete(User $user, Task $task): bool
     {
-        if ($user->hasRole(UserRoles::ADMIN->value))
+        if ($user->hasRole(UserRoles::ADMIN->value)) {
             return true;
+        }
 
-        if ($user->isManagerOfProject($task->project) && $user->can('delete task'))
+        if ($user->isManagerOfProject($task->project) && $user->can('delete task')) {
             return true;
+        }
 
         return false;
     }
 
     public function assignToUser(User $user, Task $task): bool
     {
-        if ($user->hasRole(UserRoles::ADMIN->value))
+        if ($user->hasRole(UserRoles::ADMIN->value)) {
             return true;
+        }
 
-        if ($user->isManagerOfProject($task->project) && $user->can('assign task'))
+        if ($user->isManagerOfProject($task->project) && $user->can('assign task')) {
             return true;
+        }
 
-        if ($user->isInProjectTeamLeads($task->project) && $user->can('assign task'))
+        if ($user->isInProjectTeamLeads($task->project) && $user->can('assign task')) {
             return true;
+        }
 
         return false;
     }

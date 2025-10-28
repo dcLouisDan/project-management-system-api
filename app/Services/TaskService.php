@@ -42,6 +42,7 @@ class TaskService
             'description' => $data['description'] ?? $task->description,
             'priority' => $data['priority'] ?? $task->priority,
             'due_date' => $data['due_date'] ?? $task->due_date,
+            'assigned_to_id' => $data['assigned_to_id'] ?? $task->assigned_to_id,
         ]);
         $task->save();
 
@@ -57,8 +58,10 @@ class TaskService
         return $task->delete();
     }
 
-    public function restoreTask(Task $task)
+    public function restoreTask(int $taskId)
     {
+        $task = Task::withTrashed()->findOrFail($taskId);
+
         return $task->restore();
     }
 

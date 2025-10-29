@@ -2,22 +2,34 @@
 
 namespace Tests\Feature;
 
-use Database\Seeders\RolesAndPermissionsSeeder;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
-use App\Enums\UserRoles;
 use App\Enums\ProjectRelationTypes;
+use App\Enums\UserRoles;
 use App\Models\Milestone;
 use App\Models\ProjectRelation;
 use App\Models\Task;
 use App\Services\DependencyValidator;
 use App\Services\ProjectGraphCache;
+use App\Services\ProjectRelationService;
+use Database\Seeders\RolesAndPermissionsSeeder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class ProjectGraphTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
+
+    protected ProjectRelationService $projectRelationService;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->projectRelationService = new ProjectRelationService(
+            new DependencyValidator
+        );
+    }
 
     protected function getAuthenticatedUserAndProject()
     {
@@ -59,7 +71,6 @@ class ProjectGraphTest extends TestCase
         $this->createBasicRequiresRelation($project->id, $milestone1, $task1, $user->id);
         $this->createBasicRequiresRelation($project->id, $task1, $task2, $user->id);
 
-
         return [$project, $user, $milestone1, $task1, $task2];
     }
 
@@ -91,8 +102,11 @@ class ProjectGraphTest extends TestCase
         $task3 = Task::factory()->create(['project_id' => $project->id, 'assigned_by_id' => $user->id]);
 
         // Check for circular dependency
-        $hasCircularDependency = $task2->hasCircularDependency(ProjectRelationTypes::BLOCKS->value, $milestone1);
-        $hasNoCircularDependency = $milestone1->hasCircularDependency(ProjectRelationTypes::REQUIRES->value, $task3);
+        $hasCircularDependency = $this->projectRelationService
+            ->checkForCircularDependency(ProjectRelationTypes::BLOCKS->value, $task2, $milestone1);
+        $hasNoCircularDependency = $this->projectRelationService
+            ->checkForCircularDependency(ProjectRelationTypes::REQUIRES->value, $milestone1, $task3);
+
         $this->assertFalse($hasNoCircularDependency, 'False positive for circular dependency detected.');
 
         $this->assertTrue($hasCircularDependency, 'Circular dependency was not detected as expected.');
@@ -103,8 +117,8 @@ class ProjectGraphTest extends TestCase
         [$project, $user, $milestone1, $task1, $task2] = $this->buildBasicRequiresGraph();
 
         // Check for inverse relation
-        $inverseExists = $task1->inverseRelationExists(ProjectRelationTypes::BLOCKS->value, $milestone1);
-        $inverseNotExists = $task2->inverseRelationExists(ProjectRelationTypes::BLOCKS->value, $milestone1);
+        $inverseExists = $this->projectRelationService->inverseRelationExists(ProjectRelationTypes::BLOCKS->value, $task2, $task1);
+        $inverseNotExists = $this->projectRelationService->inverseRelationExists(ProjectRelationTypes::BLOCKS->value, $milestone1, $task2);
 
         $this->assertTrue($inverseExists, 'Inverse relation was not detected as expected.');
         $this->assertFalse($inverseNotExists, 'False positive for inverse relation detected.');
@@ -115,7 +129,7 @@ class ProjectGraphTest extends TestCase
         [$project, $user, $milestone1, $task1, $task2] = $this->buildBasicRequiresGraph();
 
         // Remove the relation between milestone1 and task1
-        $milestone1->removeRelation(ProjectRelationTypes::REQUIRES->value, $task1);
+        $this->projectRelationService->removeRelation(ProjectRelationTypes::REQUIRES->value, $milestone1, $task1);
 
         // Assert the relation is removed
         $this->assertDatabaseMissing('project_relations', [
@@ -141,9 +155,10 @@ class ProjectGraphTest extends TestCase
     public function test_incomplete_dependency_detection(): void
     {
         [$project, $user, $milestone1, $task1, $task2] = $this->buildBasicRequiresGraph();
-        $graph = ProjectGraphCache::get($project->id);
         // Mark task2 as in_progress
-        $task2->setStatus('in_progress');
+        $task2->update(['status' => 'in_progress']);
+        ProjectGraphCache::invalidate($project->id);
+        $graph = ProjectGraphCache::get($project->id);
 
         $hasIncompleteDependencies = DependencyValidator::hasIncompleteDependencies($graph, $task1, 'completed');
 

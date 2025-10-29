@@ -31,31 +31,6 @@ trait HasProjectRelations
         });
     }
 
-    public function parentExists(): bool
-    {
-        return ProjectRelation::where([
-            'target_type' => self::class,
-            'target_id' => $this->id,
-            'relation_type' => ProjectRelationTypes::PARENT_OF->value,
-        ])->exists();
-    }
-
-    public function inverseRelationExists(string $relationType, Model $target): bool
-    {
-        $inverseType = ProjectRelationTypes::fromString($relationType)?->inverse()->value;
-        if (! $inverseType) {
-            return false;
-        }
-
-        return ProjectRelation::where([
-            'source_type' => get_class($target),
-            'source_id' => $target->id,
-            'target_type' => self::class,
-            'target_id' => $this->id,
-            'relation_type' => $inverseType,
-        ])->exists();
-    }
-
     public function hasCircularDependency(string $relationType, Model $target): bool
     {
         $graph = ProjectGraphCache::get($this->project_id);

@@ -10,12 +10,6 @@ use Illuminate\Support\Facades\DB;
 
 class TaskService
 {
-    public function __construct(
-        protected DependencyValidator $dependencyValidator
-    ) {
-        // Initialization code if needed
-    }
-
     // Task service methods would go here
     public function createTask(array $data, Project $project, User $createdBy)
     {
@@ -151,13 +145,22 @@ class TaskService
             throw new \LogicException('The task review status does not match the current task status.');
         }
 
+        if ($task->assigned_by_id !== $reviewer->id) {
+            throw new \InvalidArgumentException('Only the user who requested the review can submit it.');
+        }
+
+        if ($taskReview->reviewed_by_id !== $reviewer->id) {
+            throw new \InvalidArgumentException('The reviewer does not match the user submitting the review.');
+        }
+
         $finishedProgressStatuses = [ProgressStatus::APPROVED->value, ProgressStatus::REJECTED->value];
         if (! in_array($status, $finishedProgressStatuses)) {
             throw new \InvalidArgumentException("Review status must be either 'approved' or 'rejected'.");
         }
 
         return DB::transaction(function () use ($task, $taskReview, $feedback, $status, $reviewer) {
-            $this->updateTaskStatus($task, $status === ProgressStatus::APPROVED->value ? ProgressStatus::COMPLETED->value : ProgressStatus::IN_PROGRESS->value, $reviewer);
+            $finalStatus = $status === ProgressStatus::APPROVED->value ? ProgressStatus::COMPLETED->value : ProgressStatus::IN_PROGRESS->value;
+            $this->updateTaskStatus($task, $finalStatus, $reviewer);
 
             $taskReview->update([
                 'feedback' => $feedback,

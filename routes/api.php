@@ -1,11 +1,11 @@
 <?php
 
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-
 
 Route::prefix('/v1')->group(function () {
     // Protected route example
@@ -21,7 +21,6 @@ Route::prefix('/v1')->group(function () {
     Route::middleware(['permission:delete user'])->delete('users/{user}', [UserController::class, 'destroy']);
     Route::middleware(['permission:restore user'])->post('users/{userId}/restore', [UserController::class, 'restore']);
     Route::middleware(['permission:assign role user'])->post('users/{user}/roles', [UserController::class, 'assignRoles']);
-
 
     // Team Management Routes
     Route::middleware(['permission:list teams'])->get('teams', [TeamController::class, 'index']);
@@ -46,4 +45,15 @@ Route::prefix('/v1')->group(function () {
     Route::middleware(['permission:restore project'])->post('projects/{projectId}/restore', [ProjectController::class, 'restore']);
     Route::middleware(['permission:update project'])->post('projects/{project}/manager', [ProjectController::class, 'setManager']);
     Route::middleware(['permission:assign team project'])->post('projects/{project}/teams', [ProjectController::class, 'assignTeams']);
+
+    // Task Management Routes
+    Route::middleware(['permission:list tasks'])->get('tasks', [TaskController::class, 'index']);
+    Route::middleware(['permission:view task'])->get('tasks/{task}', [TaskController::class, 'show']);
+    Route::middleware(['permission:list tasks'])->get('users/{userId}/tasks', [TaskController::class, 'indexByUser']);
+    Route::middleware(['permission:list tasks'])->get('projects/{projectId}/tasks', [TaskController::class, 'indexByProject']);
+    Route::middleware(['permission:update task'])->post('tasks/{task}/sync-relations', [TaskController::class, 'syncRelations']);
+    Route::middleware(['permission:create task'])->post('tasks', [TaskController::class, 'store']);
+    Route::middleware(['permission:update task'])->put('tasks/{task}', [TaskController::class, 'update']);
+    Route::middleware(['permission:delete task'])->delete('tasks/{task}', [TaskController::class, 'destroy']);
+    Route::middleware(['permission:restore task'])->post('tasks/{taskId}/restore', [TaskController::class, 'restore']);
 })->middleware('auth:sanctum');

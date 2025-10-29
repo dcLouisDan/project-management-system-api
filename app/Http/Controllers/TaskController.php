@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Enums\ProjectRelationTypes;
 use App\Http\Resources\TaskResource;
 use App\Http\Responses\ApiResponse;
+use App\Models\Milestone;
 use App\Models\Project;
 use App\Models\Task;
+use App\Services\ProjectRelationService;
 use App\Services\TaskService;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -17,7 +19,8 @@ use Illuminate\Validation\Rule;
 class TaskController extends Controller
 {
     public function __construct(
-        protected TaskService $taskService
+        protected TaskService $taskService,
+        protected ProjectRelationService $projectRelationService
     ) {
         //
     }
@@ -167,17 +170,37 @@ class TaskController extends Controller
         }
     }
 
-    public function syncTaskRelations(Request $request, Task $task)
+    public function syncRelations(Request $request, Task $task)
     {
         if ($request->user->cannot('update', $task)) {
             return ApiResponse::error('This action is unauthorized.', 403);
         }
 
         $validated = $request->validate([
-            // Example [1: 'depends_on', 2: 'related_to']
-            'related_task_ids' => ['required', 'array'],
-            'related_task_ids.*.id' => ['integer', 'exists:tasks,id'],
-            'related_task_ids.*.relation' => ['string', Rule::in(ProjectRelationTypes::allTypes())],
+            'tasks' => ['sometimes', 'array'],
+            'tasks.*.id' => ['required', 'integer', 'exists:tasks,id'],
+            'tasks.*.relation_type' => ['required', 'string', Rule::in(ProjectRelationTypes::allTypes())],
+            'milestones' => ['sometimes', 'array'],
+            'milestones.*.id' => ['required', 'integer', 'exists:milestones,id'],
+            'milestones.*.relation_type' => ['required', 'string', Rule::in(ProjectRelationTypes::allTypes())],
         ]);
+
+        $relatedTasks = $validated['tasks'] ?? [];
+        $relatedMilestones = $validated['milestones'] ?? [];
+
+        try {
+            if (! empty($relatedTasks)) {
+                $this->projectRelationService->syncOutgoingRelations($task, $relatedTasks, Task::class);
+            }
+
+            if (! empty($relatedMilestones)) {
+                $this->projectRelationService->syncOutgoingRelations($task, $relatedMilestones, Milestone::class);
+            }
+
+            return ApiResponse::success(null, 'Task relations synchronized successfully.');
+        } catch (\Exception $e) {
+            return ApiResponse::error('Failed to synchronize task relations: '.$e->getMessage(), 500);
+        }
+
     }
 }

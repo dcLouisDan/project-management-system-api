@@ -63,6 +63,7 @@ class RolesAndPermissionsSeeder extends Seeder
         $viewTaskPermission = Permission::firstOrCreate(['name' => 'view task']);
         $updateTaskPermission = Permission::firstOrCreate(['name' => 'update task']);
         $deleteTaskPermission = Permission::firstOrCreate(['name' => 'delete task']);
+        $restoreTaskPermission = Permission::firstOrCreate(['name' => 'restore task']);
         $listTasksPermission = Permission::firstOrCreate(['name' => 'list tasks']);
         $assignTaskPermission = Permission::firstOrCreate(['name' => 'assign task']);
         $markTaskDonePermission = Permission::firstOrCreate(['name' => 'mark task done']);

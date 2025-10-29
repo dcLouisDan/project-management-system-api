@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\ProjectRelationTypes;
 use App\Http\Resources\TaskResource;
 use App\Http\Responses\ApiResponse;
 use App\Models\Project;
@@ -164,5 +165,19 @@ class TaskController extends Controller
         } catch (\Exception $e) {
             return ApiResponse::error('Failed to restore task: '.$e->getMessage(), 500);
         }
+    }
+
+    public function syncTaskRelations(Request $request, Task $task)
+    {
+        if ($request->user->cannot('update', $task)) {
+            return ApiResponse::error('This action is unauthorized.', 403);
+        }
+
+        $validated = $request->validate([
+            // Example [1: 'depends_on', 2: 'related_to']
+            'related_task_ids' => ['required', 'array'],
+            'related_task_ids.*.id' => ['integer', 'exists:tasks,id'],
+            'related_task_ids.*.relation' => ['string', Rule::in(ProjectRelationTypes::allTypes())],
+        ]);
     }
 }

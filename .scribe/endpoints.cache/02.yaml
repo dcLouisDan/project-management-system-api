@@ -67,6 +67,12 @@ endpoints:
     responses:
       -
         status: 200
+        content: '{"data":{"id":3,"name":"Runolfsson Group","description":"Accusamus suscipit ab est unde sint. Optio dolorum eaque mollitia id et aperiam repudiandae. Qui ea omnis dolor voluptatem at est beatae id. Et laboriosam voluptatem dolores velit quibusdam distinctio vel.","created_at":"2025-10-30T06:02:00.000000Z","updated_at":"2025-10-30T06:02:00.000000Z"}}'
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 200
         content: '{"data": [{"id": 1, "name": "Development Team", "description": "Handles all development tasks"}], "links": {}, "meta": {}}'
         headers: []
         description: success
@@ -194,6 +200,12 @@ endpoints:
     cleanBodyParameters: []
     fileParameters: []
     responses:
+      -
+        status: 200
+        content: '{"data":{"id":4,"name":"Bailey Ltd","description":"Et fugiat sunt nihil accusantium. Mollitia modi deserunt aut ab provident perspiciatis quo. Nostrum aut adipisci quidem nostrum.","created_at":"2025-10-30T06:02:00.000000Z","updated_at":"2025-10-30T06:02:00.000000Z"}}'
+        headers: []
+        description: ''
+        custom: []
       -
         status: 200
         content: '{"data": {"id": 1, "name": "Development Team", "description": "Handles all development tasks", "users": []}, "message": "Team retrieved successfully"}'

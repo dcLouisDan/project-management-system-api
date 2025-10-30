@@ -158,6 +158,40 @@
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-task-management" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="task-management">
+                    <a href="#task-management">Task Management</a>
+                </li>
+                                    <ul id="tocify-subheader-task-management" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="task-management-GETapi-v1-tasks">
+                                <a href="#task-management-GETapi-v1-tasks">List All Tasks</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="task-management-GETapi-v1-tasks--task_id-">
+                                <a href="#task-management-GETapi-v1-tasks--task_id-">Show Task Details</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="task-management-GETapi-v1-users--userId--tasks">
+                                <a href="#task-management-GETapi-v1-users--userId--tasks">List Tasks by User</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="task-management-GETapi-v1-projects--projectId--tasks">
+                                <a href="#task-management-GETapi-v1-projects--projectId--tasks">List Tasks by Project</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="task-management-POSTapi-v1-tasks--task_id--sync-relations">
+                                <a href="#task-management-POSTapi-v1-tasks--task_id--sync-relations">Sync Task Relations</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="task-management-POSTapi-v1-tasks">
+                                <a href="#task-management-POSTapi-v1-tasks">Create Task</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="task-management-PUTapi-v1-tasks--task_id-">
+                                <a href="#task-management-PUTapi-v1-tasks--task_id-">Update Task</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="task-management-DELETEapi-v1-tasks--task_id-">
+                                <a href="#task-management-DELETEapi-v1-tasks--task_id-">Delete Task</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="task-management-POSTapi-v1-tasks--taskId--restore">
+                                <a href="#task-management-POSTapi-v1-tasks--taskId--restore">Restore Deleted Task</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-team-management" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="team-management">
                     <a href="#team-management">Team Management</a>
@@ -238,7 +272,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: October 24, 2025</li>
+        <li>Last updated: October 30, 2025</li>
     </ul>
 </div>
 
@@ -1131,7 +1165,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 access-control-allow-origin: *
-set-cookie: XSRF-TOKEN=eyJpdiI6IklKbTZNU0lXdHFhcFhhOUl6WDkwQnc9PSIsInZhbHVlIjoiT3Vvb1RPMzNibWE3bkRCR09yZ1BxS2tVQWwrTFhURkF2NWJjcHJ4dUoxZmJIeHAzcVJJQ2hoWjFYWEVPTTVuS0QxNzRBcytZTWUyV1U1MW13dis0TE5DU0pCczcvbVhEcVFWQWEvZmhhRnhFU2Z3anNOLzlVWlZvbVdTT2ZuekIiLCJtYWMiOiI2MmM0NWU0M2M1NmNhMjVlMTQ0N2NhM2FlOWE2NjNkOGIyN2U3YzEwMTQ5OGFkODI5ZTllNzcxNjYyNmQ4YzE4IiwidGFnIjoiIn0%3D; expires=Fri, 24 Oct 2025 09:20:16 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6InlSd2V4UDZoQjgzdFZaRjdLZVo0clE9PSIsInZhbHVlIjoiVE5HRWNHT2VpaWRjanFnTEpmOSs4ODZzRy9reHJaci85bTRSZGFha1VrYk15RkNnN2lwS0FERmp4YWozS3d6OHJHRHg2REord096L3psZnFYTkpQb3crbXl2QlJtcTJ6M0l6aCsrQmxkdVRVNHNJY1ZWVnJOVVJVU1Y3T1JXTmciLCJtYWMiOiI3MDZiY2E2N2U4NTJhZjg5YTAzYzcxNjRlZTQ5M2EwM2VhMjliNmRlZDBjZmQ5OTE0NWUyYzNkOGJjMmExOGVmIiwidGFnIjoiIn0%3D; expires=Fri, 24 Oct 2025 09:20:16 GMT; Max-Age=7200; path=/; httponly; samesite=lax
+set-cookie: XSRF-TOKEN=eyJpdiI6Img1ZnMyV0pqMDhHM1FPeEhrbjdLemc9PSIsInZhbHVlIjoiRkFIODVPUkRONDJnelJNa01BdHp6Y3FuemMvSStrK2NVRHJnbkVNZnFSNDZSZDNpVjg5cmt6VVdDY2xFSGhIalFzL2x5YXZGK3dhVFpLSHlrRGhBM1pyRGdkZjFxUFpPbHpiK1prd0ZhaDMvZitKZURSTFZnOE5IQjI3SDJFd0EiLCJtYWMiOiIyNTY3ZTc0YzJhOTEwYjJjNWZiYzhlY2Q1YjQwODkyMDcyZGFjOGU0Y2I2MGRhYzhlZTAwMTdkZjUyNzQ0YjZhIiwidGFnIjoiIn0%3D; expires=Thu, 30 Oct 2025 08:02:00 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6IlpZSWpKZ1lPVG5oU3QyOVp4M0x6MGc9PSIsInZhbHVlIjoiZWllL2pnd3lxVEdCY1l2c3ljNVJtZHM3cXhJR1FWbXJjOVZpcXJPd3JZYnNxNENaUkN3TGpqV0RmOVNkNi83MjJqYWd2b3E1eUdwTEsrWkx5RGFuZ1NhZVkva1NMaS9yN3pvZzR6Q3Q2c3hDMUFkaTBjazNBWXRPM3V3a21EN2EiLCJtYWMiOiIyYThlMGMyZWI3MzljOGM0MzA5YWYwNzlmNmJmNzU2YjczOGI3N2VkZjZlZDg1ZTM5ZDA5MjI0MmRlYmM4ZDFmIiwidGFnIjoiIn0%3D; expires=Thu, 30 Oct 2025 08:02:00 GMT; Max-Age=7200; path=/; httponly; samesite=lax
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -1830,7 +1864,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 access-control-allow-origin: *
-set-cookie: XSRF-TOKEN=eyJpdiI6ImRFOFFrbnRISjJUczVSWG5HOHpCeHc9PSIsInZhbHVlIjoiTG9kUlhrNEJzc2lmcDVZbFVDUmROVmFwZjFMeEZzWHNzUFRtT21IMkZEczZKQ3lWdEV5ZW5pc3RqTURNNE1sNzZqSERZSms5WlJ1NlkxMW1WZ25uZkpYQ00vai9nTWQrZlQyNkJCUG1JVTQxc0xrMGpxK3BucVFoWmpiVDhkRkciLCJtYWMiOiI2ODQ4MDgyNDI2ODUxODAxZDFjM2MyMzY4OThjMTkyNGRiNjc0ZWI3NjdiOGI0MWMxZDkzNTRkNjI2ZmJhZmEyIiwidGFnIjoiIn0%3D; expires=Fri, 24 Oct 2025 09:20:16 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6InloMkVZZlpPTzNEdmZMVGwwODYwaXc9PSIsInZhbHVlIjoic2c2QjA4RHQwSm5MeldUalhjVWdXUmRZai9rNnBycm9OVzJtT3BhcmdaK1ZGNkhUdDZ6bjdpZzlYdUc0NHVwVnFhWlB3VmRNTWpWdVQzblZFOTV1UVhCbUE5cURCYllTcmx6R1ZsdVJObEh5R1VjenVlekRiSmR4bVZWZlZFU1MiLCJtYWMiOiIzY2Q0MTdkNDY3MzU1YTRiYzdmMDQ0MzRiZjExNzUzMjU0ODZhNWMwMDNiYzMxYzM5ODUzYzVlYmNhMjM4M2NjIiwidGFnIjoiIn0%3D; expires=Fri, 24 Oct 2025 09:20:16 GMT; Max-Age=7200; path=/; httponly; samesite=lax
+set-cookie: XSRF-TOKEN=eyJpdiI6IjBVSWlPVHBaZC9ab1BkdUdoNzIyZVE9PSIsInZhbHVlIjoiT3BRNEZXSVRzUkJEOXZaTzV2K2V5UjFJNXNGRExFMlFURkZPc1pCdGhCSDFXTmNON3hZOTZjdHNOWi80by9YQ2Q2OEcrK3p5YUFXd2tMeWl1L3phTWpsVWNTZXlDODJnWEpyQ0Z4bXpPYXIvOG5Ic2FQbXVMZ21yYUZSSkErRzQiLCJtYWMiOiIxYjg0ZTQ5NmVhOTJjMzAwYmU5YTMzY2U1MzQ4MzU5Y2EyYzMyNDFiZWVhNmVlMGM2YzllOWRiY2ZhNzcwNjYzIiwidGFnIjoiIn0%3D; expires=Thu, 30 Oct 2025 08:02:00 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6Imt0MjkyVUxneFlIUmJqRnFLeTZYY1E9PSIsInZhbHVlIjoibHBzejFrdlYzU1kwZFhIb0EzbktXRFN1MGlhVTBET04zcUkyUHIvRnNsc0xuNERvTkFNWHZjY0hXT0tVUkYyTytKcjlsakhRUjd2YUFCTUV6L3lpQWN4WFh3YWdhQU02S21HOUEza0xYcXJMbDVwMGxiV1JIYnIwbE90UTkycHUiLCJtYWMiOiIyMGY1YzY3N2Y4ZmFhNDE1YjIyM2IwOWRlZWI5MGM1OWM3OTYzNmFlN2MxNzA0NzZiMmY0OTQ4M2I4OWY5NmQ5IiwidGFnIjoiIn0%3D; expires=Thu, 30 Oct 2025 08:02:00 GMT; Max-Age=7200; path=/; httponly; samesite=lax
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -1955,7 +1989,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 access-control-allow-origin: *
-set-cookie: XSRF-TOKEN=eyJpdiI6Ijh3RlU3bXpLd05Db1poOEVKRjZtdXc9PSIsInZhbHVlIjoiOFp0QzBRcWFTOXZQMVYyQmU2Nk9KUVM1MG9MZ2daRVFHK2RhSURBK1VWWXJMdVRERk0yUVZyaFF1M0xOZG05U2p6TVRJekdRUVlVZGlTOEJNcXd1V21BdFRkMFBvcVp3QmV3SVRYZXBGTHpRQzRqVlZ4RnpkbE9YOTZCUWJIajAiLCJtYWMiOiJiN2JjMDQ4NTVjZmM1Yzk0YmY0MzU1ZGNjMzhlNTQxYzMwZDBkZDBiMjJkMGQ1NmYwODJkZDg1YzUyNzMwY2M3IiwidGFnIjoiIn0%3D; expires=Fri, 24 Oct 2025 09:20:16 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6ImdwVnNZcWpxeWt5aWxFdEh2QjRWQlE9PSIsInZhbHVlIjoiRFVVdTI4RUkza255WkEyeUsvK3U2SGdhNmhUbitFcnhkYkhsOFAvVXgrTW54SGNRQ1Nka2VZaFhoQ0Vub1Qrb210U1VYYXY1UzZ6RC9BWTBvNS9FRG9DY21OUzhyS3c2YUxQNmhod1YrK3ZtZ2lxNVkzRVdmUkp2QXpxOVJYNVciLCJtYWMiOiI2ODc0NzhiMGMwOTMyZTMyMTA5NThlZGYyMGNmZGY1M2QyYjg3NjllOGM5NGIyOTg1ZTk0Zjc5YTU2YzViYzYwIiwidGFnIjoiIn0%3D; expires=Fri, 24 Oct 2025 09:20:16 GMT; Max-Age=7200; path=/; httponly; samesite=lax
+set-cookie: XSRF-TOKEN=eyJpdiI6IjVxTWZnT3BRRHBJN2tvTTNPYVNTWFE9PSIsInZhbHVlIjoiRWtmb1BZd1BSakoxVjZaaS9zWkY2bmpPcXVRLzQwblBJVG5VeCttVzhTeU56cmhIUFVKU0d0N0U4RkRNejVTK3VFUjU5Vk5wWXZTTVM5bTM4dTdzT0xMa0ZRUjhOazJxWlc0eDZDbFhJc0FmU3RGVmNjVVdLUDFhTExsR1Noc1AiLCJtYWMiOiJjMWIyOTA0MTU1NDFjZWI2YjMxMzJiNzc0ODQ1NjI1ZDliNDliNWJjZWZiNWVjYTExMGMxODZhZGQ4NTkxZmI2IiwidGFnIjoiIn0%3D; expires=Thu, 30 Oct 2025 08:02:00 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6IkFaaFI4RWpKTmZmU0ZNTEZldUZyaHc9PSIsInZhbHVlIjoiVk1FZGJRZ2RtUEEyRmVFd05XTit5Z1hLaDlLcUIyRS9wUXc1SFdSM0x4WlM4cDZPMFB5UzNHSzI2ZTYwZ0N2bEk4dWVsUVpzUS8xbCtxS3lCYkVoWUx3RjAxVVpteEdKYUdGWEEzVXhZSUlJZm1ZQ1RaTnBhVDJCTTV5K05CUG0iLCJtYWMiOiIwNTkwZDczNzY1ZGVkNjVkNzJjOWVjMGVjMWU1NTk2MTc5OWVmNmI3NTM2NTJmYjVjOGE5NjViNzkyZDU1ZjVjIiwidGFnIjoiIn0%3D; expires=Thu, 30 Oct 2025 08:02:00 GMT; Max-Age=7200; path=/; httponly; samesite=lax
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -2080,7 +2114,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 access-control-allow-origin: *
-set-cookie: XSRF-TOKEN=eyJpdiI6Ik0wZXlsWW9TUlpMUU5ObUFjV3FsalE9PSIsInZhbHVlIjoiMFhUL1ZrY1ZiZjFzbmVBWm4zWlQvNFBBU3lvdnZoak02aTlVSE1TMGs0UDlNakhUbmxyUDVpd2l2eVQzTThNSDEwcXpQWmxRaFM1ZStZaU1kWWZ1cDdKSzlldzM2MzA1ZmVoZURreVFMMHdTNGY4MmpJS2lxWmw5REpwMEdVV2UiLCJtYWMiOiI2NzJkN2IxNTZiMmMxOWYxZDEyOGVhYTYxMjllNGJjNWE5YWE4ZmNjYjQ5MDY2MGU5Zjk5MTVlZWZmMTZkNWU4IiwidGFnIjoiIn0%3D; expires=Fri, 24 Oct 2025 09:20:16 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6IjRZVFRqNDkzM2hOYjE1b2N3T2psMGc9PSIsInZhbHVlIjoiZVdoYjZySXZyQ29aaGNueE54QkhPcVBxZzcyZkxydjJLeVR5WHdzWVZBbXNxQTdTSU1ITkxGTk0yWGJFbDdLVTVpdjZMZHpmWlFGWStIVzhzMHhHVWt3eDRJU1BnRjNxemhxWTgyejEwWDFJZlRpbWZEUjUzbWhoWUxIRWlwaEsiLCJtYWMiOiJkMWY0NjE0YmM3NDEyZTU1YWIwMDFiZjdmY2I2NGU5NTlhOGUwNTJkYWFhNDhmYzM1ZmZlODQxOTA5MDYyZjhlIiwidGFnIjoiIn0%3D; expires=Fri, 24 Oct 2025 09:20:16 GMT; Max-Age=7200; path=/; httponly; samesite=lax
+set-cookie: XSRF-TOKEN=eyJpdiI6ImVlTTJ4Q202NmFmQWFrbGZuUnFPcVE9PSIsInZhbHVlIjoiTEtXR0NBbHh3UU5HVDI2NitlTXliLzh4TERPa1pISGdLTnVCZG5VQmVKUFNwaTlna1ArNkYxWkJiY1FzMVJXYjlOYmFyenRMOWJKUEdKZFErRzhVYnlhUGUvN2FzcnpSY3BMVjE2Y3dLa21BSnZOQzVVcnNrckFiTDQ4eUlGd00iLCJtYWMiOiI3YWE5ODEzYjgxNjUxYmE5ZGMyNzBiZDVlNzAwNzc3OTQ3NTcwYmI2NWFjODkzNDBjNGNiMWVhOWEyNWE0ZmRhIiwidGFnIjoiIn0%3D; expires=Thu, 30 Oct 2025 08:02:00 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6Ikg2SHhMQ1F6VDB5ZUR0eTlaYkkrOVE9PSIsInZhbHVlIjoiTGZrSEVSUm9RcGdqL2M3QjhvZFdvd3IwS01UOGloaStoWG4rMThCdjVGdkJVYWJMWVFlRG5GZE4zRVpQNktkLzBac3AvZDkzSklXUUFkbHhsaFQyQ1BwUzE4bFNBQ245UGtjb2pmZGhZa3lkaFVQUzJnQWZBNkI3d3J6SUh3czgiLCJtYWMiOiIzNGUzOGE5NWYzOWY5NGZjNDUwNzQ4OWVhOWM1NjU2NDM0ODZlYzAwN2JmZWE1MDE5Zjg4MzdjZGE0ZWIxMmJlIiwidGFnIjoiIn0%3D; expires=Thu, 30 Oct 2025 08:02:00 GMT; Max-Age=7200; path=/; httponly; samesite=lax
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -4032,6 +4066,2206 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
+                <h1 id="task-management">Task Management</h1>
+
+    <p>APIs for managing tasks within projects</p>
+
+                                <h2 id="task-management-GETapi-v1-tasks">List All Tasks</h2>
+
+<p>
+</p>
+
+<p>Get a paginated list of all tasks with optional filtering.</p>
+
+<span id="example-requests-GETapi-v1-tasks">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/v1/tasks?per_page=20&amp;project_id=1&amp;assigned_to_id=5&amp;status=in_progress&amp;priority=high" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/tasks"
+);
+
+const params = {
+    "per_page": "20",
+    "project_id": "1",
+    "assigned_to_id": "5",
+    "status": "in_progress",
+    "priority": "high",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-tasks">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;project_id&quot;: 1,
+            &quot;title&quot;: &quot;Animi minima natus et occaecati reprehenderit et possimus laborum.&quot;,
+            &quot;description&quot;: &quot;Perspiciatis rem impedit consequatur facere ipsam expedita illo. Doloremque sit est amet. Molestiae ea rerum voluptate aut soluta aperiam dolorem illo.&quot;,
+            &quot;status&quot;: &quot;approved&quot;,
+            &quot;priority&quot;: &quot;urgent&quot;,
+            &quot;due_date&quot;: &quot;2025-12-12T00:00:00.000000Z&quot;,
+            &quot;created_at&quot;: &quot;2025-10-30T06:02:00.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-10-30T06:02:00.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;project_id&quot;: 2,
+            &quot;title&quot;: &quot;Sed molestias explicabo beatae aut perferendis aut.&quot;,
+            &quot;description&quot;: &quot;Vero vel dolorum ut minus veniam fuga. Molestiae et incidunt perspiciatis voluptate quidem et. Distinctio et mollitia id qui accusamus dicta.&quot;,
+            &quot;status&quot;: &quot;completed&quot;,
+            &quot;priority&quot;: &quot;medium&quot;,
+            &quot;due_date&quot;: &quot;2026-01-13T00:00:00.000000Z&quot;,
+            &quot;created_at&quot;: &quot;2025-10-30T06:02:00.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-10-30T06:02:00.000000Z&quot;
+        }
+    ],
+    &quot;links&quot;: {
+        &quot;first&quot;: &quot;/?page=1&quot;,
+        &quot;last&quot;: &quot;/?page=1&quot;,
+        &quot;prev&quot;: null,
+        &quot;next&quot;: null
+    },
+    &quot;meta&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;from&quot;: 1,
+        &quot;last_page&quot;: 1,
+        &quot;links&quot;: [
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+                &quot;page&quot;: null,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;/?page=1&quot;,
+                &quot;label&quot;: &quot;1&quot;,
+                &quot;page&quot;: 1,
+                &quot;active&quot;: true
+            },
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+                &quot;page&quot;: null,
+                &quot;active&quot;: false
+            }
+        ],
+        &quot;path&quot;: &quot;/&quot;,
+        &quot;per_page&quot;: 15,
+        &quot;to&quot;: 2,
+        &quot;total&quot;: 2
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;title&quot;: &quot;Implement feature X&quot;,
+            &quot;status&quot;: &quot;in_progress&quot;
+        }
+    ],
+    &quot;links&quot;: {},
+    &quot;meta&quot;: {}
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403, forbidden):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This action is unauthorized.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to retrieve tasks&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-tasks" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-tasks"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-tasks"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-tasks" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-tasks">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-tasks" data-method="GET"
+      data-path="api/v1/tasks"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-tasks', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-tasks"
+                    onclick="tryItOut('GETapi-v1-tasks');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-tasks"
+                    onclick="cancelTryOut('GETapi-v1-tasks');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-tasks"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/tasks</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-tasks"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-tasks"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-v1-tasks"
+               value="20"
+               data-component="query">
+    <br>
+<p>Number of tasks per page. Defaults to 15. Example: <code>20</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>project_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="project_id"                data-endpoint="GETapi-v1-tasks"
+               value="1"
+               data-component="query">
+    <br>
+<p>Filter tasks by project ID. Example: <code>1</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>assigned_to_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="assigned_to_id"                data-endpoint="GETapi-v1-tasks"
+               value="5"
+               data-component="query">
+    <br>
+<p>Filter tasks by assigned user ID. Example: <code>5</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="GETapi-v1-tasks"
+               value="in_progress"
+               data-component="query">
+    <br>
+<p>Filter tasks by status. Example: <code>in_progress</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>priority</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="priority"                data-endpoint="GETapi-v1-tasks"
+               value="high"
+               data-component="query">
+    <br>
+<p>Filter tasks by priority. Example: <code>high</code></p>
+            </div>
+                </form>
+
+                    <h2 id="task-management-GETapi-v1-tasks--task_id-">Show Task Details</h2>
+
+<p>
+</p>
+
+<p>Get detailed information about a specific task.</p>
+
+<span id="example-requests-GETapi-v1-tasks--task_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/v1/tasks/16" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/tasks/16"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-tasks--task_id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 3,
+        &quot;project_id&quot;: 3,
+        &quot;title&quot;: &quot;Et animi quos velit et fugiat.&quot;,
+        &quot;description&quot;: &quot;Accusantium harum mollitia modi deserunt aut ab. Perspiciatis quo omnis nostrum aut adipisci quidem nostrum qui. Incidunt iure odit et et modi ipsum.&quot;,
+        &quot;status&quot;: &quot;approved&quot;,
+        &quot;priority&quot;: &quot;high&quot;,
+        &quot;due_date&quot;: &quot;2026-01-12T00:00:00.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2025-10-30T06:02:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-10-30T06:02:00.000000Z&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;title&quot;: &quot;Implement feature X&quot;,
+        &quot;description&quot;: &quot;Task description&quot;,
+        &quot;status&quot;: &quot;in_progress&quot;,
+        &quot;priority&quot;: &quot;high&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403, forbidden):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This action is unauthorized.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Task not found&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-tasks--task_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-tasks--task_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-tasks--task_id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-tasks--task_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-tasks--task_id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-tasks--task_id-" data-method="GET"
+      data-path="api/v1/tasks/{task_id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-tasks--task_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-tasks--task_id-"
+                    onclick="tryItOut('GETapi-v1-tasks--task_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-tasks--task_id-"
+                    onclick="cancelTryOut('GETapi-v1-tasks--task_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-tasks--task_id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/tasks/{task_id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-tasks--task_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-tasks--task_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>task_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="task_id"                data-endpoint="GETapi-v1-tasks--task_id-"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the task. Example: <code>16</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>task</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="task"                data-endpoint="GETapi-v1-tasks--task_id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the task. Example: <code>1</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="task-management-GETapi-v1-users--userId--tasks">List Tasks by User</h2>
+
+<p>
+</p>
+
+<p>Get a paginated list of tasks assigned to a specific user.</p>
+
+<span id="example-requests-GETapi-v1-users--userId--tasks">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/v1/users/5/tasks?per_page=20&amp;project_id=1&amp;status=in_progress&amp;priority=high" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/users/5/tasks"
+);
+
+const params = {
+    "per_page": "20",
+    "project_id": "1",
+    "status": "in_progress",
+    "priority": "high",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-users--userId--tasks">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 4,
+            &quot;project_id&quot;: 4,
+            &quot;title&quot;: &quot;Nihil accusantium harum mollitia modi deserunt.&quot;,
+            &quot;description&quot;: &quot;Provident perspiciatis quo omnis nostrum aut adipisci quidem. Qui commodi incidunt iure odit. Et modi ipsum nostrum omnis autem et consequatur. Dolores enim non facere tempora.&quot;,
+            &quot;status&quot;: &quot;awaiting_review&quot;,
+            &quot;priority&quot;: &quot;high&quot;,
+            &quot;due_date&quot;: &quot;2026-04-06T00:00:00.000000Z&quot;,
+            &quot;created_at&quot;: &quot;2025-10-30T06:02:00.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-10-30T06:02:00.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 5,
+            &quot;project_id&quot;: 5,
+            &quot;title&quot;: &quot;Odit doloribus repellat officiis corporis nesciunt ut ratione iure.&quot;,
+            &quot;description&quot;: &quot;Ut rem est esse sint. Molestiae sunt suscipit doloribus fugiat ut aut. Et error neque recusandae et.&quot;,
+            &quot;status&quot;: &quot;cancelled&quot;,
+            &quot;priority&quot;: &quot;high&quot;,
+            &quot;due_date&quot;: &quot;2026-02-23T00:00:00.000000Z&quot;,
+            &quot;created_at&quot;: &quot;2025-10-30T06:02:00.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-10-30T06:02:00.000000Z&quot;
+        }
+    ],
+    &quot;links&quot;: {
+        &quot;first&quot;: &quot;/?page=1&quot;,
+        &quot;last&quot;: &quot;/?page=1&quot;,
+        &quot;prev&quot;: null,
+        &quot;next&quot;: null
+    },
+    &quot;meta&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;from&quot;: 1,
+        &quot;last_page&quot;: 1,
+        &quot;links&quot;: [
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+                &quot;page&quot;: null,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;/?page=1&quot;,
+                &quot;label&quot;: &quot;1&quot;,
+                &quot;page&quot;: 1,
+                &quot;active&quot;: true
+            },
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+                &quot;page&quot;: null,
+                &quot;active&quot;: false
+            }
+        ],
+        &quot;path&quot;: &quot;/&quot;,
+        &quot;per_page&quot;: 15,
+        &quot;to&quot;: 2,
+        &quot;total&quot;: 2
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;title&quot;: &quot;Implement feature X&quot;,
+            &quot;assigned_to&quot;: {
+                &quot;id&quot;: 5,
+                &quot;name&quot;: &quot;John Doe&quot;
+            }
+        }
+    ],
+    &quot;links&quot;: {},
+    &quot;meta&quot;: {}
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403, forbidden):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This action is unauthorized.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-users--userId--tasks" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-users--userId--tasks"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-users--userId--tasks"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-users--userId--tasks" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-users--userId--tasks">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-users--userId--tasks" data-method="GET"
+      data-path="api/v1/users/{userId}/tasks"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-users--userId--tasks', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-users--userId--tasks"
+                    onclick="tryItOut('GETapi-v1-users--userId--tasks');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-users--userId--tasks"
+                    onclick="cancelTryOut('GETapi-v1-users--userId--tasks');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-users--userId--tasks"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/users/{userId}/tasks</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-users--userId--tasks"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-users--userId--tasks"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>userId</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="userId"                data-endpoint="GETapi-v1-users--userId--tasks"
+               value="5"
+               data-component="url">
+    <br>
+<p>The ID of the user. Example: <code>5</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-v1-users--userId--tasks"
+               value="20"
+               data-component="query">
+    <br>
+<p>Number of tasks per page. Defaults to 15. Example: <code>20</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>project_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="project_id"                data-endpoint="GETapi-v1-users--userId--tasks"
+               value="1"
+               data-component="query">
+    <br>
+<p>Filter by project ID. Example: <code>1</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="GETapi-v1-users--userId--tasks"
+               value="in_progress"
+               data-component="query">
+    <br>
+<p>Filter by task status. Example: <code>in_progress</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>priority</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="priority"                data-endpoint="GETapi-v1-users--userId--tasks"
+               value="high"
+               data-component="query">
+    <br>
+<p>Filter by task priority. Example: <code>high</code></p>
+            </div>
+                </form>
+
+                    <h2 id="task-management-GETapi-v1-projects--projectId--tasks">List Tasks by Project</h2>
+
+<p>
+</p>
+
+<p>Get a paginated list of tasks for a specific project.</p>
+
+<span id="example-requests-GETapi-v1-projects--projectId--tasks">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/v1/projects/1/tasks?per_page=20&amp;assigned_to_id=5&amp;status=in_progress&amp;priority=high" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/projects/1/tasks"
+);
+
+const params = {
+    "per_page": "20",
+    "assigned_to_id": "5",
+    "status": "in_progress",
+    "priority": "high",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-projects--projectId--tasks">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 6,
+            &quot;project_id&quot;: 6,
+            &quot;title&quot;: &quot;Ab provident perspiciatis quo omnis nostrum aut adipisci.&quot;,
+            &quot;description&quot;: &quot;Qui commodi incidunt iure odit. Et modi ipsum nostrum omnis autem et consequatur. Dolores enim non facere tempora.&quot;,
+            &quot;status&quot;: &quot;awaiting_review&quot;,
+            &quot;priority&quot;: &quot;high&quot;,
+            &quot;due_date&quot;: &quot;2026-04-06T00:00:00.000000Z&quot;,
+            &quot;created_at&quot;: &quot;2025-10-30T06:02:00.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-10-30T06:02:00.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 7,
+            &quot;project_id&quot;: 7,
+            &quot;title&quot;: &quot;Repellat officiis corporis nesciunt ut.&quot;,
+            &quot;description&quot;: &quot;Impedit molestiae ut rem est esse. Aut molestiae sunt suscipit doloribus fugiat. Aut deserunt et error neque recusandae et. Dolorem et ut dicta.&quot;,
+            &quot;status&quot;: &quot;not_started&quot;,
+            &quot;priority&quot;: &quot;medium&quot;,
+            &quot;due_date&quot;: &quot;2026-03-26T00:00:00.000000Z&quot;,
+            &quot;created_at&quot;: &quot;2025-10-30T06:02:00.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-10-30T06:02:00.000000Z&quot;
+        }
+    ],
+    &quot;links&quot;: {
+        &quot;first&quot;: &quot;/?page=1&quot;,
+        &quot;last&quot;: &quot;/?page=1&quot;,
+        &quot;prev&quot;: null,
+        &quot;next&quot;: null
+    },
+    &quot;meta&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;from&quot;: 1,
+        &quot;last_page&quot;: 1,
+        &quot;links&quot;: [
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+                &quot;page&quot;: null,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;/?page=1&quot;,
+                &quot;label&quot;: &quot;1&quot;,
+                &quot;page&quot;: 1,
+                &quot;active&quot;: true
+            },
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+                &quot;page&quot;: null,
+                &quot;active&quot;: false
+            }
+        ],
+        &quot;path&quot;: &quot;/&quot;,
+        &quot;per_page&quot;: 15,
+        &quot;to&quot;: 2,
+        &quot;total&quot;: 2
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;title&quot;: &quot;Implement feature X&quot;,
+            &quot;project&quot;: {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;Project Alpha&quot;
+            }
+        }
+    ],
+    &quot;links&quot;: {},
+    &quot;meta&quot;: {}
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403, forbidden):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This action is unauthorized.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-projects--projectId--tasks" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-projects--projectId--tasks"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-projects--projectId--tasks"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-projects--projectId--tasks" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-projects--projectId--tasks">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-projects--projectId--tasks" data-method="GET"
+      data-path="api/v1/projects/{projectId}/tasks"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-projects--projectId--tasks', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-projects--projectId--tasks"
+                    onclick="tryItOut('GETapi-v1-projects--projectId--tasks');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-projects--projectId--tasks"
+                    onclick="cancelTryOut('GETapi-v1-projects--projectId--tasks');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-projects--projectId--tasks"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/projects/{projectId}/tasks</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-projects--projectId--tasks"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-projects--projectId--tasks"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>projectId</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="projectId"                data-endpoint="GETapi-v1-projects--projectId--tasks"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the project. Example: <code>1</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-v1-projects--projectId--tasks"
+               value="20"
+               data-component="query">
+    <br>
+<p>Number of tasks per page. Defaults to 15. Example: <code>20</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>assigned_to_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="assigned_to_id"                data-endpoint="GETapi-v1-projects--projectId--tasks"
+               value="5"
+               data-component="query">
+    <br>
+<p>Filter by assigned user ID. Example: <code>5</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="GETapi-v1-projects--projectId--tasks"
+               value="in_progress"
+               data-component="query">
+    <br>
+<p>Filter by task status. Example: <code>in_progress</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>priority</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="priority"                data-endpoint="GETapi-v1-projects--projectId--tasks"
+               value="high"
+               data-component="query">
+    <br>
+<p>Filter by task priority. Example: <code>high</code></p>
+            </div>
+                </form>
+
+                    <h2 id="task-management-POSTapi-v1-tasks--task_id--sync-relations">Sync Task Relations</h2>
+
+<p>
+</p>
+
+<p>Synchronize task relationships with other tasks and milestones. This will create new relations,
+update existing ones, and remove relations not in the provided arrays.</p>
+
+<span id="example-requests-POSTapi-v1-tasks--task_id--sync-relations">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/v1/tasks/16/sync-relations" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"tasks\": [
+        {
+            \"id\": 2,
+            \"relation_type\": \"blocks\"
+        },
+        {
+            \"id\": 3,
+            \"relation_type\": \"depends_on\"
+        }
+    ],
+    \"milestones\": [
+        {
+            \"id\": 5,
+            \"relation_type\": \"relates_to\"
+        }
+    ]
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/tasks/16/sync-relations"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "tasks": [
+        {
+            "id": 2,
+            "relation_type": "blocks"
+        },
+        {
+            "id": 3,
+            "relation_type": "depends_on"
+        }
+    ],
+    "milestones": [
+        {
+            "id": 5,
+            "relation_type": "relates_to"
+        }
+    ]
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-tasks--task_id--sync-relations">
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Task relations synchronized successfully.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403, forbidden):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This action is unauthorized.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Task not found&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, validation error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The given data was invalid.&quot;,
+    &quot;errors&quot;: {
+        &quot;tasks.0.relation_type&quot;: [
+            &quot;The selected relation type is invalid.&quot;
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to synchronize task relations: Circular dependency detected&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-v1-tasks--task_id--sync-relations" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-tasks--task_id--sync-relations"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-tasks--task_id--sync-relations"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-tasks--task_id--sync-relations" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-tasks--task_id--sync-relations">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-v1-tasks--task_id--sync-relations" data-method="POST"
+      data-path="api/v1/tasks/{task_id}/sync-relations"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-tasks--task_id--sync-relations', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-tasks--task_id--sync-relations"
+                    onclick="tryItOut('POSTapi-v1-tasks--task_id--sync-relations');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-tasks--task_id--sync-relations"
+                    onclick="cancelTryOut('POSTapi-v1-tasks--task_id--sync-relations');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-tasks--task_id--sync-relations"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/tasks/{task_id}/sync-relations</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-tasks--task_id--sync-relations"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-v1-tasks--task_id--sync-relations"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>task_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="task_id"                data-endpoint="POSTapi-v1-tasks--task_id--sync-relations"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the task. Example: <code>16</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>task</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="task"                data-endpoint="POSTapi-v1-tasks--task_id--sync-relations"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the task. Example: <code>1</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>tasks</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+<i>optional</i> &nbsp;
+<br>
+<p>Optional array of related tasks to sync.</p>
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="tasks.0.id"                data-endpoint="POSTapi-v1-tasks--task_id--sync-relations"
+               value="2"
+               data-component="body">
+    <br>
+<p>The ID of the related task. Example: <code>2</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>relation_type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="tasks.0.relation_type"                data-endpoint="POSTapi-v1-tasks--task_id--sync-relations"
+               value="blocks"
+               data-component="body">
+    <br>
+<p>Type of relation. Must be one of: blocks, blocked_by, depends_on, dependency_of, parent_of, child_of, relates_to, duplicates, duplicated_by. Example: <code>blocks</code></p>
+                    </div>
+                                    </details>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>milestones</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+<i>optional</i> &nbsp;
+<br>
+<p>Optional array of related milestones to sync.</p>
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="milestones.0.id"                data-endpoint="POSTapi-v1-tasks--task_id--sync-relations"
+               value="5"
+               data-component="body">
+    <br>
+<p>The ID of the related milestone. Example: <code>5</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>relation_type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="milestones.0.relation_type"                data-endpoint="POSTapi-v1-tasks--task_id--sync-relations"
+               value="relates_to"
+               data-component="body">
+    <br>
+<p>Type of relation. Must be one of: blocks, blocked_by, depends_on, dependency_of, parent_of, child_of, relates_to, duplicates, duplicated_by. Example: <code>relates_to</code></p>
+                    </div>
+                                    </details>
+        </div>
+        </form>
+
+                    <h2 id="task-management-POSTapi-v1-tasks">Create Task</h2>
+
+<p>
+</p>
+
+<p>Create a new task within a project.</p>
+
+<span id="example-requests-POSTapi-v1-tasks">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/v1/tasks" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"project_id\": 1,
+    \"title\": \"Implement user authentication\",
+    \"description\": \"Add JWT-based authentication to the API\",
+    \"priority\": \"high\",
+    \"due_date\": \"2025-11-15\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/tasks"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "project_id": 1,
+    "title": "Implement user authentication",
+    "description": "Add JWT-based authentication to the API",
+    "priority": "high",
+    "due_date": "2025-11-15"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-tasks">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 8,
+        &quot;project_id&quot;: 8,
+        &quot;title&quot;: &quot;Sunt nihil accusantium harum mollitia.&quot;,
+        &quot;description&quot;: &quot;Aut ab provident perspiciatis quo omnis nostrum aut. Quidem nostrum qui commodi incidunt iure odit. Et modi ipsum nostrum omnis autem et consequatur. Dolores enim non facere tempora.&quot;,
+        &quot;status&quot;: &quot;awaiting_review&quot;,
+        &quot;priority&quot;: &quot;high&quot;,
+        &quot;due_date&quot;: &quot;2026-04-06T00:00:00.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2025-10-30T06:02:01.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-10-30T06:02:01.000000Z&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (201, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;title&quot;: &quot;Implement user authentication&quot;,
+        &quot;priority&quot;: &quot;high&quot;,
+        &quot;status&quot;: &quot;not_started&quot;
+    },
+    &quot;message&quot;: &quot;Task created successfully.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403, forbidden):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This action is unauthorized.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, validation error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The given data was invalid.&quot;,
+    &quot;errors&quot;: {
+        &quot;title&quot;: [
+            &quot;The title has already been taken.&quot;
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to create task: Database error&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-v1-tasks" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-tasks"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-tasks"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-tasks" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-tasks">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-v1-tasks" data-method="POST"
+      data-path="api/v1/tasks"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-tasks', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-tasks"
+                    onclick="tryItOut('POSTapi-v1-tasks');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-tasks"
+                    onclick="cancelTryOut('POSTapi-v1-tasks');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-tasks"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/tasks</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-tasks"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-v1-tasks"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>project</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="project"                data-endpoint="POSTapi-v1-tasks"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the project. Example: <code>1</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>project_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="project_id"                data-endpoint="POSTapi-v1-tasks"
+               value="1"
+               data-component="body">
+    <br>
+<p>The ID of the project. Example: <code>1</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>title</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="title"                data-endpoint="POSTapi-v1-tasks"
+               value="Implement user authentication"
+               data-component="body">
+    <br>
+<p>The title of the task. Must be unique within the project. Min: 3 chars, Max: 255 chars. Example: <code>Implement user authentication</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="description"                data-endpoint="POSTapi-v1-tasks"
+               value="Add JWT-based authentication to the API"
+               data-component="body">
+    <br>
+<p>Optional description of the task. Example: <code>Add JWT-based authentication to the API</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>priority</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="priority"                data-endpoint="POSTapi-v1-tasks"
+               value="high"
+               data-component="body">
+    <br>
+<p>Priority level of the task. Must be one of: low, medium, high, urgent. Example: <code>high</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>due_date</code></b>&nbsp;&nbsp;
+<small>date</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="due_date"                data-endpoint="POSTapi-v1-tasks"
+               value="2025-11-15"
+               data-component="body">
+    <br>
+<p>Optional due date for the task. Must be a valid date. Example: <code>2025-11-15</code></p>
+        </div>
+        </form>
+
+                    <h2 id="task-management-PUTapi-v1-tasks--task_id-">Update Task</h2>
+
+<p>
+</p>
+
+<p>Update an existing task's information.</p>
+
+<span id="example-requests-PUTapi-v1-tasks--task_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost/api/v1/tasks/16" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"project_id\": 1,
+    \"title\": \"Implement user authentication\",
+    \"description\": \"Add JWT-based authentication with refresh tokens\",
+    \"priority\": \"urgent\",
+    \"due_date\": \"2025-11-20\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/tasks/16"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "project_id": 1,
+    "title": "Implement user authentication",
+    "description": "Add JWT-based authentication with refresh tokens",
+    "priority": "urgent",
+    "due_date": "2025-11-20"
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-v1-tasks--task_id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 9,
+        &quot;project_id&quot;: 9,
+        &quot;title&quot;: &quot;Deserunt aut ab provident perspiciatis quo omnis nostrum.&quot;,
+        &quot;description&quot;: &quot;Quidem nostrum qui commodi incidunt iure odit. Et modi ipsum nostrum omnis autem et consequatur. Dolores enim non facere tempora. Voluptatem laboriosam praesentium quis adipisci.&quot;,
+        &quot;status&quot;: &quot;awaiting_review&quot;,
+        &quot;priority&quot;: &quot;urgent&quot;,
+        &quot;due_date&quot;: &quot;2026-01-16T00:00:00.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2025-10-30T06:02:01.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-10-30T06:02:01.000000Z&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;title&quot;: &quot;Implement user authentication&quot;,
+        &quot;priority&quot;: &quot;urgent&quot;
+    },
+    &quot;message&quot;: &quot;Task updated successfully.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403, forbidden):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This action is unauthorized.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Task not found&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, validation error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The given data was invalid.&quot;,
+    &quot;errors&quot;: {
+        &quot;title&quot;: [
+            &quot;The title has already been taken.&quot;
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to update task: Database error&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PUTapi-v1-tasks--task_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-v1-tasks--task_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-v1-tasks--task_id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-v1-tasks--task_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-v1-tasks--task_id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-v1-tasks--task_id-" data-method="PUT"
+      data-path="api/v1/tasks/{task_id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-v1-tasks--task_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-v1-tasks--task_id-"
+                    onclick="tryItOut('PUTapi-v1-tasks--task_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-v1-tasks--task_id-"
+                    onclick="cancelTryOut('PUTapi-v1-tasks--task_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-v1-tasks--task_id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/v1/tasks/{task_id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-v1-tasks--task_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-v1-tasks--task_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>task_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="task_id"                data-endpoint="PUTapi-v1-tasks--task_id-"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the task. Example: <code>16</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>task</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="task"                data-endpoint="PUTapi-v1-tasks--task_id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the task to update. Example: <code>1</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>project_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="project_id"                data-endpoint="PUTapi-v1-tasks--task_id-"
+               value="1"
+               data-component="body">
+    <br>
+<p>The ID of the project. Example: <code>1</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>title</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="title"                data-endpoint="PUTapi-v1-tasks--task_id-"
+               value="Implement user authentication"
+               data-component="body">
+    <br>
+<p>The title of the task. Must be unique within the project. Min: 3 chars, Max: 255 chars. Example: <code>Implement user authentication</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="description"                data-endpoint="PUTapi-v1-tasks--task_id-"
+               value="Add JWT-based authentication with refresh tokens"
+               data-component="body">
+    <br>
+<p>Optional description of the task. Example: <code>Add JWT-based authentication with refresh tokens</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>priority</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="priority"                data-endpoint="PUTapi-v1-tasks--task_id-"
+               value="urgent"
+               data-component="body">
+    <br>
+<p>Priority level of the task. Must be one of: low, medium, high, urgent. Example: <code>urgent</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>due_date</code></b>&nbsp;&nbsp;
+<small>date</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="due_date"                data-endpoint="PUTapi-v1-tasks--task_id-"
+               value="2025-11-20"
+               data-component="body">
+    <br>
+<p>Optional due date for the task. Must be a valid date. Example: <code>2025-11-20</code></p>
+        </div>
+        </form>
+
+                    <h2 id="task-management-DELETEapi-v1-tasks--task_id-">Delete Task</h2>
+
+<p>
+</p>
+
+<p>Delete a task (soft delete by default). Use force parameter for permanent deletion.</p>
+
+<span id="example-requests-DELETEapi-v1-tasks--task_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/v1/tasks/16?force=1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/tasks/16"
+);
+
+const params = {
+    "force": "1",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-v1-tasks--task_id-">
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Task deleted successfully.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403, forbidden):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This action is unauthorized.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Task not found&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to delete task: Task has dependencies&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEapi-v1-tasks--task_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-v1-tasks--task_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-v1-tasks--task_id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-v1-tasks--task_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-v1-tasks--task_id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-v1-tasks--task_id-" data-method="DELETE"
+      data-path="api/v1/tasks/{task_id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-v1-tasks--task_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-v1-tasks--task_id-"
+                    onclick="tryItOut('DELETEapi-v1-tasks--task_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-v1-tasks--task_id-"
+                    onclick="cancelTryOut('DELETEapi-v1-tasks--task_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-v1-tasks--task_id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/v1/tasks/{task_id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-v1-tasks--task_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-v1-tasks--task_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>task_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="task_id"                data-endpoint="DELETEapi-v1-tasks--task_id-"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the task. Example: <code>16</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>task</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="task"                data-endpoint="DELETEapi-v1-tasks--task_id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the task to delete. Example: <code>1</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>force</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="DELETEapi-v1-tasks--task_id-" style="display: none">
+            <input type="radio" name="force"
+                   value="1"
+                   data-endpoint="DELETEapi-v1-tasks--task_id-"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="DELETEapi-v1-tasks--task_id-" style="display: none">
+            <input type="radio" name="force"
+                   value="0"
+                   data-endpoint="DELETEapi-v1-tasks--task_id-"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Force permanent deletion. Defaults to false. Example: <code>true</code></p>
+            </div>
+                </form>
+
+                    <h2 id="task-management-POSTapi-v1-tasks--taskId--restore">Restore Deleted Task</h2>
+
+<p>
+</p>
+
+<p>Restore a soft-deleted task.</p>
+
+<span id="example-requests-POSTapi-v1-tasks--taskId--restore">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/v1/tasks/1/restore" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/tasks/1/restore"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-tasks--taskId--restore">
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Task restored successfully.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403, forbidden):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This action is unauthorized.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Task not found&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to restore task: Database error&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-v1-tasks--taskId--restore" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-tasks--taskId--restore"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-tasks--taskId--restore"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-tasks--taskId--restore" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-tasks--taskId--restore">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-v1-tasks--taskId--restore" data-method="POST"
+      data-path="api/v1/tasks/{taskId}/restore"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-tasks--taskId--restore', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-tasks--taskId--restore"
+                    onclick="tryItOut('POSTapi-v1-tasks--taskId--restore');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-tasks--taskId--restore"
+                    onclick="cancelTryOut('POSTapi-v1-tasks--taskId--restore');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-tasks--taskId--restore"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/tasks/{taskId}/restore</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-tasks--taskId--restore"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-v1-tasks--taskId--restore"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>taskId</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="taskId"                data-endpoint="POSTapi-v1-tasks--taskId--restore"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the task to restore. Example: <code>1</code></p>
+            </div>
+                    </form>
+
                 <h1 id="team-management">Team Management</h1>
 
     <p>APIs for managing teams</p>
@@ -4080,6 +6314,21 @@ fetch(url, {
 </span>
 
 <span id="example-responses-GETapi-v1-teams">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 3,
+        &quot;name&quot;: &quot;Runolfsson Group&quot;,
+        &quot;description&quot;: &quot;Accusamus suscipit ab est unde sint. Optio dolorum eaque mollitia id et aperiam repudiandae. Qui ea omnis dolor voluptatem at est beatae id. Et laboriosam voluptatem dolores velit quibusdam distinctio vel.&quot;,
+        &quot;created_at&quot;: &quot;2025-10-30T06:02:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-10-30T06:02:00.000000Z&quot;
+    }
+}</code>
+ </pre>
             <blockquote>
             <p>Example response (200, success):</p>
         </blockquote>
@@ -4445,6 +6694,21 @@ fetch(url, {
 </span>
 
 <span id="example-responses-GETapi-v1-teams--team_id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 4,
+        &quot;name&quot;: &quot;Bailey Ltd&quot;,
+        &quot;description&quot;: &quot;Et fugiat sunt nihil accusantium. Mollitia modi deserunt aut ab provident perspiciatis quo. Nostrum aut adipisci quidem nostrum.&quot;,
+        &quot;created_at&quot;: &quot;2025-10-30T06:02:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-10-30T06:02:00.000000Z&quot;
+    }
+}</code>
+ </pre>
             <blockquote>
             <p>Example response (200, success):</p>
         </blockquote>
@@ -6472,15 +8736,15 @@ fetch(url, {
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 37,
-            &quot;name&quot;: &quot;Aubrey Lehner&quot;,
-            &quot;email&quot;: &quot;osinski.madyson@example.org&quot;,
+            &quot;id&quot;: 43,
+            &quot;name&quot;: &quot;Ashtyn Koch&quot;,
+            &quot;email&quot;: &quot;simonis.zoila@example.org&quot;,
             &quot;roles&quot;: []
         },
         {
-            &quot;id&quot;: 38,
-            &quot;name&quot;: &quot;Lourdes Purdy&quot;,
-            &quot;email&quot;: &quot;brook22@example.org&quot;,
+            &quot;id&quot;: 44,
+            &quot;name&quot;: &quot;Prof. Krista Bins V&quot;,
+            &quot;email&quot;: &quot;zena.kulas@example.com&quot;,
             &quot;roles&quot;: []
         }
     ],
@@ -6733,7 +8997,7 @@ fetch(url, {
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 39,
+        &quot;id&quot;: 45,
         &quot;name&quot;: &quot;Ms. Elisabeth Okuneva&quot;,
         &quot;email&quot;: &quot;gulgowski.asia@example.com&quot;,
         &quot;roles&quot;: []
@@ -6893,11 +9157,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"name\": \"John Doe\",
     \"email\": \"john.doe@example.com\",
     \"password\": \"SecurePass123!\",
-    \"password_confirmation\": \"SecurePass123!\",
     \"roles\": [
         \"admin\",
         \"project manager\"
-    ]
+    ],
+    \"password_confirmation\": \"SecurePass123!\"
 }"
 </code></pre></div>
 
@@ -6916,11 +9180,11 @@ let body = {
     "name": "John Doe",
     "email": "john.doe@example.com",
     "password": "SecurePass123!",
-    "password_confirmation": "SecurePass123!",
     "roles": [
         "admin",
         "project manager"
-    ]
+    ],
+    "password_confirmation": "SecurePass123!"
 };
 
 fetch(url, {
@@ -7080,17 +9344,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>The password for the user account. Must be at least 8 characters. Example: <code>SecurePass123!</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>password_confirmation</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="password_confirmation"                data-endpoint="POSTapi-v1-users"
-               value="SecurePass123!"
-               data-component="body">
-    <br>
-<p>Password confirmation. Must match password field. Example: <code>SecurePass123!</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>roles</code></b>&nbsp;&nbsp;
 <small>string[]</small>&nbsp;
  &nbsp;
@@ -7102,6 +9355,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>Array of roles to assign to the user. Allowed values: admin, project manager, team lead, team member.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>password_confirmation</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="password_confirmation"                data-endpoint="POSTapi-v1-users"
+               value="SecurePass123!"
+               data-component="body">
+    <br>
+<p>Password confirmation. Must match password field. Example: <code>SecurePass123!</code></p>
         </div>
         </form>
 

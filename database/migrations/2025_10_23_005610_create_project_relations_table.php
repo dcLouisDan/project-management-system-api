@@ -20,8 +20,6 @@ return new class extends Migration
             $table->string('relation_type');
             $table->timestamps();
 
-
-
             $table->unique(['project_id', 'source_type', 'source_id', 'target_type', 'target_id', 'relation_type'], 'unique_project_relation');
         });
     }

@@ -11,6 +11,7 @@ use App\Models\Task;
 use App\Services\ProjectRelationService;
 use App\Services\TaskService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rule;
 
 /**
@@ -23,9 +24,7 @@ class TaskController extends Controller
     public function __construct(
         protected TaskService $taskService,
         protected ProjectRelationService $projectRelationService
-    ) {
-        //
-    }
+    ) {}
 
     /**
      * List All Tasks
@@ -48,7 +47,7 @@ class TaskController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->user->cannot('viewAny', Task::class)) {
+        if ($request->user()->cannot('viewAny', Task::class)) {
             return ApiResponse::error('This action is unauthorized.', 403);
         }
 
@@ -75,7 +74,7 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        if (request()->user->cannot('view', $task)) {
+        if (request()->user()->cannot('view', $task)) {
             return ApiResponse::error('This action is unauthorized.', 403);
         }
 
@@ -103,7 +102,7 @@ class TaskController extends Controller
      */
     public function indexByUser(Request $request, int $userId)
     {
-        if ($request->user->cannot('viewAnyByUser', $userId)) {
+        if ($request->user()->cannot('viewAnyByUser', $userId)) {
             return ApiResponse::error('This action is unauthorized.', 403);
         }
 
@@ -137,7 +136,7 @@ class TaskController extends Controller
      */
     public function indexByProject(Request $request, int $projectId)
     {
-        if ($request->user->cannot('viewAnyInProject', $projectId)) {
+        if ($request->user()->cannot('viewAnyInProject', $projectId)) {
             return ApiResponse::error('This action is unauthorized.', 403);
         }
 
@@ -174,7 +173,7 @@ class TaskController extends Controller
      */
     public function store(Request $request, Project $project)
     {
-        if ($request->user->cannot('create', Task::class)) {
+        if ($request->user()->cannot('create', Task::class)) {
             return ApiResponse::error('This action is unauthorized.', 403);
         }
 
@@ -228,7 +227,7 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        if ($request->user->cannot('update', $task)) {
+        if ($request->user()->cannot('update', $task)) {
             return ApiResponse::error('This action is unauthorized.', 403);
         }
 
@@ -273,7 +272,7 @@ class TaskController extends Controller
      */
     public function destroy(Request $request, Task $task)
     {
-        if ($request->user->cannot('delete', $task)) {
+        if ($request->user()->cannot('delete', $task)) {
             return ApiResponse::error('This action is unauthorized.', 403);
         }
 
@@ -302,7 +301,13 @@ class TaskController extends Controller
      */
     public function restore(Request $request, int $taskId)
     {
-        if ($request->user->cannot('restore', $taskId)) {
+        $task = Task::withTrashed()->find($taskId);
+
+        if (! $task) {
+            return ApiResponse::error('Task not found', 404);
+        }
+
+        if ($request->user()->cannot('restore', $task)) {
             return ApiResponse::error('This action is unauthorized.', 403);
         }
 
@@ -338,7 +343,7 @@ class TaskController extends Controller
      */
     public function syncRelations(Request $request, Task $task)
     {
-        if ($request->user->cannot('update', $task)) {
+        if ($request->user()->cannot('update', $task)) {
             return ApiResponse::error('This action is unauthorized.', 403);
         }
 
@@ -365,6 +370,8 @@ class TaskController extends Controller
 
             return ApiResponse::success(null, 'Task relations synchronized successfully.');
         } catch (\Exception $e) {
+            Log::error('Failed to synchronize task relations: '.$e->getMessage());
+
             return ApiResponse::error('Failed to synchronize task relations: '.$e->getMessage(), 500);
         }
 

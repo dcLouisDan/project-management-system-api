@@ -112,6 +112,7 @@ class ProjectRelationService
             'target_type' => get_class($target),
             'target_id' => $target->id,
             'relation_type' => $relationType,
+            'project_id' => $source->project_id,
         ]);
 
         return $projectRelation;
@@ -188,7 +189,7 @@ class ProjectRelationService
             // Process each requested relation
             foreach ($targetIdsWithTypes as $targetData) {
                 $targetId = $targetData['id'];
-                $desiredRelationType = $targetData['relation'];
+                $desiredRelationType = $targetData['relation_type'];
 
                 // Verify target exists in same project
                 if (! $targetModels->has($targetId)) {
@@ -342,7 +343,7 @@ class ProjectRelationService
                 );
             }
 
-            if (! isset($targetData['relation'])) {
+            if (! isset($targetData['relation_type'])) {
                 throw new \InvalidArgumentException(
                     "Missing 'relation' key at index $index"
                 );
@@ -354,9 +355,9 @@ class ProjectRelationService
                 );
             }
 
-            if (! ProjectRelationTypes::isValidType($targetData['relation'])) {
+            if (! ProjectRelationTypes::isValidType($targetData['relation_type'])) {
                 throw new \InvalidArgumentException(
-                    "Invalid relation type '{$targetData['relation']}' at index $index"
+                    "Invalid relation type '{$targetData['relation_type']}' at index $index"
                 );
             }
         }

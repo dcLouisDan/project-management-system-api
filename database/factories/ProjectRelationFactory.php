@@ -18,7 +18,6 @@ class ProjectRelationFactory extends Factory
     {
         return [
             'project_id' => \App\Models\Project::factory(),
-            'created_by_id' => \App\Models\User::factory(),
             'source_type' => $this->faker->randomElement(['App\Models\Task', 'App\Models\Milestone']),
             'source_id' => null, // To be set after creation
             'target_type' => $this->faker->randomElement(['App\Models\Task', 'App\Models\Milestone']),

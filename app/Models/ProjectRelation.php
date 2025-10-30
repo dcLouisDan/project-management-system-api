@@ -8,11 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProjectRelation extends Model
 {
-    use HasFactory, HasActivityLogsNoSoftDelete;
+    use HasActivityLogsNoSoftDelete, HasFactory;
 
     protected $fillable = [
         'project_id',
-        'created_by_id',
         'source_type',
         'source_id',
         'target_type',
@@ -33,10 +32,5 @@ class ProjectRelation extends Model
     public function project()
     {
         return $this->belongsTo(Project::class);
-    }
-
-    public function createdBy()
-    {
-        return $this->belongsTo(User::class, 'created_by_id');
     }
 }

@@ -293,8 +293,8 @@ endpoints:
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
-          access-control-allow-origin: '*'
-          set-cookie: 'XSRF-TOKEN=eyJpdiI6Img1ZnMyV0pqMDhHM1FPeEhrbjdLemc9PSIsInZhbHVlIjoiRkFIODVPUkRONDJnelJNa01BdHp6Y3FuemMvSStrK2NVRHJnbkVNZnFSNDZSZDNpVjg5cmt6VVdDY2xFSGhIalFzL2x5YXZGK3dhVFpLSHlrRGhBM1pyRGdkZjFxUFpPbHpiK1prd0ZhaDMvZitKZURSTFZnOE5IQjI3SDJFd0EiLCJtYWMiOiIyNTY3ZTc0YzJhOTEwYjJjNWZiYzhlY2Q1YjQwODkyMDcyZGFjOGU0Y2I2MGRhYzhlZTAwMTdkZjUyNzQ0YjZhIiwidGFnIjoiIn0%3D; expires=Thu, 30 Oct 2025 08:02:00 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6IlpZSWpKZ1lPVG5oU3QyOVp4M0x6MGc9PSIsInZhbHVlIjoiZWllL2pnd3lxVEdCY1l2c3ljNVJtZHM3cXhJR1FWbXJjOVZpcXJPd3JZYnNxNENaUkN3TGpqV0RmOVNkNi83MjJqYWd2b3E1eUdwTEsrWkx5RGFuZ1NhZVkva1NMaS9yN3pvZzR6Q3Q2c3hDMUFkaTBjazNBWXRPM3V3a21EN2EiLCJtYWMiOiIyYThlMGMyZWI3MzljOGM0MzA5YWYwNzlmNmJmNzU2YjczOGI3N2VkZjZlZDg1ZTM5ZDA5MjI0MmRlYmM4ZDFmIiwidGFnIjoiIn0%3D; expires=Thu, 30 Oct 2025 08:02:00 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+          vary: Origin
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6IlUrOTFZVC9KUVZGa0FhSTdLYS9xUFE9PSIsInZhbHVlIjoiaGRSSlNNRGo4MW9XWUhHMEZEUC9EU2ZQb2k1R0Q4eGhwSjYxOWpIMzhVVCtWVEdrZVVOenJ2V0tkTVJsby80U3hQRTFlaUJCTk5WMFMzS3RGcytZaXVYUi9HWVhiNTY1M09XZ01FRkptSVg0dTdudWJIb2oyRkhZU1VrT05WY2UiLCJtYWMiOiI2NjA0M2Q3MmM0YWQ2ZmI3NmZhOTIxNjFhOGJlNmIzY2I5Mjc5MjdhY2U3YjlhMmMzMzZhZDk2Mjg1NDlmMGU0IiwidGFnIjoiIn0%3D; expires=Fri, 31 Oct 2025 15:47:21 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6InE1UUQyZEF1SFdSQ0RLb3lFNE96TkE9PSIsInZhbHVlIjoiM1lrc3krWWVZUmk4S2NNOTlqeG56bGxlR2FndXJLcTVmUGVjSExVbVhBMmRreU9KQllMbVlhSUxyRml6emFhbU1oWUlyZmxqWkQvaUkxZnQ5TFBOOFdqTUk2c28yNGlzNCswUXI3akl1dHQvcXY2dVF4UCtacnlDZ3lqb2hMekMiLCJtYWMiOiJlZTJiMGZmYWIzOWI5ZDcxYWM1YTY0MjkyYWIzMDk2Zjc1NDM0OWJhN2JhMTYxNGFkMjA4ODU3ZjI0ODk2NTE2IiwidGFnIjoiIn0%3D; expires=Fri, 31 Oct 2025 15:47:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
         description: null
         custom: []
     responseFields: []
@@ -511,8 +511,8 @@ endpoints:
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
-          access-control-allow-origin: '*'
-          set-cookie: 'XSRF-TOKEN=eyJpdiI6IjBVSWlPVHBaZC9ab1BkdUdoNzIyZVE9PSIsInZhbHVlIjoiT3BRNEZXSVRzUkJEOXZaTzV2K2V5UjFJNXNGRExFMlFURkZPc1pCdGhCSDFXTmNON3hZOTZjdHNOWi80by9YQ2Q2OEcrK3p5YUFXd2tMeWl1L3phTWpsVWNTZXlDODJnWEpyQ0Z4bXpPYXIvOG5Ic2FQbXVMZ21yYUZSSkErRzQiLCJtYWMiOiIxYjg0ZTQ5NmVhOTJjMzAwYmU5YTMzY2U1MzQ4MzU5Y2EyYzMyNDFiZWVhNmVlMGM2YzllOWRiY2ZhNzcwNjYzIiwidGFnIjoiIn0%3D; expires=Thu, 30 Oct 2025 08:02:00 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6Imt0MjkyVUxneFlIUmJqRnFLeTZYY1E9PSIsInZhbHVlIjoibHBzejFrdlYzU1kwZFhIb0EzbktXRFN1MGlhVTBET04zcUkyUHIvRnNsc0xuNERvTkFNWHZjY0hXT0tVUkYyTytKcjlsakhRUjd2YUFCTUV6L3lpQWN4WFh3YWdhQU02S21HOUEza0xYcXJMbDVwMGxiV1JIYnIwbE90UTkycHUiLCJtYWMiOiIyMGY1YzY3N2Y4ZmFhNDE1YjIyM2IwOWRlZWI5MGM1OWM3OTYzNmFlN2MxNzA0NzZiMmY0OTQ4M2I4OWY5NmQ5IiwidGFnIjoiIn0%3D; expires=Thu, 30 Oct 2025 08:02:00 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+          vary: Origin
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6IlZJSlZZZzNsRlZZakhTc2trM004TXc9PSIsInZhbHVlIjoibnoraFhGRFYvaGI1MGdwa1ZHQ2I2QzFjd1AzdEdvWFB6a25xaHdPNEZEZ0JKUVkrTnFhdjBhdUhvSU1LeWE3SUc1aHhyUTZ5ZGplUjNDREpIb2hKMEdvY3ZLRUpiVE4vN3lWc0FHdVRyd0RBazhuUWxiVVZoY1h3aElSZkEvbnoiLCJtYWMiOiIwYjVlNDBkYjU1Y2E5ZmMwOTIxNzUwYTk4NjhhMmY2MTEzYWQ5MjZmNDA3NGZjZjRkMWUzZTU4N2Q2MzhmYzZkIiwidGFnIjoiIn0%3D; expires=Fri, 31 Oct 2025 15:47:21 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6InE5TEp5OGZJY0lMbk90VklPb01vcUE9PSIsInZhbHVlIjoiUkZvNXU5d3IwVmJXaTBTZDJqTFVQb3g4ZGczdHpqZjUzdGUxemtoYThHMXUwYmx0ZEdTSUkvQWtabTVOVnZBRElveklsVlo5UU5WdEtZaEh6VlNVNk9FVGN4WnFOWUpVbzJMYlRBQlJDUUJJejg3aXg0OFhpV1pKSFFQU0FDNVIiLCJtYWMiOiJkMWQxZDExYmJhYTAwYmM0Zjg1ZjY3Y2Y2NzgyMDRhMTcxNjg3MTY0MmJmMzgwYzcwMzgzNzIxOWVjZWU3MTE0IiwidGFnIjoiIn0%3D; expires=Fri, 31 Oct 2025 15:47:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
         description: null
         custom: []
     responseFields: []
@@ -552,8 +552,8 @@ endpoints:
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
-          access-control-allow-origin: '*'
-          set-cookie: 'XSRF-TOKEN=eyJpdiI6IjVxTWZnT3BRRHBJN2tvTTNPYVNTWFE9PSIsInZhbHVlIjoiRWtmb1BZd1BSakoxVjZaaS9zWkY2bmpPcXVRLzQwblBJVG5VeCttVzhTeU56cmhIUFVKU0d0N0U4RkRNejVTK3VFUjU5Vk5wWXZTTVM5bTM4dTdzT0xMa0ZRUjhOazJxWlc0eDZDbFhJc0FmU3RGVmNjVVdLUDFhTExsR1Noc1AiLCJtYWMiOiJjMWIyOTA0MTU1NDFjZWI2YjMxMzJiNzc0ODQ1NjI1ZDliNDliNWJjZWZiNWVjYTExMGMxODZhZGQ4NTkxZmI2IiwidGFnIjoiIn0%3D; expires=Thu, 30 Oct 2025 08:02:00 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6IkFaaFI4RWpKTmZmU0ZNTEZldUZyaHc9PSIsInZhbHVlIjoiVk1FZGJRZ2RtUEEyRmVFd05XTit5Z1hLaDlLcUIyRS9wUXc1SFdSM0x4WlM4cDZPMFB5UzNHSzI2ZTYwZ0N2bEk4dWVsUVpzUS8xbCtxS3lCYkVoWUx3RjAxVVpteEdKYUdGWEEzVXhZSUlJZm1ZQ1RaTnBhVDJCTTV5K05CUG0iLCJtYWMiOiIwNTkwZDczNzY1ZGVkNjVkNzJjOWVjMGVjMWU1NTk2MTc5OWVmNmI3NTM2NTJmYjVjOGE5NjViNzkyZDU1ZjVjIiwidGFnIjoiIn0%3D; expires=Thu, 30 Oct 2025 08:02:00 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+          vary: Origin
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6IlhiazNlQzVuNG5Rb0tVNWZKVjBqWFE9PSIsInZhbHVlIjoiK3o0bG1ldmZyVHBaVGQyQmV0WHJSdHNjS3JsSUtMTXNmckZIZXA4WjZwK3hvcVNwSUtJcGRoNkdaSlVmRWUzM1BncHBHc2s2ZTVkWkdiSXZzOUJzVHprUHFtRmJodnMzcnNXMG45b2ZUYnVsQ2k5UGZYdi9QWnlhekZaN2VKMmQiLCJtYWMiOiJjN2MzYzJlOTFlNDBjYzlmNDExZjEyZDU5MjEwZDliZmJmNGJlZjRmNmUwN2I4NTE1YTc3MWNjNjhkYmExMmMzIiwidGFnIjoiIn0%3D; expires=Fri, 31 Oct 2025 15:47:21 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6InBUdTlhNVhIOThlUkNqYnlGYUVPMEE9PSIsInZhbHVlIjoibWN4SitZNjBrcktMYzBoN3E0bkhrczh6Zk1ncGwxck5FeUF6RjM5T05vV0NPQzVnREpjcWp2RGpFY3hiN1o5eDVjNW5YckZqVnUvOXNvMjNJK1RDS3RYMGFYemZoSElHYzgrZUwvQVAzblh2ajh5TDNJTmd6SlpGYWh6REpmNWwiLCJtYWMiOiJiZmI1MzJiNzg4N2I4MDZkZjdiY2UyZDQwYmQ4MDE3MzIwY2E4MTMyYjg3ZjQzNmU1ZDQzYjYyYmFkYzM3ZTg4IiwidGFnIjoiIn0%3D; expires=Fri, 31 Oct 2025 15:47:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
         description: null
         custom: []
     responseFields: []
@@ -593,8 +593,8 @@ endpoints:
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
-          access-control-allow-origin: '*'
-          set-cookie: 'XSRF-TOKEN=eyJpdiI6ImVlTTJ4Q202NmFmQWFrbGZuUnFPcVE9PSIsInZhbHVlIjoiTEtXR0NBbHh3UU5HVDI2NitlTXliLzh4TERPa1pISGdLTnVCZG5VQmVKUFNwaTlna1ArNkYxWkJiY1FzMVJXYjlOYmFyenRMOWJKUEdKZFErRzhVYnlhUGUvN2FzcnpSY3BMVjE2Y3dLa21BSnZOQzVVcnNrckFiTDQ4eUlGd00iLCJtYWMiOiI3YWE5ODEzYjgxNjUxYmE5ZGMyNzBiZDVlNzAwNzc3OTQ3NTcwYmI2NWFjODkzNDBjNGNiMWVhOWEyNWE0ZmRhIiwidGFnIjoiIn0%3D; expires=Thu, 30 Oct 2025 08:02:00 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6Ikg2SHhMQ1F6VDB5ZUR0eTlaYkkrOVE9PSIsInZhbHVlIjoiTGZrSEVSUm9RcGdqL2M3QjhvZFdvd3IwS01UOGloaStoWG4rMThCdjVGdkJVYWJMWVFlRG5GZE4zRVpQNktkLzBac3AvZDkzSklXUUFkbHhsaFQyQ1BwUzE4bFNBQ245UGtjb2pmZGhZa3lkaFVQUzJnQWZBNkI3d3J6SUh3czgiLCJtYWMiOiIzNGUzOGE5NWYzOWY5NGZjNDUwNzQ4OWVhOWM1NjU2NDM0ODZlYzAwN2JmZWE1MDE5Zjg4MzdjZGE0ZWIxMmJlIiwidGFnIjoiIn0%3D; expires=Thu, 30 Oct 2025 08:02:00 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+          vary: Origin
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6ImpRRlIvTEhrMFoweERNdnpaR2dkK0E9PSIsInZhbHVlIjoiWTNXTjgzcFVJbU1kTm9BU2g2ZUN2eW9UMGNPYTg5dEViYVUxV2M2ME9vZUJ6K3RlL200YVdCS29vZTd6NnVza3dVZkFkMHRQRVFLczUxOHAxRlplV0d1ZURFWGpqc1dFZ2hZN2VZTUNHbVI4UStNTXJXMEZSYnhHOHJjOUVPS0MiLCJtYWMiOiIyN2Q2M2ZlZWM4ZTc4YmJiZDEzY2RhYTliODg4MGM2OGE1ZjY0YjNhNjBkOWRhNGE5MzY0ZDYzYTU1ZTA1NzBiIiwidGFnIjoiIn0%3D; expires=Fri, 31 Oct 2025 15:47:21 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6Ik5CYngzc3BMcllncDU2TXRRdmFURkE9PSIsInZhbHVlIjoiK1VFYWNWL1FOMGF5eCsyeUpld2t3UGRQK1A1ZVIzOU56am15YjNXZ2hDS3k3bTBQZ01ISExWWklwMmJXakluaTR4SzNTSWlHeHpmK29OYi82WUJpQ2xORGxaQzFGeHRhUWt3Qy9XK1d2dGUreTVYZWdiN2cvNlFhdVdnNml0c00iLCJtYWMiOiI3NmI4MGJjZDE3ODcwNGExNGE0NTc4YWZjNDhhZmMwNzA4MWNmMzk0YzE4YzdiZTgwNmI1NGMwODYyNDNiMWU4IiwidGFnIjoiIn0%3D; expires=Fri, 31 Oct 2025 15:47:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
         description: null
         custom: []
     responseFields: []
@@ -665,7 +665,7 @@ endpoints:
         headers:
           content-type: 'text/html; charset=UTF-8'
           cache-control: 'no-cache, private'
-          access-control-allow-origin: '*'
+          vary: Origin
         description: null
         custom: []
     responseFields: []

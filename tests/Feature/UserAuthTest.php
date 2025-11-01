@@ -32,8 +32,6 @@ class UserAuthTest extends TestCase
         $response->assertStatus(201);
 
         $response2 = $this->getJson('/api/v1/user');
-
-        $this->debugResponse($response2);
         $response2->assertStatus(201)
             ->assertJsonStructure([
                 'data' => [
@@ -43,6 +41,7 @@ class UserAuthTest extends TestCase
                     'roles',
                 ],
             ]);
+
     }
 
     public function test_user_login()
@@ -60,8 +59,26 @@ class UserAuthTest extends TestCase
             'password' => $password,
         ]);
 
-        $this->debugResponse($response);
-
         $response->assertStatus(200);
+    }
+
+    public function test_user_logout()
+    {
+        $password = 'password123';
+        $email = $this->faker->unique()->safeEmail;
+        $user = \App\Models\User::factory()->create([
+            'email' => $email,
+            'password' => Hash::make($password),
+        ]);
+        $user->assignRole(UserRoles::ADMIN->value);
+
+        $response = $this->postJson('/api/v1/auth/login', [
+            'email' => $email,
+            'password' => $password,
+        ]);
+        $response->assertStatus(200);
+
+        $response2 = $this->postJson('/api/v1/auth/logout', []);
+        $response2->assertStatus(204);
     }
 }

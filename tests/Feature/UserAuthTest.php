@@ -2,9 +2,11 @@
 
 namespace Tests\Feature;
 
+use App\Enums\UserRoles;
 use Database\Seeders\RolesAndPermissionsSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 class UserAuthTest extends TestCase
@@ -41,5 +43,25 @@ class UserAuthTest extends TestCase
                     'roles',
                 ],
             ]);
+    }
+
+    public function test_user_login()
+    {
+        $password = 'password123';
+        $email = $this->faker->unique()->safeEmail;
+        $user = \App\Models\User::factory()->create([
+            'email' => $email,
+            'password' => Hash::make($password),
+        ]);
+        $user->assignRole(UserRoles::ADMIN->value);
+
+        $response = $this->postJson('/api/v1/auth/login', [
+            'email' => $email,
+            'password' => $password,
+        ]);
+
+        $this->debugResponse($response);
+
+        $response->assertStatus(200);
     }
 }

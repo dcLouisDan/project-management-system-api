@@ -2,6 +2,7 @@
 
 namespace App\Http\Responses;
 
+use Illuminate\Support\Facades\Auth;
 use Laravel\Fortify\Contracts\LoginResponse as LoginResponseContract;
 
 class LoginResponse implements LoginResponseContract
@@ -11,7 +12,7 @@ class LoginResponse implements LoginResponseContract
         return ApiResponse::success(
             data: [
                 'two_factor' => false,
-                'user' => $request->user(),
+                'user' => Auth::user(),
             ],
             message: 'Login successful'
         );

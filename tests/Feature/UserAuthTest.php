@@ -59,6 +59,8 @@ class UserAuthTest extends TestCase
             'password' => $password,
         ]);
 
+        $this->debugResponse($response);
+
         $response->assertStatus(200);
     }
 

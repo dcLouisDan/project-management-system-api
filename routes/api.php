@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('/v1')->group(function () {
     // Protected route example
     Route::get('/user', function (Request $request) {
+        if (! $request->user()) {
+            abort(401, 'Unauthenticated');
+        }
+
         return new UserResource($request->user());
     });
 

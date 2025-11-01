@@ -8,7 +8,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: api/v1/tasks
+    uri: tasks
     metadata:
       groupName: 'Task Management'
       groupDescription: |-
@@ -89,7 +89,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":[{"id":10,"project_id":10,"title":"Sit molestiae et animi velit.","description":"Et quia saepe libero qui ut. Hic quas enim laudantium veniam ea deserunt illo cumque. Facere qui atque dolorem sed illum.","status":"completed","priority":"low","due_date":"2026-04-05T00:00:00.000000Z","created_at":"2025-10-31T13:47:22.000000Z","updated_at":"2025-10-31T13:47:22.000000Z"},{"id":11,"project_id":11,"title":"Quia neque eveniet minus optio ea nobis.","description":"Rerum odit quibusdam aut ipsum porro veritatis ratione. Iure placeat asperiores officiis suscipit reprehenderit consequuntur. Molestiae est et perspiciatis et soluta sequi. Sed praesentium et ut. Eos earum recusandae molestiae nihil architecto.","status":"approved","priority":"high","due_date":"2026-04-17T00:00:00.000000Z","created_at":"2025-10-31T13:47:22.000000Z","updated_at":"2025-10-31T13:47:22.000000Z"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":15,"to":2,"total":2}}'
+        content: '{"data":[{"id":1,"project_id":1,"title":"Et animi quos velit et fugiat.","description":"Accusantium harum mollitia modi deserunt aut ab. Perspiciatis quo omnis nostrum aut adipisci quidem nostrum qui. Incidunt iure odit et et modi ipsum.","status":"approved","priority":"high","due_date":"2026-04-03T00:00:00.000000Z","created_at":"2025-11-01T13:20:00.000000Z","updated_at":"2025-11-01T13:20:00.000000Z"},{"id":2,"project_id":2,"title":"Tenetur ratione nemo voluptate accusamus ut et recusandae modi.","description":"Repellendus assumenda et tenetur ab reiciendis. Perspiciatis deserunt ducimus corrupti et dolores quia. Assumenda odit doloribus repellat officiis corporis nesciunt ut. Iure impedit molestiae ut rem est esse sint.","status":"rejected","priority":"medium","due_date":"2025-11-17T00:00:00.000000Z","created_at":"2025-11-01T13:20:00.000000Z","updated_at":"2025-11-01T13:20:00.000000Z"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":15,"to":2,"total":2}}'
         headers: []
         description: ''
         custom: []
@@ -120,7 +120,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/v1/tasks/{task_id}'
+    uri: 'tasks/{task_id}'
     metadata:
       groupName: 'Task Management'
       groupDescription: |-
@@ -168,7 +168,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":{"id":12,"project_id":12,"title":"Et animi quos velit et fugiat.","description":"Accusantium harum mollitia modi deserunt aut ab. Perspiciatis quo omnis nostrum aut adipisci quidem nostrum qui. Incidunt iure odit et et modi ipsum.","status":"approved","priority":"high","due_date":"2026-01-13T00:00:00.000000Z","created_at":"2025-10-31T13:47:22.000000Z","updated_at":"2025-10-31T13:47:22.000000Z"}}'
+        content: '{"data":{"id":3,"project_id":3,"title":"Nihil accusantium harum mollitia modi deserunt.","description":"Provident perspiciatis quo omnis nostrum aut adipisci quidem. Qui commodi incidunt iure odit. Et modi ipsum nostrum omnis autem et consequatur. Dolores enim non facere tempora.","status":"awaiting_review","priority":"high","due_date":"2025-12-22T00:00:00.000000Z","created_at":"2025-11-01T13:20:00.000000Z","updated_at":"2025-11-01T13:20:00.000000Z"}}'
         headers: []
         description: ''
         custom: []
@@ -199,7 +199,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/v1/users/{userId}/tasks'
+    uri: 'users/{userId}/tasks'
     metadata:
       groupName: 'Task Management'
       groupDescription: |-
@@ -280,7 +280,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":[{"id":13,"project_id":13,"title":"Tenetur ratione nemo voluptate accusamus ut et recusandae modi.","description":"Repellendus assumenda et tenetur ab reiciendis. Perspiciatis deserunt ducimus corrupti et dolores quia. Assumenda odit doloribus repellat officiis corporis nesciunt ut. Iure impedit molestiae ut rem est esse sint.","status":"rejected","priority":"medium","due_date":"2025-11-28T00:00:00.000000Z","created_at":"2025-10-31T13:47:22.000000Z","updated_at":"2025-10-31T13:47:22.000000Z"},{"id":14,"project_id":14,"title":"Aspernatur consectetur id a consectetur assumenda eaque neque.","description":"Nihil accusantium odit ut perspiciatis. Dolorem aut quis ut dolores omnis. Earum consequatur asperiores est vel id aut officiis eos.","status":"in_progress","priority":"medium","due_date":"2026-01-14T00:00:00.000000Z","created_at":"2025-10-31T13:47:22.000000Z","updated_at":"2025-10-31T13:47:22.000000Z"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":15,"to":2,"total":2}}'
+        content: '{"data":[{"id":4,"project_id":4,"title":"Odit doloribus repellat officiis corporis nesciunt ut ratione iure.","description":"Ut rem est esse sint. Molestiae sunt suscipit doloribus fugiat ut aut. Et error neque recusandae et.","status":"cancelled","priority":"high","due_date":"2026-04-22T00:00:00.000000Z","created_at":"2025-11-01T13:20:01.000000Z","updated_at":"2025-11-01T13:20:01.000000Z"},{"id":5,"project_id":5,"title":"Dolores omnis et earum consequatur asperiores est vel id.","description":"Eos voluptatem et qui unde et esse pariatur. Inventore iusto facere possimus aliquam consequatur. Amet quasi animi aut sequi molestiae voluptatem. Sit quibusdam aut odio dolorum.","status":"approved","priority":"medium","due_date":"2025-12-26T00:00:00.000000Z","created_at":"2025-11-01T13:20:01.000000Z","updated_at":"2025-11-01T13:20:01.000000Z"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":15,"to":2,"total":2}}'
         headers: []
         description: ''
         custom: []
@@ -305,7 +305,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/v1/projects/{projectId}/tasks'
+    uri: 'projects/{projectId}/tasks'
     metadata:
       groupName: 'Task Management'
       groupDescription: |-
@@ -386,7 +386,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":[{"id":15,"project_id":15,"title":"Nihil accusantium harum mollitia modi deserunt.","description":"Provident perspiciatis quo omnis nostrum aut adipisci quidem. Qui commodi incidunt iure odit. Et modi ipsum nostrum omnis autem et consequatur. Dolores enim non facere tempora.","status":"awaiting_review","priority":"high","due_date":"2026-04-08T00:00:00.000000Z","created_at":"2025-10-31T13:47:22.000000Z","updated_at":"2025-10-31T13:47:22.000000Z"},{"id":16,"project_id":16,"title":"Odit doloribus repellat officiis corporis nesciunt ut ratione iure.","description":"Ut rem est esse sint. Molestiae sunt suscipit doloribus fugiat ut aut. Et error neque recusandae et.","status":"cancelled","priority":"high","due_date":"2026-02-24T00:00:00.000000Z","created_at":"2025-10-31T13:47:22.000000Z","updated_at":"2025-10-31T13:47:22.000000Z"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":15,"to":2,"total":2}}'
+        content: '{"data":[{"id":6,"project_id":6,"title":"Ab provident perspiciatis quo omnis nostrum aut adipisci.","description":"Qui commodi incidunt iure odit. Et modi ipsum nostrum omnis autem et consequatur. Dolores enim non facere tempora.","status":"awaiting_review","priority":"high","due_date":"2025-12-22T00:00:00.000000Z","created_at":"2025-11-01T13:20:01.000000Z","updated_at":"2025-11-01T13:20:01.000000Z"},{"id":7,"project_id":7,"title":"Repellat officiis corporis nesciunt ut.","description":"Impedit molestiae ut rem est esse. Aut molestiae sunt suscipit doloribus fugiat. Aut deserunt et error neque recusandae et. Dolorem et ut dicta.","status":"not_started","priority":"medium","due_date":"2025-12-02T00:00:00.000000Z","created_at":"2025-11-01T13:20:01.000000Z","updated_at":"2025-11-01T13:20:01.000000Z"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":15,"to":2,"total":2}}'
         headers: []
         description: ''
         custom: []
@@ -411,7 +411,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: 'api/v1/tasks/{task_id}/sync-relations'
+    uri: 'tasks/{task_id}/sync-relations'
     metadata:
       groupName: 'Task Management'
       groupDescription: |-
@@ -578,7 +578,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/v1/tasks
+    uri: tasks
     metadata:
       groupName: 'Task Management'
       groupDescription: |-
@@ -670,7 +670,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":{"id":17,"project_id":17,"title":"Sunt nihil accusantium harum mollitia.","description":"Aut ab provident perspiciatis quo omnis nostrum aut. Quidem nostrum qui commodi incidunt iure odit. Et modi ipsum nostrum omnis autem et consequatur. Dolores enim non facere tempora.","status":"awaiting_review","priority":"high","due_date":"2026-04-08T00:00:00.000000Z","created_at":"2025-10-31T13:47:22.000000Z","updated_at":"2025-10-31T13:47:22.000000Z"}}'
+        content: '{"data":{"id":8,"project_id":8,"title":"Sunt nihil accusantium harum mollitia.","description":"Aut ab provident perspiciatis quo omnis nostrum aut. Quidem nostrum qui commodi incidunt iure odit. Et modi ipsum nostrum omnis autem et consequatur. Dolores enim non facere tempora.","status":"awaiting_review","priority":"high","due_date":"2025-12-22T00:00:00.000000Z","created_at":"2025-11-01T13:20:01.000000Z","updated_at":"2025-11-01T13:20:01.000000Z"}}'
         headers: []
         description: ''
         custom: []
@@ -707,7 +707,7 @@ endpoints:
   -
     httpMethods:
       - PUT
-    uri: 'api/v1/tasks/{task_id}'
+    uri: 'tasks/{task_id}'
     metadata:
       groupName: 'Task Management'
       groupDescription: |-
@@ -810,7 +810,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":{"id":18,"project_id":18,"title":"Deserunt aut ab provident perspiciatis quo omnis nostrum.","description":"Quidem nostrum qui commodi incidunt iure odit. Et modi ipsum nostrum omnis autem et consequatur. Dolores enim non facere tempora. Voluptatem laboriosam praesentium quis adipisci.","status":"awaiting_review","priority":"urgent","due_date":"2026-01-17T00:00:00.000000Z","created_at":"2025-10-31T13:47:22.000000Z","updated_at":"2025-10-31T13:47:22.000000Z"}}'
+        content: '{"data":{"id":9,"project_id":9,"title":"Deserunt aut ab provident perspiciatis quo omnis nostrum.","description":"Quidem nostrum qui commodi incidunt iure odit. Et modi ipsum nostrum omnis autem et consequatur. Dolores enim non facere tempora. Voluptatem laboriosam praesentium quis adipisci.","status":"awaiting_review","priority":"urgent","due_date":"2026-02-21T00:00:00.000000Z","created_at":"2025-11-01T13:20:01.000000Z","updated_at":"2025-11-01T13:20:01.000000Z"}}'
         headers: []
         description: ''
         custom: []
@@ -853,7 +853,7 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'api/v1/tasks/{task_id}'
+    uri: 'tasks/{task_id}'
     metadata:
       groupName: 'Task Management'
       groupDescription: |-
@@ -943,7 +943,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: 'api/v1/tasks/{taskId}/restore'
+    uri: 'tasks/{taskId}/restore'
     metadata:
       groupName: 'Task Management'
       groupDescription: |-

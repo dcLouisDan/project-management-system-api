@@ -12,7 +12,7 @@ class UserControllerTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
-    private string $apiPrefix = '/api/v1/users';
+    private string $apiPrefix = '/users';
 
     public function test_user_index_route_requires_authentication(): void
     {
@@ -82,7 +82,6 @@ class UserControllerTest extends TestCase
         $user = User::factory()->create();
         $user->givePermissionTo('create user');
         $this->actingAs($user, 'web');
-
 
         $response = $this->postJson($this->apiPrefix, [
             'name' => $this->faker->name(),

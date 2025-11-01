@@ -16,7 +16,7 @@ class TaskControllerTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
-    private string $apiPrefix = '/api/v1/tasks';
+    private string $apiPrefix = '/tasks';
 
     protected function setUp(): void
     {

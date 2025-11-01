@@ -4,7 +4,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: api/v1/projects
+    uri: projects
     metadata:
       groupName: 'Project Management'
       groupDescription: 'APIs for managing projects'
@@ -102,7 +102,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/v1/projects/{project_id}'
+    uri: 'projects/{project_id}'
     metadata:
       groupName: 'Project Management'
       groupDescription: 'APIs for managing projects'
@@ -162,7 +162,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/v1/projects
+    uri: projects
     metadata:
       groupName: 'Project Management'
       groupDescription: 'APIs for managing projects'
@@ -283,7 +283,7 @@ endpoints:
   -
     httpMethods:
       - PUT
-    uri: 'api/v1/projects/{project_id}'
+    uri: 'projects/{project_id}'
     metadata:
       groupName: 'Project Management'
       groupDescription: 'APIs for managing projects'
@@ -421,7 +421,7 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'api/v1/projects/{project_id}'
+    uri: 'projects/{project_id}'
     metadata:
       groupName: 'Project Management'
       groupDescription: 'APIs for managing projects'
@@ -481,7 +481,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: 'api/v1/projects/{projectId}/restore'
+    uri: 'projects/{projectId}/restore'
     metadata:
       groupName: 'Project Management'
       groupDescription: 'APIs for managing projects'
@@ -541,7 +541,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: 'api/v1/projects/{project_id}/manager'
+    uri: 'projects/{project_id}/manager'
     metadata:
       groupName: 'Project Management'
       groupDescription: 'APIs for managing projects'
@@ -624,7 +624,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: 'api/v1/projects/{project_id}/teams'
+    uri: 'projects/{project_id}/teams'
     metadata:
       groupName: 'Project Management'
       groupDescription: 'APIs for managing projects'

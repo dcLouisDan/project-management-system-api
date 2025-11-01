@@ -8,7 +8,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: api/v1/users
+    uri: users
     metadata:
       groupName: 'User Management'
       groupDescription: |-
@@ -78,7 +78,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":[{"id":65,"name":"Clare O''Keefe","email":"gusikowski.stevie@example.net","roles":[]},{"id":66,"name":"Prof. Larissa Wintheiser DDS","email":"davion30@example.com","roles":[]}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
+        content: '{"data":[{"id":4,"name":"Prof. Frida Koch","email":"devonte27@example.net","roles":[]},{"id":5,"name":"Letitia Streich","email":"elna.schultz@example.org","roles":[]}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
         headers: []
         description: ''
         custom: []
@@ -115,7 +115,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/v1/users/{user_id}'
+    uri: 'users/{user_id}'
     metadata:
       groupName: 'User Management'
       groupDescription: |-
@@ -136,7 +136,7 @@ endpoints:
         name: user_id
         description: 'The ID of the user.'
         required: true
-        example: 64
+        example: 3
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -153,7 +153,7 @@ endpoints:
         nullable: false
         custom: []
     cleanUrlParameters:
-      user_id: 64
+      user_id: 3
       id: 1
     queryParameters: []
     cleanQueryParameters: []
@@ -163,7 +163,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":{"id":67,"name":"Nathanial Quitzon","email":"glenna.ullrich@example.org","roles":[]}}'
+        content: '{"data":{"id":6,"name":"Prof. Carolyne Buckridge II","email":"altenwerth.deborah@example.com","roles":[]}}'
         headers: []
         description: ''
         custom: []
@@ -194,7 +194,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/v1/users
+    uri: users
     metadata:
       groupName: 'User Management'
       groupDescription: |-
@@ -304,7 +304,7 @@ endpoints:
   -
     httpMethods:
       - PUT
-    uri: 'api/v1/users/{user_id}'
+    uri: 'users/{user_id}'
     metadata:
       groupName: 'User Management'
       groupDescription: |-
@@ -325,14 +325,14 @@ endpoints:
         name: user_id
         description: 'The ID of the user.'
         required: true
-        example: 64
+        example: 3
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      user_id: 64
+      user_id: 3
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -416,7 +416,7 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'api/v1/users/{user_id}'
+    uri: 'users/{user_id}'
     metadata:
       groupName: 'User Management'
       groupDescription: |-
@@ -437,14 +437,14 @@ endpoints:
         name: user_id
         description: 'The ID of the user.'
         required: true
-        example: 64
+        example: 3
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      user_id: 64
+      user_id: 3
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -478,7 +478,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: 'api/v1/users/{userId}/restore'
+    uri: 'users/{userId}/restore'
     metadata:
       groupName: 'User Management'
       groupDescription: |-
@@ -499,14 +499,14 @@ endpoints:
         name: userId
         description: ''
         required: true
-        example: 64
+        example: 3
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      userId: 64
+      userId: 3
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -540,7 +540,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: 'api/v1/users/{user_id}/roles'
+    uri: 'users/{user_id}/roles'
     metadata:
       groupName: 'User Management'
       groupDescription: |-
@@ -561,14 +561,14 @@ endpoints:
         name: user_id
         description: 'The ID of the user.'
         required: true
-        example: 64
+        example: 3
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      user_id: 64
+      user_id: 3
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:

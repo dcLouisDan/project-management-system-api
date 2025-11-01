@@ -4,7 +4,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/v1/auth/login
+    uri: auth/login
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -57,7 +57,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/v1/auth/logout
+    uri: auth/logout
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -88,7 +88,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/v1/auth/forgot-password
+    uri: auth/forgot-password
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -119,7 +119,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/v1/auth/reset-password
+    uri: auth/reset-password
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -172,7 +172,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/v1/auth/register
+    uri: auth/register
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -203,7 +203,7 @@ endpoints:
   -
     httpMethods:
       - PUT
-    uri: api/v1/auth/user/profile-information
+    uri: auth/user/profile-information
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -234,7 +234,7 @@ endpoints:
   -
     httpMethods:
       - PUT
-    uri: api/v1/auth/user/password
+    uri: auth/user/password
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -265,7 +265,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: api/v1/auth/user/confirmed-password-status
+    uri: auth/user/confirmed-password-status
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -294,7 +294,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           vary: Origin
-          set-cookie: 'XSRF-TOKEN=eyJpdiI6IlUrOTFZVC9KUVZGa0FhSTdLYS9xUFE9PSIsInZhbHVlIjoiaGRSSlNNRGo4MW9XWUhHMEZEUC9EU2ZQb2k1R0Q4eGhwSjYxOWpIMzhVVCtWVEdrZVVOenJ2V0tkTVJsby80U3hQRTFlaUJCTk5WMFMzS3RGcytZaXVYUi9HWVhiNTY1M09XZ01FRkptSVg0dTdudWJIb2oyRkhZU1VrT05WY2UiLCJtYWMiOiI2NjA0M2Q3MmM0YWQ2ZmI3NmZhOTIxNjFhOGJlNmIzY2I5Mjc5MjdhY2U3YjlhMmMzMzZhZDk2Mjg1NDlmMGU0IiwidGFnIjoiIn0%3D; expires=Fri, 31 Oct 2025 15:47:21 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6InE1UUQyZEF1SFdSQ0RLb3lFNE96TkE9PSIsInZhbHVlIjoiM1lrc3krWWVZUmk4S2NNOTlqeG56bGxlR2FndXJLcTVmUGVjSExVbVhBMmRreU9KQllMbVlhSUxyRml6emFhbU1oWUlyZmxqWkQvaUkxZnQ5TFBOOFdqTUk2c28yNGlzNCswUXI3akl1dHQvcXY2dVF4UCtacnlDZ3lqb2hMekMiLCJtYWMiOiJlZTJiMGZmYWIzOWI5ZDcxYWM1YTY0MjkyYWIzMDk2Zjc1NDM0OWJhN2JhMTYxNGFkMjA4ODU3ZjI0ODk2NTE2IiwidGFnIjoiIn0%3D; expires=Fri, 31 Oct 2025 15:47:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6IjcrbFh4eE1OdUh5TXlTeXFPM3V1SHc9PSIsInZhbHVlIjoiaWtsN2VrMVdSeUVkbGdWb2tKaEpMTVlFZE1qVHY0WmZsY0JhVDVWODBSaURDMmV5RjMrdU55OHVKZDNqZXhSU0lmdjQyVEFSMTRyYzBnd3czL1V1UTVEZlppbzJTS0NyRmdjbWdVR0JFdi93U29FR21rWXVKMlh4WXQ4THJOaksiLCJtYWMiOiI0ODUyZTE2ZTg1ZGMwNzMxZDNjNzc3NzJkY2FmODY3NTA5M2M2NzQ5ZWEwNmY4ODJkYTdmYWJmMmE1ZjU2NmQ4IiwidGFnIjoiIn0%3D; expires=Sat, 01 Nov 2025 15:20:00 GMT; Max-Age=7200; path=/; domain=localhost; samesite=lax; project-management-system-session=eyJpdiI6IkY1Z2RyTzcvVXFDZTRsVDRaTnlOQmc9PSIsInZhbHVlIjoiTzlTR3pWWUdiRDdaMXBzaTVFaGZQS09YWCtWOFhKWTdrOUFtaVJXbkMwS0RVTTBQaTh4aERndWZJRllzNnJpMk1tRGx3S3lUVWhMS3ZvSmZpK1dPU3Mvc2pPdnFoU3liVy80TzBOYy9kN2EwSjFBa3dVcWdSL3VIYUJlMzkrVkQiLCJtYWMiOiJhMzEzMDczNzQzNmY3NWY5MmEwNTI0YjlhODUwYzhiNjg0YThhNjE1Y2M3ZWM5NzA3YjNhNGNkMmU0MzdkMmRmIiwidGFnIjoiIn0%3D; expires=Sat, 01 Nov 2025 15:20:00 GMT; Max-Age=7200; path=/; domain=localhost; httponly; samesite=lax'
         description: null
         custom: []
     responseFields: []
@@ -306,7 +306,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/v1/auth/user/confirm-password
+    uri: auth/user/confirm-password
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -337,7 +337,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/v1/auth/two-factor-challenge
+    uri: auth/two-factor-challenge
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -390,7 +390,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/v1/auth/user/two-factor-authentication
+    uri: auth/user/two-factor-authentication
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -421,7 +421,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/v1/auth/user/confirmed-two-factor-authentication
+    uri: auth/user/confirmed-two-factor-authentication
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -452,7 +452,7 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: api/v1/auth/user/two-factor-authentication
+    uri: auth/user/two-factor-authentication
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -483,7 +483,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: api/v1/auth/user/two-factor-qr-code
+    uri: auth/user/two-factor-qr-code
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -512,7 +512,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           vary: Origin
-          set-cookie: 'XSRF-TOKEN=eyJpdiI6IlZJSlZZZzNsRlZZakhTc2trM004TXc9PSIsInZhbHVlIjoibnoraFhGRFYvaGI1MGdwa1ZHQ2I2QzFjd1AzdEdvWFB6a25xaHdPNEZEZ0JKUVkrTnFhdjBhdUhvSU1LeWE3SUc1aHhyUTZ5ZGplUjNDREpIb2hKMEdvY3ZLRUpiVE4vN3lWc0FHdVRyd0RBazhuUWxiVVZoY1h3aElSZkEvbnoiLCJtYWMiOiIwYjVlNDBkYjU1Y2E5ZmMwOTIxNzUwYTk4NjhhMmY2MTEzYWQ5MjZmNDA3NGZjZjRkMWUzZTU4N2Q2MzhmYzZkIiwidGFnIjoiIn0%3D; expires=Fri, 31 Oct 2025 15:47:21 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6InE5TEp5OGZJY0lMbk90VklPb01vcUE9PSIsInZhbHVlIjoiUkZvNXU5d3IwVmJXaTBTZDJqTFVQb3g4ZGczdHpqZjUzdGUxemtoYThHMXUwYmx0ZEdTSUkvQWtabTVOVnZBRElveklsVlo5UU5WdEtZaEh6VlNVNk9FVGN4WnFOWUpVbzJMYlRBQlJDUUJJejg3aXg0OFhpV1pKSFFQU0FDNVIiLCJtYWMiOiJkMWQxZDExYmJhYTAwYmM0Zjg1ZjY3Y2Y2NzgyMDRhMTcxNjg3MTY0MmJmMzgwYzcwMzgzNzIxOWVjZWU3MTE0IiwidGFnIjoiIn0%3D; expires=Fri, 31 Oct 2025 15:47:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6ImhUdEhXTE0zeVlQRFd3VjVzUU1tU1E9PSIsInZhbHVlIjoidmRsY1NTMUxOZ0RPcmRCZ2dnS3hsSjcrV3Uwdm9ud25iNEgreHNMajNBcDhJSXpuVjlPcFo5OS81RWNOTjkvanBRUy82VEVBa043MVlWTzM4Y21LVGQxY3Z5M0lqdlY4UkJLNDk2ampkWUFTVjJBZmRCWEkxaG1xemllSVhwM0kiLCJtYWMiOiJiZDZlMTZjMjZmNDVkYWM4MmEwNDMxMTY3NTg3N2U0YWFmOTM2OGYyYzQ1ZGIxMDBlOTQ0ZWVjMWI4MWY0ZTI4IiwidGFnIjoiIn0%3D; expires=Sat, 01 Nov 2025 15:20:00 GMT; Max-Age=7200; path=/; domain=localhost; samesite=lax; project-management-system-session=eyJpdiI6Im9CZEJpNUlXczFwcDBsOTZFWG5TT1E9PSIsInZhbHVlIjoiWnpSOUJBMmF5Yy96elNWMXBPaTVxMFN2bTRFM3pKZTY4RnZoMUtFWldjYW1ZbFNrait5NE9QbkVqV29aMGx5VzByWXRmUmlKSnBkTzFGT3pRTE9kTHkwaUZuWHlGNzV2S0IzSWNVTmQ1UHh6bXpOOExUVk9JUlF0VytGY2t2Q2QiLCJtYWMiOiI3NmIwZmYxMTg2OGRlMGM4ZmRmNzUwMTdlZWQyZDMzOTg5NzkyMGRlOWFhYmQ3ZWRiZWQyMmMwYTRhYzc4ODNlIiwidGFnIjoiIn0%3D; expires=Sat, 01 Nov 2025 15:20:00 GMT; Max-Age=7200; path=/; domain=localhost; httponly; samesite=lax'
         description: null
         custom: []
     responseFields: []
@@ -524,7 +524,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: api/v1/auth/user/two-factor-secret-key
+    uri: auth/user/two-factor-secret-key
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -553,7 +553,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           vary: Origin
-          set-cookie: 'XSRF-TOKEN=eyJpdiI6IlhiazNlQzVuNG5Rb0tVNWZKVjBqWFE9PSIsInZhbHVlIjoiK3o0bG1ldmZyVHBaVGQyQmV0WHJSdHNjS3JsSUtMTXNmckZIZXA4WjZwK3hvcVNwSUtJcGRoNkdaSlVmRWUzM1BncHBHc2s2ZTVkWkdiSXZzOUJzVHprUHFtRmJodnMzcnNXMG45b2ZUYnVsQ2k5UGZYdi9QWnlhekZaN2VKMmQiLCJtYWMiOiJjN2MzYzJlOTFlNDBjYzlmNDExZjEyZDU5MjEwZDliZmJmNGJlZjRmNmUwN2I4NTE1YTc3MWNjNjhkYmExMmMzIiwidGFnIjoiIn0%3D; expires=Fri, 31 Oct 2025 15:47:21 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6InBUdTlhNVhIOThlUkNqYnlGYUVPMEE9PSIsInZhbHVlIjoibWN4SitZNjBrcktMYzBoN3E0bkhrczh6Zk1ncGwxck5FeUF6RjM5T05vV0NPQzVnREpjcWp2RGpFY3hiN1o5eDVjNW5YckZqVnUvOXNvMjNJK1RDS3RYMGFYemZoSElHYzgrZUwvQVAzblh2ajh5TDNJTmd6SlpGYWh6REpmNWwiLCJtYWMiOiJiZmI1MzJiNzg4N2I4MDZkZjdiY2UyZDQwYmQ4MDE3MzIwY2E4MTMyYjg3ZjQzNmU1ZDQzYjYyYmFkYzM3ZTg4IiwidGFnIjoiIn0%3D; expires=Fri, 31 Oct 2025 15:47:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6IkI4Ym5nc0tFaktnYzNpT3R4cDNiWkE9PSIsInZhbHVlIjoiczBNUlRxb0hFdVJ0UlZQYWY2emUyV2IweS9jUmR3R3lwdjRDakRwOXR3QXByMkpMRWtoclhSMGRqRjhRZ2IzNnNlRG82bmd2TGVielpUQjlEYVVWMEt6aXlrVTE3c0tidjRGaFJGWDFtQ0tacUUybC9HcXJPQUd2Y2FZSzl6UmMiLCJtYWMiOiJmNzIwODE5ZTU4OGMxYWU3ODczYTJhYWI0YTVmYmRkZjJhOThlYmViMWM4OTQxOTc3ODZmYmVlZmFhZTkxODBhIiwidGFnIjoiIn0%3D; expires=Sat, 01 Nov 2025 15:20:00 GMT; Max-Age=7200; path=/; domain=localhost; samesite=lax; project-management-system-session=eyJpdiI6IlA3ZElld3doZHY0UzhWakpFM2czOXc9PSIsInZhbHVlIjoiNVFnZUpPb1FGTzJPNUJ5YnlQRTFkYTFWZUN3dzJXQUtoK2JhQVEyUDhCUmpBdnlKTFllWHVhUnVMQ0RiNSt0cTNCc29BcXVTWFB3eU5hVDk2UGVOUEpyU1RGNW5JWnpRV3VlQzcyaTB6bXdubFBOMjdCR2I4SnZZdDdXcjhFNHQiLCJtYWMiOiIwMGUxZDhmMWNjMjRlZTRhMjdmMDJkNWM1NDljODhmNmExNzAyOGU4MmM2ZDVkN2VjYjQ5ZmQwYjQyYjA3MTRhIiwidGFnIjoiIn0%3D; expires=Sat, 01 Nov 2025 15:20:00 GMT; Max-Age=7200; path=/; domain=localhost; httponly; samesite=lax'
         description: null
         custom: []
     responseFields: []
@@ -565,7 +565,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: api/v1/auth/user/two-factor-recovery-codes
+    uri: auth/user/two-factor-recovery-codes
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -594,7 +594,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           vary: Origin
-          set-cookie: 'XSRF-TOKEN=eyJpdiI6ImpRRlIvTEhrMFoweERNdnpaR2dkK0E9PSIsInZhbHVlIjoiWTNXTjgzcFVJbU1kTm9BU2g2ZUN2eW9UMGNPYTg5dEViYVUxV2M2ME9vZUJ6K3RlL200YVdCS29vZTd6NnVza3dVZkFkMHRQRVFLczUxOHAxRlplV0d1ZURFWGpqc1dFZ2hZN2VZTUNHbVI4UStNTXJXMEZSYnhHOHJjOUVPS0MiLCJtYWMiOiIyN2Q2M2ZlZWM4ZTc4YmJiZDEzY2RhYTliODg4MGM2OGE1ZjY0YjNhNjBkOWRhNGE5MzY0ZDYzYTU1ZTA1NzBiIiwidGFnIjoiIn0%3D; expires=Fri, 31 Oct 2025 15:47:21 GMT; Max-Age=7200; path=/; samesite=lax; project-management-system-session=eyJpdiI6Ik5CYngzc3BMcllncDU2TXRRdmFURkE9PSIsInZhbHVlIjoiK1VFYWNWL1FOMGF5eCsyeUpld2t3UGRQK1A1ZVIzOU56am15YjNXZ2hDS3k3bTBQZ01ISExWWklwMmJXakluaTR4SzNTSWlHeHpmK29OYi82WUJpQ2xORGxaQzFGeHRhUWt3Qy9XK1d2dGUreTVYZWdiN2cvNlFhdVdnNml0c00iLCJtYWMiOiI3NmI4MGJjZDE3ODcwNGExNGE0NTc4YWZjNDhhZmMwNzA4MWNmMzk0YzE4YzdiZTgwNmI1NGMwODYyNDNiMWU4IiwidGFnIjoiIn0%3D; expires=Fri, 31 Oct 2025 15:47:21 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6IkNMd1BBQnFhcjB5WjNkM0tydVo2SEE9PSIsInZhbHVlIjoiNzloa2FPZHg3eE5BZVc1aTYybmtYSVliQUJvdTNmelhmdUFkMUp6elBuWklMZXpqUXVMUVlPVm9rbHhhbVJHdk9EZzY2TVRmYTV4bHF6THlpcGxBTmZoUG1qSVZ4VEl5RTNCd0tZdlVtK0krY3NhYnROdkpSNVEvb1JHdWlnaHEiLCJtYWMiOiJkMTczNzFlMmU4NWNjN2YyMmRhMzhjMWIyZTU4OTEzYTRjY2RkMTIyNzdjMzU0MGVjY2M4NzBmYjliOTgyODU1IiwidGFnIjoiIn0%3D; expires=Sat, 01 Nov 2025 15:20:00 GMT; Max-Age=7200; path=/; domain=localhost; samesite=lax; project-management-system-session=eyJpdiI6IjljZTRTa1N6VFhqZW56TXZPY3hFbVE9PSIsInZhbHVlIjoidHErV3BiUUhXRGZXS0tOUUNqRE9WUzltMkNpTVNuSENQb1EyakNXOXdzMEYvMVlIRUN1MVZWYXJxdnB6R2xhQ1FlaXczQ1VLdi96QWh6emRvdG9aWUUydnJDQ3FLSjZlUTlDMGF3TmtBTEwvUzlTYVZQcUpwa0djdXVkS0FxZksiLCJtYWMiOiI5N2VhYWNkYTFiMGYxODc4ZGYzMzE2ODVlNDQzNjBiNDk4MTZkOWJkZDU5ZGE3ODdlYTA1NTgyMDJmYmMxZGVjIiwidGFnIjoiIn0%3D; expires=Sat, 01 Nov 2025 15:20:00 GMT; Max-Age=7200; path=/; domain=localhost; httponly; samesite=lax'
         description: null
         custom: []
     responseFields: []
@@ -606,7 +606,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/v1/auth/user/two-factor-recovery-codes
+    uri: auth/user/two-factor-recovery-codes
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -637,7 +637,47 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: api/v1/user
+    uri: sanctum/csrf-cookie
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Return an empty response simply to trigger the storage of the CSRF cookie in the browser.'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 204
+        content: ''
+        headers:
+          cache-control: 'no-cache, private'
+          vary: Origin
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6ImVTWC9aQnB0UTlMVlVWZE5yY1JhblE9PSIsInZhbHVlIjoiYlhzSTZGclpOV0cvd1paQ2xCT3Jqek90cEpoUnlrNThDd0xhbnlNYlFJdjc3SzYyZzE1MGtCVGxnQ2YwWEZoQlJ2eThqc050S0dXcE5kUUpBQm0ydWNSVzRNVkZDdzE2dEM0ZlQ3MDBRSjBPcHA1L3JIeUp6bFd3Y21PMlA3Q28iLCJtYWMiOiI5YzA0ZWVmNzUwMGU1ODJmNWI2YTY3MTc3NDIzMWM2YzAzZDlhYjMxMTU1ODhlYzZiYTJmZmNiMjU3Y2E0ZDdhIiwidGFnIjoiIn0%3D; expires=Sat, 01 Nov 2025 15:20:00 GMT; Max-Age=7200; path=/; domain=localhost; samesite=lax; project-management-system-session=eyJpdiI6IkRDZlYrL2RTenFyaGxOODhkSnVBemc9PSIsInZhbHVlIjoiMjFHUVBOaEEzQ3g5Q1VNdUtSZWRFZlJVaGQwY0xxVGt6b2hoNGYxeStmOE9RVnRkRW9vbkVHTW5LRzBTQkYySjN4SXZrRVBmNTB4QjNJZVJ3TjBDZTRnNGUvZWxLQjUrMEpLV0hveWNQNXlib0d5RGE4ZUU2V25mZEZ6OWY2TVYiLCJtYWMiOiIzMzQwNjA5YWVlMWZkNWNmM2E4ZGQ5YjViNTllNjNkMTM1ZmI1OWY0ODZkNDA1ODllOTEyMjU2ZTMyOTJmMjA1IiwidGFnIjoiIn0%3D; expires=Sat, 01 Nov 2025 15:20:00 GMT; Max-Age=7200; path=/; domain=localhost; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: up
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -661,10 +701,155 @@ endpoints:
     responses:
       -
         status: 200
-        content: ''
+        content: |
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+              <meta charset="utf-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1">
+
+              <title>Project Management System</title>
+
+              <!-- Fonts -->
+              <link rel="preconnect" href="https://fonts.bunny.net">
+              <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+
+              <!-- Styles -->
+              <script src="https://cdn.tailwindcss.com"></script>
+
+              <script>
+                  tailwind.config = {
+                      theme: {
+                          extend: {
+                              fontFamily: {
+                                  sans: ['Figtree', 'ui-sans-serif', 'system-ui', 'sans-serif', "Apple Color Emoji", "Segoe UI Emoji"],
+                              }
+                          }
+                      }
+                  }
+              </script>
+          </head>
+          <body class="antialiased">
+          <div class="relative flex justify-center items-center min-h-screen bg-gray-100 selection:bg-red-500 selection:text-white">
+              <div class="w-full sm:w-3/4 xl:w-1/2 mx-auto p-6">
+                  <div class="px-6 py-4 bg-white from-gray-700/50 via-transparent rounded-lg shadow-2xl shadow-gray-500/20 flex items-center focus:outline focus:outline-2 focus:outline-red-500">
+                      <div class="relative flex h-3 w-3 group ">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 group-[.status-down]:bg-red-600 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-3 w-3 bg-green-400 group-[.status-down]:bg-red-600"></span>
+                      </div>
+
+                      <div class="ml-6">
+                          <h2 class="text-xl font-semibold text-gray-900">Application up</h2>
+
+                          <p class="mt-2 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+                              HTTP request received.
+
+                                                      Response rendered in 456ms.
+                                              </p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          </body>
+          </html>
         headers:
-          content-type: 'text/html; charset=UTF-8'
           cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: user
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6Ik1XdkpSVmJEU3kxc3Y1M0RzVUZmb0E9PSIsInZhbHVlIjoiNjBueWw5QldEU1dnZmN3cVlNMTgwcjQ5aUtEdml1L1JkV1QzRHNDZmpLSG9ZTUc0dnlVQWJvWGtmZkpKVDJCak1qaUlZNFdJVU5yZkRTZjIzT0t4M1BXWjUwVkI3Y3p4cFNRc25IdmlGOWsxM1N0UXR3WjFLSXZuMVVHOS8vRWkiLCJtYWMiOiJkMTE2MDYxYzE3Zjk4ZGM5M2UxMTdjNzJlZjQ3ZjU2OTNlN2I4NmE2MWJlM2YwOTNhODc2OTViNDJkZjVlMDY4IiwidGFnIjoiIn0%3D; expires=Sat, 01 Nov 2025 15:20:00 GMT; Max-Age=7200; path=/; domain=localhost; samesite=lax; project-management-system-session=eyJpdiI6IkdScVlLZkJoWGVPSERocjF0WEJhYnc9PSIsInZhbHVlIjoiczB4c2hFV1RrRGlEY3FLeWhncnhmZnphM0g4S2NMdjAycngzNi9wSXJFRmhHZlN6ZjJnVzUrSzZlUlVxdWtpMFoxU3c1bXN2Mm1pdE5kNHhiTitFYk5mbHk0bExtWVFSZU03OWYwdGFZSVNDN1NvbjRZRGRPa2JuSTd6eWpPUEwiLCJtYWMiOiJjZmM1YjJiNTFlNDhhOWY0YjZhYmFmZDM5NmI0MjJiMjIzMGRlZDQzYWI2OWQ4YjRhODhmYjYzM2I5MWI3MmJiIiwidGFnIjoiIn0%3D; expires=Sat, 01 Nov 2025 15:20:00 GMT; Max-Age=7200; path=/; domain=localhost; httponly; samesite=lax'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'storage/{path}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      path:
+        name: path
+        description: ''
+        required: true
+        example: '|{+-0p'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      path: '|{+-0p'
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 403
+        content: |-
+          {
+              "message": ""
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
           vary: Origin
         description: null
         custom: []

@@ -17,7 +17,7 @@ class TeamControllerTest extends TestCase
 
     protected TeamService $teamService;
 
-    private string $apiPrefix = '/api/v1/teams';
+    private string $apiPrefix = '/teams';
 
     protected function setUp(): void
     {

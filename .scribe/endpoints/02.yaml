@@ -6,7 +6,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: api/v1/teams
+    uri: teams
     metadata:
       groupName: 'Team Management'
       groupDescription: |-
@@ -65,7 +65,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":{"id":5,"name":"Haag, Lebsack and Graham","description":"Cumque iste exercitationem quaerat sunt architecto maiores velit. Eaque autem nostrum natus voluptatem rerum. Sed non illum facere. Nostrum sed assumenda ad autem laborum vero doloremque. Minima veniam facilis id doloribus tempore distinctio rerum.","created_at":"2025-10-31T13:47:21.000000Z","updated_at":"2025-10-31T13:47:21.000000Z"}}'
+        content: '{"data":{"id":1,"name":"Bailey Ltd","description":"Et fugiat sunt nihil accusantium. Mollitia modi deserunt aut ab provident perspiciatis quo. Nostrum aut adipisci quidem nostrum.","created_at":"2025-11-01T13:20:00.000000Z","updated_at":"2025-11-01T13:20:00.000000Z"}}'
         headers: []
         description: ''
         custom: []
@@ -90,7 +90,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/v1/teams
+    uri: teams
     metadata:
       groupName: 'Team Management'
       groupDescription: |-
@@ -163,7 +163,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/v1/teams/{team_id}'
+    uri: 'teams/{team_id}'
     metadata:
       groupName: 'Team Management'
       groupDescription: |-
@@ -200,7 +200,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":{"id":6,"name":"Bailey Ltd","description":"Et fugiat sunt nihil accusantium. Mollitia modi deserunt aut ab provident perspiciatis quo. Nostrum aut adipisci quidem nostrum.","created_at":"2025-10-31T13:47:21.000000Z","updated_at":"2025-10-31T13:47:21.000000Z"}}'
+        content: '{"data":{"id":2,"name":"Bailey Ltd","description":"Et fugiat sunt nihil accusantium. Mollitia modi deserunt aut ab provident perspiciatis quo. Nostrum aut adipisci quidem nostrum.","created_at":"2025-11-01T13:20:00.000000Z","updated_at":"2025-11-01T13:20:00.000000Z"}}'
         headers: []
         description: ''
         custom: []
@@ -231,7 +231,7 @@ endpoints:
   -
     httpMethods:
       - PUT
-    uri: 'api/v1/teams/{team_id}'
+    uri: 'teams/{team_id}'
     metadata:
       groupName: 'Team Management'
       groupDescription: |-
@@ -321,7 +321,7 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'api/v1/teams/{team_id}'
+    uri: 'teams/{team_id}'
     metadata:
       groupName: 'Team Management'
       groupDescription: |-
@@ -383,7 +383,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: 'api/v1/teams/{team_id}/members'
+    uri: 'teams/{team_id}/members'
     metadata:
       groupName: 'Team Management'
       groupDescription: |-
@@ -479,7 +479,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: 'api/v1/teams/{team_id}/members/bulk'
+    uri: 'teams/{team_id}/members/bulk'
     metadata:
       groupName: 'Team Management'
       groupDescription: |-
@@ -588,7 +588,7 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'api/v1/teams/{team_id}/members/{user_id}'
+    uri: 'teams/{team_id}/members/{user_id}'
     metadata:
       groupName: 'Team Management'
       groupDescription: |-
@@ -619,7 +619,7 @@ endpoints:
         name: user_id
         description: 'The ID of the user.'
         required: true
-        example: 64
+        example: 3
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -627,7 +627,7 @@ endpoints:
         custom: []
     cleanUrlParameters:
       team_id: 16
-      user_id: 64
+      user_id: 3
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -684,7 +684,7 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'api/v1/teams/{team_id}/members'
+    uri: 'teams/{team_id}/members'
     metadata:
       groupName: 'Team Management'
       groupDescription: |-
@@ -775,7 +775,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: 'api/v1/teams/{team_id}/lead'
+    uri: 'teams/{team_id}/lead'
     metadata:
       groupName: 'Team Management'
       groupDescription: |-
@@ -872,7 +872,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: 'api/v1/teams/{team_id}/projects'
+    uri: 'teams/{team_id}/projects'
     metadata:
       groupName: 'Team Management'
       groupDescription: |-
@@ -968,7 +968,7 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'api/v1/teams/{team_id}/projects/{project_id}'
+    uri: 'teams/{team_id}/projects/{project_id}'
     metadata:
       groupName: 'Team Management'
       groupDescription: |-

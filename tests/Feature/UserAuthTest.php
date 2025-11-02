@@ -53,8 +53,18 @@ class UserAuthTest extends TestCase
         ]);
 
         $this->debugResponse($response);
-
         $response->assertStatus(200);
+    }
+
+    public function test_user_login_invalid_credentials()
+    {
+        $response = $this->postJson('/auth/login', [
+            'email' => 'invalid@example.com',
+            'password' => 'wrongpassword',
+        ]);
+
+        $this->debugResponse($response);
+        $response->assertStatus(422);
     }
 
     public function test_user_logout()

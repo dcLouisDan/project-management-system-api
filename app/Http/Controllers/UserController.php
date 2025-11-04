@@ -32,6 +32,7 @@ class UserController extends Controller
      * @queryParam name string Filter users by name (partial match). Example: John
      * @queryParam email string Filter users by email (partial match). Example: john@example.com
      * @queryParam role string Filter users by role. Example: admin
+     * @queryParam roles string Filter users by multiple roles separated by commas. Example: admin,team lead
      *
      * @apiResourceCollection App\Http\Resources\UserResource
      *
@@ -53,6 +54,9 @@ class UserController extends Controller
             'name',
             'email',
             'role',
+            'roles',
+            'sort',
+            'direction',
         ]));
 
         try {

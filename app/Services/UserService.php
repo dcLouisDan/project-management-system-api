@@ -76,6 +76,7 @@ class UserService
     public function buildFilteredUserQuery(array $filters)
     {
         $query = User::query();
+        $sortableFields = ['id', 'name', 'created_at'];
 
         if (isset($filters['name'])) {
             $query->where('name', 'ilike', '%'.$filters['name'].'%');
@@ -87,6 +88,18 @@ class UserService
 
         if (isset($filters['role'])) {
             $query->role($filters['role']);
+        }
+
+        if (isset($filters['roles'])) {
+            $roles = array_map('trim', explode(',', $filters['roles']));
+            $query->whereHas('roles', function ($q) use ($roles) {
+                $q->whereIn('name', $roles);
+            });
+        }
+
+        if (isset($filters['sort']) && in_array($filters['sort'], $sortableFields)) {
+            $direction = isset($filters['direction']) && in_array($filters['direction'], ['asc', 'desc']) ? $filters['direction'] : 'asc';
+            $query->orderBy($filters['sort'], $direction);
         }
 
         return $query;

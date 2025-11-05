@@ -92,7 +92,7 @@ class UserController extends Controller
             return ApiResponse::error('This action is unauthorized.', 403);
         }
         try {
-            return new UserResource($user->load('roles'));
+            return new UserResource($user->load('roles', 'teams'));
         } catch (\Exception $e) {
             Log::error('Failed to retrieve user', [
                 'error' => $e->getMessage(),

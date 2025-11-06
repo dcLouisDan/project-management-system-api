@@ -21,6 +21,7 @@ class UserResource extends JsonResource
             'roles' => $this->getRoleNames(),
             'teams' => $this->whenLoaded('teams'),
             'created_at' => $this->created_at,
+            'deleted_at' => $this->deleted_at,
         ];
     }
 }

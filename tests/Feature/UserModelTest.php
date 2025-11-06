@@ -13,6 +13,13 @@ class UserModelTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->seed(RolesAndPermissionsSeeder::class);
+    }
+
     public function test_user_can_be_created(): void
     {
         $email = $this->faker->unique()->safeEmail();
@@ -28,7 +35,6 @@ class UserModelTest extends TestCase
 
     public function test_user_can_be_assigned_a_role(): void
     {
-        $this->seed(RolesAndPermissionsSeeder::class);
         $user = User::factory()->create();
 
         $user->assignRole(UserRoles::ADMIN->value);
@@ -38,7 +44,6 @@ class UserModelTest extends TestCase
 
     public function test_user_can_have_multiple_roles(): void
     {
-        $this->seed(RolesAndPermissionsSeeder::class);
         $user = User::factory()->create();
 
         $user->assignRole(UserRoles::PROJECT_MANAGER->value);
@@ -50,12 +55,24 @@ class UserModelTest extends TestCase
 
     public function test_user_inherits_role_permissions(): void
     {
-        $this->seed(RolesAndPermissionsSeeder::class);
         $user = User::factory()->create();
 
         $user->assignRole(UserRoles::ADMIN->value);
 
         $this->assertTrue($user->can('create user'));
         $this->assertTrue($user->can('create project'));
+    }
+
+    public function test_deleted_users_can_be_fetched(): void
+    {
+        User::factory()->count(10)->create();
+
+        $userToDelete = User::orderBy('created_at', 'desc')->first();
+
+        $userToDelete->delete();
+
+        $deletedUsers = User::onlyTrashed()->get();
+        $this->assertCount(1, $deletedUsers);
+        $this->assertTrue($deletedUsers->first()->id === $userToDelete->id);
     }
 }

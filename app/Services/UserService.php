@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enums\SoftDeleteStatus;
 use App\Events\UserRolesAssigned;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -77,6 +78,16 @@ class UserService
     {
         $query = User::query();
         $sortableFields = ['id', 'name', 'created_at'];
+
+        if (isset($filters['status']) && SoftDeleteStatus::isValidStatus($filters['status'])) {
+            $status = $filters['status'];
+            if ($status == SoftDeleteStatus::ALL->value) {
+                $query->withTrashed();
+            }
+            if ($status == SoftDeleteStatus::DELETED->value) {
+                $query->onlyTrashed();
+            }
+        }
 
         if (isset($filters['name'])) {
             $query->where('name', 'ilike', '%'.$filters['name'].'%');

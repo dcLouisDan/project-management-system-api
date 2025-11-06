@@ -87,8 +87,10 @@ class UserController extends Controller
      * @response status=404 scenario="not found" {"message": "User not found"}
      * @response status=500 scenario="error" {"data": null, "message": "Failed to retrieve user", "errors": [], "meta": []}
      */
-    public function show(Request $request, User $user)
+    public function show(Request $request, int $user)
     {
+        $id = $user;
+        $user = User::withTrashed()->find($id);
         if ($request->user()->cannot('view', $user)) {
             return ApiResponse::error('This action is unauthorized.', 403);
         }

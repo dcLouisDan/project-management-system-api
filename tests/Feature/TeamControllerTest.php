@@ -37,6 +37,8 @@ class TeamControllerTest extends TestCase
 
     public function test_team_index_route_requires_authentication(): void
     {
+        $user = User::factory()->create();
+        $this->actingAs($user, 'web');
         $response = $this->getJson($this->apiPrefix);
 
         $response->assertStatus(403); // Unauthorized
@@ -72,10 +74,21 @@ class TeamControllerTest extends TestCase
         $user = $this->createAndAuthenticateUser();
 
         $team = Team::factory()->create();
+        $member1 = User::factory()->create();
+        $member1->assignRole(UserRoles::TEAM_MEMBER->value);
 
+        $member2 = User::factory()->create();
+        $member2->assignRole(UserRoles::TEAM_MEMBER->value);
+
+        $this->teamService->addMembers($team, [$member1->id => UserRoles::TEAM_MEMBER->value, $member2->id => UserRoles::TEAM_MEMBER->value], $member1);
+        $lead = User::factory()->create();
+        $lead->assignRole(UserRoles::TEAM_LEAD->value);
+        $this->teamService->setLeader($team, $lead->id, $lead);
         $this->actingAs($user, 'web');
 
         $response = $this->getJson("{$this->apiPrefix}/{$team->id}");
+
+        $this->debugResponse($response);
 
         $response->assertStatus(200)
             ->assertJsonFragment([

@@ -19,6 +19,13 @@ class Team extends Model
         'description',
     ];
 
+    protected $appends = ['leader'];
+
+    public function getLeaderAttribute()
+    {
+        return $this->lead()->first();
+    }
+
     /**
      * Get all users in the team with their roles
      */

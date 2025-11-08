@@ -201,7 +201,7 @@ class TeamService
         }
 
         // Demote current lead to member if exists
-        if ($currentLead = $team->lead()) {
+        if ($currentLead = $team->lead()->first()) {
             $team->users()->updateExistingPivot($currentLead->id, [
                 'role' => UserRoles::TEAM_MEMBER->value,
             ]);
@@ -222,7 +222,7 @@ class TeamService
      */
     public function demoteLeader(Team $team): Team
     {
-        $lead = $team->lead();
+        $lead = $team->lead()->first();
 
         if (! $lead) {
             throw new \LogicException('Team has no leader to demote.');

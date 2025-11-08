@@ -18,11 +18,12 @@ class TeamResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'description' => $this->description,
-            'lead' => UserResource::collection($this->whenLoaded('lead')),
+            'lead' => new UserResource($this->leader),
             'members' => UserResource::collection($this->whenLoaded('members')),
             'projects' => $this->whenLoaded('projects'),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'deleted_at' => $this->deleted_at,
         ];
     }
 }

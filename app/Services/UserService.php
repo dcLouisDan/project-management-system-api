@@ -108,10 +108,10 @@ class UserService
             });
         }
 
-        if (isset($filters['sort']) && in_array($filters['sort'], $sortableFields)) {
-            $direction = isset($filters['direction']) && in_array($filters['direction'], ['asc', 'desc']) ? $filters['direction'] : 'asc';
-            $query->orderBy($filters['sort'], $direction);
-        }
+        $sort = isset($filters['sort']) && in_array($filters['sort'], $sortableFields) ? $filters['sort'] : 'id';
+
+        $direction = isset($filters['direction']) && in_array($filters['direction'], ['asc', 'desc']) ? $filters['direction'] : 'asc';
+        $query->orderBy($sort, $direction);
 
         return $query;
     }

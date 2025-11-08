@@ -129,8 +129,10 @@ class TeamController extends Controller
      * @response status=404 scenario="not found" {"message": "Team not found"}
      * @response status=500 scenario="error" {"data": null, "message": "Failed to retrieve team", "errors": [], "meta": []}
      */
-    public function show(Team $team)
+    public function show(int $team)
     {
+        $id = $team;
+        $team = Team::withTrashed()->find($id);
         if (request()->user()->cannot('view', $team)) {
             return ApiResponse::error(
                 message: 'Unauthorized to view team',

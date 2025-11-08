@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enums\SoftDeleteStatus;
 use App\Enums\UserRoles;
 use App\Events\TeamLeaderAssigned;
 use App\Events\TeamLeaderDemoted;
@@ -22,9 +23,26 @@ class TeamService
     {
         $query = Team::query();
 
+        $sortableFields = ['id', 'name', 'created_at'];
+
+        if (isset($filters['status']) && SoftDeleteStatus::isValidStatus($filters['status'])) {
+            $status = $filters['status'];
+            if ($status == SoftDeleteStatus::ALL->value) {
+                $query->withTrashed();
+            }
+            if ($status == SoftDeleteStatus::DELETED->value) {
+                $query->onlyTrashed();
+            }
+        }
+
+        if (isset($filters['sort']) && in_array($filters['sort'], $sortableFields)) {
+            $direction = isset($filters['direction']) && in_array($filters['direction'], ['asc', 'desc']) ? $filters['direction'] : 'asc';
+            $query->orderBy($filters['sort'], $direction);
+        }
+
         // Apply filters based on request parameters
         if (isset($filters['name'])) {
-            $query->where('name', 'like', '%'.$filters['name'].'%');
+            $query->where('name', 'ilike', '%'.$filters['name'].'%');
         }
 
         if (isset($filters['has_leader'])) {

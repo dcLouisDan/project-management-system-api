@@ -5,7 +5,6 @@ namespace App\Policies;
 use App\Enums\UserRoles;
 use App\Models\Team;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class TeamPolicy
 {
@@ -17,6 +16,7 @@ class TeamPolicy
         if ($user->hasRole(UserRoles::ADMIN->value) || $user->can('list teams')) {
             return true;
         }
+
         return false;
     }
 
@@ -64,6 +64,7 @@ class TeamPolicy
         if ($user->hasRole(UserRoles::ADMIN->value) || $user->can('delete team')) {
             return true;
         }
+
         return false;
     }
 
@@ -75,6 +76,7 @@ class TeamPolicy
         if ($user->hasRole(UserRoles::ADMIN->value) || $user->can('restore team')) {
             return true;
         }
+
         return false;
     }
 
@@ -86,6 +88,7 @@ class TeamPolicy
         if ($user->hasRole(UserRoles::ADMIN->value) || $user->can('force delete team')) {
             return true;
         }
+
         return false;
     }
 
@@ -94,9 +97,10 @@ class TeamPolicy
         if ($user->hasRole(UserRoles::ADMIN->value)) {
             return true;
         }
-        if ($team->lead()->id == $user->id && $user->can('add member team')) {
-            return  true;
+        if ($team->leader->id == $user->id && $user->can('add member team')) {
+            return true;
         }
+
         return false;
     }
 
@@ -105,9 +109,10 @@ class TeamPolicy
         if ($user->hasRole(UserRoles::ADMIN->value)) {
             return true;
         }
-        if ($team->lead()->id == $user->id && $user->can('remove member team')) {
-            return  true;
+        if ($team->leader->id == $user->id && $user->can('remove member team')) {
+            return true;
         }
+
         return false;
     }
 
@@ -116,6 +121,7 @@ class TeamPolicy
         if ($user->hasRole(UserRoles::ADMIN->value) || $user->can('assign project team')) {
             return true;
         }
+
         return false;
     }
 
@@ -124,6 +130,7 @@ class TeamPolicy
         if ($user->hasRole(UserRoles::ADMIN->value) || $user->can('remove project team')) {
             return true;
         }
+
         return false;
     }
 
@@ -132,6 +139,7 @@ class TeamPolicy
         if ($user->hasRole(UserRoles::ADMIN->value) || $user->can('assign roles team')) {
             return true;
         }
+
         return false;
     }
 }

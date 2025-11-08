@@ -21,7 +21,7 @@ class Team extends Model
 
     protected $appends = ['leader'];
 
-    public function getLeaderAttribute()
+    public function getLeaderAttribute(): ?User
     {
         return $this->lead()->first();
     }

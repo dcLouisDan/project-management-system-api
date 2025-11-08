@@ -88,8 +88,6 @@ class TeamControllerTest extends TestCase
 
         $response = $this->getJson("{$this->apiPrefix}/{$team->id}");
 
-        $this->debugResponse($response);
-
         $response->assertStatus(200)
             ->assertJsonFragment([
                 'id' => $team->id,
@@ -184,9 +182,46 @@ class TeamControllerTest extends TestCase
         $response = $this->deleteJson("{$this->apiPrefix}/{$team->id}");
 
         $response->assertStatus(200);
-        $this->assertDatabaseMissing('teams', [
+        $team->refresh();
+        $this->assertNotNull($team->deleted_at);
+    }
+
+    public function test_team_restore_route_requires_user_permission(): void
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user, 'web');
+
+        $team = Team::factory()->create();
+
+        $response = $this->postJson("{$this->apiPrefix}/{$team->id}/restore");
+
+        $response->assertStatus(403); // Forbidden
+    }
+
+    public function test_user_with_permission_can_restore_team(): void
+    {
+        $user = $this->createAndAuthenticateUser();
+        $team = Team::factory()->create();
+
+        $team->delete();
+        $this->assertDatabaseHas('teams', [
             'id' => $team->id,
+            'name' => $team->name,
+            'description' => $team->description,
         ]);
+
+        $this->actingAs($user, 'web');
+
+        $response = $this->postJson("{$this->apiPrefix}/{$team->id}/restore");
+
+        $this->debugResponse($response);
+        $response->assertStatus(200);
+        $this->assertDatabaseHas('teams', [
+            'id' => $team->id,
+            'name' => $team->name,
+            'description' => $team->description,
+        ]);
+
     }
 
     public function test_add_member_routes_requires_permission(): void

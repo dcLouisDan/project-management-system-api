@@ -49,7 +49,7 @@ class TeamController extends Controller
         }
 
         $perPage = $request->input('per_page', 15);
-        $query = $this->teamService->buildFilteredQuery($request->only(['name', 'has_leader']));
+        $query = $this->teamService->buildFilteredQuery($request->only(['name', 'has_leader', 'sort', 'direction', 'status']));
         try {
             $teams = $query->paginate($perPage)->toResourceCollection();
 
@@ -192,14 +192,14 @@ class TeamController extends Controller
     /**
      * Delete team
      *
-     * Permanently delete a team from the system.
+     * Soft delete a team from the system.
      *
      *
      * @response status=200 scenario="success" {"data": null, "message": "Team deleted successfully"}
      * @response status=404 scenario="not found" {"message": "Team not found"}
      * @response status=500 scenario="error" {"data": null, "message": "Failed to delete team: Internal server error", "errors": [], "meta": []}
      */
-    public function destroy(Team $team)
+    public function destroy(Request $request, Team $team)
     {
         if (request()->user()->cannot('delete', $team)) {
             return ApiResponse::error(
@@ -209,7 +209,7 @@ class TeamController extends Controller
         }
 
         try {
-            $team->forceDelete();
+            $team->delete();
 
             return ApiResponse::success(
                 message: 'Team deleted successfully'
@@ -217,11 +217,53 @@ class TeamController extends Controller
         } catch (\Exception $e) {
             Log::error('Error deleting team.', [
                 'error' => $e->getMessage(),
-                'requested_by' => request()->user()?->id,
+                'requested_by' => $request->user()?->id,
             ]);
 
             return ApiResponse::error(
                 message: 'Failed to delete team: '.$e->getMessage(),
+                statusCode: 500
+            );
+        }
+    }
+
+    /**
+     * Restore team
+     *
+     * Soft restore a team from the system.
+     *
+     *
+     * @response status=200 scenario="success" {"data": null, "message": "Team restored successfully"}
+     * @response status=404 scenario="not found" {"message": "Team not found"}
+     * @response status=500 scenario="error" {"data": null, "message": "Failed to restored team: Internal server error", "errors": [], "meta": []}
+     */
+    public function restore(Request $request, int $teamId)
+    {
+        $team = Team::withTrashed()->find($teamId);
+        if (! $team) {
+            return ApiResponse::error('Team not found', 404);
+        }
+        if (request()->user()->cannot('restore', $team)) {
+            return ApiResponse::error(
+                message: 'Unauthorized to restore team',
+                statusCode: 403
+            );
+        }
+
+        try {
+            $team->restore();
+
+            return ApiResponse::success(
+                message: 'Team restored successfully'
+            );
+        } catch (\Exception $e) {
+            Log::error('Error restoring team.', [
+                'error' => $e->getMessage(),
+                'requested_by' => $request->user()?->id,
+            ]);
+
+            return ApiResponse::error(
+                message: 'Failed to restore team: '.$e->getMessage(),
                 statusCode: 500
             );
         }
@@ -252,7 +294,7 @@ class TeamController extends Controller
         }
         $validatedData = $request->validate([
             'user_id' => ['required', 'exists:users,id'],
-            'role' => ['required', Rule::in(UserRoles::teamRoles())],
+            'role' => ['required', 'string', Rule::in(UserRoles::teamRoles())],
         ]);
 
         try {

@@ -31,6 +31,7 @@ class RolesAndPermissionsSeeder extends Seeder
         $viewTeamPermission = Permission::firstOrCreate(['name' => 'view team']);
         $updateTeamPermission = Permission::firstOrCreate(['name' => 'update team']);
         $deleteTeamPermission = Permission::firstOrCreate(['name' => 'delete team']);
+        $restoreTeamPermission = Permission::firstOrCreate(['name' => 'restore team']);
         $listTeamsPermission = Permission::firstOrCreate(['name' => 'list teams']);
         $addMemberTeamPermission = Permission::firstOrCreate(['name' => 'add member team']);
         $removeMemberTeamPermission = Permission::firstOrCreate(['name' => 'remove member team']);

@@ -51,7 +51,7 @@ class TeamModelTest extends TestCase
         $this->teamService->setLeader($team, $lead->id, $lead);
 
         $this->assertTrue($team->hasLeader());
-        $this->assertEquals($lead->id, $team->lead()->id);
+        $this->assertEquals($lead->id, $team->leader->id);
     }
 
     public function test_non_team_lead_users_cannot_be_leader(): void
@@ -255,5 +255,37 @@ class TeamModelTest extends TestCase
 
         $this->teamService->removeProject($team, $project, $user);
         $this->assertFalse($team->worksOnProject($project));
+    }
+
+    public function test_members_can_be_synced(): void
+    {
+        $this->seed(RolesAndPermissionsSeeder::class);
+        $team = Team::factory()->create();
+        $member1 = User::factory()->create();
+        $member1->assignRole(UserRoles::TEAM_MEMBER->value);
+
+        $member2 = User::factory()->create();
+        $member2->assignRole(UserRoles::TEAM_LEAD->value);
+
+        $this->teamService->addMembers($team, [$member1->id => UserRoles::TEAM_MEMBER->value, $member2->id => UserRoles::TEAM_MEMBER->value], $member1);
+        $lead = User::factory()->create();
+        $lead->assignRole(UserRoles::TEAM_LEAD->value);
+        $this->teamService->setLeader($team, $lead->id, $lead);
+        $team->refresh();
+
+        $newMember = User::factory()->create();
+        $newMember->assignRole(UserRoles::TEAM_MEMBER->value);
+
+        $newSyncData = [
+            $newMember->id => UserRoles::TEAM_MEMBER->value,
+            $member2->id => UserRoles::TEAM_LEAD->value,
+            $lead->id => UserRoles::TEAM_MEMBER->value,
+        ];
+
+        $user = User::factory()->create();
+        $this->teamService->syncMembers($team, $newSyncData, $user);
+        $team->refresh();
+        $this->assertCount(3, $team->users()->get());
+        $this->assertEquals($team->leader->id, $member2->id);
     }
 }

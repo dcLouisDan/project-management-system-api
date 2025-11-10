@@ -387,6 +387,63 @@ class TeamController extends Controller
     }
 
     /**
+     * Sync multiple members to team
+     *
+     * Sync multiple users to a team with their specified roles in a single request.
+     *
+     *
+     * @bodyParam members object[] required Array of members to add.
+     * @bodyParam members[].user_id integer required The ID of the user to sync. Example: 5
+     * @bodyParam members[].role string required The role to assign. Allowed values: team lead, team member. Example: team member
+     *
+     * @response status=200 scenario="success" {"data": {"invalid_users": []}, "message": "Users synced to team successfully"}
+     * @response status=200 scenario="success with invalid users" {"data": {"invalid_users": [3, 7]}, "message": "Users synced to team successfully"}
+     * @response status=422 scenario="validation error" {"message": "The given data was invalid.", "errors": {"members.0.user_id": ["The selected members.0.user_id is invalid."]}}
+     * @response status=404 scenario="not found" {"message": "Team not found"}
+     * @response status=500 scenario="error" {"data": null, "message": "Failed to sync users to team: Internal server error", "errors": [], "meta": []}
+     */
+    public function syncMembers(Request $request, Team $team)
+    {
+        if ($request->user()->cannot('addMember', $team)) {
+            return ApiResponse::error(
+                message: 'Unauthorized to add members to team',
+                statusCode: 403
+            );
+        }
+
+        $teamRoles = [UserRoles::TEAM_LEAD->value, UserRoles::TEAM_MEMBER->value];
+        $validatedData = $request->validate([
+            'members' => ['required', 'array'],
+            'members.*.user_id' => ['required', 'exists:users,id'],
+            'members.*.role' => ['required', Rule::in($teamRoles)],
+        ]);
+
+        $usersWithRoles = [];
+        foreach ($validatedData['members'] as $member) {
+            $usersWithRoles[$member['user_id']] = $member['role'];
+        }
+
+        try {
+            $team = $this->teamService->syncMembers($team, $usersWithRoles, $request->user());
+
+            return ApiResponse::success(
+                message: 'Users added to team successfully',
+                data: new TeamResource($team)
+            );
+        } catch (\Exception $e) {
+            Log::error('Error adding users to team.', [
+                'error' => $e->getMessage(),
+                'requested_by' => $request->user()?->id,
+            ]);
+
+            return ApiResponse::error(
+                message: 'Failed to add users to team: '.$e->getMessage(),
+                statusCode: 500
+            );
+        }
+    }
+
+    /**
      * Set team leader
      *
      * Set a user as the team leader. If there's an existing leader, they will be demoted to team member.

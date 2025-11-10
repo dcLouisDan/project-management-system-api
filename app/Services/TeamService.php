@@ -168,7 +168,7 @@ class TeamService
 
             if ($team->hasLeader()) {
                 // Demote current lead to member
-                $demotedLead = $team->lead();
+                $demotedLead = $team->leader;
                 $this->demoteLeader($team);
 
                 TeamLeaderDemoted::dispatch(
@@ -293,6 +293,67 @@ class TeamService
         $team->users()->detach($userIds);
 
         return $team;
+    }
+
+    public function syncMembers(Team $team, array $usersWithRoles, User $syncedBy): Team
+    {
+        return DB::transaction(function () use ($team, $usersWithRoles, $syncedBy) {
+
+            $currentMembers = $team->users()->pluck('team_user.role', 'users.id')->toArray();
+            $toAdd = array_diff_key($usersWithRoles, $currentMembers);
+            $toRemove = array_diff_key($currentMembers, $usersWithRoles);
+            $toUpdate = array_diff_assoc($usersWithRoles, $currentMembers);
+
+            if (is_array($toAdd) && ! empty($toAdd)) {
+                $addedMembers = [];
+                foreach ($toAdd as $userId => $role) {
+                    $addedMembers[$userId] = ['role' => $role];
+                }
+                $team->users()->attach($addedMembers);
+
+                TeamMembersBulkAdded::dispatch(
+                    $team,
+                    $addedMembers,
+                    $syncedBy
+                );
+            }
+
+            if (is_array($toRemove) && ! empty($toRemove)) {
+                $removedMembers = [];
+                foreach ($toAdd as $userId => $role) {
+                    $removedMembers[] = $userId;
+                }
+                $team->users()->detach($removedMembers);
+
+                TeamMembersBulkRemoved::dispatch(
+                    $team,
+                    $removedMembers,
+                    $syncedBy
+                );
+            }
+
+            $promotedUser = null;
+            $demotedLead = null;
+            foreach ($toUpdate as $userId => $newRole) {
+                $team->users()->updateExistingPivot($userId, ['role' => $newRole]);
+                if ($newRole == UserRoles::TEAM_LEAD->value) {
+                    $promotedUser = User::find($userId);
+                } elseif ($newRole == UserRoles::TEAM_MEMBER->value) {
+                    $demotedLead = User::find($userId);
+                }
+            }
+
+            if ($promotedUser) {
+                TeamLeaderAssigned::dispatch(
+                    $team,
+                    $demotedLead ?? null,
+                    $promotedUser,
+                    $syncedBy
+                );
+            }
+
+            return $team;
+        });
     }
 
     public function assignProject(Team $team, int|Project $project, ?string $notes, User $assignedBy): Team

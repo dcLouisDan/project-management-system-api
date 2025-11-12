@@ -79,8 +79,8 @@ class UserService
         $query = User::query();
         $sortableFields = ['id', 'name', 'created_at'];
 
-        if (isset($filters['status']) && SoftDeleteStatus::isValidStatus($filters['status'])) {
-            $status = $filters['status'];
+        if (isset($filters['delete_status']) && SoftDeleteStatus::isValidStatus($filters['delete_status'])) {
+            $status = $filters['delete_status'];
             if ($status == SoftDeleteStatus::ALL->value) {
                 $query->withTrashed();
             }

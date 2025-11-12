@@ -57,7 +57,7 @@ class UserController extends Controller
             'roles',
             'sort',
             'direction',
-            'status',
+            'delete_status',
         ]));
 
         try {

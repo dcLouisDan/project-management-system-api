@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enums\SoftDeleteStatus;
 use App\Models\Project;
 use App\Models\User;
 
@@ -10,6 +11,23 @@ class ProjectService
     public function buildFilteredQuery(array $filters)
     {
         $query = Project::query();
+
+        $sortableFields = ['id', 'name', 'started_date', 'due_date', 'created_at'];
+
+        if (isset($filters['delete_status']) && SoftDeleteStatus::isValidStatus($filters['delete_status'])) {
+            $status = $filters['delete_status'];
+            if ($status == SoftDeleteStatus::ALL->value) {
+                $query->withTrashed();
+            }
+            if ($status == SoftDeleteStatus::DELETED->value) {
+                $query->onlyTrashed();
+            }
+        }
+
+        $sort = isset($filters['sort']) && in_array($filters['sort'], $sortableFields) ? $filters['sort'] : 'id';
+
+        $direction = isset($filters['direction']) && in_array($filters['direction'], ['asc', 'desc']) ? $filters['direction'] : 'asc';
+        $query->orderBy($sort, $direction);
 
         if (isset($filters['status'])) {
             $query->where('status', $filters['status']);

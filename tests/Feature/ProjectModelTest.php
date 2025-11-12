@@ -102,4 +102,28 @@ class ProjectModelTest extends TestCase
         $invalidTeams = $this->projectService->removeTeams($project, [$team->id], $user);
         $this->assertFalse($project->hasTeam($team));
     }
+
+    public function test_project_can_be_restored(): void
+    {
+        $projectName = 'New Project';
+        $projectDescription = 'Project Description';
+        $project = Project::factory()->create([
+            'name' => $projectName,
+            'description' => $projectDescription,
+        ]);
+
+        $project->delete();
+        $project->refresh();
+        $this->assertDatabaseHas('projects', [
+            'id' => $project->id,
+            'name' => $project->name,
+            'description' => $project->description,
+        ]);
+        $this->assertNotNull($project->deleted_at);
+
+        $project->restore();
+        $project->refresh();
+
+        $this->assertNull($project->deleted_at);
+    }
 }

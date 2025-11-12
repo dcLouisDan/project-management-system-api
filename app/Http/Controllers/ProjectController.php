@@ -65,8 +65,13 @@ class ProjectController extends Controller
      * @response status=404 scenario="not found" {"message": "Project not found"}
      * @response status=500 scenario="error" {"data": null, "message": "Failed to retrieve project details: Internal server error", "errors": [], "meta": []}
      */
-    public function show(Request $request, Project $project)
+    public function show(Request $request, int $project)
     {
+        $id = $project;
+        $project = Project::withTrashed()->find($id);
+        if (! $project) {
+            return ApiResponse::error('Project not found.', 404);
+        }
         if ($request->user()->cannot('view', $project)) {
             return ApiResponse::error('Unauthorized to view project.', 403);
         }
@@ -209,8 +214,12 @@ class ProjectController extends Controller
      * @response status=404 scenario="not found" {"message": "Project not found"}
      * @response status=500 scenario="error" {"data": null, "message": "Failed to restore project: Internal server error", "errors": [], "meta": []}
      */
-    public function restore(Request $request, Project $project)
+    public function restore(Request $request, int $projectId)
     {
+        $project = Project::withTrashed()->find($projectId);
+        if (! $project) {
+            return ApiResponse::error('Project not found.', 404);
+        }
         if ($request->user()->cannot('restore', $project)) {
             return ApiResponse::error('Unauthorized to restore project.', 403);
         }

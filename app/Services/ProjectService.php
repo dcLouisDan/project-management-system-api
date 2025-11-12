@@ -12,7 +12,7 @@ class ProjectService
     {
         $query = Project::query();
 
-        $sortableFields = ['id', 'name', 'started_date', 'due_date', 'created_at'];
+        $sortableFields = ['id', 'name', 'start_date', 'due_date', 'created_at'];
 
         if (isset($filters['delete_status']) && SoftDeleteStatus::isValidStatus($filters['delete_status'])) {
             $status = $filters['delete_status'];

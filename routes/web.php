@@ -48,7 +48,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::middleware(['permission:delete project'])->delete('projects/{project}', [ProjectController::class, 'destroy']);
     Route::middleware(['permission:restore project'])->post('projects/{projectId}/restore', [ProjectController::class, 'restore']);
     Route::middleware(['permission:update project'])->post('projects/{project}/manager', [ProjectController::class, 'setManager']);
-    Route::middleware(['permission:assign team project'])->post('projects/{project}/teams', [ProjectController::class, 'syncTeams']);
+    Route::middleware(['permission:assign team project'])->post('projects/{project}/teams/sync', [ProjectController::class, 'syncTeams']);
 
     // Task Management Routes
     Route::middleware(['permission:list tasks'])->get('tasks', [TaskController::class, 'index']);

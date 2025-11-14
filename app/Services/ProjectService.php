@@ -3,8 +3,10 @@
 namespace App\Services;
 
 use App\Enums\SoftDeleteStatus;
+use App\Events\ProjectTeamsSynced;
 use App\Models\Project;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class ProjectService
 {
@@ -94,6 +96,34 @@ class ProjectService
         $project->teams()->detach($validTeams);
 
         return $invalidTeams;
+    }
+
+    public function syncTeams(Project $project, array $teamIds, User $assignedBy): Project
+    {
+        return DB::transaction(function () use ($project, $teamIds, $assignedBy) {
+
+            $currentTeams = $project->teams()->pluck('teams.id')->toArray();
+            $toAdd = array_diff($teamIds, $currentTeams);
+            $toRemove = array_diff($currentTeams, $teamIds);
+
+            if (is_array($toAdd) && !empty($toAdd)) {
+                $project->teams()->attach($toAdd);
+            }
+
+            if (is_array($toRemove) && !empty($toRemove)) {
+                $project->teams()->detach($toRemove);
+            }
+
+            ProjectTeamsSynced::dispatch(
+                $project,
+                $toAdd,
+                $toRemove,
+                $teamIds,
+                $assignedBy
+            );
+
+            return $project;
+        });
     }
 
     public function assignManager(Project $project, int $userId, User $assignedBy): Project

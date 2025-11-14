@@ -50,7 +50,7 @@ class ProjectController extends Controller
         } catch (\Exception $e) {
             Log::error('Error fetching projects', ['error' => $e->getMessage(), 'requested_by' => $request->user()->id]);
 
-            return ApiResponse::error('Failed to retrieve projects: '.$e->getMessage(), 500);
+            return ApiResponse::error('Failed to retrieve projects: ' . $e->getMessage(), 500);
         }
     }
 
@@ -81,7 +81,7 @@ class ProjectController extends Controller
         } catch (\Exception $e) {
             Log::error('Error fetching project details', ['error' => $e->getMessage(), 'project_id' => $project->id, 'requested_by' => $request->user()->id]);
 
-            return ApiResponse::error('Failed to retrieve project details: '.$e->getMessage(), 500);
+            return ApiResponse::error('Failed to retrieve project details: ' . $e->getMessage(), 500);
         }
     }
 
@@ -112,7 +112,7 @@ class ProjectController extends Controller
             'name' => 'required|string|unique:projects,name',
             'description' => 'nullable|string',
             'manager_id' => 'nullable|exists:users,id',
-            'status' => 'required|string|in:'.implode(',', ProgressStatus::allStatuses()),
+            'status' => 'required|string|in:' . implode(',', ProgressStatus::allStatuses()),
             'start_date' => 'required|date',
             'due_date' => 'nullable|date|after_or_equal:start_date',
         ]);
@@ -124,7 +124,7 @@ class ProjectController extends Controller
         } catch (\Exception $e) {
             Log::error('Error creating project', ['error' => $e->getMessage(), 'requested_by' => $request->user()->id]);
 
-            return ApiResponse::error('Failed to create project: '.$e->getMessage(), 500);
+            return ApiResponse::error('Failed to create project: ' . $e->getMessage(), 500);
         }
     }
 
@@ -153,10 +153,10 @@ class ProjectController extends Controller
         }
 
         $validatedData = $request->validate([
-            'name' => 'sometimes|required|string|unique:projects,name,'.$project->id,
+            'name' => 'sometimes|required|string|unique:projects,name,' . $project->id,
             'description' => 'nullable|string',
             'manager_id' => 'nullable|exists:users,id',
-            'status' => 'sometimes|required|string|in:'.implode(',', ProgressStatus::allStatuses()),
+            'status' => 'sometimes|required|string|in:' . implode(',', ProgressStatus::allStatuses()),
             'start_date' => 'sometimes|required|date',
             'due_date' => 'nullable|date|after_or_equal:start_date',
         ]);
@@ -175,7 +175,7 @@ class ProjectController extends Controller
         } catch (\Exception $e) {
             Log::error('Error updating project', ['error' => $e->getMessage(), 'project_id' => $project->id, 'requested_by' => $request->user()->id]);
 
-            return ApiResponse::error('Failed to update project: '.$e->getMessage(), 500);
+            return ApiResponse::error('Failed to update project: ' . $e->getMessage(), 500);
         }
     }
 
@@ -201,7 +201,7 @@ class ProjectController extends Controller
         } catch (\Exception $e) {
             Log::error('Error deleting project', ['error' => $e->getMessage(), 'project_id' => $project->id, 'requested_by' => $request->user()->id]);
 
-            return ApiResponse::error('Failed to delete project: '.$e->getMessage(), 500);
+            return ApiResponse::error('Failed to delete project: ' . $e->getMessage(), 500);
         }
     }
 
@@ -231,7 +231,7 @@ class ProjectController extends Controller
         } catch (\Exception $e) {
             Log::error('Error restoring project', ['error' => $e->getMessage(), 'project_id' => $project->id, 'requested_by' => $request->user()->id]);
 
-            return ApiResponse::error('Failed to restore project: '.$e->getMessage(), 500);
+            return ApiResponse::error('Failed to restore project: ' . $e->getMessage(), 500);
         }
     }
 
@@ -269,7 +269,7 @@ class ProjectController extends Controller
         } catch (\Exception $e) {
             Log::error('Error assigning project manager', ['error' => $e->getMessage(), 'project_id' => $project->id, 'requested_by' => $request->user()->id]);
 
-            return ApiResponse::error('Failed to assign project manager: '.$e->getMessage(), 500);
+            return ApiResponse::error('Failed to assign project manager: ' . $e->getMessage(), 500);
         }
     }
 
@@ -311,11 +311,11 @@ class ProjectController extends Controller
         } catch (\InvalidArgumentException $e) {
             Log::warning('Invalid argument while assigning teams to project', ['error' => $e->getMessage(), 'project_id' => $project->id, 'requested_by' => $request->user()->id]);
 
-            return ApiResponse::error('Failed to assign teams to project: '.$e->getMessage(), 422);
+            return ApiResponse::error('Failed to assign teams to project: ' . $e->getMessage(), 422);
         } catch (\Exception $e) {
             Log::error('Error assigning teams to project', ['error' => $e->getMessage(), 'project_id' => $project->id, 'requested_by' => $request->user()->id]);
 
-            return ApiResponse::error('Failed to assign teams to project: '.$e->getMessage(), 500);
+            return ApiResponse::error('Failed to assign teams to project: ' . $e->getMessage(), 500);
         }
     }
 
@@ -355,12 +355,41 @@ class ProjectController extends Controller
         } catch (\InvalidArgumentException $e) {
             Log::warning('Invalid argument while removing teams from project', ['error' => $e->getMessage(), 'project_id' => $project->id, 'requested_by' => $request->user()->id]);
 
-            return ApiResponse::error('Failed to remove teams from project: '.$e->getMessage(), 422);
-
+            return ApiResponse::error('Failed to remove teams from project: ' . $e->getMessage(), 422);
         } catch (\Exception $e) {
             Log::error('Error removing teams from project', ['error' => $e->getMessage(), 'project_id' => $project->id, 'requested_by' => $request->user()->id]);
 
-            return ApiResponse::error('Failed to remove teams from project: '.$e->getMessage(), 500);
+            return ApiResponse::error('Failed to remove teams from project: ' . $e->getMessage(), 500);
+        }
+    }
+
+    public function syncTeams(Request $request, Project $project)
+    {
+        if ($request->user()->cannot('assignTeam', $project)) {
+            return ApiResponse::error('Unauthorized to sync teams to project.', 403);
+        }
+
+        $validatedData = $request->validate([
+            'team_ids' => 'required|array',
+            'team_ids.*' => 'integer|exists:teams,id',
+        ]);
+
+        try {
+            $this->projectService->syncTeams($project, $validatedData['team_ids'], $request->user());
+
+            return ApiResponse::success(
+                new ProjectResource($project),
+                'Teams synced to project successfully.',
+                200
+            );
+        } catch (\InvalidArgumentException $e) {
+            Log::warning('Invalid argument while syncing teams to project', ['error' => $e->getMessage(), 'project_id' => $project->id, 'requested_by' => $request->user()->id]);
+
+            return ApiResponse::error('Failed to sync teams to project: ' . $e->getMessage(), 422);
+        } catch (\Exception $e) {
+            Log::error('Error syncing teams to project', ['error' => $e->getMessage(), 'project_id' => $project->id, 'requested_by' => $request->user()->id]);
+
+            return ApiResponse::error('Failed to sync teams to project: ' . $e->getMessage(), 500);
         }
     }
 }

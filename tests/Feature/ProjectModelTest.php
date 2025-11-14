@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Enums\UserRoles;
 use App\Models\Project;
+use App\Models\Team;
 use App\Models\User;
 use App\Services\ProjectService;
 use Database\Seeders\RolesAndPermissionsSeeder;
@@ -125,5 +126,23 @@ class ProjectModelTest extends TestCase
         $project->refresh();
 
         $this->assertNull($project->deleted_at);
+    }
+
+    public function test_project_teams_can_be_synced(): void
+    {
+        $user = User::factory()->create();
+        $project = Project::factory()->create();
+        Team::factory()->count(3)->create();
+        $teamIds = Team::pluck('teams.id')->toArray();
+        $project->teams()->attach($teamIds);
+        $project->refresh();
+        $this->assertCount(3, $project->teams()->get());
+        $newTeam = Team::factory()->create();
+        $teamIds[0] = $newTeam->id;
+        $this->projectService->syncTeams($project, $teamIds, $user);
+        $project->refresh();
+        $this->assertCount(3, $project->teams()->get());
+        $projectTeams = $project->teams()->pluck('teams.id')->toArray();
+        $this->assertEquals($newTeam->id, $projectTeams[2]);
     }
 }

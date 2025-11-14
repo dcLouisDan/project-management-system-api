@@ -63,7 +63,7 @@ class ActivityLog extends Model
      * @param array|null $oldValues
      * @param array|null $newValues
      */
-    protected static function logActivity($userId, $action, Model $activity, $message, $metadata = [], $oldValues = null, $newValues = null)
+    public static function logActivity($userId, $action, Model $activity, $message, $metadata = [], $oldValues = null, $newValues = null)
     {
         $userName = User::find($userId)?->name ?? 'System';
         $metadata['old_values'] = $oldValues;

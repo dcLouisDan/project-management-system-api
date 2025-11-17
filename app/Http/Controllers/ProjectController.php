@@ -261,7 +261,7 @@ class ProjectController extends Controller
         try {
             $this->projectService->assignManager($project, $validatedData['manager_id'], $request->user());
 
-            return ApiResponse::success($project, 'Project manager assigned successfully.', 200);
+            return ApiResponse::success(new ProjectResource($project->load('manager', 'teams')), 'Project manager assigned successfully.', 200);
         } catch (\InvalidArgumentException $e) {
             Log::warning('Invalid argument when assigning project manager', ['error' => $e->getMessage(), 'project_id' => $project->id, 'requested_by' => $request->user()->id]);
 
@@ -378,7 +378,7 @@ class ProjectController extends Controller
             $this->projectService->syncTeams($project, $validatedData['team_ids'], $request->user());
 
             return ApiResponse::success(
-                new ProjectResource($project),
+                new ProjectResource($project->load('teams')),
                 'Teams synced to project successfully.',
                 200
             );

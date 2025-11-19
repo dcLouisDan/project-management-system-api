@@ -8,6 +8,7 @@ use App\Http\Responses\ApiResponse;
 use App\Models\Milestone;
 use App\Models\Project;
 use App\Models\Task;
+use App\Models\User;
 use App\Services\ProjectRelationService;
 use App\Services\TaskService;
 use Illuminate\Http\Request;
@@ -178,7 +179,6 @@ class TaskController extends Controller
         }
 
         $validated = $request->validate([
-            'project_id' => ['required', 'integer', 'exists:projects,id'],
             'title' => [
                 'required',
                 'string',
@@ -198,7 +198,7 @@ class TaskController extends Controller
 
             return ApiResponse::success(new TaskResource($task), 'Task created successfully.', 201);
         } catch (\Exception $e) {
-            return ApiResponse::error('Failed to create task: '.$e->getMessage(), 500);
+            return ApiResponse::error('Failed to create task: ' . $e->getMessage(), 500);
         }
     }
 
@@ -252,7 +252,7 @@ class TaskController extends Controller
 
             return ApiResponse::success(new TaskResource($updatedTask), 'Task updated successfully.');
         } catch (\Exception $e) {
-            return ApiResponse::error('Failed to update task: '.$e->getMessage(), 500);
+            return ApiResponse::error('Failed to update task: ' . $e->getMessage(), 500);
         }
     }
 
@@ -283,7 +283,7 @@ class TaskController extends Controller
 
             return ApiResponse::success(null, 'Task deleted successfully.');
         } catch (\Exception $e) {
-            return ApiResponse::error('Failed to delete task: '.$e->getMessage(), 500);
+            return ApiResponse::error('Failed to delete task: ' . $e->getMessage(), 500);
         }
     }
 
@@ -316,7 +316,7 @@ class TaskController extends Controller
 
             return ApiResponse::success(null, 'Task restored successfully.');
         } catch (\Exception $e) {
-            return ApiResponse::error('Failed to restore task: '.$e->getMessage(), 500);
+            return ApiResponse::error('Failed to restore task: ' . $e->getMessage(), 500);
         }
     }
 
@@ -370,10 +370,38 @@ class TaskController extends Controller
 
             return ApiResponse::success(null, 'Task relations synchronized successfully.');
         } catch (\Exception $e) {
-            Log::error('Failed to synchronize task relations: '.$e->getMessage());
+            Log::error('Failed to synchronize task relations: ' . $e->getMessage());
 
-            return ApiResponse::error('Failed to synchronize task relations: '.$e->getMessage(), 500);
+            return ApiResponse::error('Failed to synchronize task relations: ' . $e->getMessage(), 500);
+        }
+    }
+
+    public function assignToUser(Request $request, Task $task)
+    {
+        if ($request->user()->cannot('assignToUser', $task)) {
+            return ApiResponse::error('This action is unauthorized.', 403);
         }
 
+        $validated = $request->validate([
+            'assign_to' => ['required', 'integer', 'exists:users,id']
+        ]);
+
+        $assignee = User::find($validated['assign_to']);
+
+        if (!$assignee) {
+            return ApiResponse::error('User not found', 404);
+        }
+
+        $assignedBy = $request->user();
+
+        try {
+            $this->taskService->assignTask($task, $assignee, $assignedBy);
+
+            return ApiResponse::success(null, 'Task assigned to user successfully.');
+        } catch (\Exception $e) {
+            Log::error('Failed to assign task to user: ' . $e->getMessage());
+
+            return ApiResponse::error('Failed to synchronize task relations: ' . $e->getMessage(), 500);
+        }
     }
 }

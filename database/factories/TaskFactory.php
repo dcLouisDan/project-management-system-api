@@ -20,13 +20,20 @@ class TaskFactory extends Factory
     {
         return [
             'project_id' => \App\Models\Project::factory(),
-            'assigned_to_id' => \App\Models\User::factory(),
-            'assigned_by_id' => \App\Models\User::factory(),
+            'assigned_to_id' => null,
+            'assigned_by_id' => null,
             'title' => $this->faker->unique()->sentence(6),
             'description' => $this->faker->paragraph(),
             'status' => $this->faker->randomElement(ProgressStatus::allStatuses()),
             'priority' => $this->faker->randomElement(PriorityLevel::allLevels()),
             'due_date' => $this->faker->dateTimeBetween('now', '+6 months')->format('Y-m-d'),
         ];
+    }
+
+    public function withProjectId(int $projectId): static
+    {
+        return $this->afterCreating(function ($task) use ($projectId) {
+            $task->update(['project_id' => $projectId]);
+        });
     }
 }

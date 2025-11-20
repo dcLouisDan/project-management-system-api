@@ -176,7 +176,7 @@ class TaskService
     {
         $query = Task::query();
 
-        $sortableFields = ['id', 'name', 'start_date', 'due_date', 'created_at'];
+        $sortableFields = ['id', 'title', 'priority', 'status', 'due_date', 'created_at'];
 
         if (isset($filters['delete_status']) && SoftDeleteStatus::isValidStatus($filters['delete_status'])) {
             $status = $filters['delete_status'];
@@ -194,11 +194,13 @@ class TaskService
         $query->orderBy($sort, $direction);
 
         if (isset($filters['status'])) {
-            $query->status($filters['status']);
+            $statusArr = array_map('trim', explode(',', $filters['status']));
+            $query->whereIn('status', $statusArr);
         }
 
         if (isset($filters['priority'])) {
-            $query->priority($filters['priority']);
+            $priorityArr = array_map('trim', explode(',', $filters['priority']));
+            $query->whereIn('priority', $priorityArr);
         }
 
         if (isset($filters['due_date'])) {

@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Enums\ProgressStatus;
+use App\Enums\SoftDeleteStatus;
 use App\Models\Project;
 use App\Models\Task;
 use App\Models\User;
@@ -117,7 +118,6 @@ class TaskService
 
             return $task;
         });
-
     }
 
     public function startReview(Task $task, int $reviewId, User $reviewer)
@@ -176,6 +176,23 @@ class TaskService
     {
         $query = Task::query();
 
+        $sortableFields = ['id', 'name', 'start_date', 'due_date', 'created_at'];
+
+        if (isset($filters['delete_status']) && SoftDeleteStatus::isValidStatus($filters['delete_status'])) {
+            $status = $filters['delete_status'];
+            if ($status == SoftDeleteStatus::ALL->value) {
+                $query->withTrashed();
+            }
+            if ($status == SoftDeleteStatus::DELETED->value) {
+                $query->onlyTrashed();
+            }
+        }
+
+        $sort = isset($filters['sort']) && in_array($filters['sort'], $sortableFields) ? $filters['sort'] : 'id';
+
+        $direction = isset($filters['direction']) && in_array($filters['direction'], ['asc', 'desc']) ? $filters['direction'] : 'asc';
+        $query->orderBy($sort, $direction);
+
         if (isset($filters['status'])) {
             $query->status($filters['status']);
         }
@@ -201,7 +218,7 @@ class TaskService
         }
 
         if (isset($filters['title'])) {
-            $query->where('title', 'like', '%'.$filters['title'].'%');
+            $query->where('title', 'like', '%' . $filters['title'] . '%');
         }
 
         return $query;

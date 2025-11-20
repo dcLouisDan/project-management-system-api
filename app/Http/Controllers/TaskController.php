@@ -194,7 +194,7 @@ class TaskController extends Controller
         ]);
 
         try {
-            $task = $this->taskService->createTask($validated, $project, $request->user);
+            $task = $this->taskService->createTask($validated, $project, $request->user());
 
             return ApiResponse::success(new TaskResource($task), 'Task created successfully.', 201);
         } catch (\Exception $e) {

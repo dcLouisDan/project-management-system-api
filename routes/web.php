@@ -56,7 +56,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::middleware(['permission:list tasks'])->get('users/{userId}/tasks', [TaskController::class, 'indexByUser']);
     Route::middleware(['permission:list tasks'])->get('projects/{projectId}/tasks', [TaskController::class, 'indexByProject']);
     Route::middleware(['permission:update task'])->post('tasks/{task}/sync-relations', [TaskController::class, 'syncRelations']);
-    Route::middleware(['permission:create task'])->post('tasks', [TaskController::class, 'store']);
+    Route::middleware(['permission:create task'])->post('projects/{project}/tasks', [TaskController::class, 'store']);
     Route::middleware(['permission:update task'])->put('tasks/{task}', [TaskController::class, 'update']);
     Route::middleware(['permission:delete task'])->delete('tasks/{task}', [TaskController::class, 'destroy']);
     Route::middleware(['permission:restore task'])->post('tasks/{taskId}/restore', [TaskController::class, 'restore']);

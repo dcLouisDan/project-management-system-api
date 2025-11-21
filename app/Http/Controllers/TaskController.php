@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\ProgressStatus;
 use App\Enums\ProjectRelationTypes;
 use App\Http\Resources\TaskResource;
 use App\Http\Responses\ApiResponse;
 use App\Models\Milestone;
 use App\Models\Project;
 use App\Models\Task;
+use App\Models\TaskReview;
 use App\Models\User;
 use App\Services\ProjectRelationService;
 use App\Services\TaskService;
@@ -79,7 +81,7 @@ class TaskController extends Controller
             return ApiResponse::error('This action is unauthorized.', 403);
         }
 
-        return new TaskResource($task->load(['assignedTo', 'assignedBy', 'project']));
+        return new TaskResource($task->load(['assignedTo', 'assignedBy', 'project', 'reviews']));
     }
 
     /**
@@ -402,6 +404,93 @@ class TaskController extends Controller
             Log::error('Failed to assign task to user: ' . $e->getMessage());
 
             return ApiResponse::error('Failed to assign task to user: ' . $e->getMessage(), 500);
+        }
+    }
+
+    public function startTask(Request $request, Task $task)
+    {
+        if ($request->user()->cannot('startTask', $task)) {
+            return ApiResponse::error('This action is unauthorized.', 403);
+        }
+        try {
+            $this->taskService->startTask($task, $request->user());
+
+            return ApiResponse::success(new TaskResource($task), 'Task started successfully.');
+        } catch (\Exception $e) {
+            Log::error('Failed to start task: ' . $e->getMessage());
+
+            return ApiResponse::error('Failed to start task: ' . $e->getMessage(), 500);
+        }
+    }
+
+    public function submitTask(Request $request, Task $task)
+    {
+        if ($request->user()->cannot('submitTask', $task)) {
+            return ApiResponse::error('This action is unauthorized.', 403);
+        }
+
+        $validated = $request->validate([
+            'notes' => ['nullable', 'string']
+        ]);
+
+        try {
+            $this->taskService->submitTaskForReview($task, $validated['notes'], $request->user());
+
+            return ApiResponse::success(new TaskResource($task), 'Task submitted for review.');
+        } catch (\LogicException $e) {
+            Log::error('Failed to submit task: ' . $e->getMessage());
+
+            return ApiResponse::error('Failed to submit task: ' . $e->getMessage(), 422);
+        } catch (\Exception $e) {
+            Log::error('Failed to submit task: ' . $e->getMessage());
+
+            return ApiResponse::error('Failed to submit task: ' . $e->getMessage(), 500);
+        }
+    }
+
+    public function startTaskReview(Request $request, Task $task, TaskReview $taskReview)
+    {
+        if ($request->user()->cannot('reviewTask', $task)) {
+            return ApiResponse::error('This action is unauthorized.', 403);
+        }
+        try {
+            $this->taskService->startReview($task, $taskReview->id, $request->user());
+
+            return ApiResponse::success(new TaskResource($task), 'Task started successfully.');
+        } catch (\Exception $e) {
+            Log::error('Failed to start task: ' . $e->getMessage());
+
+            return ApiResponse::error('Failed to start task: ' . $e->getMessage(), 500);
+        }
+    }
+
+    public function submitTaskReview(Request $request, Task $task, TaskReview $taskReview)
+    {
+        if ($request->user()->cannot('reviewTask', $task)) {
+            return ApiResponse::error('This action is unauthorized.', 403);
+        }
+
+        $validated = $request->validate([
+            'feedback' => ['required', 'string'],
+            'status' => ['required', 'string', Rule::in([ProgressStatus::APPROVED->value, ProgressStatus::REJECTED->value])]
+        ]);
+
+        try {
+            $this->taskService->submitReview($task, $taskReview->id, $validated['feedback'], $validated['status'], $request->user());
+
+            return ApiResponse::success(new TaskResource($task), 'Task started successfully.');
+        } catch (\LogicException $e) {
+            Log::error('Failed to start task: ' . $e->getMessage());
+
+            return ApiResponse::error('Failed to start task: ' . $e->getMessage(), 422);
+        } catch (\InvalidArgumentException $e) {
+            Log::error('Failed to start task: ' . $e->getMessage());
+
+            return ApiResponse::error('Failed to start task: ' . $e->getMessage(), 422);
+        } catch (\Exception $e) {
+            Log::error('Failed to start task: ' . $e->getMessage());
+
+            return ApiResponse::error('Failed to start task: ' . $e->getMessage(), 500);
         }
     }
 }

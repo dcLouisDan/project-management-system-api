@@ -61,4 +61,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::middleware(['permission:delete task'])->delete('tasks/{task}', [TaskController::class, 'destroy']);
     Route::middleware(['permission:restore task'])->post('tasks/{taskId}/restore', [TaskController::class, 'restore']);
     Route::middleware(['permission:assign task'])->post('tasks/{task}/assign-user', [TaskController::class, 'assignToUser']);
+    Route::post('tasks/{task}/start', [TaskController::class, 'startTask']);
+    Route::post('tasks/{task}/submit', [TaskController::class, 'submitTask']);
+    Route::post('tasks/{task}/reviews/{taskReview}/start', [TaskController::class, 'startTaskReview']);
+    Route::post('tasks/{task}/reviews/{taskReview}/submit', [TaskController::class, 'submitTaskReview']);
 });

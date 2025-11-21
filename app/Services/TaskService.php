@@ -97,9 +97,9 @@ class TaskService
         return $task;
     }
 
-    public function submitTaskForReview(Task $task, User $submittedBy)
+    public function submitTaskForReview(Task $task, ?string $notes, User $submittedBy)
     {
-        return DB::transaction(function () use ($task, $submittedBy) {
+        return DB::transaction(function () use ($task, $submittedBy, $notes) {
             $reviewInProgressStatuses = [ProgressStatus::AWAITING_REVIEW->value, ProgressStatus::UNDER_REVIEW->value];
 
             // Check if there's an existing review in progress
@@ -113,6 +113,8 @@ class TaskService
 
             $task->reviews()->create([
                 'reviewed_by_id' => $task->assigned_by_id,
+                'submitted_by_id' => $submittedBy->id,
+                'submission_notes' => $notes,
                 'status' => ProgressStatus::AWAITING_REVIEW->value,
             ]);
 

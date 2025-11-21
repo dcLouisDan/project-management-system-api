@@ -61,6 +61,11 @@ class User extends Authenticatable
             ->withTimestamps();
     }
 
+    public function taskSubmissions()
+    {
+        return $this->hasMany(TaskReview::class, 'submitted_by_id');
+    }
+
     public function isAdmin(): bool
     {
         return $this->hasRole(UserRoles::ADMIN->value);

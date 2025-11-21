@@ -191,4 +191,32 @@ class TaskPolicy
 
         return false;
     }
+
+    public function startTask(User $user, Task $task)
+    {
+        if ($task->assigned_to_id == $user->id) {
+            return true;
+        }
+
+        return false;
+    }
+
+
+    public function submitTask(User $user, Task $task)
+    {
+        if ($task->assigned_to_id == $user->id) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function reviewTask(User $user, Task $task)
+    {
+        if ($task->assigned_by_id == $user->id) {
+            return true;
+        }
+
+        return false;
+    }
 }

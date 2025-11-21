@@ -20,6 +20,7 @@ class TaskResource extends JsonResource
             'project' => new ProjectResource($this->whenLoaded('project')),
             'assigned_to' => new UserResource($this->whenLoaded('assignedTo')),
             'assigned_by' => new UserResource($this->whenLoaded('assignedBy')),
+            'reviews' => TaskReviewResource::collection($this->whenLoaded('reviews')),
             'title' => $this->title,
             'description' => $this->description,
             'status' => $this->status,

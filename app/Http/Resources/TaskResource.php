@@ -17,6 +17,7 @@ class TaskResource extends JsonResource
         return [
             'id' => $this->id,
             'project_id' => $this->project_id,
+            'project' => new ProjectResource($this->whenLoaded('project')),
             'assigned_to' => new UserResource($this->whenLoaded('assignedTo')),
             'assigned_by' => new UserResource($this->whenLoaded('assignedBy')),
             'title' => $this->title,

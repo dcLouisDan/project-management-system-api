@@ -50,15 +50,7 @@ class UserController extends Controller
         }
 
         $perPage = $request->input('per_page', 10);
-        $query = $this->userService->buildFilteredUserQuery($request->only([
-            'name',
-            'email',
-            'role',
-            'roles',
-            'sort',
-            'direction',
-            'delete_status',
-        ]));
+        $query = $this->userService->buildFilteredUserQuery($request->all());
 
         try {
             return UserResource::collection($query->paginate($perPage));

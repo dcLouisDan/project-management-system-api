@@ -90,11 +90,11 @@ class UserService
         }
 
         if (isset($filters['name'])) {
-            $query->where('name', 'ilike', '%'.$filters['name'].'%');
+            $query->where('name', 'ilike', '%' . $filters['name'] . '%');
         }
 
         if (isset($filters['email'])) {
-            $query->where('email', 'ilike', '%'.$filters['email'].'%');
+            $query->where('email', 'ilike', '%' . $filters['email'] . '%');
         }
 
         if (isset($filters['role'])) {
@@ -106,6 +106,20 @@ class UserService
             $query->whereHas('roles', function ($q) use ($roles) {
                 $q->whereIn('name', $roles);
             });
+        }
+
+        if (isset($filters['team_id'])) {
+            $teamId = $filters['team_id'];
+            $query->whereHas('teams', function ($q) use ($teamId) {
+                $q->where('id', $teamId);
+            });
+        }
+
+        if (isset($filters['project_id'])) {
+            $projectId = $filters['project_id'];
+            $query->whereHas('teams.projects', function ($query) use ($projectId) {
+                $query->where('projects.id', $projectId);
+            })->get();
         }
 
         $sort = isset($filters['sort']) && in_array($filters['sort'], $sortableFields) ? $filters['sort'] : 'id';

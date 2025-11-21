@@ -79,7 +79,7 @@ class TaskController extends Controller
             return ApiResponse::error('This action is unauthorized.', 403);
         }
 
-        return new TaskResource($task->load(['assignedTo', 'assignedBy']));
+        return new TaskResource($task->load(['assignedTo', 'assignedBy', 'project']));
     }
 
     /**
@@ -397,11 +397,11 @@ class TaskController extends Controller
         try {
             $this->taskService->assignTask($task, $assignee, $assignedBy);
 
-            return ApiResponse::success(null, 'Task assigned to user successfully.');
+            return ApiResponse::success(new TaskResource($task), 'Task assigned to user successfully.');
         } catch (\Exception $e) {
             Log::error('Failed to assign task to user: ' . $e->getMessage());
 
-            return ApiResponse::error('Failed to synchronize task relations: ' . $e->getMessage(), 500);
+            return ApiResponse::error('Failed to assign task to user: ' . $e->getMessage(), 500);
         }
     }
 }

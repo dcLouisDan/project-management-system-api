@@ -81,26 +81,69 @@ class TaskReviewControllerTest extends TestCase
         ]);
     }
 
-    // public function test_task_review_can_start()
-    // {
-    //     $task = Task::factory()->create([
-    //         'assigned_to_id' => $this->auth->id
-    //     ]);
-    //     $this->postJson($this->apiPrefix . '/' . $task->id . '/start');
+    public function test_task_review_can_start()
+    {
+        $task = Task::factory()->create([
+            'assigned_to_id' => $this->auth->id,
+            'assigned_by_id' => $this->auth->id,
+            'status' => ProgressStatus::IN_PROGRESS->value
+        ]);
 
-    //     $task->refresh();
+        $notes = 'Test submission notes';
+        $this->taskService->submitTaskForReview($task, $notes, $this->auth);
+        $task->refresh();
+        $review = $task->reviews()->orderBy('created_at', 'desc')->first();
 
-    //     $this->assertEquals(ProgressStatus::IN_PROGRESS->value, $task->status);
-    // }
+        $response = $this->postJson($this->apiPrefix . '/' . $task->id . '/reviews/' . $review->id . '/start');
 
-    // public function test_task_review_cannot_be_started_by_unauthorized_user()
-    // {
-    //     $user = User::factory()->create();
-    //     $task = Task::factory()->create([
-    //         'assigned_to_id' => $user->id
-    //     ]);
-    //     $response = $this->postJson($this->apiPrefix . '/' . $task->id . '/start');
+        $review->refresh();
 
-    //     $response->assertStatus(403);
-    // }
+        $response->assertStatus(200);
+        $this->assertEquals(ProgressStatus::UNDER_REVIEW->value, $review->status);
+    }
+
+    public function test_task_review_cannot_be_started_by_unauthorized_user()
+    {
+        $user = User::factory()->create();
+        $task = Task::factory()->create([
+            'assigned_to_id' => $this->auth->id,
+            'assigned_by_id' => $user->id,
+            'status' => ProgressStatus::IN_PROGRESS->value
+        ]);
+
+        $notes = 'Test submission notes';
+        $this->taskService->submitTaskForReview($task, $notes, $this->auth);
+        $task->refresh();
+        $review = $task->reviews()->orderBy('created_at', 'desc')->first();
+
+        $response = $this->postJson($this->apiPrefix . '/' . $task->id . '/reviews/' . $review->id . '/start');
+
+        $review->refresh();
+
+        $response->assertStatus(403);
+    }
+
+    public function test_task_review_can_be_submitted()
+    {
+        $task = Task::factory()->create([
+            'assigned_to_id' => $this->auth->id,
+            'assigned_by_id' => $this->auth->id,
+            'status' => ProgressStatus::IN_PROGRESS->value
+        ]);
+
+        $notes = 'Test submission notes';
+        $this->taskService->submitTaskForReview($task, $notes, $this->auth);
+        $task->refresh();
+        $review = $task->reviews()->orderBy('created_at', 'desc')->first();
+        $data = [
+            'feedback' => "This is a sample feedback.",
+            'status' => ProgressStatus::APPROVED->value
+        ];
+        $this->taskService->startReview($task, $review->id, $this->auth);
+        $response = $this->postJson($this->apiPrefix . '/' . $task->id . '/reviews/' . $review->id . '/submit', $data);
+        $task->refresh();
+
+        $response->assertStatus(200);
+        $this->assertEquals(ProgressStatus::COMPLETED->value, $task->status);
+    }
 }

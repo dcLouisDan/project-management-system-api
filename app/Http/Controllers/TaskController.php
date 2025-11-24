@@ -458,9 +458,9 @@ class TaskController extends Controller
 
             return ApiResponse::success(new TaskResource($task), 'Task started successfully.');
         } catch (\Exception $e) {
-            Log::error('Failed to start task: ' . $e->getMessage());
+            Log::error('Failed to start task review: ' . $e->getMessage());
 
-            return ApiResponse::error('Failed to start task: ' . $e->getMessage(), 500);
+            return ApiResponse::error('Failed to start task review: ' . $e->getMessage(), 500);
         }
     }
 
@@ -480,17 +480,17 @@ class TaskController extends Controller
 
             return ApiResponse::success(new TaskResource($task), 'Task started successfully.');
         } catch (\LogicException $e) {
-            Log::error('Failed to start task: ' . $e->getMessage());
+            Log::error('Failed to submit task review: ' . $e->getMessage());
 
-            return ApiResponse::error('Failed to start task: ' . $e->getMessage(), 422);
+            return ApiResponse::error('Failed to submit task review: ' . $e->getMessage(), 422);
         } catch (\InvalidArgumentException $e) {
-            Log::error('Failed to start task: ' . $e->getMessage());
+            Log::error('Failed to submit task review: ' . $e->getMessage());
 
-            return ApiResponse::error('Failed to start task: ' . $e->getMessage(), 422);
+            return ApiResponse::error('Failed to submit task review: ' . $e->getMessage(), 422);
         } catch (\Exception $e) {
-            Log::error('Failed to start task: ' . $e->getMessage());
+            Log::error('Failed to submit task review: ' . $e->getMessage());
 
-            return ApiResponse::error('Failed to start task: ' . $e->getMessage(), 500);
+            return ApiResponse::error('Failed to submit task review: ' . $e->getMessage(), 500);
         }
     }
 }

@@ -45,7 +45,7 @@ class Task extends Model
 
     public function reviews()
     {
-        return $this->hasMany(TaskReview::class);
+        return $this->hasMany(TaskReview::class)->orderBy('created_at', 'desc');
     }
 
     public function scopeStatus($query, $status)

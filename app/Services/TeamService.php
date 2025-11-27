@@ -58,6 +58,20 @@ class TeamService
             }
         }
 
+        if (isset($filters['member_id'])) {
+            $memberId = $filters['member_id'];
+            $query->whereHas('users', function ($query) use ($memberId) {
+                $query->where('users.id', $memberId);
+            });
+        }
+
+        if (isset($filters['project_id'])) {
+            $projectId = $filters['project_id'];
+            $query->whereHas('projects', function ($query) use ($projectId) {
+                $query->where('projects.id', $projectId);
+            });
+        }
+
         return $query;
     }
 

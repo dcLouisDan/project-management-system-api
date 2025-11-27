@@ -67,18 +67,29 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
+      roles:
+        name: roles
+        description: 'Filter users by multiple roles separated by commas.'
+        required: false
+        example: 'admin,team lead'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
     cleanQueryParameters:
       per_page: 15
       name: John
       email: john@example.com
       role: admin
+      roles: 'admin,team lead'
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
     responses:
       -
         status: 200
-        content: '{"data":[{"id":4,"name":"Prof. Frida Koch","email":"devonte27@example.net","roles":[]},{"id":5,"name":"Letitia Streich","email":"elna.schultz@example.org","roles":[]}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
+        content: '{"data":[{"id":68,"name":"Issac Toy","email":"hope15@example.com","roles":[],"created_at":"2025-11-27T04:07:58.000000Z","deleted_at":null},{"id":69,"name":"Dr. Gregoria Osinski","email":"reilly.milan@example.com","roles":[],"created_at":"2025-11-27T04:07:58.000000Z","deleted_at":null}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":10,"to":2,"total":2}}'
         headers: []
         description: ''
         custom: []
@@ -115,7 +126,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'users/{user_id}'
+    uri: 'users/{user}'
     metadata:
       groupName: 'User Management'
       groupDescription: |-
@@ -132,11 +143,11 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      user_id:
-        name: user_id
-        description: 'The ID of the user.'
+      user:
+        name: user
+        description: 'The user.'
         required: true
-        example: 3
+        example: 27
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -153,7 +164,7 @@ endpoints:
         nullable: false
         custom: []
     cleanUrlParameters:
-      user_id: 3
+      user: 27
       id: 1
     queryParameters: []
     cleanQueryParameters: []
@@ -163,7 +174,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":{"id":6,"name":"Prof. Carolyne Buckridge II","email":"altenwerth.deborah@example.com","roles":[]}}'
+        content: '{"data":{"id":70,"name":"Josefina Wunsch","email":"kade.senger@example.net","roles":[],"created_at":"2025-11-27T04:07:58.000000Z","deleted_at":null}}'
         headers: []
         description: ''
         custom: []
@@ -325,14 +336,14 @@ endpoints:
         name: user_id
         description: 'The ID of the user.'
         required: true
-        example: 3
+        example: 27
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      user_id: 3
+      user_id: 27
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -437,14 +448,14 @@ endpoints:
         name: user_id
         description: 'The ID of the user.'
         required: true
-        example: 3
+        example: 27
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      user_id: 3
+      user_id: 27
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -499,14 +510,14 @@ endpoints:
         name: userId
         description: ''
         required: true
-        example: 3
+        example: 27
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      userId: 3
+      userId: 27
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -561,14 +572,14 @@ endpoints:
         name: user_id
         description: 'The ID of the user.'
         required: true
-        example: 3
+        example: 27
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      user_id: 3
+      user_id: 27
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:

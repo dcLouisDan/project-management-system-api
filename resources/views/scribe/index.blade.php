@@ -144,8 +144,8 @@
                                                     <li class="tocify-item level-2" data-unique="project-management-GETprojects">
                                 <a href="#project-management-GETprojects">List projects</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="project-management-GETprojects--project_id-">
-                                <a href="#project-management-GETprojects--project_id-">Get project</a>
+                                                                                <li class="tocify-item level-2" data-unique="project-management-GETprojects--project-">
+                                <a href="#project-management-GETprojects--project-">Get project</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="project-management-POSTprojects">
                                 <a href="#project-management-POSTprojects">Create project</a>
@@ -162,8 +162,8 @@
                                                                                 <li class="tocify-item level-2" data-unique="project-management-POSTprojects--project_id--manager">
                                 <a href="#project-management-POSTprojects--project_id--manager">Set project manager</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="project-management-POSTprojects--project_id--teams">
-                                <a href="#project-management-POSTprojects--project_id--teams">Assign teams to project</a>
+                                                                                <li class="tocify-item level-2" data-unique="project-management-POSTprojects--project_id--teams-sync">
+                                <a href="#project-management-POSTprojects--project_id--teams-sync">POST projects/{project_id}/teams/sync</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -187,8 +187,8 @@
                                                                                 <li class="tocify-item level-2" data-unique="task-management-POSTtasks--task_id--sync-relations">
                                 <a href="#task-management-POSTtasks--task_id--sync-relations">Sync Task Relations</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="task-management-POSTtasks">
-                                <a href="#task-management-POSTtasks">Create Task</a>
+                                                                                <li class="tocify-item level-2" data-unique="task-management-POSTprojects--project_id--tasks">
+                                <a href="#task-management-POSTprojects--project_id--tasks">Create Task</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="task-management-PUTtasks--task_id-">
                                 <a href="#task-management-PUTtasks--task_id-">Update Task</a>
@@ -198,6 +198,21 @@
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="task-management-POSTtasks--taskId--restore">
                                 <a href="#task-management-POSTtasks--taskId--restore">Restore Deleted Task</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="task-management-POSTtasks--task_id--assign-user">
+                                <a href="#task-management-POSTtasks--task_id--assign-user">POST tasks/{task_id}/assign-user</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="task-management-POSTtasks--task_id--start">
+                                <a href="#task-management-POSTtasks--task_id--start">POST tasks/{task_id}/start</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="task-management-POSTtasks--task_id--submit">
+                                <a href="#task-management-POSTtasks--task_id--submit">POST tasks/{task_id}/submit</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="task-management-POSTtasks--task_id--reviews--taskReview_id--start">
+                                <a href="#task-management-POSTtasks--task_id--reviews--taskReview_id--start">POST tasks/{task_id}/reviews/{taskReview_id}/start</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="task-management-POSTtasks--task_id--reviews--taskReview_id--submit">
+                                <a href="#task-management-POSTtasks--task_id--reviews--taskReview_id--submit">POST tasks/{task_id}/reviews/{taskReview_id}/submit</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -212,14 +227,20 @@
                                                                                 <li class="tocify-item level-2" data-unique="team-management-POSTteams">
                                 <a href="#team-management-POSTteams">Create team</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="team-management-GETteams--team_id-">
-                                <a href="#team-management-GETteams--team_id-">Get team</a>
+                                                                                <li class="tocify-item level-2" data-unique="team-management-GETteams--team-">
+                                <a href="#team-management-GETteams--team-">Get team</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="team-management-PUTteams--team_id-">
                                 <a href="#team-management-PUTteams--team_id-">Update team details</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="team-management-DELETEteams--team_id-">
                                 <a href="#team-management-DELETEteams--team_id-">Delete team</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="team-management-POSTteams--teamId--restore">
+                                <a href="#team-management-POSTteams--teamId--restore">Restore team</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="team-management-POSTteams--team_id--members-sync">
+                                <a href="#team-management-POSTteams--team_id--members-sync">Sync multiple members to team</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="team-management-POSTteams--team_id--members">
                                 <a href="#team-management-POSTteams--team_id--members">Add member to team</a>
@@ -252,8 +273,8 @@
                                                     <li class="tocify-item level-2" data-unique="user-management-GETusers">
                                 <a href="#user-management-GETusers">List Users</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="user-management-GETusers--user_id-">
-                                <a href="#user-management-GETusers--user_id-">Get user</a>
+                                                                                <li class="tocify-item level-2" data-unique="user-management-GETusers--user-">
+                                <a href="#user-management-GETusers--user-">Get user</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="user-management-POSTusers">
                                 <a href="#user-management-POSTusers">Create user</a>
@@ -281,7 +302,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: November 1, 2025</li>
+        <li>Last updated: November 27, 2025</li>
     </ul>
 </div>
 
@@ -1174,7 +1195,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 vary: Origin
-set-cookie: XSRF-TOKEN=eyJpdiI6IjcrbFh4eE1OdUh5TXlTeXFPM3V1SHc9PSIsInZhbHVlIjoiaWtsN2VrMVdSeUVkbGdWb2tKaEpMTVlFZE1qVHY0WmZsY0JhVDVWODBSaURDMmV5RjMrdU55OHVKZDNqZXhSU0lmdjQyVEFSMTRyYzBnd3czL1V1UTVEZlppbzJTS0NyRmdjbWdVR0JFdi93U29FR21rWXVKMlh4WXQ4THJOaksiLCJtYWMiOiI0ODUyZTE2ZTg1ZGMwNzMxZDNjNzc3NzJkY2FmODY3NTA5M2M2NzQ5ZWEwNmY4ODJkYTdmYWJmMmE1ZjU2NmQ4IiwidGFnIjoiIn0%3D; expires=Sat, 01 Nov 2025 15:20:00 GMT; Max-Age=7200; path=/; domain=localhost; samesite=lax; project-management-system-session=eyJpdiI6IkY1Z2RyTzcvVXFDZTRsVDRaTnlOQmc9PSIsInZhbHVlIjoiTzlTR3pWWUdiRDdaMXBzaTVFaGZQS09YWCtWOFhKWTdrOUFtaVJXbkMwS0RVTTBQaTh4aERndWZJRllzNnJpMk1tRGx3S3lUVWhMS3ZvSmZpK1dPU3Mvc2pPdnFoU3liVy80TzBOYy9kN2EwSjFBa3dVcWdSL3VIYUJlMzkrVkQiLCJtYWMiOiJhMzEzMDczNzQzNmY3NWY5MmEwNTI0YjlhODUwYzhiNjg0YThhNjE1Y2M3ZWM5NzA3YjNhNGNkMmU0MzdkMmRmIiwidGFnIjoiIn0%3D; expires=Sat, 01 Nov 2025 15:20:00 GMT; Max-Age=7200; path=/; domain=localhost; httponly; samesite=lax
+set-cookie: XSRF-TOKEN=eyJpdiI6Ik9BQ3g3T3BlQUhpSys2MjcrQ1RxOWc9PSIsInZhbHVlIjoiVCs3ajRDZ2o3bFkwU284ZWNvYkIvaDgrZXRLRDNmSWdKYXZNRG0yTHhUaS9EYUFZUUdISWJ5QlhjdG5DYk5QQ0xRc3M1dHNQQS9lVTFaZCtoY3hzSlpaeXdCUEUvNjMrWXNYM3hUcjlXcDZURjBYZUlnc1pyOHRkK0JUUTc0emciLCJtYWMiOiIzNDhkMzAxZjAyYjVkYzE1ODBhZDM4NGIxMTBkMGZmOTYxOWMxZjM4MzZjYzA2MWU5MTlkMjIzM2U1Y2NhODRiIiwidGFnIjoiIn0%3D; expires=Thu, 27 Nov 2025 06:07:57 GMT; Max-Age=7200; path=/; domain=localhost; samesite=lax; project-management-system-session=eyJpdiI6ImdaVElhRmNhck9JY0FLeGJMdEJBRGc9PSIsInZhbHVlIjoic3htZUZjamp3angyVzVWdGdmRURDekxxQ0N3cTRkSG5kbDBjbHhaUjVDS0RRbjBreDMvYW1oL050a3JabFEvRVFyQTFZdVIvMlZlemp4SnIrZ0gwc3NUVFdPNVh6Q1JWS3ZSeGFzZVU3M2t3U1h3bmlDZzdidEJ2MXFCc2xtTTEiLCJtYWMiOiIwYTg1YjlkY2ZkYzA2MWE4YjNhYTRlMDBhOGQwYzE3OWZlYzc1MDIyY2NhNTM2ZWY3YjQxYjA5YTBhZmMzZWI4IiwidGFnIjoiIn0%3D; expires=Thu, 27 Nov 2025 06:07:57 GMT; Max-Age=7200; path=/; domain=localhost; httponly; samesite=lax
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -1873,7 +1894,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 vary: Origin
-set-cookie: XSRF-TOKEN=eyJpdiI6ImhUdEhXTE0zeVlQRFd3VjVzUU1tU1E9PSIsInZhbHVlIjoidmRsY1NTMUxOZ0RPcmRCZ2dnS3hsSjcrV3Uwdm9ud25iNEgreHNMajNBcDhJSXpuVjlPcFo5OS81RWNOTjkvanBRUy82VEVBa043MVlWTzM4Y21LVGQxY3Z5M0lqdlY4UkJLNDk2ampkWUFTVjJBZmRCWEkxaG1xemllSVhwM0kiLCJtYWMiOiJiZDZlMTZjMjZmNDVkYWM4MmEwNDMxMTY3NTg3N2U0YWFmOTM2OGYyYzQ1ZGIxMDBlOTQ0ZWVjMWI4MWY0ZTI4IiwidGFnIjoiIn0%3D; expires=Sat, 01 Nov 2025 15:20:00 GMT; Max-Age=7200; path=/; domain=localhost; samesite=lax; project-management-system-session=eyJpdiI6Im9CZEJpNUlXczFwcDBsOTZFWG5TT1E9PSIsInZhbHVlIjoiWnpSOUJBMmF5Yy96elNWMXBPaTVxMFN2bTRFM3pKZTY4RnZoMUtFWldjYW1ZbFNrait5NE9QbkVqV29aMGx5VzByWXRmUmlKSnBkTzFGT3pRTE9kTHkwaUZuWHlGNzV2S0IzSWNVTmQ1UHh6bXpOOExUVk9JUlF0VytGY2t2Q2QiLCJtYWMiOiI3NmIwZmYxMTg2OGRlMGM4ZmRmNzUwMTdlZWQyZDMzOTg5NzkyMGRlOWFhYmQ3ZWRiZWQyMmMwYTRhYzc4ODNlIiwidGFnIjoiIn0%3D; expires=Sat, 01 Nov 2025 15:20:00 GMT; Max-Age=7200; path=/; domain=localhost; httponly; samesite=lax
+set-cookie: XSRF-TOKEN=eyJpdiI6Ikp2ZGlFM3hxdmduaVhLdWppTmN3NXc9PSIsInZhbHVlIjoicDlCK3N6QlkzYkxkQ2YxMFFkWms2Z0xaVE9TOEJvZDF0RVBhUFMrRVc3a3VvQ1plSGdaQzVLNjdicjBlRm1iMEhFMkdZc3g0WW1DWXJHM2JQVGQzZ2gzeHZtREYwK1ZJekxPcTNXOTQvL09RRG5GMEFsZjcxajlQcHlOZktNZk8iLCJtYWMiOiIyNGI3OWU0OGMzNDc1MmM3NmE1MjI0ZTcyMmUyM2ZlMzI2NjU0MDVkNWZlYjE2Y2FlYmE0ZGQ1Y2Y0MDg5N2U0IiwidGFnIjoiIn0%3D; expires=Thu, 27 Nov 2025 06:07:57 GMT; Max-Age=7200; path=/; domain=localhost; samesite=lax; project-management-system-session=eyJpdiI6Ikdzc3JybUhObnE5OGhvL2lWL2pQY3c9PSIsInZhbHVlIjoiclZSQTZaNEF1R09KSWVPZThFL0hnSnZpOS9hQnEvc2tjc1Q5eWZKOTkxQVhkTEltbEwxeGd3YlZSVmhGbHRoREQ1Y2loVEtYdzJsS0poU1ZPLzd6bnljMlREWG83Y0NicHBwM0pPZmRBRDhPYnF5QWRhejdqQXh3N01VN3V1aDAiLCJtYWMiOiIxYmZjMDg5ZWM3YmFkZjE1YWMyMDhjZWE3ZmMxNzgwZGVlMGZjY2Q3MWYxMWUwODlkZTk0ZTZkZmYzNTI4Nzc3IiwidGFnIjoiIn0%3D; expires=Thu, 27 Nov 2025 06:07:57 GMT; Max-Age=7200; path=/; domain=localhost; httponly; samesite=lax
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -1998,7 +2019,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 vary: Origin
-set-cookie: XSRF-TOKEN=eyJpdiI6IkI4Ym5nc0tFaktnYzNpT3R4cDNiWkE9PSIsInZhbHVlIjoiczBNUlRxb0hFdVJ0UlZQYWY2emUyV2IweS9jUmR3R3lwdjRDakRwOXR3QXByMkpMRWtoclhSMGRqRjhRZ2IzNnNlRG82bmd2TGVielpUQjlEYVVWMEt6aXlrVTE3c0tidjRGaFJGWDFtQ0tacUUybC9HcXJPQUd2Y2FZSzl6UmMiLCJtYWMiOiJmNzIwODE5ZTU4OGMxYWU3ODczYTJhYWI0YTVmYmRkZjJhOThlYmViMWM4OTQxOTc3ODZmYmVlZmFhZTkxODBhIiwidGFnIjoiIn0%3D; expires=Sat, 01 Nov 2025 15:20:00 GMT; Max-Age=7200; path=/; domain=localhost; samesite=lax; project-management-system-session=eyJpdiI6IlA3ZElld3doZHY0UzhWakpFM2czOXc9PSIsInZhbHVlIjoiNVFnZUpPb1FGTzJPNUJ5YnlQRTFkYTFWZUN3dzJXQUtoK2JhQVEyUDhCUmpBdnlKTFllWHVhUnVMQ0RiNSt0cTNCc29BcXVTWFB3eU5hVDk2UGVOUEpyU1RGNW5JWnpRV3VlQzcyaTB6bXdubFBOMjdCR2I4SnZZdDdXcjhFNHQiLCJtYWMiOiIwMGUxZDhmMWNjMjRlZTRhMjdmMDJkNWM1NDljODhmNmExNzAyOGU4MmM2ZDVkN2VjYjQ5ZmQwYjQyYjA3MTRhIiwidGFnIjoiIn0%3D; expires=Sat, 01 Nov 2025 15:20:00 GMT; Max-Age=7200; path=/; domain=localhost; httponly; samesite=lax
+set-cookie: XSRF-TOKEN=eyJpdiI6ImExcTIzUE5mdnJITlY0ZWhMazc1cHc9PSIsInZhbHVlIjoiRUpwZTd0aDJtWDlNVUtJTm5CM1JvTm5SMGhXTStFRFFsR0JQb3lST0N6VHl2OVArTFhqOUtGNEpjdXpxeTlqVGExV0xkdXhXS0xRSUxQMUY4TVBhamZYV2FDYVF0R2VtR2cxMjhlY09NNmhlYnF3TFVzSm5XeEIyclZGV2lib1YiLCJtYWMiOiI3NTBkYzI5Nzc2OTYyMjIzYjI0ZmQwNGMyM2U2ZjdhYzY0ZGJmYTQ5OWQyODdlMTVjN2M5OGYwMzc0ZWM3YWIwIiwidGFnIjoiIn0%3D; expires=Thu, 27 Nov 2025 06:07:57 GMT; Max-Age=7200; path=/; domain=localhost; samesite=lax; project-management-system-session=eyJpdiI6Ilk1bE1VdysyMzJQR3B2Z1BSQkp0Z0E9PSIsInZhbHVlIjoiTk5wbm40RnNmTjI0aXY5RzFObnc3TVpZMXkxeUkvU0pZZWxreHRLbUVYMWVZOFMxcXg2WHNiMzgrMHlRN00vUnhSYjhDaytLNEV3QWJJc21IZmhNclFjSWdYTzZIaFJ5U21CeExENTBMMXBrREw5L2tWR3FOZXZMSGQzdkhucjciLCJtYWMiOiIyOWI2OGY0MjFjM2EyMGFjZGNmYmY4MWFlZWY1YjNlZDBhZTFiYTYzYjA5NWVmNDY5Njc3MzYzM2QxMGMzNzYyIiwidGFnIjoiIn0%3D; expires=Thu, 27 Nov 2025 06:07:57 GMT; Max-Age=7200; path=/; domain=localhost; httponly; samesite=lax
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -2123,7 +2144,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 vary: Origin
-set-cookie: XSRF-TOKEN=eyJpdiI6IkNMd1BBQnFhcjB5WjNkM0tydVo2SEE9PSIsInZhbHVlIjoiNzloa2FPZHg3eE5BZVc1aTYybmtYSVliQUJvdTNmelhmdUFkMUp6elBuWklMZXpqUXVMUVlPVm9rbHhhbVJHdk9EZzY2TVRmYTV4bHF6THlpcGxBTmZoUG1qSVZ4VEl5RTNCd0tZdlVtK0krY3NhYnROdkpSNVEvb1JHdWlnaHEiLCJtYWMiOiJkMTczNzFlMmU4NWNjN2YyMmRhMzhjMWIyZTU4OTEzYTRjY2RkMTIyNzdjMzU0MGVjY2M4NzBmYjliOTgyODU1IiwidGFnIjoiIn0%3D; expires=Sat, 01 Nov 2025 15:20:00 GMT; Max-Age=7200; path=/; domain=localhost; samesite=lax; project-management-system-session=eyJpdiI6IjljZTRTa1N6VFhqZW56TXZPY3hFbVE9PSIsInZhbHVlIjoidHErV3BiUUhXRGZXS0tOUUNqRE9WUzltMkNpTVNuSENQb1EyakNXOXdzMEYvMVlIRUN1MVZWYXJxdnB6R2xhQ1FlaXczQ1VLdi96QWh6emRvdG9aWUUydnJDQ3FLSjZlUTlDMGF3TmtBTEwvUzlTYVZQcUpwa0djdXVkS0FxZksiLCJtYWMiOiI5N2VhYWNkYTFiMGYxODc4ZGYzMzE2ODVlNDQzNjBiNDk4MTZkOWJkZDU5ZGE3ODdlYTA1NTgyMDJmYmMxZGVjIiwidGFnIjoiIn0%3D; expires=Sat, 01 Nov 2025 15:20:00 GMT; Max-Age=7200; path=/; domain=localhost; httponly; samesite=lax
+set-cookie: XSRF-TOKEN=eyJpdiI6IjYxZnpFNmhZVVlJbVB1QUVvaUVVVUE9PSIsInZhbHVlIjoic0p2RHlzL0ZsNWdyem1XQmlzY3FXcjdYQWpkV0hxd1BnU25LSmR4aHFpNDZBQUxMR1lrNHFOV0tYUmtUV2FoSVVLMEZ3Y201clVIR1pydk1UVGhQa0VXQ0ZUVWVGV3J4TVRWSFFiOTFUOUlobFJQUFYrL0lJQVhFQVhuN2FIdHciLCJtYWMiOiI5M2Y3ZDkyNmJmYWEwNWYyYzliMWJhZmM4OGYwZWU2MjE3Zjg3M2EzMjVlZTdhYWMyYzZkNGYzMjU2ZTg5ZWZmIiwidGFnIjoiIn0%3D; expires=Thu, 27 Nov 2025 06:07:57 GMT; Max-Age=7200; path=/; domain=localhost; samesite=lax; project-management-system-session=eyJpdiI6Im8wWjQzRnlEak9vaEFyWlRiazdFc3c9PSIsInZhbHVlIjoiNXYrTW8yQlprTmJqR1FPd1RWL3ZrRElBVVduK1pKSmlCK0Q4dDNwenVaQ1NWZ3JuU2VQaHBqY1Y0RWF2Z0pKWmRvNS96MS9BMkhHeHI0Y1FPODZMMlVIaU1XUGRyQlU1T2RmNFlEREJDenAvU0RPOUZCNGdUM1JQc1RTV0JXWUIiLCJtYWMiOiJlNTNiMjRlZTUwNDliMGM3NmJkOGQ4MzQ3YWIyNGYwODAxMzFhYzQxZDgxODc4ODFiMjZkYWYwYmY4MTIxZjg5IiwidGFnIjoiIn0%3D; expires=Thu, 27 Nov 2025 06:07:57 GMT; Max-Age=7200; path=/; domain=localhost; httponly; samesite=lax
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -2355,7 +2376,7 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 vary: Origin
-set-cookie: XSRF-TOKEN=eyJpdiI6ImVTWC9aQnB0UTlMVlVWZE5yY1JhblE9PSIsInZhbHVlIjoiYlhzSTZGclpOV0cvd1paQ2xCT3Jqek90cEpoUnlrNThDd0xhbnlNYlFJdjc3SzYyZzE1MGtCVGxnQ2YwWEZoQlJ2eThqc050S0dXcE5kUUpBQm0ydWNSVzRNVkZDdzE2dEM0ZlQ3MDBRSjBPcHA1L3JIeUp6bFd3Y21PMlA3Q28iLCJtYWMiOiI5YzA0ZWVmNzUwMGU1ODJmNWI2YTY3MTc3NDIzMWM2YzAzZDlhYjMxMTU1ODhlYzZiYTJmZmNiMjU3Y2E0ZDdhIiwidGFnIjoiIn0%3D; expires=Sat, 01 Nov 2025 15:20:00 GMT; Max-Age=7200; path=/; domain=localhost; samesite=lax; project-management-system-session=eyJpdiI6IkRDZlYrL2RTenFyaGxOODhkSnVBemc9PSIsInZhbHVlIjoiMjFHUVBOaEEzQ3g5Q1VNdUtSZWRFZlJVaGQwY0xxVGt6b2hoNGYxeStmOE9RVnRkRW9vbkVHTW5LRzBTQkYySjN4SXZrRVBmNTB4QjNJZVJ3TjBDZTRnNGUvZWxLQjUrMEpLV0hveWNQNXlib0d5RGE4ZUU2V25mZEZ6OWY2TVYiLCJtYWMiOiIzMzQwNjA5YWVlMWZkNWNmM2E4ZGQ5YjViNTllNjNkMTM1ZmI1OWY0ODZkNDA1ODllOTEyMjU2ZTMyOTJmMjA1IiwidGFnIjoiIn0%3D; expires=Sat, 01 Nov 2025 15:20:00 GMT; Max-Age=7200; path=/; domain=localhost; httponly; samesite=lax
+set-cookie: XSRF-TOKEN=eyJpdiI6ImthK2ZmTFZjRFFhUnFGZ2x6eXV1NGc9PSIsInZhbHVlIjoiSU4rWFBRUGFNVXhOV0NEVHdLMnhTRFJoYjdhaE1Qd2J3WW1keFlRWlUwdDNxRjFXM1liWEMwc0FTdzBLdUxiL1FNWEF5djBDL00wcVBoeldnNi9Vdnl6Zm5vZm45NUp1d2VhdVJ0QmZYTW5PaEVxOCtQdCtnRk1rVy9kdHg2L0UiLCJtYWMiOiI0ODJmZDE3ZWE0ZDI4N2NkNjcyZDE2ZjE2ZTI1YmRmM2I2MjY5NTMwNzZmYjNmZTRiMGU0OWZlYmNhNmY4NjdjIiwidGFnIjoiIn0%3D; expires=Thu, 27 Nov 2025 06:07:57 GMT; Max-Age=7200; path=/; domain=localhost; samesite=lax; project-management-system-session=eyJpdiI6IjVmUTk5OEc0UkgveEtnVisxR3VyVnc9PSIsInZhbHVlIjoia1NHRU1ZOGZZT05NRVVGenRnMGw1QThkR05UdlR5TjkvcU1RQnc3NnE1NjZuZUZaK0VOdzI4eFdkdFFsd3ovTFVQb01VemRjOU9VYmNtWllMVDB0U0psWEtCYXZpR0J0ZURFeFdieW5QMnZ4dWY1UkcxQmQyUVU3VmI1WHdSbW8iLCJtYWMiOiI4ZmUwZjA3OWE0MzIwZmQ0MDA3MWRmZTMxNjJmN2RjMDcxYzIwN2Y3NTE5ZDI0YjFlZGQ0ZTYzNjI4MWQ2YTI4IiwidGFnIjoiIn0%3D; expires=Thu, 27 Nov 2025 06:07:57 GMT; Max-Age=7200; path=/; domain=localhost; httponly; samesite=lax
  </code></pre></details>         <pre>
 <code>Empty response</code>
  </pre>
@@ -2521,7 +2542,7 @@ vary: Origin
                 &lt;p class=&quot;mt-2 text-gray-500 dark:text-gray-400 text-sm leading-relaxed&quot;&gt;
                     HTTP request received.
 
-                                            Response rendered in 456ms.
+                                            Response rendered in 1410ms.
                                     &lt;/p&gt;
             &lt;/div&gt;
         &lt;/div&gt;
@@ -2649,7 +2670,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 vary: Origin
-set-cookie: XSRF-TOKEN=eyJpdiI6Ik1XdkpSVmJEU3kxc3Y1M0RzVUZmb0E9PSIsInZhbHVlIjoiNjBueWw5QldEU1dnZmN3cVlNMTgwcjQ5aUtEdml1L1JkV1QzRHNDZmpLSG9ZTUc0dnlVQWJvWGtmZkpKVDJCak1qaUlZNFdJVU5yZkRTZjIzT0t4M1BXWjUwVkI3Y3p4cFNRc25IdmlGOWsxM1N0UXR3WjFLSXZuMVVHOS8vRWkiLCJtYWMiOiJkMTE2MDYxYzE3Zjk4ZGM5M2UxMTdjNzJlZjQ3ZjU2OTNlN2I4NmE2MWJlM2YwOTNhODc2OTViNDJkZjVlMDY4IiwidGFnIjoiIn0%3D; expires=Sat, 01 Nov 2025 15:20:00 GMT; Max-Age=7200; path=/; domain=localhost; samesite=lax; project-management-system-session=eyJpdiI6IkdScVlLZkJoWGVPSERocjF0WEJhYnc9PSIsInZhbHVlIjoiczB4c2hFV1RrRGlEY3FLeWhncnhmZnphM0g4S2NMdjAycngzNi9wSXJFRmhHZlN6ZjJnVzUrSzZlUlVxdWtpMFoxU3c1bXN2Mm1pdE5kNHhiTitFYk5mbHk0bExtWVFSZU03OWYwdGFZSVNDN1NvbjRZRGRPa2JuSTd6eWpPUEwiLCJtYWMiOiJjZmM1YjJiNTFlNDhhOWY0YjZhYmFmZDM5NmI0MjJiMjIzMGRlZDQzYWI2OWQ4YjRhODhmYjYzM2I5MWI3MmJiIiwidGFnIjoiIn0%3D; expires=Sat, 01 Nov 2025 15:20:00 GMT; Max-Age=7200; path=/; domain=localhost; httponly; samesite=lax
+set-cookie: XSRF-TOKEN=eyJpdiI6IkwyUVQ2eU8xc3ZWOUJJMllDZm5CN1E9PSIsInZhbHVlIjoiVFpxOHZCV1c0RGl0eXYxZ3JIYTd3RjB4N0lzN0VLRm41bXIybnN6OU1LeFYxbDUxUS82dmducUI0eHJUWlJQVDE5KytOR1I3eS9oL3FEbWtSbnZsckIvQXlzZmJTNXdoK0xITy9ZdmpXVGcrb2JlSG9xYnBLUTRIMHhxNERDVmUiLCJtYWMiOiI0NmY1YTIwM2ZlMDY5NGE0MGIzNmE5NzBiNjdhMzM0OTUzN2RmNzA4ODZjN2Y0NzY1NWY2NGU5YWMxMmI4ZDgyIiwidGFnIjoiIn0%3D; expires=Thu, 27 Nov 2025 06:07:57 GMT; Max-Age=7200; path=/; domain=localhost; samesite=lax; project-management-system-session=eyJpdiI6IkJpRDhvVEdJR2ZVWDQ1Z0JuY0xHcUE9PSIsInZhbHVlIjoicFlVVWh6SW1DVFNGWEhwNDdkQ3lSYVRWU1VmSTBuVzFYT1ZYdk1oV2RsSGZwVFcrbW8zeU5pTXEwcmFrRW5EdlB2RWxBOGw5K09pTlU5T0xHQXUwV0NjTEwvV0dUOEpiSnhNMzB6akcraEJJZWFQeFBsdVRzSGdUeXNpVmJQSTEiLCJtYWMiOiIyMmRlNWQ3M2EwNWFmN2ZiNTdkYjc1ODA3YWM3MTk3MzU0OTgzYzliZmI0YzFiNzVjMjA0ODFjZmU5MzNkYzA5IiwidGFnIjoiIn0%3D; expires=Thu, 27 Nov 2025 06:07:57 GMT; Max-Age=7200; path=/; domain=localhost; httponly; samesite=lax
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -3074,27 +3095,27 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                 </form>
 
-                    <h2 id="project-management-GETprojects--project_id-">Get project</h2>
+                    <h2 id="project-management-GETprojects--project-">Get project</h2>
 
 <p>
 </p>
 
 <p>Get details of a specific project by ID, including its manager and assigned teams.</p>
 
-<span id="example-requests-GETprojects--project_id-">
+<span id="example-requests-GETprojects--project-">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/projects/16" \
+    --get "http://localhost/projects/10" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/projects/16"
+    "http://localhost/projects/10"
 );
 
 const headers = {
@@ -3109,7 +3130,7 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-GETprojects--project_id-">
+<span id="example-responses-GETprojects--project-">
             <blockquote>
             <p>Example response (200, success):</p>
         </blockquote>
@@ -3152,43 +3173,43 @@ fetch(url, {
 }</code>
  </pre>
     </span>
-<span id="execution-results-GETprojects--project_id-" hidden>
+<span id="execution-results-GETprojects--project-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETprojects--project_id-"></span>:
+                id="execution-response-status-GETprojects--project-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETprojects--project_id-"
+    <pre class="json"><code id="execution-response-content-GETprojects--project-"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-GETprojects--project_id-" hidden>
+<span id="execution-error-GETprojects--project-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETprojects--project_id-">
+    <pre><code id="execution-error-message-GETprojects--project-">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-GETprojects--project_id-" data-method="GET"
-      data-path="projects/{project_id}"
+<form id="form-GETprojects--project-" data-method="GET"
+      data-path="projects/{project}"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETprojects--project_id-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETprojects--project-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETprojects--project_id-"
-                    onclick="tryItOut('GETprojects--project_id-');">Try it out ⚡
+                    id="btn-tryout-GETprojects--project-"
+                    onclick="tryItOut('GETprojects--project-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETprojects--project_id-"
-                    onclick="cancelTryOut('GETprojects--project_id-');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETprojects--project-"
+                    onclick="cancelTryOut('GETprojects--project-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETprojects--project_id-"
+                    id="btn-executetryout-GETprojects--project-"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -3196,7 +3217,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>projects/{project_id}</code></b>
+            <b><code>projects/{project}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -3204,7 +3225,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETprojects--project_id-"
+                              name="Content-Type"                data-endpoint="GETprojects--project-"
                value="application/json"
                data-component="header">
     <br>
@@ -3215,7 +3236,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETprojects--project_id-"
+                              name="Accept"                data-endpoint="GETprojects--project-"
                value="application/json"
                data-component="header">
     <br>
@@ -3223,15 +3244,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>project_id</code></b>&nbsp;&nbsp;
+                <b style="line-height: 2;"><code>project</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="project_id"                data-endpoint="GETprojects--project_id-"
-               value="16"
+               step="any"               name="project"                data-endpoint="GETprojects--project-"
+               value="10"
                data-component="url">
     <br>
-<p>The ID of the project. Example: <code>16</code></p>
+<p>The project. Example: <code>10</code></p>
             </div>
                     </form>
 
@@ -3500,7 +3521,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/projects/16" \
+    "http://localhost/projects/10" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -3516,7 +3537,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/projects/16"
+    "http://localhost/projects/10"
 );
 
 const headers = {
@@ -3686,10 +3707,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="project_id"                data-endpoint="PUTprojects--project_id-"
-               value="16"
+               value="10"
                data-component="url">
     <br>
-<p>The ID of the project. Example: <code>16</code></p>
+<p>The ID of the project. Example: <code>10</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -3773,14 +3794,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/projects/16" \
+    "http://localhost/projects/10" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/projects/16"
+    "http://localhost/projects/10"
 );
 
 const headers = {
@@ -3904,10 +3925,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="project_id"                data-endpoint="DELETEprojects--project_id-"
-               value="16"
+               value="10"
                data-component="url">
     <br>
-<p>The ID of the project. Example: <code>16</code></p>
+<p>The ID of the project. Example: <code>10</code></p>
             </div>
                     </form>
 
@@ -3924,14 +3945,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/projects/16/restore" \
+    "http://localhost/projects/10/restore" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/projects/16/restore"
+    "http://localhost/projects/10/restore"
 );
 
 const headers = {
@@ -4060,10 +4081,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="projectId"                data-endpoint="POSTprojects--projectId--restore"
-               value="16"
+               value="10"
                data-component="url">
     <br>
-<p>Example: <code>16</code></p>
+<p>Example: <code>10</code></p>
             </div>
                     </form>
 
@@ -4080,7 +4101,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/projects/16/manager" \
+    "http://localhost/projects/10/manager" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -4091,7 +4112,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/projects/16/manager"
+    "http://localhost/projects/10/manager"
 );
 
 const headers = {
@@ -4252,10 +4273,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="project_id"                data-endpoint="POSTprojects--project_id--manager"
-               value="16"
+               value="10"
                data-component="url">
     <br>
-<p>The ID of the project. Example: <code>16</code></p>
+<p>The ID of the project. Example: <code>10</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -4271,27 +4292,25 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="project-management-POSTprojects--project_id--teams">Assign teams to project</h2>
+                    <h2 id="project-management-POSTprojects--project_id--teams-sync">POST projects/{project_id}/teams/sync</h2>
 
 <p>
 </p>
 
-<p>Assign multiple teams to a project in a single request.</p>
 
-<span id="example-requests-POSTprojects--project_id--teams">
+
+<span id="example-requests-POSTprojects--project_id--teams-sync">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/projects/16/teams" \
+    "http://localhost/projects/10/teams/sync" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"team_ids\": [
-        1,
-        3,
-        5
+        16
     ]
 }"
 </code></pre></div>
@@ -4299,7 +4318,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/projects/16/teams"
+    "http://localhost/projects/10/teams/sync"
 );
 
 const headers = {
@@ -4309,9 +4328,7 @@ const headers = {
 
 let body = {
     "team_ids": [
-        1,
-        3,
-        5
+        16
     ]
 };
 
@@ -4323,130 +4340,45 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-POSTprojects--project_id--teams">
-            <blockquote>
-            <p>Example response (200, success):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: {
-        &quot;project&quot;: {
-            &quot;id&quot;: 1,
-            &quot;name&quot;: &quot;New Website&quot;,
-            &quot;teams&quot;: [
-                {
-                    &quot;id&quot;: 1,
-                    &quot;name&quot;: &quot;Development Team&quot;
-                },
-                {
-                    &quot;id&quot;: 3,
-                    &quot;name&quot;: &quot;QA Team&quot;
-                }
-            ]
-        },
-        &quot;invalid_team_ids&quot;: []
-    },
-    &quot;message&quot;: &quot;Teams assigned to project successfully.&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (200, success with invalid teams):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: {
-        &quot;project&quot;: {
-            &quot;id&quot;: 1,
-            &quot;name&quot;: &quot;New Website&quot;,
-            &quot;teams&quot;: [
-                {
-                    &quot;id&quot;: 1,
-                    &quot;name&quot;: &quot;Development Team&quot;
-                }
-            ]
-        },
-        &quot;invalid_team_ids&quot;: [
-            99
-        ]
-    },
-    &quot;message&quot;: &quot;Teams assigned to project successfully.&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (404, not found):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Project not found&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (422, validation error):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;The given data was invalid.&quot;,
-    &quot;errors&quot;: {
-        &quot;team_ids.0&quot;: [
-            &quot;The selected team_ids.0 is invalid.&quot;
-        ]
-    }
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (500, error):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: null,
-    &quot;message&quot;: &quot;Failed to assign teams to project: Internal server error&quot;,
-    &quot;errors&quot;: [],
-    &quot;meta&quot;: []
-}</code>
- </pre>
-    </span>
-<span id="execution-results-POSTprojects--project_id--teams" hidden>
+<span id="example-responses-POSTprojects--project_id--teams-sync">
+</span>
+<span id="execution-results-POSTprojects--project_id--teams-sync" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-POSTprojects--project_id--teams"></span>:
+                id="execution-response-status-POSTprojects--project_id--teams-sync"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTprojects--project_id--teams"
+    <pre class="json"><code id="execution-response-content-POSTprojects--project_id--teams-sync"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-POSTprojects--project_id--teams" hidden>
+<span id="execution-error-POSTprojects--project_id--teams-sync" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTprojects--project_id--teams">
+    <pre><code id="execution-error-message-POSTprojects--project_id--teams-sync">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-POSTprojects--project_id--teams" data-method="POST"
-      data-path="projects/{project_id}/teams"
+<form id="form-POSTprojects--project_id--teams-sync" data-method="POST"
+      data-path="projects/{project_id}/teams/sync"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTprojects--project_id--teams', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTprojects--project_id--teams-sync', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTprojects--project_id--teams"
-                    onclick="tryItOut('POSTprojects--project_id--teams');">Try it out ⚡
+                    id="btn-tryout-POSTprojects--project_id--teams-sync"
+                    onclick="tryItOut('POSTprojects--project_id--teams-sync');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTprojects--project_id--teams"
-                    onclick="cancelTryOut('POSTprojects--project_id--teams');" hidden>Cancel 🛑
+                    id="btn-canceltryout-POSTprojects--project_id--teams-sync"
+                    onclick="cancelTryOut('POSTprojects--project_id--teams-sync');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTprojects--project_id--teams"
+                    id="btn-executetryout-POSTprojects--project_id--teams-sync"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -4454,7 +4386,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
-            <b><code>projects/{project_id}/teams</code></b>
+            <b><code>projects/{project_id}/teams/sync</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -4462,7 +4394,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTprojects--project_id--teams"
+                              name="Content-Type"                data-endpoint="POSTprojects--project_id--teams-sync"
                value="application/json"
                data-component="header">
     <br>
@@ -4473,7 +4405,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTprojects--project_id--teams"
+                              name="Accept"                data-endpoint="POSTprojects--project_id--teams-sync"
                value="application/json"
                data-component="header">
     <br>
@@ -4485,25 +4417,25 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="project_id"                data-endpoint="POSTprojects--project_id--teams"
-               value="16"
+               step="any"               name="project_id"                data-endpoint="POSTprojects--project_id--teams-sync"
+               value="10"
                data-component="url">
     <br>
-<p>The ID of the project. Example: <code>16</code></p>
+<p>The ID of the project. Example: <code>10</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>team_ids</code></b>&nbsp;&nbsp;
 <small>integer[]</small>&nbsp;
- &nbsp;
+<i>optional</i> &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="team_ids[0]"                data-endpoint="POSTprojects--project_id--teams"
+               step="any"               name="team_ids[0]"                data-endpoint="POSTprojects--project_id--teams-sync"
                data-component="body">
         <input type="number" style="display: none"
-               name="team_ids[1]"                data-endpoint="POSTprojects--project_id--teams"
+               name="team_ids[1]"                data-endpoint="POSTprojects--project_id--teams-sync"
                data-component="body">
     <br>
-<p>Array of team IDs to assign to the project.</p>
+<p>The <code>id</code> of an existing record in the teams table.</p>
         </div>
         </form>
 
@@ -4565,26 +4497,28 @@ fetch(url, {
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 1,
-            &quot;project_id&quot;: 1,
+            &quot;id&quot;: 33,
+            &quot;project_id&quot;: 51,
             &quot;title&quot;: &quot;Et animi quos velit et fugiat.&quot;,
             &quot;description&quot;: &quot;Accusantium harum mollitia modi deserunt aut ab. Perspiciatis quo omnis nostrum aut adipisci quidem nostrum qui. Incidunt iure odit et et modi ipsum.&quot;,
             &quot;status&quot;: &quot;approved&quot;,
             &quot;priority&quot;: &quot;high&quot;,
-            &quot;due_date&quot;: &quot;2026-04-03T00:00:00.000000Z&quot;,
-            &quot;created_at&quot;: &quot;2025-11-01T13:20:00.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2025-11-01T13:20:00.000000Z&quot;
+            &quot;due_date&quot;: &quot;2026-04-29T00:00:00.000000Z&quot;,
+            &quot;created_at&quot;: &quot;2025-11-27T04:07:58.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-11-27T04:07:58.000000Z&quot;,
+            &quot;deleted_at&quot;: null
         },
         {
-            &quot;id&quot;: 2,
-            &quot;project_id&quot;: 2,
-            &quot;title&quot;: &quot;Tenetur ratione nemo voluptate accusamus ut et recusandae modi.&quot;,
-            &quot;description&quot;: &quot;Repellendus assumenda et tenetur ab reiciendis. Perspiciatis deserunt ducimus corrupti et dolores quia. Assumenda odit doloribus repellat officiis corporis nesciunt ut. Iure impedit molestiae ut rem est esse sint.&quot;,
-            &quot;status&quot;: &quot;rejected&quot;,
-            &quot;priority&quot;: &quot;medium&quot;,
-            &quot;due_date&quot;: &quot;2025-11-17T00:00:00.000000Z&quot;,
-            &quot;created_at&quot;: &quot;2025-11-01T13:20:00.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2025-11-01T13:20:00.000000Z&quot;
+            &quot;id&quot;: 34,
+            &quot;project_id&quot;: 52,
+            &quot;title&quot;: &quot;Quia officia est dignissimos neque.&quot;,
+            &quot;description&quot;: &quot;Veritatis excepturi doloribus delectus fugit. Repudiandae laboriosam est alias tenetur ratione. Voluptate accusamus ut et recusandae. Rerum ex repellendus assumenda et.&quot;,
+            &quot;status&quot;: &quot;on_hold&quot;,
+            &quot;priority&quot;: &quot;urgent&quot;,
+            &quot;due_date&quot;: &quot;2026-04-13T00:00:00.000000Z&quot;,
+            &quot;created_at&quot;: &quot;2025-11-27T04:07:58.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-11-27T04:07:58.000000Z&quot;,
+            &quot;deleted_at&quot;: null
         }
     ],
     &quot;links&quot;: {
@@ -4803,14 +4737,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/tasks/16" \
+    --get "http://localhost/tasks/17" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/tasks/16"
+    "http://localhost/tasks/17"
 );
 
 const headers = {
@@ -4833,15 +4767,16 @@ fetch(url, {
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 3,
-        &quot;project_id&quot;: 3,
-        &quot;title&quot;: &quot;Nihil accusantium harum mollitia modi deserunt.&quot;,
-        &quot;description&quot;: &quot;Provident perspiciatis quo omnis nostrum aut adipisci quidem. Qui commodi incidunt iure odit. Et modi ipsum nostrum omnis autem et consequatur. Dolores enim non facere tempora.&quot;,
-        &quot;status&quot;: &quot;awaiting_review&quot;,
-        &quot;priority&quot;: &quot;high&quot;,
-        &quot;due_date&quot;: &quot;2025-12-22T00:00:00.000000Z&quot;,
-        &quot;created_at&quot;: &quot;2025-11-01T13:20:00.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2025-11-01T13:20:00.000000Z&quot;
+        &quot;id&quot;: 35,
+        &quot;project_id&quot;: 53,
+        &quot;title&quot;: &quot;Error neque recusandae et ipsam dolorem et ut dicta.&quot;,
+        &quot;description&quot;: &quot;Consequatur ut et sunt quisquam sit repellendus ut. Alias ratione dolores sed rem. Ut aut deserunt sint quis in quod id aspernatur.&quot;,
+        &quot;status&quot;: &quot;not_started&quot;,
+        &quot;priority&quot;: &quot;medium&quot;,
+        &quot;due_date&quot;: &quot;2025-12-05T00:00:00.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2025-11-27T04:07:58.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-11-27T04:07:58.000000Z&quot;,
+        &quot;deleted_at&quot;: null
     }
 }</code>
  </pre>
@@ -4955,10 +4890,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="task_id"                data-endpoint="GETtasks--task_id-"
-               value="16"
+               value="17"
                data-component="url">
     <br>
-<p>The ID of the task. Example: <code>16</code></p>
+<p>The ID of the task. Example: <code>17</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>task</code></b>&nbsp;&nbsp;
@@ -5026,26 +4961,28 @@ fetch(url, {
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 4,
-            &quot;project_id&quot;: 4,
-            &quot;title&quot;: &quot;Odit doloribus repellat officiis corporis nesciunt ut ratione iure.&quot;,
-            &quot;description&quot;: &quot;Ut rem est esse sint. Molestiae sunt suscipit doloribus fugiat ut aut. Et error neque recusandae et.&quot;,
-            &quot;status&quot;: &quot;cancelled&quot;,
-            &quot;priority&quot;: &quot;high&quot;,
-            &quot;due_date&quot;: &quot;2026-04-22T00:00:00.000000Z&quot;,
-            &quot;created_at&quot;: &quot;2025-11-01T13:20:01.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2025-11-01T13:20:01.000000Z&quot;
+            &quot;id&quot;: 36,
+            &quot;project_id&quot;: 54,
+            &quot;title&quot;: &quot;Unde et esse pariatur non inventore.&quot;,
+            &quot;description&quot;: &quot;Possimus aliquam consequatur qui amet quasi animi aut. Molestiae voluptatem et sit quibusdam aut odio. Voluptates exercitationem est aperiam quis est nulla.&quot;,
+            &quot;status&quot;: &quot;assigned&quot;,
+            &quot;priority&quot;: &quot;low&quot;,
+            &quot;due_date&quot;: &quot;2026-01-02T00:00:00.000000Z&quot;,
+            &quot;created_at&quot;: &quot;2025-11-27T04:07:58.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-11-27T04:07:58.000000Z&quot;,
+            &quot;deleted_at&quot;: null
         },
         {
-            &quot;id&quot;: 5,
-            &quot;project_id&quot;: 5,
-            &quot;title&quot;: &quot;Dolores omnis et earum consequatur asperiores est vel id.&quot;,
-            &quot;description&quot;: &quot;Eos voluptatem et qui unde et esse pariatur. Inventore iusto facere possimus aliquam consequatur. Amet quasi animi aut sequi molestiae voluptatem. Sit quibusdam aut odio dolorum.&quot;,
-            &quot;status&quot;: &quot;approved&quot;,
-            &quot;priority&quot;: &quot;medium&quot;,
-            &quot;due_date&quot;: &quot;2025-12-26T00:00:00.000000Z&quot;,
-            &quot;created_at&quot;: &quot;2025-11-01T13:20:01.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2025-11-01T13:20:01.000000Z&quot;
+            &quot;id&quot;: 37,
+            &quot;project_id&quot;: 55,
+            &quot;title&quot;: &quot;Sed provident aut non officiis.&quot;,
+            &quot;description&quot;: &quot;Totam molestiae officia harum ex laudantium ut voluptates. Incidunt aut omnis totam aut et. Nihil laboriosam id enim aut aut. Saepe doloribus cupiditate earum labore quae.&quot;,
+            &quot;status&quot;: &quot;completed&quot;,
+            &quot;priority&quot;: &quot;high&quot;,
+            &quot;due_date&quot;: &quot;2026-02-09T00:00:00.000000Z&quot;,
+            &quot;created_at&quot;: &quot;2025-11-27T04:07:58.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-11-27T04:07:58.000000Z&quot;,
+            &quot;deleted_at&quot;: null
         }
     ],
     &quot;links&quot;: {
@@ -5296,26 +5233,28 @@ fetch(url, {
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 6,
-            &quot;project_id&quot;: 6,
-            &quot;title&quot;: &quot;Ab provident perspiciatis quo omnis nostrum aut adipisci.&quot;,
-            &quot;description&quot;: &quot;Qui commodi incidunt iure odit. Et modi ipsum nostrum omnis autem et consequatur. Dolores enim non facere tempora.&quot;,
-            &quot;status&quot;: &quot;awaiting_review&quot;,
-            &quot;priority&quot;: &quot;high&quot;,
-            &quot;due_date&quot;: &quot;2025-12-22T00:00:00.000000Z&quot;,
-            &quot;created_at&quot;: &quot;2025-11-01T13:20:01.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2025-11-01T13:20:01.000000Z&quot;
+            &quot;id&quot;: 38,
+            &quot;project_id&quot;: 56,
+            &quot;title&quot;: &quot;Est sint sit qui perferendis voluptates.&quot;,
+            &quot;description&quot;: &quot;Velit aut voluptatem delectus quas qui eos. Dolorem laboriosam dolores assumenda aliquam enim qui aut repellendus. Debitis expedita et sit doloribus accusantium. Aspernatur quo expedita id est cupiditate.&quot;,
+            &quot;status&quot;: &quot;approved&quot;,
+            &quot;priority&quot;: &quot;urgent&quot;,
+            &quot;due_date&quot;: &quot;2026-03-04T00:00:00.000000Z&quot;,
+            &quot;created_at&quot;: &quot;2025-11-27T04:07:58.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-11-27T04:07:58.000000Z&quot;,
+            &quot;deleted_at&quot;: null
         },
         {
-            &quot;id&quot;: 7,
-            &quot;project_id&quot;: 7,
-            &quot;title&quot;: &quot;Repellat officiis corporis nesciunt ut.&quot;,
-            &quot;description&quot;: &quot;Impedit molestiae ut rem est esse. Aut molestiae sunt suscipit doloribus fugiat. Aut deserunt et error neque recusandae et. Dolorem et ut dicta.&quot;,
-            &quot;status&quot;: &quot;not_started&quot;,
+            &quot;id&quot;: 39,
+            &quot;project_id&quot;: 57,
+            &quot;title&quot;: &quot;Ducimus tempora esse dignissimos qui voluptate nihil.&quot;,
+            &quot;description&quot;: &quot;Eligendi perspiciatis voluptatibus iure molestias qui. Reiciendis deserunt suscipit commodi accusamus temporibus maxime. Nisi iste possimus dolor dolor nam corporis fugiat. Et perferendis voluptate laborum ea ab. Quae praesentium autem libero quos aut quos.&quot;,
+            &quot;status&quot;: &quot;rejected&quot;,
             &quot;priority&quot;: &quot;medium&quot;,
-            &quot;due_date&quot;: &quot;2025-12-02T00:00:00.000000Z&quot;,
-            &quot;created_at&quot;: &quot;2025-11-01T13:20:01.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2025-11-01T13:20:01.000000Z&quot;
+            &quot;due_date&quot;: &quot;2026-01-21T00:00:00.000000Z&quot;,
+            &quot;created_at&quot;: &quot;2025-11-27T04:07:59.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-11-27T04:07:59.000000Z&quot;,
+            &quot;deleted_at&quot;: null
         }
     ],
     &quot;links&quot;: {
@@ -5527,7 +5466,7 @@ update existing ones, and remove relations not in the provided arrays.</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/tasks/16/sync-relations" \
+    "http://localhost/tasks/17/sync-relations" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -5553,7 +5492,7 @@ update existing ones, and remove relations not in the provided arrays.</p>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/tasks/16/sync-relations"
+    "http://localhost/tasks/17/sync-relations"
 );
 
 const headers = {
@@ -5720,10 +5659,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="task_id"                data-endpoint="POSTtasks--task_id--sync-relations"
-               value="16"
+               value="17"
                data-component="url">
     <br>
-<p>The ID of the task. Example: <code>16</code></p>
+<p>The ID of the task. Example: <code>17</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>task</code></b>&nbsp;&nbsp;
@@ -5805,35 +5744,35 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="task-management-POSTtasks">Create Task</h2>
+                    <h2 id="task-management-POSTprojects--project_id--tasks">Create Task</h2>
 
 <p>
 </p>
 
 <p>Create a new task within a project.</p>
 
-<span id="example-requests-POSTtasks">
+<span id="example-requests-POSTprojects--project_id--tasks">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/tasks" \
+    "http://localhost/projects/10/tasks" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"project_id\": 1,
     \"title\": \"Implement user authentication\",
     \"description\": \"Add JWT-based authentication to the API\",
     \"priority\": \"high\",
-    \"due_date\": \"2025-11-15\"
+    \"due_date\": \"2025-11-15\",
+    \"project_id\": 1
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/tasks"
+    "http://localhost/projects/10/tasks"
 );
 
 const headers = {
@@ -5842,11 +5781,11 @@ const headers = {
 };
 
 let body = {
-    "project_id": 1,
     "title": "Implement user authentication",
     "description": "Add JWT-based authentication to the API",
     "priority": "high",
-    "due_date": "2025-11-15"
+    "due_date": "2025-11-15",
+    "project_id": 1
 };
 
 fetch(url, {
@@ -5857,7 +5796,7 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-POSTtasks">
+<span id="example-responses-POSTprojects--project_id--tasks">
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
@@ -5865,15 +5804,16 @@ fetch(url, {
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 8,
-        &quot;project_id&quot;: 8,
+        &quot;id&quot;: 40,
+        &quot;project_id&quot;: 58,
         &quot;title&quot;: &quot;Sunt nihil accusantium harum mollitia.&quot;,
         &quot;description&quot;: &quot;Aut ab provident perspiciatis quo omnis nostrum aut. Quidem nostrum qui commodi incidunt iure odit. Et modi ipsum nostrum omnis autem et consequatur. Dolores enim non facere tempora.&quot;,
         &quot;status&quot;: &quot;awaiting_review&quot;,
         &quot;priority&quot;: &quot;high&quot;,
-        &quot;due_date&quot;: &quot;2025-12-22T00:00:00.000000Z&quot;,
-        &quot;created_at&quot;: &quot;2025-11-01T13:20:01.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2025-11-01T13:20:01.000000Z&quot;
+        &quot;due_date&quot;: &quot;2026-01-16T00:00:00.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2025-11-27T04:07:59.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-11-27T04:07:59.000000Z&quot;,
+        &quot;deleted_at&quot;: null
     }
 }</code>
  </pre>
@@ -5928,43 +5868,43 @@ fetch(url, {
 }</code>
  </pre>
     </span>
-<span id="execution-results-POSTtasks" hidden>
+<span id="execution-results-POSTprojects--project_id--tasks" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-POSTtasks"></span>:
+                id="execution-response-status-POSTprojects--project_id--tasks"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTtasks"
+    <pre class="json"><code id="execution-response-content-POSTprojects--project_id--tasks"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-POSTtasks" hidden>
+<span id="execution-error-POSTprojects--project_id--tasks" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTtasks">
+    <pre><code id="execution-error-message-POSTprojects--project_id--tasks">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-POSTtasks" data-method="POST"
-      data-path="tasks"
+<form id="form-POSTprojects--project_id--tasks" data-method="POST"
+      data-path="projects/{project_id}/tasks"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTtasks', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTprojects--project_id--tasks', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTtasks"
-                    onclick="tryItOut('POSTtasks');">Try it out ⚡
+                    id="btn-tryout-POSTprojects--project_id--tasks"
+                    onclick="tryItOut('POSTprojects--project_id--tasks');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTtasks"
-                    onclick="cancelTryOut('POSTtasks');" hidden>Cancel 🛑
+                    id="btn-canceltryout-POSTprojects--project_id--tasks"
+                    onclick="cancelTryOut('POSTprojects--project_id--tasks');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTtasks"
+                    id="btn-executetryout-POSTprojects--project_id--tasks"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -5972,7 +5912,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
-            <b><code>tasks</code></b>
+            <b><code>projects/{project_id}/tasks</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -5980,7 +5920,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTtasks"
+                              name="Content-Type"                data-endpoint="POSTprojects--project_id--tasks"
                value="application/json"
                data-component="header">
     <br>
@@ -5991,7 +5931,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTtasks"
+                              name="Accept"                data-endpoint="POSTprojects--project_id--tasks"
                value="application/json"
                data-component="header">
     <br>
@@ -5999,11 +5939,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>project_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="project_id"                data-endpoint="POSTprojects--project_id--tasks"
+               value="10"
+               data-component="url">
+    <br>
+<p>The ID of the project. Example: <code>10</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>project</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="project"                data-endpoint="POSTtasks"
+               step="any"               name="project"                data-endpoint="POSTprojects--project_id--tasks"
                value="1"
                data-component="url">
     <br>
@@ -6011,22 +5962,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>project_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="project_id"                data-endpoint="POSTtasks"
-               value="1"
-               data-component="body">
-    <br>
-<p>The ID of the project. Example: <code>1</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>title</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="title"                data-endpoint="POSTtasks"
+                              name="title"                data-endpoint="POSTprojects--project_id--tasks"
                value="Implement user authentication"
                data-component="body">
     <br>
@@ -6037,7 +5977,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="description"                data-endpoint="POSTtasks"
+                              name="description"                data-endpoint="POSTprojects--project_id--tasks"
                value="Add JWT-based authentication to the API"
                data-component="body">
     <br>
@@ -6048,7 +5988,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="priority"                data-endpoint="POSTtasks"
+                              name="priority"                data-endpoint="POSTprojects--project_id--tasks"
                value="high"
                data-component="body">
     <br>
@@ -6059,11 +5999,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>date</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="due_date"                data-endpoint="POSTtasks"
+                              name="due_date"                data-endpoint="POSTprojects--project_id--tasks"
                value="2025-11-15"
                data-component="body">
     <br>
 <p>Optional due date for the task. Must be a valid date. Example: <code>2025-11-15</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>project_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="project_id"                data-endpoint="POSTprojects--project_id--tasks"
+               value="1"
+               data-component="body">
+    <br>
+<p>The ID of the project. Example: <code>1</code></p>
         </div>
         </form>
 
@@ -6080,7 +6031,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/tasks/16" \
+    "http://localhost/tasks/17" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -6095,7 +6046,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/tasks/16"
+    "http://localhost/tasks/17"
 );
 
 const headers = {
@@ -6127,15 +6078,16 @@ fetch(url, {
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 9,
-        &quot;project_id&quot;: 9,
+        &quot;id&quot;: 41,
+        &quot;project_id&quot;: 59,
         &quot;title&quot;: &quot;Deserunt aut ab provident perspiciatis quo omnis nostrum.&quot;,
         &quot;description&quot;: &quot;Quidem nostrum qui commodi incidunt iure odit. Et modi ipsum nostrum omnis autem et consequatur. Dolores enim non facere tempora. Voluptatem laboriosam praesentium quis adipisci.&quot;,
         &quot;status&quot;: &quot;awaiting_review&quot;,
         &quot;priority&quot;: &quot;urgent&quot;,
-        &quot;due_date&quot;: &quot;2026-02-21T00:00:00.000000Z&quot;,
-        &quot;created_at&quot;: &quot;2025-11-01T13:20:01.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2025-11-01T13:20:01.000000Z&quot;
+        &quot;due_date&quot;: &quot;2026-03-19T00:00:00.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2025-11-27T04:07:59.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-11-27T04:07:59.000000Z&quot;,
+        &quot;deleted_at&quot;: null
     }
 }</code>
  </pre>
@@ -6274,10 +6226,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="task_id"                data-endpoint="PUTtasks--task_id-"
-               value="16"
+               value="17"
                data-component="url">
     <br>
-<p>The ID of the task. Example: <code>16</code></p>
+<p>The ID of the task. Example: <code>17</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>task</code></b>&nbsp;&nbsp;
@@ -6361,14 +6313,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/tasks/16?force=1" \
+    "http://localhost/tasks/17?force=1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/tasks/16"
+    "http://localhost/tasks/17"
 );
 
 const params = {
@@ -6507,10 +6459,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="task_id"                data-endpoint="DELETEtasks--task_id-"
-               value="16"
+               value="17"
                data-component="url">
     <br>
-<p>The ID of the task. Example: <code>16</code></p>
+<p>The ID of the task. Example: <code>17</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>task</code></b>&nbsp;&nbsp;
@@ -6707,6 +6659,704 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
+                    <h2 id="task-management-POSTtasks--task_id--assign-user">POST tasks/{task_id}/assign-user</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTtasks--task_id--assign-user">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/tasks/17/assign-user" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"assign_to\": 16
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/tasks/17/assign-user"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "assign_to": 16
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTtasks--task_id--assign-user">
+</span>
+<span id="execution-results-POSTtasks--task_id--assign-user" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTtasks--task_id--assign-user"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTtasks--task_id--assign-user"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTtasks--task_id--assign-user" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTtasks--task_id--assign-user">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTtasks--task_id--assign-user" data-method="POST"
+      data-path="tasks/{task_id}/assign-user"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTtasks--task_id--assign-user', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTtasks--task_id--assign-user"
+                    onclick="tryItOut('POSTtasks--task_id--assign-user');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTtasks--task_id--assign-user"
+                    onclick="cancelTryOut('POSTtasks--task_id--assign-user');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTtasks--task_id--assign-user"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>tasks/{task_id}/assign-user</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTtasks--task_id--assign-user"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTtasks--task_id--assign-user"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>task_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="task_id"                data-endpoint="POSTtasks--task_id--assign-user"
+               value="17"
+               data-component="url">
+    <br>
+<p>The ID of the task. Example: <code>17</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>assign_to</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="assign_to"                data-endpoint="POSTtasks--task_id--assign-user"
+               value="16"
+               data-component="body">
+    <br>
+<p>The <code>id</code> of an existing record in the users table. Example: <code>16</code></p>
+        </div>
+        </form>
+
+                    <h2 id="task-management-POSTtasks--task_id--start">POST tasks/{task_id}/start</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTtasks--task_id--start">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/tasks/17/start" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/tasks/17/start"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTtasks--task_id--start">
+</span>
+<span id="execution-results-POSTtasks--task_id--start" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTtasks--task_id--start"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTtasks--task_id--start"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTtasks--task_id--start" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTtasks--task_id--start">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTtasks--task_id--start" data-method="POST"
+      data-path="tasks/{task_id}/start"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTtasks--task_id--start', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTtasks--task_id--start"
+                    onclick="tryItOut('POSTtasks--task_id--start');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTtasks--task_id--start"
+                    onclick="cancelTryOut('POSTtasks--task_id--start');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTtasks--task_id--start"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>tasks/{task_id}/start</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTtasks--task_id--start"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTtasks--task_id--start"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>task_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="task_id"                data-endpoint="POSTtasks--task_id--start"
+               value="17"
+               data-component="url">
+    <br>
+<p>The ID of the task. Example: <code>17</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="task-management-POSTtasks--task_id--submit">POST tasks/{task_id}/submit</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTtasks--task_id--submit">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/tasks/17/submit" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"notes\": \"architecto\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/tasks/17/submit"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "notes": "architecto"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTtasks--task_id--submit">
+</span>
+<span id="execution-results-POSTtasks--task_id--submit" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTtasks--task_id--submit"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTtasks--task_id--submit"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTtasks--task_id--submit" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTtasks--task_id--submit">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTtasks--task_id--submit" data-method="POST"
+      data-path="tasks/{task_id}/submit"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTtasks--task_id--submit', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTtasks--task_id--submit"
+                    onclick="tryItOut('POSTtasks--task_id--submit');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTtasks--task_id--submit"
+                    onclick="cancelTryOut('POSTtasks--task_id--submit');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTtasks--task_id--submit"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>tasks/{task_id}/submit</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTtasks--task_id--submit"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTtasks--task_id--submit"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>task_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="task_id"                data-endpoint="POSTtasks--task_id--submit"
+               value="17"
+               data-component="url">
+    <br>
+<p>The ID of the task. Example: <code>17</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>notes</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="notes"                data-endpoint="POSTtasks--task_id--submit"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>Example: <code>architecto</code></p>
+        </div>
+        </form>
+
+                    <h2 id="task-management-POSTtasks--task_id--reviews--taskReview_id--start">POST tasks/{task_id}/reviews/{taskReview_id}/start</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTtasks--task_id--reviews--taskReview_id--start">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/tasks/17/reviews/1/start" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/tasks/17/reviews/1/start"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTtasks--task_id--reviews--taskReview_id--start">
+</span>
+<span id="execution-results-POSTtasks--task_id--reviews--taskReview_id--start" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTtasks--task_id--reviews--taskReview_id--start"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTtasks--task_id--reviews--taskReview_id--start"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTtasks--task_id--reviews--taskReview_id--start" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTtasks--task_id--reviews--taskReview_id--start">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTtasks--task_id--reviews--taskReview_id--start" data-method="POST"
+      data-path="tasks/{task_id}/reviews/{taskReview_id}/start"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTtasks--task_id--reviews--taskReview_id--start', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTtasks--task_id--reviews--taskReview_id--start"
+                    onclick="tryItOut('POSTtasks--task_id--reviews--taskReview_id--start');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTtasks--task_id--reviews--taskReview_id--start"
+                    onclick="cancelTryOut('POSTtasks--task_id--reviews--taskReview_id--start');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTtasks--task_id--reviews--taskReview_id--start"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>tasks/{task_id}/reviews/{taskReview_id}/start</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTtasks--task_id--reviews--taskReview_id--start"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTtasks--task_id--reviews--taskReview_id--start"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>task_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="task_id"                data-endpoint="POSTtasks--task_id--reviews--taskReview_id--start"
+               value="17"
+               data-component="url">
+    <br>
+<p>The ID of the task. Example: <code>17</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>taskReview_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="taskReview_id"                data-endpoint="POSTtasks--task_id--reviews--taskReview_id--start"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the taskReview. Example: <code>1</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="task-management-POSTtasks--task_id--reviews--taskReview_id--submit">POST tasks/{task_id}/reviews/{taskReview_id}/submit</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTtasks--task_id--reviews--taskReview_id--submit">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/tasks/17/reviews/1/submit" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"feedback\": \"architecto\",
+    \"status\": \"architecto\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/tasks/17/reviews/1/submit"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "feedback": "architecto",
+    "status": "architecto"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTtasks--task_id--reviews--taskReview_id--submit">
+</span>
+<span id="execution-results-POSTtasks--task_id--reviews--taskReview_id--submit" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTtasks--task_id--reviews--taskReview_id--submit"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTtasks--task_id--reviews--taskReview_id--submit"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTtasks--task_id--reviews--taskReview_id--submit" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTtasks--task_id--reviews--taskReview_id--submit">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTtasks--task_id--reviews--taskReview_id--submit" data-method="POST"
+      data-path="tasks/{task_id}/reviews/{taskReview_id}/submit"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTtasks--task_id--reviews--taskReview_id--submit', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTtasks--task_id--reviews--taskReview_id--submit"
+                    onclick="tryItOut('POSTtasks--task_id--reviews--taskReview_id--submit');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTtasks--task_id--reviews--taskReview_id--submit"
+                    onclick="cancelTryOut('POSTtasks--task_id--reviews--taskReview_id--submit');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTtasks--task_id--reviews--taskReview_id--submit"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>tasks/{task_id}/reviews/{taskReview_id}/submit</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTtasks--task_id--reviews--taskReview_id--submit"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTtasks--task_id--reviews--taskReview_id--submit"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>task_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="task_id"                data-endpoint="POSTtasks--task_id--reviews--taskReview_id--submit"
+               value="17"
+               data-component="url">
+    <br>
+<p>The ID of the task. Example: <code>17</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>taskReview_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="taskReview_id"                data-endpoint="POSTtasks--task_id--reviews--taskReview_id--submit"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the taskReview. Example: <code>1</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>feedback</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="feedback"                data-endpoint="POSTtasks--task_id--reviews--taskReview_id--submit"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>Example: <code>architecto</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="POSTtasks--task_id--reviews--taskReview_id--submit"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>Example: <code>architecto</code></p>
+        </div>
+        </form>
+
                 <h1 id="team-management">Team Management</h1>
 
     <p>APIs for managing teams</p>
@@ -6762,11 +7412,13 @@ fetch(url, {
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 1,
-        &quot;name&quot;: &quot;Bailey Ltd&quot;,
-        &quot;description&quot;: &quot;Et fugiat sunt nihil accusantium. Mollitia modi deserunt aut ab provident perspiciatis quo. Nostrum aut adipisci quidem nostrum.&quot;,
-        &quot;created_at&quot;: &quot;2025-11-01T13:20:00.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2025-11-01T13:20:00.000000Z&quot;
+        &quot;id&quot;: 14,
+        &quot;name&quot;: &quot;Ferry-Koch&quot;,
+        &quot;description&quot;: &quot;Tempore iure adipisci voluptas mollitia dolor molestiae iste eaque. Nihil ut adipisci quia vel veniam nostrum reiciendis. Error placeat et explicabo quo commodi. Facilis suscipit praesentium ratione ad odio. Qui animi nisi a soluta.&quot;,
+        &quot;lead&quot;: null,
+        &quot;created_at&quot;: &quot;2025-11-27T04:07:58.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-11-27T04:07:58.000000Z&quot;,
+        &quot;deleted_at&quot;: null
     }
 }</code>
  </pre>
@@ -7099,27 +7751,27 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="team-management-GETteams--team_id-">Get team</h2>
+                    <h2 id="team-management-GETteams--team-">Get team</h2>
 
 <p>
 </p>
 
 <p>Get details of a specific team by ID, including its members.</p>
 
-<span id="example-requests-GETteams--team_id-">
+<span id="example-requests-GETteams--team-">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/teams/16" \
+    --get "http://localhost/teams/5" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/teams/16"
+    "http://localhost/teams/5"
 );
 
 const headers = {
@@ -7134,7 +7786,7 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-GETteams--team_id-">
+<span id="example-responses-GETteams--team-">
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
@@ -7142,11 +7794,13 @@ fetch(url, {
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 2,
-        &quot;name&quot;: &quot;Bailey Ltd&quot;,
-        &quot;description&quot;: &quot;Et fugiat sunt nihil accusantium. Mollitia modi deserunt aut ab provident perspiciatis quo. Nostrum aut adipisci quidem nostrum.&quot;,
-        &quot;created_at&quot;: &quot;2025-11-01T13:20:00.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2025-11-01T13:20:00.000000Z&quot;
+        &quot;id&quot;: 15,
+        &quot;name&quot;: &quot;Bailey Inc&quot;,
+        &quot;description&quot;: &quot;Velit et fugiat sunt nihil accusantium. Mollitia modi deserunt aut ab provident perspiciatis quo. Nostrum aut adipisci quidem nostrum. Commodi incidunt iure odit.&quot;,
+        &quot;lead&quot;: null,
+        &quot;created_at&quot;: &quot;2025-11-27T04:07:58.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-11-27T04:07:58.000000Z&quot;,
+        &quot;deleted_at&quot;: null
     }
 }</code>
  </pre>
@@ -7187,43 +7841,43 @@ fetch(url, {
 }</code>
  </pre>
     </span>
-<span id="execution-results-GETteams--team_id-" hidden>
+<span id="execution-results-GETteams--team-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETteams--team_id-"></span>:
+                id="execution-response-status-GETteams--team-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETteams--team_id-"
+    <pre class="json"><code id="execution-response-content-GETteams--team-"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-GETteams--team_id-" hidden>
+<span id="execution-error-GETteams--team-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETteams--team_id-">
+    <pre><code id="execution-error-message-GETteams--team-">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-GETteams--team_id-" data-method="GET"
-      data-path="teams/{team_id}"
+<form id="form-GETteams--team-" data-method="GET"
+      data-path="teams/{team}"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETteams--team_id-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETteams--team-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETteams--team_id-"
-                    onclick="tryItOut('GETteams--team_id-');">Try it out ⚡
+                    id="btn-tryout-GETteams--team-"
+                    onclick="tryItOut('GETteams--team-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETteams--team_id-"
-                    onclick="cancelTryOut('GETteams--team_id-');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETteams--team-"
+                    onclick="cancelTryOut('GETteams--team-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETteams--team_id-"
+                    id="btn-executetryout-GETteams--team-"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -7231,7 +7885,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>teams/{team_id}</code></b>
+            <b><code>teams/{team}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -7239,7 +7893,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETteams--team_id-"
+                              name="Content-Type"                data-endpoint="GETteams--team-"
                value="application/json"
                data-component="header">
     <br>
@@ -7250,7 +7904,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETteams--team_id-"
+                              name="Accept"                data-endpoint="GETteams--team-"
                value="application/json"
                data-component="header">
     <br>
@@ -7258,15 +7912,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>team_id</code></b>&nbsp;&nbsp;
+                <b style="line-height: 2;"><code>team</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="team_id"                data-endpoint="GETteams--team_id-"
-               value="16"
+               step="any"               name="team"                data-endpoint="GETteams--team-"
+               value="5"
                data-component="url">
     <br>
-<p>The ID of the team. Example: <code>16</code></p>
+<p>The team. Example: <code>5</code></p>
             </div>
                     </form>
 
@@ -7283,7 +7937,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/teams/16" \
+    "http://localhost/teams/5" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -7295,7 +7949,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/teams/16"
+    "http://localhost/teams/5"
 );
 
 const headers = {
@@ -7445,10 +8099,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="team_id"                data-endpoint="PUTteams--team_id-"
-               value="16"
+               value="5"
                data-component="url">
     <br>
-<p>The ID of the team. Example: <code>16</code></p>
+<p>The ID of the team. Example: <code>5</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -7480,7 +8134,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>
 </p>
 
-<p>Permanently delete a team from the system.</p>
+<p>Soft delete a team from the system.</p>
 
 <span id="example-requests-DELETEteams--team_id-">
 <blockquote>Example request:</blockquote>
@@ -7488,14 +8142,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/teams/16" \
+    "http://localhost/teams/5" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/teams/16"
+    "http://localhost/teams/5"
 );
 
 const headers = {
@@ -7619,12 +8273,398 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="team_id"                data-endpoint="DELETEteams--team_id-"
-               value="16"
+               value="5"
                data-component="url">
     <br>
-<p>The ID of the team. Example: <code>16</code></p>
+<p>The ID of the team. Example: <code>5</code></p>
             </div>
                     </form>
+
+                    <h2 id="team-management-POSTteams--teamId--restore">Restore team</h2>
+
+<p>
+</p>
+
+<p>Soft restore a team from the system.</p>
+
+<span id="example-requests-POSTteams--teamId--restore">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/teams/5/restore" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/teams/5/restore"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTteams--teamId--restore">
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Team restored successfully&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Team not found&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to restored team: Internal server error&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTteams--teamId--restore" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTteams--teamId--restore"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTteams--teamId--restore"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTteams--teamId--restore" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTteams--teamId--restore">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTteams--teamId--restore" data-method="POST"
+      data-path="teams/{teamId}/restore"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTteams--teamId--restore', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTteams--teamId--restore"
+                    onclick="tryItOut('POSTteams--teamId--restore');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTteams--teamId--restore"
+                    onclick="cancelTryOut('POSTteams--teamId--restore');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTteams--teamId--restore"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>teams/{teamId}/restore</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTteams--teamId--restore"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTteams--teamId--restore"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>teamId</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="teamId"                data-endpoint="POSTteams--teamId--restore"
+               value="5"
+               data-component="url">
+    <br>
+<p>Example: <code>5</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="team-management-POSTteams--team_id--members-sync">Sync multiple members to team</h2>
+
+<p>
+</p>
+
+<p>Sync multiple users to a team with their specified roles in a single request.</p>
+
+<span id="example-requests-POSTteams--team_id--members-sync">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/teams/5/members/sync" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"members\": [
+        {
+            \"user_id\": 5,
+            \"role\": \"team member\"
+        }
+    ]
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/teams/5/members/sync"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "members": [
+        {
+            "user_id": 5,
+            "role": "team member"
+        }
+    ]
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTteams--team_id--members-sync">
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;invalid_users&quot;: []
+    },
+    &quot;message&quot;: &quot;Users synced to team successfully&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, success with invalid users):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;invalid_users&quot;: [
+            3,
+            7
+        ]
+    },
+    &quot;message&quot;: &quot;Users synced to team successfully&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Team not found&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, validation error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The given data was invalid.&quot;,
+    &quot;errors&quot;: {
+        &quot;members.0.user_id&quot;: [
+            &quot;The selected members.0.user_id is invalid.&quot;
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, error):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Failed to sync users to team: Internal server error&quot;,
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: []
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTteams--team_id--members-sync" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTteams--team_id--members-sync"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTteams--team_id--members-sync"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTteams--team_id--members-sync" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTteams--team_id--members-sync">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTteams--team_id--members-sync" data-method="POST"
+      data-path="teams/{team_id}/members/sync"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTteams--team_id--members-sync', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTteams--team_id--members-sync"
+                    onclick="tryItOut('POSTteams--team_id--members-sync');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTteams--team_id--members-sync"
+                    onclick="cancelTryOut('POSTteams--team_id--members-sync');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTteams--team_id--members-sync"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>teams/{team_id}/members/sync</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTteams--team_id--members-sync"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTteams--team_id--members-sync"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>team_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="team_id"                data-endpoint="POSTteams--team_id--members-sync"
+               value="5"
+               data-component="url">
+    <br>
+<p>The ID of the team. Example: <code>5</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>members</code></b>&nbsp;&nbsp;
+<small>object[]</small>&nbsp;
+ &nbsp;
+<br>
+<p>Array of members to add.</p>
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="members.0.user_id"                data-endpoint="POSTteams--team_id--members-sync"
+               value="5"
+               data-component="body">
+    <br>
+<p>The ID of the user to sync. Example: <code>5</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>role</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="members.0.role"                data-endpoint="POSTteams--team_id--members-sync"
+               value="team member"
+               data-component="body">
+    <br>
+<p>The role to assign. Allowed values: team lead, team member. Example: <code>team member</code></p>
+                    </div>
+                                    </details>
+        </div>
+        </form>
 
                     <h2 id="team-management-POSTteams--team_id--members">Add member to team</h2>
 
@@ -7639,7 +8679,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/teams/16/members" \
+    "http://localhost/teams/5/members" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -7651,7 +8691,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/teams/16/members"
+    "http://localhost/teams/5/members"
 );
 
 const headers = {
@@ -7807,10 +8847,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="team_id"                data-endpoint="POSTteams--team_id--members"
-               value="16"
+               value="5"
                data-component="url">
     <br>
-<p>The ID of the team. Example: <code>16</code></p>
+<p>The ID of the team. Example: <code>5</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -7850,7 +8890,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/teams/16/members/bulk" \
+    "http://localhost/teams/5/members/bulk" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -7866,7 +8906,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/teams/16/members/bulk"
+    "http://localhost/teams/5/members/bulk"
 );
 
 const headers = {
@@ -8031,10 +9071,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="team_id"                data-endpoint="POSTteams--team_id--members-bulk"
-               value="16"
+               value="5"
                data-component="url">
     <br>
-<p>The ID of the team. Example: <code>16</code></p>
+<p>The ID of the team. Example: <code>5</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -8085,7 +9125,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/teams/16/members/3" \
+    "http://localhost/teams/5/members/27" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -8096,7 +9136,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/teams/16/members/3"
+    "http://localhost/teams/5/members/27"
 );
 
 const headers = {
@@ -8251,10 +9291,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="team_id"                data-endpoint="DELETEteams--team_id--members--user_id-"
-               value="16"
+               value="5"
                data-component="url">
     <br>
-<p>The ID of the team. Example: <code>16</code></p>
+<p>The ID of the team. Example: <code>5</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
@@ -8262,10 +9302,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="user_id"                data-endpoint="DELETEteams--team_id--members--user_id-"
-               value="3"
+               value="27"
                data-component="url">
     <br>
-<p>The ID of the user. Example: <code>3</code></p>
+<p>The ID of the user. Example: <code>27</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -8294,7 +9334,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/teams/16/members" \
+    "http://localhost/teams/5/members" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -8309,7 +9349,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/teams/16/members"
+    "http://localhost/teams/5/members"
 );
 
 const headers = {
@@ -8468,10 +9508,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="team_id"                data-endpoint="DELETEteams--team_id--members"
-               value="16"
+               value="5"
                data-component="url">
     <br>
-<p>The ID of the team. Example: <code>16</code></p>
+<p>The ID of the team. Example: <code>5</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -8502,7 +9542,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/teams/16/lead" \
+    "http://localhost/teams/5/lead" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -8513,7 +9553,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/teams/16/lead"
+    "http://localhost/teams/5/lead"
 );
 
 const headers = {
@@ -8695,10 +9735,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="team_id"                data-endpoint="POSTteams--team_id--lead"
-               value="16"
+               value="5"
                data-component="url">
     <br>
-<p>The ID of the team. Example: <code>16</code></p>
+<p>The ID of the team. Example: <code>5</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -8727,7 +9767,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/teams/16/projects" \
+    "http://localhost/teams/5/projects" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -8739,7 +9779,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/teams/16/projects"
+    "http://localhost/teams/5/projects"
 );
 
 const headers = {
@@ -8895,10 +9935,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="team_id"                data-endpoint="POSTteams--team_id--projects"
-               value="16"
+               value="5"
                data-component="url">
     <br>
-<p>The ID of the team. Example: <code>16</code></p>
+<p>The ID of the team. Example: <code>5</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -8938,7 +9978,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/teams/16/projects/16" \
+    "http://localhost/teams/5/projects/10" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -8949,7 +9989,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/teams/16/projects/16"
+    "http://localhost/teams/5/projects/10"
 );
 
 const headers = {
@@ -9090,10 +10130,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="team_id"                data-endpoint="DELETEteams--team_id--projects--project_id-"
-               value="16"
+               value="5"
                data-component="url">
     <br>
-<p>The ID of the team. Example: <code>16</code></p>
+<p>The ID of the team. Example: <code>5</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>project_id</code></b>&nbsp;&nbsp;
@@ -9101,10 +10141,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="project_id"                data-endpoint="DELETEteams--team_id--projects--project_id-"
-               value="16"
+               value="10"
                data-component="url">
     <br>
-<p>The ID of the project. Example: <code>16</code></p>
+<p>The ID of the project. Example: <code>10</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -9137,7 +10177,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/users?per_page=15&amp;name=John&amp;email=john%40example.com&amp;role=admin" \
+    --get "http://localhost/users?per_page=15&amp;name=John&amp;email=john%40example.com&amp;role=admin&amp;roles=admin%2Cteam+lead" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -9152,6 +10192,7 @@ const params = {
     "name": "John",
     "email": "john@example.com",
     "role": "admin",
+    "roles": "admin,team lead",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -9177,16 +10218,20 @@ fetch(url, {
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 4,
-            &quot;name&quot;: &quot;Prof. Frida Koch&quot;,
-            &quot;email&quot;: &quot;devonte27@example.net&quot;,
-            &quot;roles&quot;: []
+            &quot;id&quot;: 68,
+            &quot;name&quot;: &quot;Issac Toy&quot;,
+            &quot;email&quot;: &quot;hope15@example.com&quot;,
+            &quot;roles&quot;: [],
+            &quot;created_at&quot;: &quot;2025-11-27T04:07:58.000000Z&quot;,
+            &quot;deleted_at&quot;: null
         },
         {
-            &quot;id&quot;: 5,
-            &quot;name&quot;: &quot;Letitia Streich&quot;,
-            &quot;email&quot;: &quot;elna.schultz@example.org&quot;,
-            &quot;roles&quot;: []
+            &quot;id&quot;: 69,
+            &quot;name&quot;: &quot;Dr. Gregoria Osinski&quot;,
+            &quot;email&quot;: &quot;reilly.milan@example.com&quot;,
+            &quot;roles&quot;: [],
+            &quot;created_at&quot;: &quot;2025-11-27T04:07:58.000000Z&quot;,
+            &quot;deleted_at&quot;: null
         }
     ],
     &quot;links&quot;: {
@@ -9393,29 +10438,40 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <br>
 <p>Filter users by role. Example: <code>admin</code></p>
             </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>roles</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="roles"                data-endpoint="GETusers"
+               value="admin,team lead"
+               data-component="query">
+    <br>
+<p>Filter users by multiple roles separated by commas. Example: <code>admin,team lead</code></p>
+            </div>
                 </form>
 
-                    <h2 id="user-management-GETusers--user_id-">Get user</h2>
+                    <h2 id="user-management-GETusers--user-">Get user</h2>
 
 <p>
 </p>
 
 <p>Get details of a specific user by ID.</p>
 
-<span id="example-requests-GETusers--user_id-">
+<span id="example-requests-GETusers--user-">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/users/3" \
+    --get "http://localhost/users/27" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/users/3"
+    "http://localhost/users/27"
 );
 
 const headers = {
@@ -9430,7 +10486,7 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-GETusers--user_id-">
+<span id="example-responses-GETusers--user-">
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
@@ -9438,10 +10494,12 @@ fetch(url, {
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 6,
-        &quot;name&quot;: &quot;Prof. Carolyne Buckridge II&quot;,
-        &quot;email&quot;: &quot;altenwerth.deborah@example.com&quot;,
-        &quot;roles&quot;: []
+        &quot;id&quot;: 70,
+        &quot;name&quot;: &quot;Josefina Wunsch&quot;,
+        &quot;email&quot;: &quot;kade.senger@example.net&quot;,
+        &quot;roles&quot;: [],
+        &quot;created_at&quot;: &quot;2025-11-27T04:07:58.000000Z&quot;,
+        &quot;deleted_at&quot;: null
     }
 }</code>
  </pre>
@@ -9484,43 +10542,43 @@ fetch(url, {
 }</code>
  </pre>
     </span>
-<span id="execution-results-GETusers--user_id-" hidden>
+<span id="execution-results-GETusers--user-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETusers--user_id-"></span>:
+                id="execution-response-status-GETusers--user-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETusers--user_id-"
+    <pre class="json"><code id="execution-response-content-GETusers--user-"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-GETusers--user_id-" hidden>
+<span id="execution-error-GETusers--user-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETusers--user_id-">
+    <pre><code id="execution-error-message-GETusers--user-">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-GETusers--user_id-" data-method="GET"
-      data-path="users/{user_id}"
+<form id="form-GETusers--user-" data-method="GET"
+      data-path="users/{user}"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETusers--user_id-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETusers--user-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETusers--user_id-"
-                    onclick="tryItOut('GETusers--user_id-');">Try it out ⚡
+                    id="btn-tryout-GETusers--user-"
+                    onclick="tryItOut('GETusers--user-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETusers--user_id-"
-                    onclick="cancelTryOut('GETusers--user_id-');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETusers--user-"
+                    onclick="cancelTryOut('GETusers--user-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETusers--user_id-"
+                    id="btn-executetryout-GETusers--user-"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -9528,7 +10586,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>users/{user_id}</code></b>
+            <b><code>users/{user}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -9536,7 +10594,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETusers--user_id-"
+                              name="Content-Type"                data-endpoint="GETusers--user-"
                value="application/json"
                data-component="header">
     <br>
@@ -9547,7 +10605,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETusers--user_id-"
+                              name="Accept"                data-endpoint="GETusers--user-"
                value="application/json"
                data-component="header">
     <br>
@@ -9555,22 +10613,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+                <b style="line-height: 2;"><code>user</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="user_id"                data-endpoint="GETusers--user_id-"
-               value="3"
+               step="any"               name="user"                data-endpoint="GETusers--user-"
+               value="27"
                data-component="url">
     <br>
-<p>The ID of the user. Example: <code>3</code></p>
+<p>The user. Example: <code>27</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="id"                data-endpoint="GETusers--user_id-"
+               step="any"               name="id"                data-endpoint="GETusers--user-"
                value="1"
                data-component="url">
     <br>
@@ -9823,7 +10881,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/users/3" \
+    "http://localhost/users/27" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -9837,7 +10895,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/users/3"
+    "http://localhost/users/27"
 );
 
 const headers = {
@@ -9990,10 +11048,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="user_id"                data-endpoint="PUTusers--user_id-"
-               value="3"
+               value="27"
                data-component="url">
     <br>
-<p>The ID of the user. Example: <code>3</code></p>
+<p>The ID of the user. Example: <code>27</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -10055,14 +11113,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/users/3" \
+    "http://localhost/users/27" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/users/3"
+    "http://localhost/users/27"
 );
 
 const headers = {
@@ -10186,10 +11244,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="user_id"                data-endpoint="DELETEusers--user_id-"
-               value="3"
+               value="27"
                data-component="url">
     <br>
-<p>The ID of the user. Example: <code>3</code></p>
+<p>The ID of the user. Example: <code>27</code></p>
             </div>
                     </form>
 
@@ -10206,14 +11264,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/users/3/restore" \
+    "http://localhost/users/27/restore" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/users/3/restore"
+    "http://localhost/users/27/restore"
 );
 
 const headers = {
@@ -10344,10 +11402,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="userId"                data-endpoint="POSTusers--userId--restore"
-               value="3"
+               value="27"
                data-component="url">
     <br>
-<p>Example: <code>3</code></p>
+<p>Example: <code>27</code></p>
             </div>
                     </form>
 
@@ -10364,7 +11422,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/users/3/roles" \
+    "http://localhost/users/27/roles" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -10378,7 +11436,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/users/3/roles"
+    "http://localhost/users/27/roles"
 );
 
 const headers = {
@@ -10551,10 +11609,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="user_id"                data-endpoint="POSTusers--user_id--roles"
-               value="3"
+               value="27"
                data-component="url">
     <br>
-<p>The ID of the user. Example: <code>3</code></p>
+<p>The ID of the user. Example: <code>27</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">

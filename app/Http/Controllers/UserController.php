@@ -183,6 +183,8 @@ class UserController extends Controller
                 Rule::unique(User::class)->ignore($user->id),
             ],
             'password' => ['nullable', 'string', 'min:8', 'confirmed'],
+            'roles' => ['required', 'array', 'min:1', 'max:4'],
+            'roles.*' => ['required', Rule::in(UserRoles::allRoles())],
         ]);
 
         try {

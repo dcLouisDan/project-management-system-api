@@ -49,7 +49,7 @@ class TeamController extends Controller
         }
 
         $perPage = $request->input('per_page', 15);
-        $query = $this->teamService->buildFilteredQuery($request->only(['name', 'has_leader', 'sort', 'direction', 'delete_status']));
+        $query = $this->teamService->buildFilteredQuery($request->all());
         try {
             $teams = $query->paginate($perPage)->toResourceCollection();
 

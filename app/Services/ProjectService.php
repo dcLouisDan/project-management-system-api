@@ -46,6 +46,32 @@ class ProjectService
             ]);
         }
 
+        if (isset($filters['due_date_from']) && isset($filters['due_date_to'])) {
+            $query->whereBetween('due_date', [
+                $filters['due_date_from'],
+                $filters['due_date_to'],
+            ]);
+        }
+
+        if (isset($filters['name'])) {
+            $query->where('name', 'ilike', '%' . $filters['name'] . '%');
+        }
+
+        if (isset($filters['member_id'])) {
+            $memberId = $filters['member_id'];
+            $query->whereHas('teams.users', function ($query) use ($memberId) {
+                $query->where('users.id', $memberId);
+            });
+        }
+
+        if (isset($filters['team_id'])) {
+            $teamId = $filters['team_id'];
+            $query->whereHas('teams', function ($query) use ($teamId) {
+                $query->where('teams.id', $teamId);
+            });
+        }
+
+
         return $query;
     }
 

@@ -65,7 +65,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":{"id":1,"name":"Bailey Ltd","description":"Et fugiat sunt nihil accusantium. Mollitia modi deserunt aut ab provident perspiciatis quo. Nostrum aut adipisci quidem nostrum.","created_at":"2025-11-01T13:20:00.000000Z","updated_at":"2025-11-01T13:20:00.000000Z"}}'
+        content: '{"data":{"id":14,"name":"Ferry-Koch","description":"Tempore iure adipisci voluptas mollitia dolor molestiae iste eaque. Nihil ut adipisci quia vel veniam nostrum reiciendis. Error placeat et explicabo quo commodi. Facilis suscipit praesentium ratione ad odio. Qui animi nisi a soluta.","lead":null,"created_at":"2025-11-27T04:07:58.000000Z","updated_at":"2025-11-27T04:07:58.000000Z","deleted_at":null}}'
         headers: []
         description: ''
         custom: []
@@ -163,7 +163,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'teams/{team_id}'
+    uri: 'teams/{team}'
     metadata:
       groupName: 'Team Management'
       groupDescription: |-
@@ -180,18 +180,18 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      team_id:
-        name: team_id
-        description: 'The ID of the team.'
+      team:
+        name: team
+        description: 'The team.'
         required: true
-        example: 16
+        example: 5
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      team_id: 16
+      team: 5
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -200,7 +200,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":{"id":2,"name":"Bailey Ltd","description":"Et fugiat sunt nihil accusantium. Mollitia modi deserunt aut ab provident perspiciatis quo. Nostrum aut adipisci quidem nostrum.","created_at":"2025-11-01T13:20:00.000000Z","updated_at":"2025-11-01T13:20:00.000000Z"}}'
+        content: '{"data":{"id":15,"name":"Bailey Inc","description":"Velit et fugiat sunt nihil accusantium. Mollitia modi deserunt aut ab provident perspiciatis quo. Nostrum aut adipisci quidem nostrum. Commodi incidunt iure odit.","lead":null,"created_at":"2025-11-27T04:07:58.000000Z","updated_at":"2025-11-27T04:07:58.000000Z","deleted_at":null}}'
         headers: []
         description: ''
         custom: []
@@ -252,14 +252,14 @@ endpoints:
         name: team_id
         description: 'The ID of the team.'
         required: true
-        example: 16
+        example: 5
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      team_id: 16
+      team_id: 5
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -330,7 +330,7 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: 'Delete team'
-      description: 'Permanently delete a team from the system.'
+      description: 'Soft delete a team from the system.'
       authenticated: false
       deprecated: false
       custom: []
@@ -342,14 +342,14 @@ endpoints:
         name: team_id
         description: 'The ID of the team.'
         required: true
-        example: 16
+        example: 5
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      team_id: 16
+      team_id: 5
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -383,6 +383,177 @@ endpoints:
   -
     httpMethods:
       - POST
+    uri: 'teams/{teamId}/restore'
+    metadata:
+      groupName: 'Team Management'
+      groupDescription: |-
+
+        APIs for managing teams
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Restore team'
+      description: 'Soft restore a team from the system.'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      teamId:
+        name: teamId
+        description: ''
+        required: true
+        example: 5
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      teamId: 5
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data": null, "message": "Team restored successfully"}'
+        headers: []
+        description: success
+        custom: []
+      -
+        status: 404
+        content: '{"message": "Team not found"}'
+        headers: []
+        description: 'not found'
+        custom: []
+      -
+        status: 500
+        content: '{"data": null, "message": "Failed to restored team: Internal server error", "errors": [], "meta": []}'
+        headers: []
+        description: error
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'teams/{team_id}/members/sync'
+    metadata:
+      groupName: 'Team Management'
+      groupDescription: |-
+
+        APIs for managing teams
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Sync multiple members to team'
+      description: 'Sync multiple users to a team with their specified roles in a single request.'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      team_id:
+        name: team_id
+        description: 'The ID of the team.'
+        required: true
+        example: 5
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      team_id: 5
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      members:
+        name: members
+        description: 'Array of members to add.'
+        required: true
+        example:
+          - []
+        type: 'object[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      'members[].user_id':
+        name: 'members[].user_id'
+        description: 'The ID of the user to sync.'
+        required: true
+        example: 5
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      'members[].role':
+        name: 'members[].role'
+        description: 'The role to assign. Allowed values: team lead, team member.'
+        required: true
+        example: 'team member'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      members:
+        -
+          user_id: 5
+          role: 'team member'
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data": {"invalid_users": []}, "message": "Users synced to team successfully"}'
+        headers: []
+        description: success
+        custom: []
+      -
+        status: 200
+        content: '{"data": {"invalid_users": [3, 7]}, "message": "Users synced to team successfully"}'
+        headers: []
+        description: 'success with invalid users'
+        custom: []
+      -
+        status: 404
+        content: '{"message": "Team not found"}'
+        headers: []
+        description: 'not found'
+        custom: []
+      -
+        status: 422
+        content: '{"message": "The given data was invalid.", "errors": {"members.0.user_id": ["The selected members.0.user_id is invalid."]}}'
+        headers: []
+        description: 'validation error'
+        custom: []
+      -
+        status: 500
+        content: '{"data": null, "message": "Failed to sync users to team: Internal server error", "errors": [], "meta": []}'
+        headers: []
+        description: error
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
     uri: 'teams/{team_id}/members'
     metadata:
       groupName: 'Team Management'
@@ -404,14 +575,14 @@ endpoints:
         name: team_id
         description: 'The ID of the team.'
         required: true
-        example: 16
+        example: 5
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      team_id: 16
+      team_id: 5
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -500,14 +671,14 @@ endpoints:
         name: team_id
         description: 'The ID of the team.'
         required: true
-        example: 16
+        example: 5
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      team_id: 16
+      team_id: 5
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -609,7 +780,7 @@ endpoints:
         name: team_id
         description: 'The ID of the team.'
         required: true
-        example: 16
+        example: 5
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -619,15 +790,15 @@ endpoints:
         name: user_id
         description: 'The ID of the user.'
         required: true
-        example: 3
+        example: 27
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      team_id: 16
-      user_id: 3
+      team_id: 5
+      user_id: 27
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -705,14 +876,14 @@ endpoints:
         name: team_id
         description: 'The ID of the team.'
         required: true
-        example: 16
+        example: 5
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      team_id: 16
+      team_id: 5
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -796,14 +967,14 @@ endpoints:
         name: team_id
         description: 'The ID of the team.'
         required: true
-        example: 16
+        example: 5
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      team_id: 16
+      team_id: 5
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -893,14 +1064,14 @@ endpoints:
         name: team_id
         description: 'The ID of the team.'
         required: true
-        example: 16
+        example: 5
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      team_id: 16
+      team_id: 5
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -989,7 +1160,7 @@ endpoints:
         name: team_id
         description: 'The ID of the team.'
         required: true
-        example: 16
+        example: 5
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -999,15 +1170,15 @@ endpoints:
         name: project_id
         description: 'The ID of the project.'
         required: true
-        example: 16
+        example: 10
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      team_id: 16
-      project_id: 16
+      team_id: 5
+      project_id: 10
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:

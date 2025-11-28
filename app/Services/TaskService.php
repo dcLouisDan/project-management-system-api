@@ -92,9 +92,15 @@ class TaskService
 
     public function startTask(Task $task, User $startedBy)
     {
-        $this->updateTaskStatus($task, ProgressStatus::IN_PROGRESS->value, $startedBy);
+        return DB::transaction(function () use ($task, $startedBy) {
+            $this->updateTaskStatus($task, ProgressStatus::IN_PROGRESS->value, $startedBy);
 
-        return $task;
+            $project = $task->project;
+            $project->status = ProgressStatus::IN_PROGRESS->value;
+            $project->save();
+
+            return $task;
+        });
     }
 
     public function submitTaskForReview(Task $task, ?string $notes, User $submittedBy)

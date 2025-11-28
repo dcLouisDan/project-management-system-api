@@ -65,6 +65,14 @@ class TeamService
             });
         }
 
+        if (isset($filters['lead_id'])) {
+            $leadId = $filters['lead_id'];
+            $query->whereHas('users', function ($query) use ($leadId) {
+                $query->where('users.id', $leadId)
+                    ->where('team_user.role', UserRoles::TEAM_LEAD->value);
+            });
+        }
+
         if (isset($filters['project_id'])) {
             $projectId = $filters['project_id'];
             $query->whereHas('projects', function ($query) use ($projectId) {

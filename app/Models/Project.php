@@ -79,4 +79,34 @@ class Project extends Model
     {
         return $this->hasMany(Task::class);
     }
+
+    public function tasksCount()
+    {
+        return $this->tasks()->count();
+    }
+
+    public function milestonesCount()
+    {
+        return $this->milestones()->count();
+    }
+
+    public function teamsCount()
+    {
+        return $this->teams()->count();
+    }
+
+    public function isOverdue(): bool
+    {
+        return $this->due_date && $this->due_date->isPast() && $this->status !== ProgressStatus::COMPLETED->value;
+    }
+
+    public function compeletedTasksCount()
+    {
+        return $this->tasks()->where('status', ProgressStatus::COMPLETED->value)->count();
+    }
+
+    public function pendingTasksCount()
+    {
+        return $this->tasks()->where('status', ProgressStatus::NOT_STARTED->value)->count();
+    }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\TeamController;
@@ -65,4 +66,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::middleware(['permission:update task'])->post('tasks/{task}/submit', [TaskController::class, 'submitTask']);
     Route::middleware(['permission:update task'])->post('tasks/{task}/reviews/{taskReview}/start', [TaskController::class, 'startTaskReview']);
     Route::middleware(['permission:update task'])->post('tasks/{task}/reviews/{taskReview}/submit', [TaskController::class, 'submitTaskReview']);
+
+    // Dashboard Routes
+    Route::get('dashboard/stats', [DashboardController::class, 'stats']);
+    Route::get('dashboard/recent-projects', [DashboardController::class, 'recentProjects']);
+    Route::get('dashboard/recent-tasks', [DashboardController::class, 'recentTasks']);
 });

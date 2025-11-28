@@ -17,6 +17,10 @@ class TaskPolicy
             return true;
         }
 
+        if  ($user->can('list tasks')) {
+            return true;
+        }
+
         return false;
     }
 

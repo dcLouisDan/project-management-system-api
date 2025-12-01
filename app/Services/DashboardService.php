@@ -14,14 +14,27 @@ use App\Models\Task;
 
 class DashboardService
 {
-  public function getDashboardStats(User $user)
+  public function getDashboardStats(User $user, ?string $forceRole = null)
   {
-    return [
-      'users' => $this->getUsersStats(),
-      'teams' => $this->getTeamsStats(),
-      'projects' => $this->getProjectsStats(),
-      'tasks' => $this->getTasksStats(),
+    $stats = [];
+
+    if ($forceRole && !UserRoles::isValidRole($forceRole)) {
+      $forceRole = null;
+    }
+
+    $role = $forceRole ?? $user->getRoleNames()->first();
+
+    $stats = [
+      'projects' => $this->getProjectsStats($user, $forceRole),
+      'tasks' => $this->getTasksStats($user, $forceRole),
     ];
+
+    if ($role === UserRoles::ADMIN->value) {
+      $stats['users'] = $this->getUsersStats();
+      $stats['teams'] = $this->getTeamsStats();
+    }
+
+    return $stats;
   }
 
   public function getUsersStats()
@@ -55,69 +68,129 @@ class DashboardService
     ];
   }
 
-  public function getProjectsStats()
+  public function getProjectsStats(User $user, ?string $forceRole = null)
   {
+    $query = Project::query();
+    if ($forceRole && !UserRoles::isValidRole($forceRole)) {
+      $forceRole = null;
+    }
+    $role = $forceRole ?? $user->getRoleNames()->first();
+    if ($role === UserRoles::ADMIN->value) {
+      $query->withTrashed();
+    } else if ($role === UserRoles::PROJECT_MANAGER->value) {
+      $query->where('manager_id', $user->id);
+    }
+
     return [
-      'total' => Project::count(),
-      'active' => Project::whereIn('status', [ProgressStatus::NOT_STARTED->value, ProgressStatus::IN_PROGRESS->value])->count(),
-      'completed' => Project::where('status', ProgressStatus::COMPLETED->value)->count(),
-      'cancelled' => Project::where('status', ProgressStatus::CANCELLED->value)->count(),
-      'overdue' => Project::where('due_date', '<', now())->where('status', '!=', ProgressStatus::COMPLETED->value)->count(),
+      'total' => $query->count(),
+      'active' => $query->whereIn('status', [ProgressStatus::NOT_STARTED->value, ProgressStatus::IN_PROGRESS->value])->count(),
+      'completed' => $query->where('status', ProgressStatus::COMPLETED->value)->count(),
+      'cancelled' => $query->where('status', ProgressStatus::CANCELLED->value)->count(),
+      'overdue' => $query->where('due_date', '<', now())->where('status', '!=', ProgressStatus::COMPLETED->value)->count(),
       'by_status' => [
-        'not_started' => Project::where('status', ProgressStatus::NOT_STARTED->value)->count(),
-        'in_progress' => Project::where('status', ProgressStatus::IN_PROGRESS->value)->count(),
-        'awaiting_review' => Project::where('status', ProgressStatus::AWAITING_REVIEW->value)->count(),
-        'under_review' => Project::where('status', ProgressStatus::UNDER_REVIEW->value)->count(),
-        'completed' => Project::where('status', ProgressStatus::COMPLETED->value)->count(),
-        'approved' => Project::where('status', ProgressStatus::APPROVED->value)->count(),
-        'rejected' => Project::where('status', ProgressStatus::REJECTED->value)->count(),
-        'cancelled' => Project::where('status', ProgressStatus::CANCELLED->value)->count(),
+        'not_started' => $query->where('status', ProgressStatus::NOT_STARTED->value)->count(),
+        'in_progress' => $query->where('status', ProgressStatus::IN_PROGRESS->value)->count(),
+        'awaiting_review' => $query->where('status', ProgressStatus::AWAITING_REVIEW->value)->count(),
+        'under_review' => $query->where('status', ProgressStatus::UNDER_REVIEW->value)->count(),
+        'completed' => $query->where('status', ProgressStatus::COMPLETED->value)->count(),
       ],
     ];
   }
 
-  public function getTasksStats()
+  public function getTasksStats(User $user, ?string $forceRole = null)
   {
+    $query = Task::query();
+    if ($forceRole && !UserRoles::isValidRole($forceRole)) {
+      $forceRole = null;
+    }
+    $role = $forceRole ?? $user->getRoleNames()->first();
+    if ($role === UserRoles::ADMIN->value) {
+      $query->withTrashed();
+    } else if ($role === UserRoles::PROJECT_MANAGER->value) {
+      $query->whereHas('project', function ($q) use ($user) {
+        $q->where('manager_id', $user->id);
+      });
+    } else if ($role == UserRoles::TEAM_LEAD->value) {
+      $query->whereHas('project.teams', function ($q) use ($user) {
+        $q->whereHas('users', function ($q) use ($user) {
+          $q->where('users.id', $user->id)->where('role', UserRoles::TEAM_LEAD->value);
+        });
+      });
+    } else {
+      $query->where('assigned_to_id', $user->id);
+    }
+
     return [
-      'total' => Task::count(),
-      'pending' => Task::where('status', ProgressStatus::NOT_STARTED->value)->count(),
-      'in_progress' => Task::where('status', ProgressStatus::IN_PROGRESS->value)->count(),
-      'awaiting_review' => Task::where('status', ProgressStatus::AWAITING_REVIEW->value)->count(),
-      'completed' => Task::where('status', ProgressStatus::COMPLETED->value)->count(),
-      'overdue' => Task::where('due_date', '<', now())->where('status', '!=', ProgressStatus::COMPLETED->value)->count(),
+      'total' => $query->count(),
+      'pending' => $query->where('status', ProgressStatus::NOT_STARTED->value)->count(),
+      'in_progress' => $query->where('status', ProgressStatus::IN_PROGRESS->value)->count(),
+      'awaiting_review' => $query->where('status', ProgressStatus::AWAITING_REVIEW->value)->count(),
+      'completed' => $query->where('status', ProgressStatus::COMPLETED->value)->count(),
+      'overdue' => $query->where('due_date', '<', now())->where('status', '!=', ProgressStatus::COMPLETED->value)->count(),
       'by_priority' => [
-        'low' => Task::where('priority', PriorityLevel::LOW->value)->count(),
-        'medium' => Task::where('priority', PriorityLevel::MEDIUM->value)->count(),
-        'high' => Task::where('priority', PriorityLevel::HIGH->value)->count(),
-        'urgent' => Task::where('priority', PriorityLevel::URGENT->value)->count(),
+        'low' => $query->where('priority', PriorityLevel::LOW->value)->count(),
+        'medium' => $query->where('priority', PriorityLevel::MEDIUM->value)->count(),
+        'high' => $query->where('priority', PriorityLevel::HIGH->value)->count(),
+        'urgent' => $query->where('priority', PriorityLevel::URGENT->value)->count(),
       ],
       'by_status' => [
-        'not_started' => Task::where('status', ProgressStatus::NOT_STARTED->value)->count(),
-        'in_progress' => Task::where('status', ProgressStatus::IN_PROGRESS->value)->count(),
-        'awaiting_review' => Task::where('status', ProgressStatus::AWAITING_REVIEW->value)->count(),
-        'under_review' => Task::where('status', ProgressStatus::UNDER_REVIEW->value)->count(),
-        'completed' => Task::where('status', ProgressStatus::COMPLETED->value)->count(),
+        'not_started' => $query->where('status', ProgressStatus::NOT_STARTED->value)->count(),
+        'in_progress' => $query->where('status', ProgressStatus::IN_PROGRESS->value)->count(),
+        'awaiting_review' => $query->where('status', ProgressStatus::AWAITING_REVIEW->value)->count(),
+        'under_review' => $query->where('status', ProgressStatus::UNDER_REVIEW->value)->count(),
+        'completed' => $query->where('status', ProgressStatus::COMPLETED->value)->count(),
       ],
     ];
   }
 
-  public function getRecentProjects(User $user, int $limit = 5)
+  public function getRecentProjects(User $user, int $limit = 5, ?string $forceRole = null)
   {
     $query = Project::orderBy('updated_at', 'desc');
-    if ($user->isAdmin()) {
+    if ($forceRole && !UserRoles::isValidRole($forceRole)) {
+      $forceRole = null;
+    }
+    $role = $forceRole ?? $user->getRoleNames()->first();
+    if ($role === UserRoles::ADMIN->value) {
       $query->limit($limit)->get();
-    } else {
+    } else if ($role === UserRoles::PROJECT_MANAGER->value) {
       $query->where('manager_id', $user->id)->limit($limit)->get();
+    } else if ($role == UserRoles::TEAM_LEAD->value) {
+      $query->whereHas('teams', function ($q) use ($user) {
+        $q->whereHas('users', function ($q) use ($user) {
+          $q->where('users.id', $user->id)->where('role', UserRoles::TEAM_LEAD->value);
+        });
+      })->limit($limit)->get();
+    } else {
+      $query->whereHas('teams', function ($q) use ($user) {
+        $q->whereHas('users', function ($q) use ($user) {
+          $q->where('users.id', $user->id)->where('role', UserRoles::TEAM_MEMBER->value);
+        });
+      })->limit($limit)->get();
     }
 
     return ProjectResource::collection($query->get());
   }
 
-  public function getRecentTasks(User $user, int $limit = 5)
+  public function getRecentTasks(User $user, int $limit = 5, ?string $forceRole = null)
   {
     $query = Task::orderBy('updated_at', 'desc')->with('project');
-    if ($user->isAdmin()) {
+    if ($forceRole && !UserRoles::isValidRole($forceRole)) {
+      $forceRole = null;
+    }
+    $role = $forceRole ?? $user->getRoleNames()->first();
+
+    if ($role === UserRoles::ADMIN->value) {
       $query->limit($limit)->get();
+    } else if ($role === UserRoles::PROJECT_MANAGER->value) {
+      $query->whereHas('project', function ($q) use ($user) {
+        $q->where('manager_id', $user->id);
+      })->limit($limit)->get();
+    } else if ($role == UserRoles::TEAM_LEAD->value) {
+      $query->whereHas('project.teams', function ($q) use ($user) {
+        $q->whereHas('users', function ($q) use ($user) {
+          $q->where('users.id', $user->id)->where('role', UserRoles::TEAM_LEAD->value);
+        });
+      })->limit($limit)->get();
     } else {
       $query->where('assigned_to_id', $user->id)->limit($limit)->get();
     }

@@ -71,6 +71,11 @@ class User extends Authenticatable
         return $this->hasRole(UserRoles::ADMIN->value);
     }
 
+    public function isProjectManager(): bool
+    {
+        return $this->hasRole(UserRoles::PROJECT_MANAGER->value);
+    }
+
     public function assignedTasks()
     {
         return $this->hasMany(Task::class, 'assigned_to_id');

@@ -19,7 +19,7 @@ class ActivityLogResource extends JsonResource
             'user_id' => $this->user_id,
             'user_name' => $this->user_name,
             'action' => $this->action,
-            'auditable_type' => $this->auditable_type,
+            'auditable_type' => $this->auditable_type_name,
             'auditable_id' => $this->auditable_id,
             'description' => $this->description,
             'metadata' => $this->metadata,

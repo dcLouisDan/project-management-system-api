@@ -17,6 +17,7 @@ class ActivityLog extends Model
 
     protected $appends = [
         'user_name',
+        'auditable_type_name',
     ];
 
     /**
@@ -79,5 +80,11 @@ class ActivityLog extends Model
             'description' => $description,
             'metadata' => $metadata,
         ]);
+    }
+
+    public function getAuditableTypeNameAttribute(): string
+    {
+        $words = explode('\\', $this->auditable_type);
+        return ucfirst(strtolower(end($words)));
     }
 }

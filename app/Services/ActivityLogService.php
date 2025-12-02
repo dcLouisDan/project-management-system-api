@@ -25,7 +25,7 @@ class ActivityLogService
   {
     $query = ActivityLog::query();
 
-    $sortableFields = ['id', 'created_at'];
+    $sortableFields = ['id', 'action', 'auditable_type', 'auditable_id', 'created_at'];
 
     $sort = isset($filters['sort']) && in_array($filters['sort'], $sortableFields) ? $filters['sort'] : 'id';
 
@@ -51,6 +51,13 @@ class ActivityLogService
 
     if (isset($filters['description'])) {
       $query->where('description', 'ilike', '%' . $filters['description'] . '%');
+    }
+
+    if (isset($filters['date_from']) && isset($filters['date_to'])) {
+      $query->whereBetween('created_at', [
+        $filters['date_from'],
+        $filters['date_to'],
+      ]);
     }
 
     return $query;

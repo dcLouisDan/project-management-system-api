@@ -76,23 +76,31 @@ class DashboardService
     }
     $role = $forceRole ?? $user->getRoleNames()->first();
     if ($role === UserRoles::ADMIN->value) {
-      $query->withTrashed();
+      $query;
     } else if ($role === UserRoles::PROJECT_MANAGER->value) {
       $query->where('manager_id', $user->id);
+    } else if ($role == UserRoles::TEAM_LEAD->value) {
+      $query->whereHas('teams.users', function ($q) use ($user) {
+        $q->where('users.id', $user->id)->where('role', UserRoles::TEAM_LEAD->value);
+      });
+    } else {
+      $query->whereHas('teams.users', function ($q) use ($user) {
+        $q->where('users.id', $user->id)->where('role', UserRoles::TEAM_MEMBER->value);
+      });
     }
 
     return [
       'total' => $query->count(),
-      'active' => $query->whereIn('status', [ProgressStatus::NOT_STARTED->value, ProgressStatus::IN_PROGRESS->value])->count(),
-      'completed' => $query->where('status', ProgressStatus::COMPLETED->value)->count(),
-      'cancelled' => $query->where('status', ProgressStatus::CANCELLED->value)->count(),
-      'overdue' => $query->where('due_date', '<', now())->where('status', '!=', ProgressStatus::COMPLETED->value)->count(),
+      'active' => (clone $query)->whereIn('status', [ProgressStatus::NOT_STARTED->value, ProgressStatus::IN_PROGRESS->value])->count(),
+      'completed' => (clone $query)->where('status', ProgressStatus::COMPLETED->value)->count(),
+      'cancelled' => (clone $query)->where('status', ProgressStatus::CANCELLED->value)->count(),
+      'overdue' => (clone $query)->where('due_date', '<', now())->where('status', '!=', ProgressStatus::COMPLETED->value)->count(),
       'by_status' => [
-        'not_started' => $query->where('status', ProgressStatus::NOT_STARTED->value)->count(),
-        'in_progress' => $query->where('status', ProgressStatus::IN_PROGRESS->value)->count(),
-        'awaiting_review' => $query->where('status', ProgressStatus::AWAITING_REVIEW->value)->count(),
-        'under_review' => $query->where('status', ProgressStatus::UNDER_REVIEW->value)->count(),
-        'completed' => $query->where('status', ProgressStatus::COMPLETED->value)->count(),
+        'not_started' => (clone $query)->where('status', ProgressStatus::NOT_STARTED->value)->count(),
+        'in_progress' => (clone $query)->where('status', ProgressStatus::IN_PROGRESS->value)->count(),
+        'awaiting_review' => (clone $query)->where('status', ProgressStatus::AWAITING_REVIEW->value)->count(),
+        'under_review' => (clone $query)->where('status', ProgressStatus::UNDER_REVIEW->value)->count(),
+        'completed' => (clone $query)->where('status', ProgressStatus::COMPLETED->value)->count(),
       ],
     ];
   }
@@ -105,7 +113,7 @@ class DashboardService
     }
     $role = $forceRole ?? $user->getRoleNames()->first();
     if ($role === UserRoles::ADMIN->value) {
-      $query->withTrashed();
+      $query;
     } else if ($role === UserRoles::PROJECT_MANAGER->value) {
       $query->whereHas('project', function ($q) use ($user) {
         $q->where('manager_id', $user->id);
@@ -122,23 +130,23 @@ class DashboardService
 
     return [
       'total' => $query->count(),
-      'pending' => $query->where('status', ProgressStatus::NOT_STARTED->value)->count(),
-      'in_progress' => $query->where('status', ProgressStatus::IN_PROGRESS->value)->count(),
-      'awaiting_review' => $query->where('status', ProgressStatus::AWAITING_REVIEW->value)->count(),
-      'completed' => $query->where('status', ProgressStatus::COMPLETED->value)->count(),
-      'overdue' => $query->where('due_date', '<', now())->where('status', '!=', ProgressStatus::COMPLETED->value)->count(),
+      'pending' => (clone $query)->where('status', ProgressStatus::NOT_STARTED->value)->count(),
+      'in_progress' => (clone $query)->where('status', ProgressStatus::IN_PROGRESS->value)->count(),
+      'awaiting_review' => (clone $query)->where('status', ProgressStatus::AWAITING_REVIEW->value)->count(),
+      'completed' => (clone $query)->where('status', ProgressStatus::COMPLETED->value)->count(),
+      'overdue' => (clone $query)->where('due_date', '<', now())->where('status', '!=', ProgressStatus::COMPLETED->value)->count(),
       'by_priority' => [
-        'low' => $query->where('priority', PriorityLevel::LOW->value)->count(),
-        'medium' => $query->where('priority', PriorityLevel::MEDIUM->value)->count(),
-        'high' => $query->where('priority', PriorityLevel::HIGH->value)->count(),
-        'urgent' => $query->where('priority', PriorityLevel::URGENT->value)->count(),
+        'low' => (clone $query)->where('priority', PriorityLevel::LOW->value)->count(),
+        'medium' => (clone $query)->where('priority', PriorityLevel::MEDIUM->value)->count(),
+        'high' => (clone $query)->where('priority', PriorityLevel::HIGH->value)->count(),
+        'urgent' => (clone $query)->where('priority', PriorityLevel::URGENT->value)->count(),
       ],
       'by_status' => [
-        'not_started' => $query->where('status', ProgressStatus::NOT_STARTED->value)->count(),
-        'in_progress' => $query->where('status', ProgressStatus::IN_PROGRESS->value)->count(),
-        'awaiting_review' => $query->where('status', ProgressStatus::AWAITING_REVIEW->value)->count(),
-        'under_review' => $query->where('status', ProgressStatus::UNDER_REVIEW->value)->count(),
-        'completed' => $query->where('status', ProgressStatus::COMPLETED->value)->count(),
+        'not_started' => (clone $query)->where('status', ProgressStatus::NOT_STARTED->value)->count(),
+        'in_progress' => (clone $query)->where('status', ProgressStatus::IN_PROGRESS->value)->count(),
+        'awaiting_review' => (clone $query)->where('status', ProgressStatus::AWAITING_REVIEW->value)->count(),
+        'under_review' => (clone $query)->where('status', ProgressStatus::UNDER_REVIEW->value)->count(),
+        'completed' => (clone $query)->where('status', ProgressStatus::COMPLETED->value)->count(),
       ],
     ];
   }

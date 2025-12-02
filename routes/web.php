@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityLogController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TaskController;
@@ -71,4 +72,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('dashboard/stats', [DashboardController::class, 'stats']);
     Route::get('dashboard/recent-projects', [DashboardController::class, 'recentProjects']);
     Route::get('dashboard/recent-tasks', [DashboardController::class, 'recentTasks']);
+
+    // Activity Log Management Routes
+    Route::get('activity-logs', [ActivityLogController::class, 'index']);
 });

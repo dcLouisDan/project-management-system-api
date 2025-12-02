@@ -85,7 +85,7 @@ class DashboardService
       });
     } else {
       $query->whereHas('teams.users', function ($q) use ($user) {
-        $q->where('users.id', $user->id)->where('role', UserRoles::TEAM_MEMBER->value);
+        $q->where('users.id', $user->id);
       });
     }
 
@@ -169,10 +169,8 @@ class DashboardService
         });
       })->limit($limit)->get();
     } else {
-      $query->whereHas('teams', function ($q) use ($user) {
-        $q->whereHas('users', function ($q) use ($user) {
-          $q->where('users.id', $user->id)->where('role', UserRoles::TEAM_MEMBER->value);
-        });
+      $query->whereHas('teams.users', function ($q) use ($user) {
+        $q->where('users.id', $user->id);
       })->limit($limit)->get();
     }
 

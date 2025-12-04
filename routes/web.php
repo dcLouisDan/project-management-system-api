@@ -10,6 +10,9 @@ use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+
+Route::get('check-admin-exists', [UserController::class, 'checkIfAdminExists']);
+
 Route::middleware(['auth:sanctum'])->group(function () {
     // Protected route example
     Route::get('/user', function (Request $request) {

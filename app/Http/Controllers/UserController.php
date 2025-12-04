@@ -24,6 +24,31 @@ class UserController extends Controller
     ) {}
 
     /**
+     * Check if admin exists
+     *
+     * Check if an admin user exists in the system.
+     *
+     * @response status=200 scenario="success" {"data": {"exists": true}, "message": "Admin user already exists."}
+     * @response status=200 scenario="success" {"data": {"exists": false}, "message": "Admin user does not exist."}
+     */
+    public function checkIfAdminExists(Request $request)
+    {
+        try {
+            $adminExists = User::whereHas('roles', function ($query) {
+                $query->where('name', UserRoles::ADMIN->value);
+            })->exists();
+            $message = $adminExists ? 'Admin user already exists.' : 'Admin user does not exist.';
+            return ApiResponse::success(['exists' => $adminExists], $message);
+        } catch (\Exception $e) {
+            Log::error('Failed to check if admin exists', [
+                'error' => $e->getMessage(),
+                'requested_by' => $request->user()?->id ?? null,
+            ]);
+            return ApiResponse::error('Failed to check if admin exists', 500);
+        }
+    }
+
+    /**
      * List Users
      *
      * Get a paginated list of all users with optional filtering.

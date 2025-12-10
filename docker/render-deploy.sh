@@ -6,6 +6,7 @@ composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
 
 echo "Caching config..."
 set +e
+php artisan config:clear
 php artisan config:cache
 if [ $? -ne 0 ]; then
     echo "Warning: Config cache failed, clearing cache and continuing..."
@@ -33,6 +34,7 @@ set -e
 
 echo "Running migrations..."
 php artisan migrate --force
+php artisan db:seed --class=RolesAndPermissionsSeeder
 
 echo "Deployment script completed successfully!"
 

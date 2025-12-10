@@ -7,15 +7,15 @@ FROM dwchiang/nginx-php-fpm:latest
 WORKDIR /var/www/html
 
 # Install system dependencies and PHP extensions required for Laravel
-RUN apk add --no-cache \
+RUN apt-get update && apt-get install -y --no-install-recommends \
   git \
   curl \
   libpng-dev \
   libzip-dev \
-  postgresql-dev \
-  oniguruma-dev \
-  freetype-dev \
-  libjpeg-turbo-dev \
+  libpq-dev \
+  libonig-dev \
+  libfreetype6-dev \
+  libjpeg62-turbo-dev \
   && docker-php-ext-configure gd --with-freetype --with-jpeg \
   && docker-php-ext-install -j$(nproc) \
   pdo_pgsql \
@@ -26,7 +26,8 @@ RUN apk add --no-cache \
   bcmath \
   gd \
   zip \
-  opcache
+  opcache \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer

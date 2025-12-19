@@ -11,6 +11,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
+Route::get('/', function () {
+    return "Project Management System Backend - by Dan Louis Dela Cruz";
+});
+
 Route::get('check-admin-exists', [UserController::class, 'checkIfAdminExists']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
